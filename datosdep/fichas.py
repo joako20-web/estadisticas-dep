@@ -357,6 +357,103 @@ def carrera_jugador(d: dict) -> tuple[list[dict], dict]:
     return filas, total
 
 
+def _partidos_guardados(comp: str, grupo: str) -> dict[int, dict]:
+    """Partidos de la temporada ya guardados en data/ (jornada, equipos y marcador), sin pedir nada."""
+    carpeta = ruta_jornada(comp, grupo, 0).parent
+    for f in sorted(carpeta.glob("j[0-9][0-9].json"), reverse=True):
+        try:
+            d = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        ps = d.get("partidos_temporada") or d.get("partidos")
+        if ps:
+            return {p["id"]: p for p in ps}
+    return {}
+
+
+def _ranking_historico(comp: str, actuales: list, id_fuente: int | None) -> dict | None:
+    """Puesto por puntos y ensayos desde 2023/24 (temporadas guardadas + la actual) en esa liga."""
+    from datosdep import historico
+
+    if not id_fuente or comp not in historico.NACIONALES:
+        return None
+    try:
+        historico.completar(comp)
+    except Exception:
+        pass
+    acum: dict[int, list[int]] = {}
+    temporadas = set()
+    for ruta in historico.HISTORICO.glob(f"*_{comp}.json"):
+        try:
+            dd = json.loads(ruta.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if not dd:
+            continue
+        temporadas.add(dd["id_temp"])
+        for pid, filas in (dd.get("jugadores") or {}).items():
+            a = acum.setdefault(int(pid), [0, 0, 0])
+            for r in filas:
+                a[0] += r[3]
+                a[1] += r[4]
+                a[2] += r[2]
+    if not temporadas:
+        return None
+    for j in actuales:
+        a = acum.setdefault(int(j.id), [0, 0, 0])
+        a[0] += j.puntos
+        a[1] += j.ensayos
+        a[2] += j.pj
+    yo = acum.get(int(id_fuente))
+    if not yo:
+        return None
+    return {"puntos": yo[0], "ensayos": yo[1], "pj": yo[2], "de": len(acum), "temporadas": len(temporadas) + 1,
+            "puesto_puntos": 1 + sum(1 for a in acum.values() if a[0] > yo[0]),
+            "puesto_ensayos": (1 + sum(1 for a in acum.values() if a[1] > yo[1])) if yo[1] else None,
+            "puesto_pj": 1 + sum(1 for a in acum.values() if a[2] > yo[2])}
+
+
+def rendimiento_jugador(cand: dict, cfg: dict, resumen: dict, filas: list, cliente, historico_pos: dict | None) -> dict | None:
+    """Puntos por partido, peso en su equipo, titular/suplente, minutos y puntos por jornada (todo de datos guardados)."""
+    from datosdep.minutos import minutos_jugador
+
+    pj = len(filas)
+    if not pj:
+        return None
+    equipo = cand["equipo"]
+    partidos = _partidos_guardados(cand["comp"], cand["grupo"])
+    puntos = sum(f[PUNTOS] for _, f in filas)
+    dors = [f[DORSAL] or 0 for _, f in filas]
+    pts_equipo = 0
+    for pid, _ in filas:
+        p = partidos.get(int(pid))
+        if p:
+            pts_equipo += (p["puntos_local"] if p["local"] == equipo else p["puntos_visitante"]) or 0
+    suyos = {int(pid): f for pid, f in filas}
+    barras = []
+    for p in sorted((p for p in partidos.values() if equipo in (p["local"], p["visitante"])
+                     and p.get("estado") == "jugado" and p.get("jornada")), key=lambda p: p["jornada"]):
+        f = suyos.get(p["id"])
+        barras.append({"j": p["jornada"], "pts": f[PUNTOS] if f else None})
+    mins = []
+    if cfg.get("fuente") != "origen_b":  # los ids de partido de otra plataforma pueden coincidir con los de esta
+        for pid, f in filas:
+            m = minutos_jugador(cliente.extra_acta(int(pid)), equipo, f[DORSAL] or 0)
+            if m is not None:
+                mins.append(m)
+    todos = [j for j in jugadores_desde_resumen(resumen, todos=True) if j.pj >= 3]
+    por_ppp = sorted(todos, key=lambda j: -(j.puntos / j.pj))
+    puesto = next((i for i, j in enumerate(por_ppp, 1) if j.nombre == cand["nombre"] and j.equipo == equipo), None)
+    return {
+        "pj": pj, "puntos": puntos, "ppp": round(puntos / pj, 1), "puesto_ppp": puesto, "de_ppp": len(por_ppp),
+        "titular": sum(1 for d in dors if 1 <= d <= 15), "suplente": sum(1 for d in dors if d > 15),
+        "pct_equipo": round(100 * puntos / pts_equipo) if pts_equipo else None,
+        "barras": barras,
+        "minutos": {"total": sum(mins), "partidos": len(mins), "media": round(sum(mins) / len(mins))} if mins else None,
+        "historico": historico_pos,
+    }
+
+
 def datos_jugador(cand: dict) -> dict:
     cfg = cargar_config()["competiciones"][cand["comp"]]
     ruta = ruta_jornada(cand["comp"], cand["grupo"], 0).with_name("resumen_partidos.json")
@@ -379,6 +476,7 @@ def datos_jugador(cand: dict) -> dict:
     mejor = None
     escudos = {}
     id_fuente = None
+    rend = None
     if filas:
         pid, f = max(filas, key=lambda x: (x[1][PUNTOS], x[1][ENSAYOS]))
         cliente = cliente_para(cfg)
@@ -390,8 +488,11 @@ def datos_jugador(cand: dict) -> dict:
             partidos = {p.id: p for p in comp_fuente.partidos}
             p = partidos.get(int(pid))
             id_fuente = _id_fuente(comp_fuente.jugadores, cand["nombre"], cand["equipo"])
+            rend_hist = _ranking_historico(cand["comp"], comp_fuente.jugadores, id_fuente)
         except Exception:
             p = None
+            rend_hist = None
+        rend = rendimiento_jugador(cand, cfg, resumen, filas, cliente, rend_hist)
         if p and f[PUNTOS]:
             local = p.local == cand["equipo"]
             mejor = {"puntos": f[PUNTOS], "ensayos": f[ENSAYOS], "jornada": p.jornada,
@@ -404,8 +505,49 @@ def datos_jugador(cand: dict) -> dict:
         "puntos": tot(PUNTOS), "ensayos": tot(ENSAYOS), "conversiones": tot(CONV), "golpes": tot(GOLPES),
         "drops": tot(DROPS), "amarillas": tot(AMARILLAS), "rojas": tot(ROJAS),
         "puesto_puntos": puesto_p, "puesto_ensayos": puesto_e, "mejor": mejor, "escudos": escudos,
-        "id_fuente": id_fuente,
+        "id_fuente": id_fuente, "rend": rend,
     }
+
+
+def _resumen_comparable(cand: dict) -> dict:
+    """Esta temporada y toda su carrera en ligas nacionales, para compararlo con otro jugador."""
+    d = datos_jugador(cand)
+    filas, total = carrera_jugador(d)
+    actual = {"pj": d["partidos"], "puntos": d["puntos"], "ensayos": d["ensayos"], "tarjetas": d["amarillas"] + d["rojas"]}
+    carrera = total or {**actual, "temporadas": 1}
+    return {"nombre": d["nombre"], "equipo": d["equipo"], "liga": d["liga"], "comp": d["comp"], "grupo": d["grupo"],
+            "escudos": d["escudos"], "esta": {**actual, "ppp": round(actual["puntos"] / actual["pj"], 1) if actual["pj"] else 0.0},
+            "carrera": carrera}
+
+
+def _filas_comparacion(a: dict, b: dict) -> list[dict]:
+    """Filas (etiqueta, valor a, valor b, quién gana) de las dos secciones de la comparación."""
+    def fila(k, va, vb, menos_es_mejor=False):
+        gana = None if va == vb else ("a" if (va < vb) == menos_es_mejor else "b")
+        return {"k": k, "a": va, "b": vb, "gana": gana}
+
+    e1, e2, c1, c2 = a["esta"], b["esta"], a["carrera"], b["carrera"]
+    return [
+        {"seccion": "Esta temporada"},
+        fila("Partidos", e1["pj"], e2["pj"]), fila("Puntos", e1["puntos"], e2["puntos"]),
+        fila("Puntos / partido", e1["ppp"], e2["ppp"]), fila("Ensayos", e1["ensayos"], e2["ensayos"]),
+        {"seccion": "Su carrera · ligas nacionales"},
+        fila("Temporadas", c1["temporadas"], c2["temporadas"]), fila("Partidos", c1["pj"], c2["pj"]),
+        fila("Puntos", c1["puntos"], c2["puntos"]), fila("Ensayos", c1["ensayos"], c2["ensayos"]),
+        fila("Tarjetas", c1["tarjetas"], c2["tarjetas"], menos_es_mejor=True),
+    ]
+
+
+def comparar_jugadores(cand_a: dict | str, cand_b: dict | str, formato: str = "post",
+                       destino: Path | None = None) -> list[Path]:
+    a = jugador_por_id(cand_a) if isinstance(cand_a, str) else cand_a
+    b = jugador_por_id(cand_b) if isinstance(cand_b, str) else cand_b
+    if not a or not b:
+        return []
+    ra, rb = _resumen_comparable(a), _resumen_comparable(b)
+    slide = {"tipo": "comparar_jugadores", "clave": "comparar", "a": ra, "b": rb, "filas": _filas_comparacion(ra, rb),
+             "liga": ra["liga"], "nombre": ra["nombre"], "equipo": ra["equipo"]}
+    return _renderizar(ra["comp"], ra["grupo"], None, {**rb["escudos"], **ra["escudos"]}, slide, formato, destino)
 
 
 def ficha_jugador(cand: dict | str, formato: str = "post", destino: Path | None = None) -> list[Path]:
@@ -417,4 +559,6 @@ def ficha_jugador(cand: dict | str, formato: str = "post", destino: Path | None 
     filas, total = carrera_jugador(d)
     if len(filas) > 1:  # hay alguna temporada anterior: segunda imagen con su carrera
         slides.append({"tipo": "carrera_jugador", "clave": "carrera", **d, "filas": filas, "total": total})
+    if d.get("rend"):  # tercera imagen: su rendimiento esta temporada
+        slides.append({"tipo": "rendimiento_jugador", "clave": "rendimiento", **d})
     return _renderizar(d["comp"], d["grupo"], None, d["escudos"], slides, formato, destino)

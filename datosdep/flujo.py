@@ -237,6 +237,7 @@ COMANDOS = [("pedir", "Pedir resultados, XV, clasificación…"),
             ("equipo", "Ficha de un equipo: /equipo vrac"),
             ("jugador", "Ficha de un jugador: /jugador mansilla"),
             ("cara", "Cara a cara: /cara vrac vs salvador"),
+            ("comparar", "Comparar dos jugadores: /comparar mansilla vs cittadini"),
             ("arbitros", "Un equipo con cada árbitro: /arbitros vrac"),
             ("usuarios", "Quién tiene acceso al bot (solo administrador)"),
             ("estilo", "Cambiar el estilo visual"),
@@ -446,7 +447,8 @@ def _menu(tg: Telegram, chat_id, cq: dict, partes: list[str]) -> None:
         tg.editar(chat_id, mid, *_menu_agenda())
     elif paso == "mb":
         tg.editar(chat_id, mid, "🔎 <b>Buscar</b>\nEscribe:\n· <code>/equipo vrac</code>\n· <code>/jugador mansilla</code>\n"
-                  "· <code>/cara vrac vs salvador</code> (cara a cara histórico)", [[("⬅️ Volver", "m1")]])
+                  "· <code>/cara vrac vs salvador</code> (cara a cara histórico)\n"
+                  "· <code>/comparar mansilla vs cittadini</code> (dos jugadores)", [[("⬅️ Volver", "m1")]])
     elif paso == "mc":
         tg.editar(chat_id, mid, *_menu_categoria(partes[1]))
     elif paso == "mr":
@@ -905,6 +907,30 @@ def _cara_ids(tg: Telegram, chat_id, id_a: str, id_b: str, formato: str = "post"
         _mandar(tg, chat_id, imgs, f"cc|{id_a}|{id_b}", formato, original)
 
 
+def _comparar(tg: Telegram, chat_id, texto: str, formato: str = "post", original: bool = False) -> None:
+    lados = re.split(r"\s+(?:vs|contra|-)\s+", texto, flags=re.I)
+    if len(lados) != 2:
+        tg.mensaje(chat_id, "Escríbelo así: <code>/comparar mansilla vs cittadini</code>")
+        return
+    elegidos = []
+    for lado in lados:
+        cands = fichas.buscar_jugador(lado)
+        if not cands:
+            tg.mensaje(chat_id, f"No encuentro a «{html.escape(lado)}».")
+            return
+        elegidos.append(cands[0])
+    _comparar_ids(tg, chat_id, elegidos[0]["id"], elegidos[1]["id"], formato, original)
+
+
+def _comparar_ids(tg: Telegram, chat_id, id_a: str, id_b: str, formato: str = "post", original: bool = False) -> None:
+    with tempfile.TemporaryDirectory() as tmp:
+        imgs = fichas.comparar_jugadores(id_a, id_b, formato, Path(tmp))
+        if not imgs:
+            tg.mensaje(chat_id, "No he podido comparar a esos dos jugadores.")
+            return
+        _mandar(tg, chat_id, imgs, f"cj|{id_a}|{id_b}", formato, original)
+
+
 # ---------- Estilo visual ----------
 
 def _menu_estilo(tg: Telegram, chat_id) -> None:
@@ -1130,6 +1156,10 @@ def _boton(tg: Telegram, b: dict, posts: dict, cq: dict) -> None:
         formato, original = _formato(partes)
         _cara_ids(tg, chat_id, partes[1], partes[2], formato, original)
         return
+    if partes[0] == "cj":
+        formato, original = _formato(partes)
+        _comparar_ids(tg, chat_id, partes[1], partes[2], formato, original)
+        return
     if partes[0] in ("eh", "eo"):  # historias / original de imágenes especiales
         comp, grupo = partes[1].split("/")
         clave = DESABREV[partes[2]]
@@ -1206,6 +1236,8 @@ def _mensaje(tg: Telegram, b: dict, posts: dict, m: dict) -> None:
         _buscar(tg, chat_id, "fj", texto[len("/jugador"):].strip())
     elif texto.startswith("/cara"):
         _cara(tg, chat_id, texto[len("/cara"):].strip())
+    elif texto.startswith("/comparar"):
+        _comparar(tg, chat_id, texto[len("/comparar"):].strip())
     elif texto.startswith("/arbitros") or texto.startswith("/árbitros"):
         equipo = texto.split(maxsplit=1)[1].strip() if " " in texto else ""
         if not equipo:

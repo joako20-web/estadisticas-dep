@@ -105,10 +105,10 @@ def _marcador(paginas) -> tuple[int, int]:
     raise ValueError("no encuentro el marcador en el PDF")
 
 
-def _linea_temporal(paginas) -> tuple[list[str], list[str], list[tuple[int, int, str, int]]]:
-    """Nombres de los equipos y eventos (lado, segundos, texto, dorsal) de la 'Línea temporal'."""
+def _linea_temporal(paginas) -> tuple[list[str], list[str], list[tuple[int, int, str, int, int]]]:
+    """Nombres de los equipos y eventos (lado, segundos, texto, dorsal, dorsal que entra) de la 'Línea temporal'."""
     nombres: list[list[str]] = [[], []]
-    eventos: list[tuple[int, int, str, int]] = []
+    eventos: list[tuple[int, int, str, int, int]] = []
     ultimo: dict[int, list | None] = {0: None, 1: None}
     estado = 0  # 0 = busco el título, 1 = nombres de equipo, 2 = tabla de eventos
     for trozos in paginas:
@@ -138,7 +138,8 @@ def _linea_temporal(paginas) -> tuple[list[str], list[str], list[tuple[int, int,
                     resto = [t for _, t in celdas[1:] if t.upper() != "EQUIPO"]  # ensayo de castigo: "EQUIPO" en vez de dorsal
                     dorsal = int(resto[0]) if resto and resto[0].isdigit() else 0
                     texto = next((t for t in resto if not t.isdigit()), "")
-                    ev = [lado, int(m[1]) * 60 + int(m[2]), texto, dorsal]
+                    entra = int(resto[-1]) if len(resto) > 1 and resto[-1].isdigit() and resto[-1] != resto[0] else 0
+                    ev = [lado, int(m[1]) * 60 + int(m[2]), texto, dorsal, entra]
                     eventos.append(ev)  # type: ignore[arg-type]
                     ultimo[lado] = ev
                 elif ultimo[lado] is not None and celdas[0][1] and not celdas[0][1].isdigit():
@@ -165,10 +166,15 @@ def acta_a_json(paginas) -> bytes:
     eventos = []
     puntos = [0, 0]
     puntos_jugador: dict[tuple[int, int], int] = {}
-    for lado, seg, texto, dorsal in sorted(crudos, key=lambda e: (e[1], e[0])):
+    cambios, tarjetas = [], []
+    for lado, seg, texto, dorsal, entra in sorted(crudos, key=lambda e: (e[1], e[0])):
         if texto.lower().startswith("reemplazo"):
+            if dorsal and entra:
+                cambios.append([lado, seg, dorsal, entra, texto])
             continue
         tipo = tipo_evento(texto)
+        if tipo in ("amarilla", "roja20", "roja") and dorsal:
+            tarjetas.append([lado, seg, dorsal, tipo])
         jugador = al[lado].get(dorsal, "")
         if dorsal and not jugador:
             raise ValueError(f"el dorsal {dorsal} ({texto}) no está en la alineación")
@@ -187,7 +193,10 @@ def acta_a_json(paginas) -> bytes:
     datos = {"status": True, "data": {
         "partido": {"local": {"id_equipo": 1, "nombre": equipos[0], "resultado": marcador[0]},
                     "visitante": {"id_equipo": 2, "nombre": equipos[1], "resultado": marcador[1]}},
-        "eventos": eventos, "alineaciones": alineaciones, "equipos": {}}}
+        "eventos": eventos, "alineaciones": alineaciones, "equipos": {},
+        # para calcular los minutos de cada jugador (ver datosdep/minutos.py)
+        "extra": {"equipos": equipos, "fin": max([80 * 60] + [c[1] for c in cambios] + [t[1] for t in tarjetas]),
+                  "cambios": cambios, "tarjetas": tarjetas}}}
     return json.dumps(datos, ensure_ascii=False).encode("utf-8")
 
 

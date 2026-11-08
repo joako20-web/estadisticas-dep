@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import gzip
 import hashlib
+import json
 import os
 import time
 from pathlib import Path
@@ -199,6 +200,27 @@ class OrigenA:
     def acta_en_cache(self, id_partido: int) -> bool:
         return self._manual(id_partido).exists() or self._guardada(id_partido).exists() or self.en_cache(
             "json/origen_a_proxy.php", {"recurso": "acta", "id_partido": id_partido})
+
+    def extra_acta(self, id_partido: int) -> dict | None:
+        """Cambios y tarjetas del acta (para los minutos), si se guardó desde el PDF con ese formato."""
+        ruta = self._guardada(id_partido)
+        if not ruta.exists():
+            return None
+        try:
+            return json.loads(gzip.decompress(ruta.read_bytes())).get("data", {}).get("extra")
+        except (OSError, ValueError):
+            return None
+
+    def tiene_extra(self, id_partido: int) -> bool:
+        return self.extra_acta(id_partido) is not None
+
+    def refrescar_extra(self, id_partido: int) -> bool:
+        """Vuelve a pedir el PDF de un acta guardada antes sin cambios, para añadírselos (una sola vez)."""
+        try:
+            self._acta_desde_pdf(id_partido)  # sobrescribe data/actas_pdf; un acta manual sigue mandando en acta()
+            return True
+        except (ValueError, AccesoRestringido):
+            return False
 
     def _acta_desde_pdf(self, id_partido: int) -> bytes:
         """Pide el PDF del acta (una sola vez), lo convierte y deja el resultado en data/actas_pdf."""

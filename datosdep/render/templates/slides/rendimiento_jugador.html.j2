@@ -1,0 +1,85 @@
+{# Rendimiento de un jugador esta temporada: puntos por partido, peso en su equipo, titularidad, minutos, puntos por jornada y puesto histórico. #}
+<style>
+.rj { flex: 1; display: flex; flex-direction: column; margin-top: 40px; position: relative; z-index: 2; }
+.rj-tit { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit, .64); }
+.rj-num { font-family: var(--f-num, var(--f-tit)); font-size-adjust: cap-height var(--aj-num, .64); font-variant-numeric: tabular-nums; }
+.rj-kick { font-size: 26px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--acento-txt); }
+.rj-nom { font-weight: 700; font-size: 78px; line-height: .86; text-transform: uppercase; margin-top: 14px; }
+.rj-nom.l { font-size: 64px; }
+.rj-nom.xl { font-size: 52px; }
+.rj-big { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 40px; border-top: 2px solid var(--linea); border-bottom: 2px solid var(--linea); }
+.rj-big div { padding: 22px 0 18px; }
+.rj-big div + div { border-left: 1px solid var(--linea); padding-left: 26px; }
+.rj-big b { display: block; font-size: 112px; line-height: .85; white-space: nowrap; }
+.rj-big b small { font-size: 52px; margin-left: 2px; }
+.rj-big div:first-child b { color: var(--acento-txt); }
+.rj-big span { font-size: 24px; color: var(--gris); text-transform: uppercase; letter-spacing: 2px; display: block; margin-top: 8px; }
+.rj-big em { display: block; font-style: normal; font-size: 23px; color: var(--texto); margin-top: 4px; min-height: 28px; }
+.rj-tit-sec { margin-top: 36px; font-size: 24px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); }
+.rj-barras { display: flex; align-items: flex-end; gap: 10px; height: 250px; margin-top: 14px; border-bottom: 2px solid var(--linea); }
+.rj-b { flex: 1; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.rj-b i { display: block; width: 100%; background: var(--acento-txt); border-radius: 6px 6px 0 0; min-height: 4px; }
+.rj-b i.cero { background: var(--linea); }
+.rj-b i.nc { background: transparent; border: 2px dashed var(--linea); border-bottom: 0; min-height: 22px; }
+.rj-b u { text-decoration: none; font-size: 26px; line-height: 1; margin-bottom: 5px; }
+.rj-etq { display: flex; gap: 10px; margin-top: 8px; font-size: 22px; color: var(--gris); }
+.rj-etq span { flex: 1; text-align: center; min-width: 0; }
+.rj-leyenda { margin-top: 10px; font-size: 21px; color: var(--gris); }
+.rj-hist { margin-top: auto; margin-bottom: 18px; border: 2px solid var(--linea); border-radius: 14px; background: var(--panel); padding: 20px 24px; }
+.rj-hist .k { font-size: 24px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); }
+.rj-hist .f { display: grid; grid-template-columns: 1fr 1fr; margin-top: 10px; gap: 20px; }
+.rj-hist b { display: block; font-size: 76px; line-height: .9; color: var(--acento-txt); }
+.rj-hist b small { font-size: 30px; color: var(--gris); margin-left: 6px; }
+.rj-hist span { font-size: 24px; color: var(--texto); }
+.f-historia .rj { margin-top: 110px; }
+.f-historia .rj-barras { height: 340px; }
+</style>
+{% set n = s.nombre|jugador %}
+{% set largo = (n.nombre ~ ' ' ~ n.apellidos)|length %}
+{% set r = s.rend %}
+{% set tope = (r.barras|map(attribute='pts')|select|list|max) if (r.barras|map(attribute='pts')|select|list) else 1 %}
+<div class="rj">
+  <div class="rj-kick">Su temporada · {{ s.liga }}</div>
+  <div class="rj-nom rj-tit {{ 'xl' if largo > 24 else 'l' if largo > 17 }}">{{ n.nombre }} {{ n.apellidos }}</div>
+
+  <div class="rj-big">
+    <div><b class="rj-num">{{ '%.1f'|format(r.ppp) }}</b><span>Puntos / partido</span><em>{% if r.puesto_ppp %}{{ r.puesto_ppp }}º de {{ r.de_ppp }} (mín. 3 partidos){% endif %}</em></div>
+    <div><b class="rj-num">{% if r.pct_equipo is not none %}{{ r.pct_equipo }}<small>%</small>{% else %}–{% endif %}</b><span>De los puntos de su equipo</span><em>en los partidos que jugó</em></div>
+    <div>
+      {% if r.minutos %}
+      <b class="rj-num">{{ r.minutos.total }}<small>min</small></b><span>Minutos jugados</span><em>≈ {{ r.minutos.media }} por partido{% if r.minutos.partidos < r.pj %} · {{ r.minutos.partidos }} de {{ r.pj }} partidos{% endif %}</em>
+      {% else %}
+      <b class="rj-num">{{ r.titular }}<small>/{{ r.pj }}</small></b><span>Titular</span><em>{{ r.suplente }} desde el banquillo</em>
+      {% endif %}
+    </div>
+  </div>
+  {% if r.minutos %}<div class="rj-leyenda">Titular en {{ r.titular }} de {{ r.pj }} partidos · {{ r.suplente }} desde el banquillo</div>{% endif %}
+
+  {% if r.barras %}
+  <div class="rj-tit-sec">Puntos en cada jornada</div>
+  <div class="rj-barras">
+    {% for b in r.barras %}
+    <div class="rj-b">
+      {% if b.pts is none %}<i class="nc"></i>
+      {% elif b.pts == 0 %}<u class="rj-num">0</u><i class="cero" style="height:4px"></i>
+      {% else %}<u class="rj-num">{{ b.pts }}</u><i style="height: calc({{ (b.pts / tope * 100)|round(0) }}% - 36px)"></i>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="rj-etq">{% for b in r.barras %}<span>J{{ b.j }}</span>{% endfor %}</div>
+  {% if r.barras|selectattr('pts', 'none')|list %}<div class="rj-leyenda">Línea de puntos: no convocado</div>{% endif %}
+  {% endif %}
+
+  {% if r.historico %}
+  <div class="rj-hist">
+    <div class="k">Desde 2023/24 en {{ s.liga }}</div>
+    {% set ens = r.historico.puesto_ensayos %}
+    {% set usa_ens = ens and ens <= r.historico.puesto_pj %}
+    <div class="f">
+      <div><b class="rj-num">{{ r.historico.puesto_puntos }}º<small>de {{ r.historico.de }}</small></b><span>en puntos · {{ r.historico.puntos }} pts</span></div>
+      <div>{% if usa_ens %}<b class="rj-num">{{ ens }}º<small>de {{ r.historico.de }}</small></b><span>en ensayos · {{ r.historico.ensayos }}</span>
+      {% else %}<b class="rj-num">{{ r.historico.puesto_pj }}º<small>de {{ r.historico.de }}</small></b><span>en partidos · {{ r.historico.pj }}</span>{% endif %}</div>
+    </div>
+  </div>
+  {% endif %}
+</div>
