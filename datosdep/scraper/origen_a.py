@@ -42,6 +42,7 @@ class OrigenA:
         self.actas_bloqueadas = False
         self.ultimo_codigo: int | None = None  # último 403/429 recibido, para el aviso al dueño
         self.ultimo_motivo = ""
+        self.lento = False  # ritmo de 1,5 s entre peticiones (rellenar histórico de golpe)
 
     @property
     def detalle_bloqueo(self) -> str:
@@ -89,7 +90,7 @@ class OrigenA:
             if self.usar_cache and (viejo := self._leer_disco(clave)) is not None:
                 return viejo  # bloqueados: mejor el último dato guardado que nada
             raise
-        lenta = path.startswith("previo") or path == url_acta_pdf()
+        lenta = self.lento or path.startswith("previo") or path == url_acta_pdf()
         espera = (PAUSA_LENTA_S if lenta else PAUSA_S) - (time.monotonic() - self._ultima)
         if espera > 0:
             time.sleep(espera)

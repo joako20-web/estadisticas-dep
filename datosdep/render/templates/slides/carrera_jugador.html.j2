@@ -1,0 +1,63 @@
+{# Carrera de un jugador en las ligas nacionales: una fila por temporada y equipo. Mismos tokens de tema que la ficha. #}
+<style>
+.cj { flex: 1; display: flex; flex-direction: column; margin-top: 40px; position: relative; z-index: 2; }
+.cj-tit { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit, .64); }
+.cj-num { font-family: var(--f-num, var(--f-tit)); font-size-adjust: cap-height var(--aj-num, .64); font-variant-numeric: tabular-nums; }
+.cj-kick { font-size: 26px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--acento-txt); }
+.cj-nom { font-weight: 700; font-size: 78px; line-height: .86; text-transform: uppercase; margin-top: 14px; }
+.cj-nom.l { font-size: 64px; }
+.cj-nom.xl { font-size: 52px; }
+.cj-grid { display: grid; grid-template-columns: 196px 1fr 92px 112px 100px 100px; align-items: center; column-gap: 14px; }
+.cj-cab { margin-top: 38px; padding-bottom: 12px; border-bottom: 2px solid var(--linea); font-size: 22px; color: var(--gris); text-transform: uppercase; letter-spacing: 2px; }
+.cj-cab span:nth-child(n+3) { text-align: right; }
+.cj-fila { padding: 15px 0; border-bottom: 1px solid var(--linea); }
+.cj-fila.actual { background: var(--panel); margin: 0 -18px; padding: 15px 18px; border-bottom: 1px solid var(--linea); }
+.cj-fila .t { font-size: 40px; line-height: .95; }
+.cj-fila.actual .t { color: var(--acento-txt); }
+.cj-fila .e { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 31px; font-weight: 600; line-height: 1.05; }
+.cj-fila .e small { display: block; font-size: 22px; font-weight: 500; color: var(--gris); margin-top: 3px; }
+.cj-fila .n { text-align: right; font-size: 40px; line-height: .95; }
+.cj-fila .n.p { color: var(--acento-txt); }
+.cj-mas { margin-top: 12px; font-size: 24px; color: var(--gris); }
+.cj-tot { margin-top: auto; margin-bottom: 18px; border: 2px solid var(--linea); border-radius: 14px; background: var(--panel); padding: 20px 24px; }
+.cj-tot .k { font-size: 24px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); }
+.cj-tot .f { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 10px; }
+.cj-tot .f div { text-align: center; }
+.cj-tot .f b { display: block; font-size: 76px; line-height: .9; }
+.cj-tot .f div:nth-child(2) b { color: var(--acento-txt); }
+.cj-tot .f span { font-size: 22px; color: var(--gris); text-transform: uppercase; letter-spacing: 1px; }
+.f-historia .cj { margin-top: 110px; }
+.f-historia .cj-fila { padding: 22px 0; }
+.f-historia .cj-fila.actual { padding: 22px 18px; }
+</style>
+{% set n = s.nombre|jugador %}
+{% set largo = (n.nombre ~ ' ' ~ n.apellidos)|length %}
+{% set maxf = 10 if formato == 'historia' else 7 %}
+{% set filas = s.filas[:maxf] %}
+<div class="cj">
+  <div class="cj-kick">Su carrera · ligas nacionales</div>
+  <div class="cj-nom cj-tit {{ 'xl' if largo > 24 else 'l' if largo > 17 }}">{{ n.nombre }} {{ n.apellidos }}</div>
+
+  <div class="cj-grid cj-cab"><span>Temporada</span><span>Equipo</span><span>PJ</span><span>Pts</span><span>Ens</span><span>Tarj</span></div>
+  {% for f in filas %}
+  <div class="cj-grid cj-fila{{ ' actual' if loop.first }}">
+    <span class="t cj-num">{{ f.temporada }}</span>
+    <span class="e cj-tit">{{ f.equipo|corto }}<small>{{ f.liga }}</small></span>
+    <span class="n cj-num">{{ f.pj }}</span>
+    <span class="n p cj-num">{{ f.puntos }}</span>
+    <span class="n cj-num">{{ f.ensayos }}</span>
+    <span class="n cj-num">{{ f.tarjetas }}</span>
+  </div>
+  {% endfor %}
+  {% if s.filas|length > maxf %}<div class="cj-mas">+ {{ s.filas|length - maxf }} anteriores (incluidas en el total)</div>{% endif %}
+
+  <div class="cj-tot">
+    <div class="k">Total · {{ s.total.temporadas }} temporada{{ 's' if s.total.temporadas != 1 }}</div>
+    <div class="f">
+      <div><b class="cj-num">{{ s.total.pj }}</b><span>Partidos</span></div>
+      <div><b class="cj-num">{{ s.total.puntos }}</b><span>Puntos</span></div>
+      <div><b class="cj-num">{{ s.total.ensayos }}</b><span>Ensayos</span></div>
+      <div><b class="cj-num">{{ s.total.tarjetas }}</b><span>Tarjetas</span></div>
+    </div>
+  </div>
+</div>

@@ -21,13 +21,14 @@ from pathlib import Path
 
 from datosdep.fichas import CACHE, _club, indice_equipos, norm
 from datosdep.pipeline import cargar_config
+from datosdep.rutas import DATA
 from datosdep.render.render import MESES, renderizar_slides
 from datosdep.scraper.origen_a import compartido
 from datosdep.scraper import parsers
 
 # Temporadas con competiciones senior publicadas (2022/23 solo tiene escuelas)
 TEMPORADAS = [(2526, "2025/26"), (2425, "2024/25"), (2324, "2023/24")]
-HISTORICO = CACHE / "historico"
+HISTORICO = DATA / "historico"  # en data/: se sube al repositorio, así lo ya descargado no se vuelve a pedir
 # Tipos (claves de config) por género, para no mezclar el equipo masculino y el
 # femenino de un mismo club en el cara a cara
 MASCULINAS = ["dh_masc", "dh_elite", "copa"]
@@ -69,7 +70,8 @@ def datos_temporada(id_temp: int, tipo: str) -> dict | None:
     ruta = HISTORICO / f"{id_temp}_{tipo}.json"
     if ruta.exists():
         datos = json.loads(ruta.read_text(encoding="utf-8"))
-        return datos or None
+        if not datos or "jugadores" in datos:
+            return datos or None  # (los guardados antes de tener jugadores se rehacen una vez)
     base = {"seleccion": 0, "id_ambito": 0, "id_temp": id_temp, "id_territorial": 9999}
     comp = next(((i, n) for i, n in _opciones(base, "competiciones") if tipo_competicion(n) == tipo), None)
     datos: dict = {}
@@ -84,10 +86,16 @@ def datos_temporada(id_temp: int, tipo: str) -> dict | None:
         clubes: dict[str, int] = {}
         escudos: dict[str, str] = {}
         con_partidos: set = set()
+        jugadores: dict[str, list[list]] = {}  # id -> una fila por equipo con el que jugó esa temporada
         for g in grupos:
             if g["id"] not in con_partidos:
                 raw = cli._get("mostrar_estadisticas.php", cli._params(g["id"]), cachear=True)
-                for p in parsers.estadisticas(raw).partidos:
+                est = parsers.estadisticas(raw)
+                for j in est.jugadores:  # id de jugador estable entre temporadas (aunque cambie el patrocinador del equipo)
+                    filas_j = jugadores.setdefault(str(j.id), [])
+                    if all(f[1] != j.equipo for f in filas_j):  # la misma fila aparece en las páginas de varios grupos
+                        filas_j.append([j.nombre, j.equipo, j.pj, j.puntos, j.ensayos, j.amarillas, j.rojas])
+                for p in est.partidos:
                     partidos[p.id] = {
                         "id": p.id, "jornada": p.jornada, "ronda": p.ronda, "grupo": p.grupo or g["id"],
                         "fecha": p.fecha.isoformat() if p.fecha else None, "local": p.local,
@@ -106,7 +114,7 @@ def datos_temporada(id_temp: int, tipo: str) -> dict | None:
                 pass
         datos = {"id_temp": id_temp, "temporada": dict(TEMPORADAS)[id_temp], "tipo": tipo,
                  "competicion": comp[1], "grupos": grupos, "partidos": list(partidos.values()),
-                 "clubes": clubes, "escudos": escudos}
+                 "clubes": clubes, "escudos": escudos, "jugadores": jugadores}
     HISTORICO.mkdir(parents=True, exist_ok=True)
     ruta.write_text(json.dumps(datos, ensure_ascii=False), encoding="utf-8")
     return datos or None
@@ -316,3 +324,48 @@ def cara_a_cara(cand_a: dict, cand_b: dict, formato: str = "post", destino: Path
              "total": len(d["partidos"])}
     comp = cand_a["comp"] if cand_a["categoria"] == "nacional" else cand_b["comp"]
     return _render(comp, slide, d["escudos"], "Histórico", formato, destino)
+
+
+def carrera(id_jugador: int | None) -> list[dict]:
+    """Temporadas pasadas de un jugador en las ligas nacionales guardadas (la más reciente primero).
+
+    Se une por el id de jugador de el origen A, que no cambia entre temporadas ni de equipo.
+    """
+    if not id_jugador:
+        return []
+    filas = []
+    for ruta in HISTORICO.glob("*_*.json"):
+        try:
+            d = json.loads(ruta.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        for j in ((d or {}).get("jugadores") or {}).get(str(id_jugador)) or []:
+            liga = cargar_config()["competiciones"].get(d["tipo"], {}).get("nombre", d["tipo"])
+            filas.append({"id_temp": d["id_temp"], "temporada": d["temporada"], "tipo": d["tipo"], "liga": liga,
+                          "equipo": j[1], "club": (d.get("clubes") or {}).get(j[1]), "pj": j[2], "puntos": j[3],
+                          "ensayos": j[4], "tarjetas": j[5] + j[6]})
+    filas.sort(key=lambda f: (-f["id_temp"], f["tipo"]))
+    return filas
+
+
+NACIONALES = {"dh_masc", "dh_fem", "dh_elite", "dhb_masc", "dhb_fem", "m23", "copa"}
+
+
+def completar(tipo: str) -> None:
+    """Guarda (una sola vez, despacio) las temporadas pasadas de esa competición que falten.
+
+    Si el origen A rechaza las peticiones, se para sin guardar nada a medias; se reintentará otro día.
+    """
+    if tipo not in NACIONALES:
+        return
+    pendientes = [t for t, _ in TEMPORADAS if not (HISTORICO / f"{t}_{tipo}.json").exists()
+                  or "jugadores" not in (json.loads((HISTORICO / f"{t}_{tipo}.json").read_text(encoding="utf-8")) or {"jugadores": 1})]
+    if not pendientes:
+        return
+    cli = _cliente()
+    cli.lento = True
+    try:
+        for t in pendientes:
+            datos_temporada(t, tipo)
+    finally:
+        cli.lento = False

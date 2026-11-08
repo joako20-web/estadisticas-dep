@@ -222,7 +222,7 @@ def _renderizar(comp: str, grupo: str, jornada, escudos: dict, slide: dict, form
     datos = {"competicion": comp, "grupo": grupo, "jornada": jornada,
              "temporada": cargar_config()["temporada"], "escudos": escudos}
     destino = destino or Path(tempfile.mkdtemp(prefix="ficha_"))
-    return renderizar_slides(datos, [slide], destino, formato)
+    return renderizar_slides(datos, slide if isinstance(slide, list) else [slide], destino, formato)
 
 
 def ficha_equipo(cand: dict | str, formato: str = "post", destino: Path | None = None) -> list[Path]:
@@ -321,6 +321,42 @@ def jugador_por_id(id_: str) -> dict | None:
     return None
 
 
+def _id_fuente(jugadores, nombre: str, equipo: str) -> int | None:
+    """Id del jugador en la tabla de temporada (por nombre; si hay varios, el de su equipo)."""
+    n = norm(nombre)
+    candidatos = [j for j in jugadores if norm(j.nombre) == n]
+    if len(candidatos) > 1:
+        candidatos = [j for j in candidatos if j.equipo == equipo] or candidatos[:1]
+    return candidatos[0].id if candidatos else None
+
+
+def carrera_jugador(d: dict) -> tuple[list[dict], dict]:
+    """Filas de temporadas anteriores + totales (con la temporada actual) para la imagen de carrera."""
+    from datosdep import historico
+
+    try:
+        historico.completar(d["comp"])  # una vez y despacio; si la fuente rechaza, sigue con lo que haya
+    except Exception:
+        pass
+    pasadas = historico.carrera(d.get("id_fuente"))
+    if not pasadas:
+        return [], {}
+    try:  # nombre actual del mismo club (el de entonces lleva patrocinador: "RECOLETAS BURGOS 2031-CAJA RURAL")
+        actuales = historico._actuales(d["comp"])
+    except Exception:
+        actuales = {}
+    for f in pasadas:
+        if f.get("club") in actuales:
+            f["equipo"] = actuales[f["club"]]["equipo"]
+    actual = {"temporada": cargar_config()["temporada"], "liga": d["liga"], "equipo": d["equipo"],
+              "pj": d["partidos"], "puntos": d["puntos"], "ensayos": d["ensayos"],
+              "tarjetas": d["amarillas"] + d["rojas"]}
+    filas = [actual, *pasadas]
+    total = {k: sum(f[k] for f in filas) for k in ("pj", "puntos", "ensayos", "tarjetas")}
+    total["temporadas"] = len({f["temporada"] for f in filas})
+    return filas, total
+
+
 def datos_jugador(cand: dict) -> dict:
     cfg = cargar_config()["competiciones"][cand["comp"]]
     ruta = ruta_jornada(cand["comp"], cand["grupo"], 0).with_name("resumen_partidos.json")
@@ -342,6 +378,7 @@ def datos_jugador(cand: dict) -> dict:
 
     mejor = None
     escudos = {}
+    id_fuente = None
     if filas:
         pid, f = max(filas, key=lambda x: (x[1][PUNTOS], x[1][ENSAYOS]))
         cliente = cliente_para(cfg)
@@ -349,8 +386,10 @@ def datos_jugador(cand: dict) -> dict:
         try:
             clasificacion = cliente.clasificacion(id_grupo)
             escudos = {x.equipo: x.escudo for x in clasificacion if x.escudo}
-            partidos = {p.id: p for p in cliente.competicion(id_grupo).partidos}
+            comp_fuente = cliente.competicion(id_grupo)
+            partidos = {p.id: p for p in comp_fuente.partidos}
             p = partidos.get(int(pid))
+            id_fuente = _id_fuente(comp_fuente.jugadores, cand["nombre"], cand["equipo"])
         except Exception:
             p = None
         if p and f[PUNTOS]:
@@ -365,6 +404,7 @@ def datos_jugador(cand: dict) -> dict:
         "puntos": tot(PUNTOS), "ensayos": tot(ENSAYOS), "conversiones": tot(CONV), "golpes": tot(GOLPES),
         "drops": tot(DROPS), "amarillas": tot(AMARILLAS), "rojas": tot(ROJAS),
         "puesto_puntos": puesto_p, "puesto_ensayos": puesto_e, "mejor": mejor, "escudos": escudos,
+        "id_fuente": id_fuente,
     }
 
 
@@ -373,5 +413,8 @@ def ficha_jugador(cand: dict | str, formato: str = "post", destino: Path | None 
     if not cand:
         return []
     d = datos_jugador(cand)
-    slide = {"tipo": "ficha_jugador", "clave": "ficha", **d}
-    return _renderizar(d["comp"], d["grupo"], None, d["escudos"], slide, formato, destino)
+    slides = [{"tipo": "ficha_jugador", "clave": "ficha", **d}]
+    filas, total = carrera_jugador(d)
+    if len(filas) > 1:  # hay alguna temporada anterior: segunda imagen con su carrera
+        slides.append({"tipo": "carrera_jugador", "clave": "carrera", **d, "filas": filas, "total": total})
+    return _renderizar(d["comp"], d["grupo"], None, d["escudos"], slides, formato, destino)
