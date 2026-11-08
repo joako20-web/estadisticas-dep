@@ -135,7 +135,7 @@ def _linea_temporal(paginas) -> tuple[list[str], list[str], list[tuple[int, int,
                     continue
                 m = re.fullmatch(r"(\d+):(\d+)", celdas[0][1])
                 if m:
-                    resto = [t for _, t in celdas[1:]]
+                    resto = [t for _, t in celdas[1:] if t.upper() != "EQUIPO"]  # ensayo de castigo: "EQUIPO" en vez de dorsal
                     dorsal = int(resto[0]) if resto and resto[0].isdigit() else 0
                     texto = next((t for t in resto if not t.isdigit()), "")
                     ev = [lado, int(m[1]) * 60 + int(m[2]), texto, dorsal]

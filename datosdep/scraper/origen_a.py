@@ -204,7 +204,10 @@ class OrigenA:
             self.ultimo_motivo = "falta configurar ORIGEN_A_ACTA_URL"
             raise AccesoRestringido("ORIGEN_A_ACTA_URL sin configurar")
         pdf = self._get(url, {"id_partido": id_partido}, cachear=False, guardar=False, redirecciones=False)
-        raw = acta_pdf.pdf_a_json(pdf)  # ValueError si el PDF no cuadra: no se guarda nada
+        try:
+            raw = acta_pdf.pdf_a_json(pdf)  # ValueError si el PDF no cuadra: no se guarda nada
+        except ValueError as e:
+            raise ValueError(f"acta {id_partido}: {e}") from e
         ruta = self._guardada(id_partido)
         ruta.parent.mkdir(parents=True, exist_ok=True)
         ruta.write_bytes(gzip.compress(raw, 9))

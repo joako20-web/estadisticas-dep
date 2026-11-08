@@ -74,3 +74,11 @@ def test_sin_direccion_configurada_cuenta_como_sin_acceso(tmp_path, monkeypatch)
     c = origen_a.OrigenA(cache_dir=tmp_path / "cache")
     a = c.acta(17668)
     assert a.eventos == [] and c.actas_bloqueadas
+
+
+def test_ensayo_de_castigo_sin_dorsal():
+    """En la línea temporal el ensayo de castigo trae 'EQUIPO' en vez de dorsal (7 puntos)."""
+    a = parsers.acta_json(acta_pdf.acta_a_json(_paginas(17644)), 17644)
+    assert a.marcador_por_eventos() == (29, 19)
+    castigo = [e for e in a.eventos if e.tipo == "ensayo_castigo"]
+    assert len(castigo) == 1 and castigo[0].puntos == 7 and castigo[0].jugador == ""
