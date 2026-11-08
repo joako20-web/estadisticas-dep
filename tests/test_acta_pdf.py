@@ -82,3 +82,27 @@ def test_ensayo_de_castigo_sin_dorsal():
     assert a.marcador_por_eventos() == (29, 19)
     castigo = [e for e in a.eventos if e.tipo == "ensayo_castigo"]
     assert len(castigo) == 1 and castigo[0].puntos == 7 and castigo[0].jugador == ""
+
+
+def test_designaciones_con_partido_sin_fecha(monkeypatch):
+    """Un partido de la próxima jornada sin fecha no debe romper el orden (iba con 'fecha or 0')."""
+    from datetime import datetime
+
+    from datosdep import arbitros
+    from datosdep.models import Competicion, Partido
+
+    def p(i, fecha):
+        return Partido(i, 7, fecha, f"L{i}", f"V{i}", None, None, "", "pendiente", grupo=1)
+
+    comp = Competicion([p(1, None), p(2, datetime(2026, 11, 15, 12)), p(3, datetime(2026, 11, 14, 17))], [])
+
+    class Falso:
+        def clasificacion(self, g): return []
+        def competicion(self, g): return comp
+
+    monkeypatch.setattr(arbitros, "registros", lambda c, cl: ([], {}))
+    monkeypatch.setattr(arbitros, "cruces", lambda r, minimo=1: [])
+    monkeypatch.setattr(arbitros, "_arbitro", lambda c, i, j: None)
+    monkeypatch.setattr(arbitros, "cargar_config", lambda: {"competiciones": {"x": {"grupos": {"unico": 1}}}})
+    d = arbitros.designaciones("x", Falso())
+    assert [f["local"] for f in d["filas"]] == ["L3", "L2", "L1"]  # por fecha y, al final, el que no la tiene

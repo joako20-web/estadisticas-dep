@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import datetime
 import unicodedata
 from collections import defaultdict
 from pathlib import Path
@@ -272,7 +273,7 @@ def designaciones(comp: str, cliente: OrigenA | None = None) -> dict | None:
         return None
     jornada = min(p.jornada for p in pend)
     filas = []
-    for p in sorted((p for p in pend if p.jornada == jornada), key=lambda p: p.fecha or 0):
+    for p in sorted((p for p in pend if p.jornada == jornada), key=lambda p: (p.fecha is None, p.fecha or datetime.min)):  # sin fecha, al final
         arb = _arbitro(c, p.id, False)
         fila = {"local": p.local, "visitante": p.visitante, "arbitro": arb,
                 "fecha": p.fecha.isoformat() if p.fecha else None}
