@@ -15,6 +15,7 @@ from datosdep.scraper.enlaces import resolver
 
 BASE = os.environ.get("ORIGEN_A_URL", "").rstrip("/")  # secreto: no se escribe en el código
 PAUSA_S = 0.25
+PAUSA_LENTA_S = 1.5  # peticiones de una en una por partido (previo y acta): muchas seguidas provocan un 429
 TTL_PAGINAS_S = 120  # las páginas que cambian se reutilizan 2 minutos
 RAIZ_DATOS = Path(__file__).resolve().parents[2] / "data"
 ESPERA_BLOQUEO_S = 3600  # tras un 403/429 no volvemos a pedir durante 1 hora (cada sondeo puede alargar el castigo)
@@ -88,7 +89,8 @@ class OrigenA:
             if self.usar_cache and (viejo := self._leer_disco(clave)) is not None:
                 return viejo  # bloqueados: mejor el último dato guardado que nada
             raise
-        espera = PAUSA_S - (time.monotonic() - self._ultima)
+        lenta = path.startswith("previo") or path == url_acta_pdf()
+        espera = (PAUSA_LENTA_S if lenta else PAUSA_S) - (time.monotonic() - self._ultima)
         if espera > 0:
             time.sleep(espera)
         for intento in range(3):
