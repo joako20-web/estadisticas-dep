@@ -82,3 +82,11 @@ def test_refrescar_extra_completa_un_acta_guardada_sin_cambios(tmp_path, monkeyp
     assert not c.tiene_extra(17668)
     assert c.refrescar_extra(17668) and c.tiene_extra(17668)
     assert c.extra_acta(17668)["fin"] == 4800
+
+
+def test_vs_en_jugador_o_equipo_se_entiende_como_comparacion():
+    from datosdep.flujo import _CON_VS
+
+    assert _CON_VS.search("felicisimo santiago rodriguez vs salvador guardiola garcia")
+    assert _CON_VS.search("vrac VS salvador") and _CON_VS.search("a contra b")
+    assert not _CON_VS.search("alvaro versus") and not _CON_VS.search("mansilla")

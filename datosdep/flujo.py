@@ -907,6 +907,9 @@ def _cara_ids(tg: Telegram, chat_id, id_a: str, id_b: str, formato: str = "post"
         _mandar(tg, chat_id, imgs, f"cc|{id_a}|{id_b}", formato, original)
 
 
+_CON_VS = re.compile(r"\s+(?:vs|contra)\s+", re.I)
+
+
 def _comparar(tg: Telegram, chat_id, texto: str, formato: str = "post", original: bool = False) -> None:
     lados = re.split(r"\s+(?:vs|contra|-)\s+", texto, flags=re.I)
     if len(lados) != 2:
@@ -1231,9 +1234,17 @@ def _mensaje(tg: Telegram, b: dict, posts: dict, m: dict) -> None:
             tg.mensaje(chat_id, "👥 <b>Usuarios con acceso</b>",
                        [[(f"🗑 Quitar a {n[:40]}", f"inv|del|{i}")] for i, n in invitados.items()])
     elif texto.startswith("/equipo"):
-        _buscar(tg, chat_id, "fe", texto[len("/equipo"):].strip())
+        resto = texto[len("/equipo"):].strip()
+        if _CON_VS.search(resto):  # "/equipo vrac vs salvador" se entiende como cara a cara
+            _cara(tg, chat_id, resto)
+        else:
+            _buscar(tg, chat_id, "fe", resto)
     elif texto.startswith("/jugador"):
-        _buscar(tg, chat_id, "fj", texto[len("/jugador"):].strip())
+        resto = texto[len("/jugador"):].strip()
+        if _CON_VS.search(resto):  # "/jugador mansilla vs cittadini" se entiende como comparación
+            _comparar(tg, chat_id, resto)
+        else:
+            _buscar(tg, chat_id, "fj", resto)
     elif texto.startswith("/cara"):
         _cara(tg, chat_id, texto[len("/cara"):].strip())
     elif texto.startswith("/comparar"):
