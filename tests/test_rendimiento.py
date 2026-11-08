@@ -73,7 +73,7 @@ def test_refrescar_extra_completa_un_acta_guardada_sin_cambios(tmp_path, monkeyp
     monkeypatch.setattr(origen_a, "RAIZ_DATOS", tmp_path)
     monkeypatch.setenv("ORIGEN_A_ACTA_URL", "https://ejemplo.invalid/acta")
     paginas = json.loads((__import__("pathlib").Path(__file__).parent / "fixtures" / "acta_pdf_17668_fragmentos.json").read_text(encoding="utf-8"))
-    monkeypatch.setattr(origen_a.ISquad if hasattr(origen_a, "ISquad") else origen_a.OrigenA, "_get", lambda self, *a, **k: b"%PDF")
+    monkeypatch.setattr(origen_a.OrigenA, "_get", lambda self, *a, **k: b"%PDF")
     monkeypatch.setattr(acta_pdf, "fragmentos", lambda raw: [[tuple(x) for x in p] for p in paginas])
     c = origen_a.OrigenA(cache_dir=tmp_path / "cache")
     ruta = c._guardada(17668)
