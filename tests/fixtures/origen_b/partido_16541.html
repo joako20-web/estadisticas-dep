@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="robots" content="noindex, nofollow, noimageindex" />
+        <meta name="AdsBot-Google" content="noindex, nofollow, noimageindex" />
+
+        <title>Estadísticas del partido</title>
+
+                    <!-- PACE LOAD BAR PLUGIN - This creates the subtle load bar effect at the top of the page. -->
+            <link href="/bundles/gestionprincipal/admin/css/plugins/pace/pace.css" rel="stylesheet">
+            <script src="/bundles/gestionprincipal/admin/js/plugins/pace/pace.js"></script>
+
+            <!-- GLOBAL STYLES - Include these on every page. -->
+            <link href="/bundles/gestionprincipal/admin/css/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+            <link href="/bundles/gestionprincipal/admin/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+            <link href="/bundles/gestionprincipal/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+            <!-- THEME STYLES - Include these on every page. -->
+            <link href="/bundles/gestionprincipal/admin/css/style.css" rel="stylesheet">
+            <link href="/bundles/gestionprincipal/admin/css/plugins.css" rel="stylesheet">
+
+            <style>
+                /* Imagen user menu lateral */
+                .navbar-side .side-user img {
+                    max-height: 150px;
+                    max-width: 150px;
+                    margin: auto !important;
+                    margin-bottom: 15px !important;
+                }
+
+                /* BOOTSTRAP */
+                .btn.btn-dark-blue:hover, .btn.btn-dark-blue:active, .btn.btn-dark-blue:visited, .btn.btn-dark-blue:focus {
+                    color: white;
+                }
+                .btn.btn-red:hover, .btn.btn-red:active, .btn.btn-red:visited, .btn.btn-red:focus {
+                    color: white;
+                }
+                .btn.btn-green:hover, .btn.btn-green:active, .btn.btn-green:visited, .btn.btn-green:focus {
+                    color: white;
+                }
+                .btn.btn-blue:hover, .btn.btn-blue:active, .btn.btn-blue:visited, .btn.btn-blue:focus {
+                    color: white;
+                }
+                .btn.btn-orange:hover, .btn.btn-orange:active, .btn.btn-orange:visited, .btn.btn-orange:focus {
+                    color: white;
+                }
+                div.modal-content div.modal-footer {
+                    margin-top: 0px;
+                }
+
+                /* SELECTPICKER */
+                /* Actions-box styles */
+                .btn-white + div .bs-select-all,
+                .btn-white + div .bs-deselect-all {
+                    border-color: #CCCCCC;
+                    color: #333333;
+                    background-color: #FFFFFF;
+                }
+                .btn-white + div .bs-select-all:hover, .btn-white + div .bs-select-all:focus, .btn-white + div .bs-select-all:active, .btn-white + div .bs-select-all.active,
+                .btn-white + div .bs-deselect-all:hover, .btn-white + div .bs-deselect-all:focus, .btn-white + div .bs-deselect-all:active, .btn-white + div .bs-deselect-all.active {
+                    border-color: #ADADAD;
+                    color: #333333;
+                    background-color: #EBEBEB;
+                }
+
+                /* TIMEPICKER */
+                .bootstrap-timepicker-widget.dropdown-menu {
+                    z-index: 2000;
+                }
+
+                /* FONTAWESOME */
+                .fa-xs {
+                    font-size: 0.75em !important;
+                }
+                .fa-sm {
+                    font-size: 0.875em !important;
+                }
+
+                /* DATATABLE */
+                /* Links with color */
+                table.dataTable a:not(.btn) {
+                    color: #428BCA;
+                }
+                /* Buttons */
+                div.dt-buttons {
+                    width: 100%;
+                    text-align: center;
+                }
+                /* Text as block */
+                p.datatableText {
+                    padding: 0;
+                    margin: 0;
+                }
+                /* List without markings */
+                ul.datatableList {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                /* OTHER */
+                textarea.formTextarea {
+                    max-width: 100%;
+                    min-width: 100%;
+                    min-height: 5em;
+                }
+                div.form-area {
+                    height: auto;
+                    min-height: 34px;
+                    max-height: 120px;
+                    overflow: auto;
+                }
+                .section-header {
+                    padding-bottom: 9px;
+                    margin: 20px 0 20px;
+                    border-bottom: 1px solid #eee;
+                }
+                .table-no-margin {
+                    margin: 0;
+                }
+                .tab-header-portlet {
+                    margin-bottom: 15px;
+                }
+            </style>
+        
+        <link rel="icon" type="image/x-icon" href="/bundles/app/img/favicon.png" />
+    </head>
+
+    <body>
+        <link href="/bundles/gestionprincipal/admin/css/style.css" rel="stylesheet">
+    <link href="/bundles/gestionprincipal/admin/css/plugins.css" rel="stylesheet">
+
+    <style>
+        .alert-no-margin {
+            margin: 0;
+        }
+
+        .text-middle {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
+        }
+    </style>
+
+                    
+                        
+    <div class="container-fluid" style="background-image: url('/bundles/gestionprincipal/img/background-public.jpg');">
+        <div class="row side_spaces_top_1">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="portlet portlet-dark-blue">
+                    <div class="portlet-heading">
+                        <div class="portlet-title">
+                            <center><h2>Estadísticas del partido</h2></center>
+                        </div>
+                        <div class="portlet-widgets">
+                            <span class="divider"></span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="portlet-body">
+                        <div class="row text-justify">
+                            <div class="col-lg-4">
+                                <b> Acta del partido de rugby celebrado en: </b>
+                            </div>
+                            <div class="col-lg-2 text-center">
+                                                                    Madrid
+                                                            </div>
+                            <div class="col-lg-2">
+                                <b> Subcategoría: </b>
+                            </div>
+                            <div class="col-lg-4 text-center ">
+                                Femenina - Primera División
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row text-justify">
+                            <div class="col-lg-1">
+                                <b> El día </b>
+                            </div>
+                            <div class="col-lg-2 text-center">
+                                04-10-2026
+                            </div>
+                            <div class="col-lg-1">
+                                <b> Hora </b>
+                            </div>
+                            <div class="col-lg-2 text-center">
+                                10:30:00
+                            </div>
+                            <div class="col-lg-2">
+                                <b> En el campo </b>
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                Parque Deportivo Puerta de Hierro
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row text-justify">
+                            <div class="col-lg-1 ">
+                                <b> Temporada </b>
+                            </div>
+                            <div class="col-lg-2 text-center">
+                                Temporada 2026/2027
+                            </div>
+                            <div class="col-lg-1">
+                                <b> Jornada </b>
+                            </div>
+                            <div class="col-lg-2 text-center">
+                                Jornada 1
+                            </div>
+                            <div class="col-lg-2">
+                                <b> Árbitro </b>
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                Gil Oscoz, Eduardo (1255079)
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row bs-callout">
+                                    <div class="col-lg-4 text-center">
+                                        <h5>Equipo local</h5>
+                                    </div>
+                                    <div class="col-lg-8 text-center" style="min-height: 60px;">
+                                        <h4 class="text-success"> Ahorramas Vallecas Rugby Unión </h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 text-center">
+                                                                                            <div style="min-height: 100px;">
+                                                    <img style="max-height: 100px; max-width: 100px;" src="/uploads/club/images/upload-5ead8b6b344ad-club_image.JPG" alt="Logo"/>
+                                                </div>
+                                                                                    </div>
+                                        <div class="col-lg-6 text-center">
+                                                                                            <h1 class="text-center">
+                                                    <b>48 <small>Puntos</small></b>
+                                                </h1>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="row bs-callout">
+                                    <div class="col-lg-4 text-center">
+                                        <h5>Equipo visitante</h5>
+                                    </div>
+                                    <div class="col-lg-8 text-center" style="min-height: 60px;">
+                                        <h4 class="text-success"> Olímpico - Osas </h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 text-center">
+                                                                                            <div style="min-height: 100px;">
+                                                    <img style="max-height: 100px; max-width: 100px;" src="/uploads/club/images/upload-5ead8b6b33907-club_image.jpg" alt="Logo"/>
+                                                </div>
+                                                                                    </div>
+                                        <div class="col-lg-6 text-center">
+                                                                                            <h1 class="text-center">
+                                                    <b>26 <small>Puntos</small></b>
+                                                </h1>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                                                    <hr>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-lg-offset-3">
+                                    <button type="button" class="btn btn-block btn-dark-blue" data-toggle="modal" data-target="#flexModal">Ver lista de los convocados</button>
+
+                                                                            <a target="_blank" href="/es/public/competition/match_pdf/16541/act/" type="button" class="btn btn-block btn-dark-blue">Descargar el PDF del acta</a>
+                                    
+                                    <div class="modal modal-flex fade" id="flexModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <center>
+                                                                <h3> Ahorramas Vallecas Rugby Unión </h3>
+                                                            </center>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <center>
+                                                                <h3> Olímpico - Osas </h3>
+                                                            </center>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                                                                                                
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center"><small>Dorsal</small></th>
+                <th><small>*</small></th>
+                <th><small>Apellidos y nombre</small></th>
+                <th class="text-center"><small>Nº licencia</small></th>
+            </tr>
+        </thead>
+        <tbody>
+                        
+                                                                <tr class="">
+                        <td class="text-center"><small>1</small></td>
+                        <td><small>X</small></td>
+                        <td><small>Perez Arribas, Iraia</small></td>
+                        <td class="text-center"><small>1241517</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>2</small></td>
+                        <td><small>X</small></td>
+                        <td><small>Berasaluce Heras, Maitane</small></td>
+                        <td class="text-center"><small>1214839</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>3</small></td>
+                        <td><small>X</small></td>
+                        <td><small>Fernández Cruz, Ana</small></td>
+                        <td class="text-center"><small>1232188</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>5</small></td>
+                        <td></td>
+                        <td><small>Esteso Cama, Cristina</small></td>
+                        <td class="text-center"><small>1237858</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>4</small></td>
+                        <td></td>
+                        <td><small>Bravo Sarabia, Candela</small></td>
+                        <td class="text-center"><small>1249140</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>6</small></td>
+                        <td></td>
+                        <td><small>Díez Rodriguez, Elena</small></td>
+                        <td class="text-center"><small>1237859</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>7</small></td>
+                        <td></td>
+                        <td><small>Poveda Nova, Sandra</small></td>
+                        <td class="text-center"><small>1238218</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>8</small></td>
+                        <td></td>
+                        <td><small>Boyano Escalera, Alba</small></td>
+                        <td class="text-center"><small>1232083</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>9</small></td>
+                        <td></td>
+                        <td><small>Fritz, Cyntia</small></td>
+                        <td class="text-center"><small>1249352</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>10</small></td>
+                        <td></td>
+                        <td><small>Pastor Santamaría, Aitana</small></td>
+                        <td class="text-center"><small>1243254</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>11</small></td>
+                        <td></td>
+                        <td><small>Ballesteros González, Izaskun</small></td>
+                        <td class="text-center"><small>1258267</small></td>
+                    </tr>
+                                                                                <tr class=" bg-info ">
+                        <td class="text-center"><small>12</small></td>
+                        <td></td>
+                        <td><small>García García, Alba</small></td>
+                        <td class="text-center"><small>1242141</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>13</small></td>
+                        <td></td>
+                        <td><small>Rojo Delgado, Carmen</small></td>
+                        <td class="text-center"><small>1231566</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>14</small></td>
+                        <td></td>
+                        <td><small>Perez Sanchez, Isabel</small></td>
+                        <td class="text-center"><small>1247566</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>15</small></td>
+                        <td></td>
+                        <td><small>Tejada González, Alba</small></td>
+                        <td class="text-center"><small>1238244</small></td>
+                    </tr>
+                                    </tbody>
+    </table>
+
+    <table class="table bg-success">
+                
+                    <thead>
+                <tr>
+                    <th class="text-center"><small>Dorsal</small></th>
+                    <th><small>*</small></th>
+                    <th><small>Apellidos y nombre</small></th>
+                    <th class="text-center"><small>Nº licencia</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                                                                                <tr>
+                            <td class="text-center"><small>17</small></td>
+                            <td><small>X</small></td>
+                            <td><small>Rescia Lario, Paula</small></td>
+                            <td class="text-center"><small>1247835</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>21</small></td>
+                            <td><small>X</small></td>
+                            <td><small>Castrillo Mora, Rocío</small></td>
+                            <td class="text-center"><small>1248088</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>19</small></td>
+                            <td></td>
+                            <td><small>García Redondo, Paula</small></td>
+                            <td class="text-center"><small>1243326</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>18</small></td>
+                            <td><small>X</small></td>
+                            <td><small>Sastre Pozo, Judit</small></td>
+                            <td class="text-center"><small>1255142</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>23</small></td>
+                            <td></td>
+                            <td><small>García Lagarga, Cristina</small></td>
+                            <td class="text-center"><small>1255881</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>25</small></td>
+                            <td></td>
+                            <td><small>Rodríguez Garrido, Begoña</small></td>
+                            <td class="text-center"><small>1256800</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>20</small></td>
+                            <td></td>
+                            <td><small>Calvo Pérez, Patricia</small></td>
+                            <td class="text-center"><small>1256297</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>22</small></td>
+                            <td></td>
+                            <td><small>Rodríguez Martínez Aedo, Carmen</small></td>
+                            <td class="text-center"><small>1258013</small></td>
+                        </tr>
+                    
+                            </tbody>
+            </table>
+
+    <table class="table ">
+        <thead>
+            <tr class="well well-lg">
+                <th><small>Entrenador</small></th>
+                <th><small>Nº licencia</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><small>Gomez-Ortega Cubo, Javier</small></td>
+                <td><small>1241186</small></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table">
+        <thead>
+            <tr class="well well-lg">
+                <th><small>Delegado</small></th>
+                <th><small>Nº licencia</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><small>Gufler, Sarah</small></td>
+                <td><small>1258635</small></td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+        
+    
+            
+                                    <div class="alert alert-warning text-center" role="alert">
+                    No hay médico asignado al encuentro
+                </div>
+                        </div>
+
+<hr>
+
+                                                                                                                    </div>
+                                                        <div class="col-md-6">
+                                                                                                                                
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center"><small>Dorsal</small></th>
+                <th><small>*</small></th>
+                <th><small>Apellidos y nombre</small></th>
+                <th class="text-center"><small>Nº licencia</small></th>
+            </tr>
+        </thead>
+        <tbody>
+                        
+                                                                <tr class="">
+                        <td class="text-center"><small>1</small></td>
+                        <td><small>X</small></td>
+                        <td><small>Arevalo Anton, Itxaso</small></td>
+                        <td class="text-center"><small>1257823</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>2</small></td>
+                        <td><small>X</small></td>
+                        <td><small>Gómez De Olea Martín, Ana</small></td>
+                        <td class="text-center"><small>1241749</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>3</small></td>
+                        <td><small>X</small></td>
+                        <td><small>San Jose Rincon, Claudia</small></td>
+                        <td class="text-center"><small>1255700</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>4</small></td>
+                        <td></td>
+                        <td><small>Juan-Aracil Ruiz, Noa</small></td>
+                        <td class="text-center"><small>1241846</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>5</small></td>
+                        <td></td>
+                        <td><small>Arriola Sempere, Marta</small></td>
+                        <td class="text-center"><small>1225981</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>6</small></td>
+                        <td></td>
+                        <td><small>Navarro Tamayo, Isabel</small></td>
+                        <td class="text-center"><small>1253786</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>7</small></td>
+                        <td><small>X</small></td>
+                        <td><small>Chonco Jimenez, Montserrat</small></td>
+                        <td class="text-center"><small>1255385</small></td>
+                    </tr>
+                                                                                <tr class=" bg-info ">
+                        <td class="text-center"><small>8</small></td>
+                        <td></td>
+                        <td><small>Jimenez Salguero, Elena Milagros</small></td>
+                        <td class="text-center"><small>1241288</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>9</small></td>
+                        <td></td>
+                        <td><small>Garrido Sanchez, Aitana</small></td>
+                        <td class="text-center"><small>1258516</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>10</small></td>
+                        <td></td>
+                        <td><small>Barriuso Gonzalez, Blanca</small></td>
+                        <td class="text-center"><small>1240984</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>11</small></td>
+                        <td></td>
+                        <td><small>Montes Moreno, Valentina</small></td>
+                        <td class="text-center"><small>1258601</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>12</small></td>
+                        <td></td>
+                        <td><small>Hernández García, Inés</small></td>
+                        <td class="text-center"><small>1248924</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>13</small></td>
+                        <td></td>
+                        <td><small>Mhaimeur, Sabah</small></td>
+                        <td class="text-center"><small>1241619</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>14</small></td>
+                        <td></td>
+                        <td><small>Garcia De Prado Diaz-Jares, Marta</small></td>
+                        <td class="text-center"><small>1238861</small></td>
+                    </tr>
+                                                                                <tr class="">
+                        <td class="text-center"><small>15</small></td>
+                        <td></td>
+                        <td><small>Cruz Sada, Covadonga</small></td>
+                        <td class="text-center"><small>1223771</small></td>
+                    </tr>
+                                    </tbody>
+    </table>
+
+    <table class="table bg-success">
+                
+                    <thead>
+                <tr>
+                    <th class="text-center"><small>Dorsal</small></th>
+                    <th><small>*</small></th>
+                    <th><small>Apellidos y nombre</small></th>
+                    <th class="text-center"><small>Nº licencia</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                                                                                <tr>
+                            <td class="text-center"><small>23</small></td>
+                            <td><small>X</small></td>
+                            <td><small>Hergueta Carreño, Regina Dolores</small></td>
+                            <td class="text-center"><small>1250022</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>17</small></td>
+                            <td></td>
+                            <td><small>Martinez Bueno, Blanca</small></td>
+                            <td class="text-center"><small>1248653</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>22</small></td>
+                            <td></td>
+                            <td><small>Montero Gonzalez, Sonia</small></td>
+                            <td class="text-center"><small>1249245</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>19</small></td>
+                            <td></td>
+                            <td><small>Castillo Fernandez-Ardavin, Marta Isabel</small></td>
+                            <td class="text-center"><small>1216766</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>20</small></td>
+                            <td></td>
+                            <td><small>Ramos Meliá, María</small></td>
+                            <td class="text-center"><small>1247555</small></td>
+                        </tr>
+                    
+                                                                                <tr>
+                            <td class="text-center"><small>21</small></td>
+                            <td></td>
+                            <td><small>Schiaffarino, Fiona</small></td>
+                            <td class="text-center"><small>1252850</small></td>
+                        </tr>
+                    
+                                                                                <tr><td colspan="4" class="text-center">-</td></tr>
+                    
+                                                                                <tr><td colspan="4" class="text-center">-</td></tr>
+                    
+                            </tbody>
+            </table>
+
+    <table class="table ">
+        <thead>
+            <tr class="well well-lg">
+                <th><small>Entrenador</small></th>
+                <th><small>Nº licencia</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><small>Delgado Patricio, Jesus</small></td>
+                <td><small>1224389</small></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table">
+        <thead>
+            <tr class="well well-lg">
+                <th><small>Delegado</small></th>
+                <th><small>Nº licencia</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><small>Del Olmo Escalante, Jose Ignacio</small></td>
+                <td><small>1222874</small></td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+        
+    
+    </div>
+
+<hr>
+
+                                                                                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-md-offset-4">
+                                                            <button type="button" class="btn btn-dark-blue btn-block" data-dismiss="modal">
+                                                                Cerrar
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="teamsScoresComparisonAreaChart" style="width: 100%; height: 300px;" data-has_data="1" data-values="[[&quot;Minuto&quot;,&quot;Ahorramas Vallecas Rugby Uni\u00f3n&quot;,&quot;Ol\u00edmpico - Osas&quot;],[0,0,0],[1,0,0],[2,0,0],[3,0,0],[4,0,5],[5,0,5],[6,0,5],[7,0,5],[8,0,5],[9,0,5],[10,5,5],[11,7,5],[12,7,5],[13,7,5],[14,7,5],[15,12,5],[16,14,5],[17,14,5],[18,14,5],[19,14,5],[20,14,5],[21,14,5],[22,14,5],[23,14,5],[24,14,5],[25,14,5],[26,14,5],[27,14,5],[28,14,5],[29,19,5],[30,21,5],[31,21,5],[32,21,5],[33,21,5],[34,21,5],[35,21,5],[36,26,5],[37,28,5],[38,28,5],[39,28,5],[40,28,5],[41,28,5],[42,28,5],[43,28,5],[44,28,5],[45,33,5],[46,33,5],[47,33,5],[48,33,10],[49,33,12],[50,33,12],[51,33,12],[52,33,12],[53,33,12],[54,33,12],[55,38,12],[56,38,12],[57,38,12],[58,38,17],[59,38,19],[60,38,19],[61,38,19],[62,38,19],[63,43,19],[64,43,19],[65,43,19],[66,48,19],[67,48,19],[68,48,19],[69,48,19],[70,48,19],[71,48,19],[72,48,19],[73,48,19],[74,48,19],[75,48,24],[76,48,26],[77,48,26],[78,48,26],[79,48,26],[80,48,26]]">
+                                        <div class="text-middle">
+                                            <div class="alert alert-warning text-center empty-data-alert hidden">
+                                                No hay datos para mostrar en la gráfica
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div id="localScorersPieChart" style="width: 100%; height: 300px;">
+                                        <div class="text-middle">
+                                            <div class="alert alert-warning text-center empty-data-alert hidden">
+                                                No hay datos para mostrar en la gráfica
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="portlet portlet-green">
+                                        <div class="portlet-heading">
+                                            <div class="portlet-title">
+                                                <h4>Anotadores</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="text-center">Minuto</th>
+                                                        <th class="text-center">Tipo</th>
+                                                        <th>Jugador</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                                                                            <tr>
+                                                            <td class="text-center">10</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>Boyano Escalera, Alba</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">11</td>
+                                                            <td class="text-center">T</td>
+                                                            <td>García García, Alba</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">15</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>Perez Sanchez, Isabel</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">16</td>
+                                                            <td class="text-center">T</td>
+                                                            <td>García García, Alba</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">29</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>Tejada González, Alba</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">30</td>
+                                                            <td class="text-center">T</td>
+                                                            <td>García García, Alba</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">36</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>Pastor Santamaría, Aitana</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">37</td>
+                                                            <td class="text-center">T</td>
+                                                            <td>García García, Alba</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">45</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>García García, Alba</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">55</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>Calvo Pérez, Patricia</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">63</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>Rojo Delgado, Carmen</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">66</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>García García, Alba</td>
+                                                        </tr>
+                                                                                                        </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="visitorScorersPieChart" style="height: 300px;">
+                                        <div class="text-middle">
+                                            <div class="alert alert-warning text-center empty-data-alert hidden">
+                                                No hay datos para mostrar en la gráfica
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="portlet portlet-green">
+                                        <div class="portlet-heading">
+                                            <div class="portlet-title">
+                                                <h4>Anotadores</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="text-center">Minuto</th>
+                                                        <th class="text-center">Tipo</th>
+                                                        <th>Jugador</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                                                                            <tr>
+                                                            <td class="text-center">4</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>Chonco Jimenez, Montserrat</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">48</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>Montero Gonzalez, Sonia</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">49</td>
+                                                            <td class="text-center">T</td>
+                                                            <td>Montero Gonzalez, Sonia</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">58</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>Montero Gonzalez, Sonia</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">59</td>
+                                                            <td class="text-center">T</td>
+                                                            <td>Montero Gonzalez, Sonia</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">75</td>
+                                                            <td class="text-center">E</td>
+                                                            <td>Montero Gonzalez, Sonia</td>
+                                                        </tr>
+                                                                                                            <tr>
+                                                            <td class="text-center">76</td>
+                                                            <td class="text-center">T</td>
+                                                            <td>Montero Gonzalez, Sonia</td>
+                                                        </tr>
+                                                                                                        </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div id="localScoreTypesPieChart" style="width: 100%; height: 300px;">
+                                        <div class="text-middle">
+                                            <div class="alert alert-warning text-center empty-data-alert hidden">
+                                                No hay datos para mostrar en la gráfica
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div id="visitorScoreTypesPieChart" style="width: 100%; height: 300px;">
+                                        <div class="text-middle">
+                                            <div class="alert alert-warning text-center empty-data-alert hidden">
+                                                No hay datos para mostrar en la gráfica
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+                            <!-- ///// SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR //// -->
+                            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="portlet portlet-blue">
+                                        <div class="portlet-heading">
+                                            <div class="portlet-title">
+                                                <h4>Cambios equipo local</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Jugador entra</th>
+                                                            <th>Jugador sale</th>
+                                                            <th>Tipo</th>
+                                                            <th>Minuto</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                                                                                    <tr>
+                                                                <td>Rescia Lario, Paula</td>
+                                                                <td>Poveda Nova, Sandra</td>
+                                                                <td>Cambio por sangre</td>
+                                                                <td class="text-center">17</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>Calvo Pérez, Patricia</td>
+                                                                <td>Ballesteros González, Izaskun</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">27</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>García Lagarga, Cristina</td>
+                                                                <td>Tejada González, Alba</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">71</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>García Redondo, Paula</td>
+                                                                <td>Perez Arribas, Iraia</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">44</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>Castrillo Mora, Rocío</td>
+                                                                <td>Berasaluce Heras, Maitane</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">59</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>Rodríguez Martínez Aedo, Carmen</td>
+                                                                <td>Perez Sanchez, Isabel</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">67</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>Rodríguez Garrido, Begoña</td>
+                                                                <td>Fritz, Cyntia</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">71</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>Sastre Pozo, Judit</td>
+                                                                <td>Fernández Cruz, Ana</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">71</td>
+                                                            </tr>
+                                                                                                            </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="portlet portlet-blue">
+                                        <div class="portlet-heading">
+                                            <div class="portlet-title">
+                                                <h4>Cambios equipo visitante</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Jugador entra</th>
+                                                            <th>Jugador sale</th>
+                                                            <th>Tipo</th>
+                                                            <th>Minuto</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                                                                                    <tr>
+                                                                <td>Ramos Meliá, María</td>
+                                                                <td>Hernández García, Inés</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">27</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>Martinez Bueno, Blanca</td>
+                                                                <td>Navarro Tamayo, Isabel</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">44</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>Schiaffarino, Fiona</td>
+                                                                <td>Montes Moreno, Valentina</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">36</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>Hergueta Carreño, Regina Dolores</td>
+                                                                <td>Arevalo Anton, Itxaso</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">45</td>
+                                                            </tr>
+                                                                                                                    <tr>
+                                                                <td>Montero Gonzalez, Sonia</td>
+                                                                <td>Garcia De Prado Diaz-Jares, Marta</td>
+                                                                <td>Cambio táctico</td>
+                                                                <td class="text-center">40</td>
+                                                            </tr>
+                                                                                                            </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+                            <!-- ///// SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR //// -->
+                            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="portlet portlet-orange">
+                                        <div class="portlet-heading">
+                                            <div class="portlet-title">
+                                                <h4>Expulsiones temporales equipo local</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Jugador</th>
+                                                            <th>Tipo</th>
+                                                            <th>Minuto</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                                                                                                                                                    <tr>
+                                                                    <td>Díez Rodriguez, Elena</td>
+                                                                    <td>Juego sucio</td>
+                                                                    <td class="text-center">60</td>
+                                                                </tr>
+                                                                                                                                                                        </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="portlet portlet-orange">
+                                        <div class="portlet-heading">
+                                            <div class="portlet-title">
+                                                <h4>Expulsiones temporales equipo visitante</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Jugador</th>
+                                                            <th>Tipo</th>
+                                                            <th>Minuto</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                                                                            </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+                            <!-- ///// SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR //// -->
+                            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="portlet portlet-red">
+                                        <div class="portlet-heading">
+                                            <div class="portlet-title">
+                                                <h4>Expulsiones definitivas equipo local</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Jugador</th>
+                                                            <th>Tipo</th>
+                                                            <th>Minuto</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                                                                                                                                                                                                </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="portlet portlet-red">
+                                        <div class="portlet-heading">
+                                            <div class="portlet-title">
+                                                <h4>Expulsiones definitivas equipo visitante</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Jugador</th>
+                                                            <th>Tipo</th>
+                                                            <th>Minuto</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                                                                            </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+                            <!-- ///// SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR // SEPARADOR //// -->
+                            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+                                            </div>
+
+                    <div class="portlet-footer">
+                        <div class="row" style="display: flex; display: -webkit-flex; flex-wrap: wrap; margin: 2em 0 2em 0;">
+    <div class="hidden-xs col-sm-6 text-right">
+        <h4 style="display: flex; justify-content: right; align-items: center;">Con la tecnología de:</h4>
+    </div>
+    <div class="hidden-xs col-sm-6 text-left">
+        <a href="https://origen_b.es/" target="_blank">
+            <img style="max-height: 50px; max-width: 200px;" src="/bundles/app/img/logo-origen_b-technology.png" alt="origen_b" />
+        </a>
+    </div>
+    <div class="hidden-sm hidden-md hidden-lg col-xs-12 text-center">
+        <h4 style="display: flex; justify-content: center; align-items: center;">Con la tecnología de:</h4>
+    </div>
+    <div class="hidden-sm hidden-md hidden-lg col-xs-12 text-center">
+        <a href="https://origen_b.es/" target="_blank">
+            <img style="max-height: 50px; max-width: 200px;" src="/bundles/app/img/logo-origen_b-technology.png" alt="origen_b" />
+        </a>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+                <!-- GLOBAL SCRIPTS -->
+                <script src="/bundles/gestionprincipal/js/jquery.min.js"></script>
+                <script src="/bundles/gestionprincipal/admin/js/plugins/fullcalendar/jquery-ui.custom.min.js"></script>
+                <script src="/bundles/gestionprincipal/admin/js/plugins/bootstrap/bootstrap.min.js"></script>
+                <script src="/bundles/gestionprincipal/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+                <script src="/bundles/gestionprincipal/admin/js/plugins/popupoverlay/jquery.popupoverlay.js"></script>
+                <script src="/bundles/gestionprincipal/admin/js/plugins/popupoverlay/defaults.js"></script>
+
+                <script>
+                    $(function() {
+                        $('[data-toggle="tooltip"]').tooltip();
+                    });
+                </script>
+
+                
+            
+            <script src="/bundles/app/vendor/google_jsapi/js/loader.js"></script>
+
+        <script>
+
+            google.charts.load('current', {'packages': ['corechart']});
+
+            google.charts.setOnLoadCallback(drawTeamsScoresComparisonAreaChart);
+            google.charts.setOnLoadCallback(drawLocalScorersPieChart);
+            google.charts.setOnLoadCallback(drawVisitorScorersPieChart);
+            google.charts.setOnLoadCallback(drawLocalScoreTypesPieChart);
+            google.charts.setOnLoadCallback(drawVisitorScoreTypesPieChart);
+
+            $(window).on('resize', function() {
+                drawTeamsScoresComparisonAreaChart();
+                drawLocalScorersPieChart();
+                drawVisitorScorersPieChart();
+                drawLocalScoreTypesPieChart();
+                drawVisitorScoreTypesPieChart();
+            });
+
+            function drawChart(element, type, data, options)
+            {
+                if (!element) {
+                    return;
+                }
+
+                if (!data) {
+                    element.find('.empty-data-alert').removeClass('hidden');
+
+                    return;
+                }
+
+                let chart = null;
+                switch (type) {
+                    case 'PieChart':
+                        chart = new google.visualization.PieChart(element.get(0));
+                        break;
+                    case 'AreaChart':
+                        chart = new google.visualization.AreaChart(element.get(0));
+                        break;
+                    default:
+                        return;
+                }
+
+                element.find('empty-data-alert').addClass('hidden');
+
+                data = google.visualization.arrayToDataTable(data);
+
+                chart.draw(data, options);
+            }
+
+            function drawTeamsScoresComparisonAreaChart()
+            {
+                let element = $('#teamsScoresComparisonAreaChart');
+                let type = 'AreaChart';
+                let data = element.data('values');
+                let hasData = element.data('has_data');
+                let options = {
+                    title: 'Evolución anotaciones del partido',
+                    hAxis: {
+                        title: 'Minutos',
+                        titleTextStyle: {color: '#333'}
+                    },
+                    vAxis: {
+                        minValue: 0,
+                        viewWindow: {
+                            min: 0
+                        }
+                    },
+                    colors: ['#70ab50','#20572a']
+                };
+
+                if (!hasData) {
+                    options.vAxis.viewWindow.max = 20;
+                }
+
+                drawChart(element, type, data, options);
+            }
+
+            function drawLocalScorersPieChart()
+            {
+                let element = $('#localScorersPieChart');
+                let type = 'PieChart';
+                let data = [["Equipo","Puntos"],["Garc\u00eda Garc\u00eda, Alba",18],["Boyano Escalera, Alba",5],["Perez Sanchez, Isabel",5],["Tejada Gonz\u00e1lez, Alba",5],["Pastor Santamar\u00eda, Aitana",5],["Calvo P\u00e9rez, Patricia",5],["Rojo Delgado, Carmen",5]];
+                let options = {
+                    title: '% de anotadores por equipo',
+                    is3D: true
+                };
+
+                drawChart(element, type, data, options);
+            }
+
+            function drawVisitorScorersPieChart()
+            {
+                let element = $('#visitorScorersPieChart');
+                let type = 'PieChart';
+                let data = [["Equipo","Puntos"],["Montero Gonzalez, Sonia",21],["Chonco Jimenez, Montserrat",5]];
+                let options = {
+                    title: '% de anotadores por equipo',
+                    is3D: true
+                };
+
+                drawChart(element, type, data, options);
+            }
+
+            function drawLocalScoreTypesPieChart()
+            {
+                let element = $('#localScoreTypesPieChart');
+                let type = 'PieChart';
+                let data = [["Equipo","Puntos"],["Ensayo",40],["Transformaci\u00f3n",8]];
+                let options = {
+                    title: '% de anotación por tipo de anotación'
+                };
+
+                drawChart(element, type, data, options);
+            }
+
+            function drawVisitorScoreTypesPieChart()
+            {
+                let element = $('#visitorScoreTypesPieChart');
+                let type = 'PieChart';
+                let data = [["Equipo","Puntos"],["Ensayo",20],["Transformaci\u00f3n",6]];
+                let options = {
+                    title: '% de anotación por tipo de anotación'
+                };
+
+                drawChart(element, type, data, options);
+            }
+
+        </script>
+
+    
+        <!-- END BLOC BODY-->
+    </body>
+</html>

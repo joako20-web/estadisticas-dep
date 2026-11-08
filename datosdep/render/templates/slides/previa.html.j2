@@ -1,0 +1,20 @@
+<div class="titulo">
+  <h1>Próxima jornada</h1>
+  <div class="bajada">Jornada {{ s.numero }}</div>
+</div>
+<div class="cuerpo">
+{% for p in s.partidos %}
+  <div class="previa">
+    <div class="cuando">
+      <div class="dia">{{ p.dia }}</div>
+      <div class="hora">{{ p.hora }}</div>
+    </div>
+    <div style="min-width:0">
+      <div class="cruce">{% if p.local|escudo %}<img class="crest p" src="{{ p.local|escudo }}">{% endif %}{{ p.local|corto }}</div>
+      <div class="cruce">{% if p.visitante|escudo %}<img class="crest p" src="{{ p.visitante|escudo }}">{% endif %}{{ p.visitante|corto }}</div>
+      <div class="lugar">{{ p.campo.split("(")[0]|titulo }}</div>
+    </div>
+  </div>
+{% endfor %}
+{% if s.descansa %}<div class="descansa">Descansa: {{ s.descansa|map("corto")|join(" · ") }}</div>{% endif %}
+</div>

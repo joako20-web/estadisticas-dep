@@ -1,0 +1,5 @@
+# Cómo mostrar a un jugador cuando el reparto automático nombre/apellidos falla.
+# Clave: nombre tal cual sale en el acta. Valor: [nombre de pila, apellidos].
+"SANTIAGO IGNACIO MANSILLA": ["Santiago Ignacio", "Mansilla"]
+"JUAN BAUTISTA ARRANZ": ["Juan Bautista", "Arranz"]
+"FRANCISCO MARIA BARTORELLI MAY": ["Francisco María", "Bartorelli"]

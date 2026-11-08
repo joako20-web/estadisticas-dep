@@ -1,0 +1,25 @@
+<div class="titulo">
+  <h1>Clasificación</h1>
+  <div class="bajada">Tras la jornada {{ jornada }}</div>
+</div>
+<div class="cuerpo">
+<table>
+  <thead><tr><th class="p"></th><th class="izq">Equipo</th><th class="n">PJ</th><th class="n">G</th><th class="n">E</th><th class="n">P</th><th class="dif">DIF</th><th class="n">BO</th><th class="n">BD</th><th class="pt">PTS</th></tr></thead>
+  <tbody>
+  {% for f in s.filas %}
+    <tr class="{{ 'z-' ~ f.zona if f.zona }}">
+      <td class="p">{{ f.posicion }}</td>
+      <td class="eq izq">{% if f.equipo|escudo %}<img class="crest c" src="{{ f.equipo|escudo }}">{% endif %}{{ f.equipo|corto }}</td>
+      <td class="n">{{ f.pj }}</td><td class="n">{{ f.pg }}</td><td class="n">{{ f.pe }}</td><td class="n">{{ f.pp }}</td>
+      <td class="dif">{{ "%+d"|format(f.dt) if f.dt else 0 }}</td><td class="n">{{ f.bo }}</td><td class="n">{{ f.bd }}</td>
+      <td class="pt">{{ f.pt }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% if s.leyenda %}
+<div class="leyenda">
+  {% for z in s.leyenda %}<span class="ley z-{{ z.color }}"><i></i>{{ z.texto }}</span>{% endfor %}
+</div>
+{% endif %}
+</div>

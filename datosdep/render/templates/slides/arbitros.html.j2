@@ -1,0 +1,27 @@
+{# Ranking de árbitros (o récord de un equipo con cada árbitro). Reutiliza las
+   filas del ranking de jugadores, sin la columna de escudo. #}
+<style>
+.arb .fila, .arb .fila:first-child { grid-template-columns: 52px 1fr auto; }
+.arb-eq { display: flex; align-items: center; gap: 22px; margin-top: 22px; }
+.arb-eq .crest { width: 96px; height: 96px; padding: 10px; }
+.arb .det { white-space: nowrap; }
+</style>
+<div class="titulo">
+  <h1>{{ s.titulo }}</h1>
+  <div class="bajada">{{ s.sup }}</div>
+</div>
+<div class="cuerpo arb">
+{% for j in s.filas %}
+  <div class="fila">
+    <div class="pos">{{ loop.index }}</div>
+    <div style="min-width:0">
+      <div class="jug-nom">{{ j.nombre }}</div>
+      <div class="jug-eq">{{ j.detalle }}</div>
+    </div>
+    <div>
+      <div class="pts">{{ j.valor }}</div>
+      {% if s.unidad %}<div class="det">{{ s.unidad }}</div>{% endif %}
+    </div>
+  </div>
+{% endfor %}
+</div>

@@ -1,0 +1,20 @@
+<div class="titulo">
+  <h1>Resultados</h1>
+  {% if s.fechas %}<div class="bajada">{{ s.fechas }}</div>{% endif %}
+</div>
+<div class="cuerpo">
+{% for p in s.partidos %}
+  {% set jug = p.puntos_local is not none %}
+  {% set gl = jug and p.puntos_local > p.puntos_visitante %}
+  {% set gv = jug and p.puntos_visitante > p.puntos_local %}
+  <div class="partido">
+    <div class="equipo {{ 'pierde' if gv }}">{% if p.local|escudo %}<img class="crest r" src="{{ p.local|escudo }}">{% endif %}<div class="nom">{{ p.local|corto }}</div></div>
+    <div class="marcador">
+      {% if jug %}<span class="{{ 'g' if gl else 'p' if gv }}">{{ p.puntos_local }}</span><span class="sep"></span><span class="{{ 'g' if gv else 'p' if gl }}">{{ p.puntos_visitante }}</span>
+      {% else %}<span class="pend">Sin resultado</span>{% endif %}
+    </div>
+    <div class="equipo vis {{ 'pierde' if gl }}"><div class="nom">{{ p.visitante|corto }}</div>{% if p.visitante|escudo %}<img class="crest r" src="{{ p.visitante|escudo }}">{% endif %}</div>
+  </div>
+{% endfor %}
+{% if s.descansa %}<div class="descansa">Descansa: {{ s.descansa|map("corto")|join(" · ") }}</div>{% endif %}
+</div>

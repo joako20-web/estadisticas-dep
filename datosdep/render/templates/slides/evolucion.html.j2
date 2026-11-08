@@ -1,0 +1,62 @@
+{# Evolución de la clasificación: gráfico de posiciones (bump chart).
+   El SVG se estira a su caja (preserveAspectRatio=none) y todos los trazos usan
+   vector-effect: non-scaling-stroke, así líneas y puntos no se deforman. Los textos
+   van en HTML para que tampoco se deformen. #}
+<style>
+.evo { flex: 1; display: grid; grid-template-columns: 44px 1fr 320px; grid-template-rows: 1fr 44px; column-gap: 14px; margin-bottom: 16px; }
+.evo-plot { position: relative; }
+.evo-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.evo-plot path, .evo-plot line { vector-effect: non-scaling-stroke; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.evo-pos, .evo-eqs, .evo-js { position: relative; }
+.evo-pos span { position: absolute; right: 0; transform: translateY(-50%); font-size: 26px; color: var(--gris); font-variant-numeric: tabular-nums; }
+.evo-js span { position: absolute; top: 8px; transform: translateX(-50%); font-size: 26px; color: var(--gris); }
+.evo-eq { position: absolute; left: 0; right: 0; display: flex; align-items: center; gap: 12px; transform: translateY(-50%); }
+.evo-eq span { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 500; font-size: 32px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--apagado); padding-top: 3px; }
+.evo-eq.dest span { font-weight: 600; }
+.evo-eq .crest { width: 48px; height: 48px; padding: 4px; }
+.evo-eq:not(.dest) .crest { opacity: .55; }
+.evo-nota { font-size: 24px; color: var(--gris); }
+.f-historia .evo { flex: none; height: 1200px; }
+</style>
+{% set alto_util = s.alto - 60 %}
+<div class="titulo">
+  <h1>Así va la liga</h1>
+  <div class="bajada">Posición jornada a jornada</div>
+</div>
+<div class="cuerpo">
+  <div class="evo">
+    <div class="evo-pos">
+      {% for i in range(s.n) %}<span style="top: {{ ((s.margen_y + i * s.paso_y) / alto_util * 100)|round(2) }}%">{{ i + 1 }}</span>{% endfor %}
+    </div>
+    <div class="evo-plot">
+      <svg viewBox="0 0 {{ s.ancho }} {{ alto_util }}" preserveAspectRatio="none">
+        {% for i in range(s.n) %}
+          {% set y = s.margen_y + i * s.paso_y %}
+          <line x1="{{ s.margen_x }}" x2="{{ s.ancho - s.margen_x }}" y1="{{ y }}" y2="{{ y }}" style="stroke: var(--linea); stroke-width: 1.5" />
+        {% endfor %}
+        {% for l in s.lineas %}
+          {% if l.destacado %}
+            <path d="{{ l.path }}" style="stroke: {{ l.color }}; stroke-width: 9{% if l.guiones %}; stroke-dasharray: {{ l.guiones }}{% endif %}" />
+            {% for x, y in l.puntos %}<path d="M{{ x }},{{ y }} h0" style="stroke: {{ l.color }}; stroke-width: 22" />{% endfor %}
+          {% else %}
+            <path d="{{ l.path }}" style="stroke: var(--apagado); stroke-width: 4; opacity: .55" />
+          {% endif %}
+        {% endfor %}
+      </svg>
+    </div>
+    <div class="evo-eqs">
+      {% for l in s.lineas %}
+      <div class="evo-eq {{ 'dest' if l.destacado }}" style="top: {{ (l.final_y / alto_util * 100)|round(2) }}%">
+        {% if l.equipo|escudo %}<img class="crest" src="{{ l.equipo|escudo }}">{% endif %}
+        <span {% if l.destacado %}style="color: {{ l.color }}"{% endif %}>{{ l.equipo|corto }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <div></div>
+    <div class="evo-js">
+      {% for j in s.jornadas %}<span style="left: {{ ((s.margen_x + loop.index0 * s.paso_x) / s.ancho * 100)|round(2) }}%">J{{ j }}</span>{% endfor %}
+    </div>
+    <div></div>
+  </div>
+  {% if 'reconstruida' in s.regla %}<div class="evo-nota">Posiciones por jornada reconstruidas con los resultados.</div>{% endif %}
+</div>

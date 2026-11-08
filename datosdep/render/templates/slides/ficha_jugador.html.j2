@@ -1,0 +1,67 @@
+{# Ficha de un jugador. Estilos locales con las variables del tema. #}
+<style>
+.fj { flex: 1; display: flex; flex-direction: column; margin-top: 40px; position: relative; z-index: 2; }
+.fj-tit { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit, .64); }
+.fj-num { font-family: var(--f-num, var(--f-tit)); font-size-adjust: cap-height var(--aj-num, .64); font-variant-numeric: tabular-nums; }
+.fj-kick { font-size: 26px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--acento-txt); }
+.fj-pila { font-size: 60px; line-height: .9; color: var(--gris); margin-top: 18px; }
+.fj-ape { font-weight: 700; font-size: 150px; line-height: .8; text-transform: uppercase; margin-top: 6px; }
+.fj-ape.l { font-size: 118px; }
+.fj-ape.xl { font-size: 92px; }
+.fj-eq { display: flex; align-items: center; gap: 18px; margin-top: 26px; font-size: 32px; font-weight: 600; }
+.fj-eq .crest { width: 74px; height: 74px; padding: 7px; }
+.fj-eq small { color: var(--gris); font-weight: 500; font-size: 28px; }
+.fj-big { display: grid; grid-template-columns: 1fr 1fr 1fr; margin-top: 40px; border-top: 2px solid var(--linea); border-bottom: 2px solid var(--linea); }
+.fj-big div { padding: 22px 0 18px; }
+.fj-big div + div { border-left: 1px solid var(--linea); padding-left: 28px; }
+.fj-big b { display: block; font-size: 130px; line-height: .85; }
+.fj-big div:first-child b { color: var(--acento-txt); }
+.fj-big span { font-size: 26px; color: var(--gris); text-transform: uppercase; letter-spacing: 2px; }
+.fj-big em { display: block; font-style: normal; font-size: 24px; color: var(--texto); margin-top: 4px; }
+.fj-det { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.fj-det div { text-align: center; }
+.fj-det b { display: block; font-size: 64px; line-height: .9; }
+.fj-det span { font-size: 24px; color: var(--gris); text-transform: uppercase; letter-spacing: 1px; }
+.fj-mejor { margin-top: auto; margin-bottom: 18px; border: 2px solid var(--linea); border-radius: 14px; background: var(--panel); padding: 20px 24px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; }
+.fj-mejor .k { font-size: 24px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); }
+.fj-mejor .t { font-size: 40px; font-weight: 600; margin-top: 6px; line-height: 1; }
+.fj-mejor .v { font-size: 92px; line-height: .85; color: var(--acento-txt); text-align: right; }
+.fj-mejor .v small { font-size: 28px; margin-left: 4px; }
+.f-historia .fj { margin-top: 120px; }
+.f-historia .fj-big { margin-top: 80px; }
+.f-historia .fj-det { margin-top: 50px; }
+</style>
+{% set n = s.nombre|jugador %}
+{% set largo = n.apellidos|length %}
+<div class="fj">
+  <div class="fj-kick">{{ s.liga }}</div>
+  <div class="fj-pila fj-tit">{{ n.nombre }}</div>
+  <div class="fj-ape fj-tit {{ 'xl' if largo > 15 else 'l' if largo > 10 }}">{{ n.apellidos }}</div>
+  <div class="fj-eq">
+    {% if s.equipo|escudo %}<img class="crest" src="{{ s.equipo|escudo }}">{% endif %}
+    <span>{{ s.equipo|corto }}{% if s.posicion %} <small>· {% if s.dorsal %}{{ s.dorsal }} · {% endif %}{{ s.posicion }}</small>{% endif %}</span>
+  </div>
+
+  <div class="fj-big">
+    <div><b class="fj-num">{{ s.puntos }}</b><span>Puntos</span>{% if s.puesto_puntos %}<em>{{ s.puesto_puntos }}º de la liga</em>{% endif %}</div>
+    <div><b class="fj-num">{{ s.ensayos }}</b><span>Ensayos</span>{% if s.puesto_ensayos %}<em>{{ s.puesto_ensayos }}º de la liga</em>{% endif %}</div>
+    <div><b class="fj-num">{{ s.partidos }}</b><span>Partidos</span><em>convocado</em></div>
+  </div>
+
+  <div class="fj-det">
+    <div><b class="fj-num">{{ s.conversiones }}</b><span>Transf.</span></div>
+    <div><b class="fj-num">{{ s.golpes }}</b><span>Golpes</span></div>
+    <div><b class="fj-num">{{ s.drops }}</b><span>Drops</span></div>
+    <div><b class="fj-num">{{ s.amarillas + s.rojas }}</b><span>Tarjetas</span></div>
+  </div>
+
+  {% if s.mejor %}
+  <div class="fj-mejor">
+    <div>
+      <div class="k">Su mejor partido</div>
+      <div class="t fj-tit">J{{ s.mejor.jornada }} · vs {{ s.mejor.rival|corto }} ({{ s.mejor.marcador }})</div>
+    </div>
+    <div class="v fj-num">{{ s.mejor.puntos }}<small>pts</small></div>
+  </div>
+  {% endif %}
+</div>

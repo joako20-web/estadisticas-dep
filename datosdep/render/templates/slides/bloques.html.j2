@@ -1,0 +1,37 @@
+{# Varios mini-rankings de equipos en una rejilla 2x2. Sin tarjetas: cada
+   bloque es un título con filete y sus filas, como una tabla de periódico. #}
+<style>
+.blq-rejilla { display: grid; grid-template-columns: 1fr 1fr; gap: 56px 48px; }
+.blq-tit { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 600; font-size: 46px; line-height: 1; padding-bottom: 12px; border-bottom: var(--filete) solid var(--texto); }
+.blq-fila { display: grid; grid-template-columns: 30px 54px 1fr auto; align-items: center; gap: 12px; height: 104px; }
+.blq-fila + .blq-fila { border-top: 1px solid var(--linea); }
+.blq-pos { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-size: 32px; color: var(--gris); }
+.blq-eq { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 34px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.blq-val { text-align: right; line-height: 1; }
+.blq-val b { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 56px; display: block; }
+.blq-fila:first-of-type .blq-val b { color: var(--acento-txt); }
+.blq-val small { font-size: 24px; color: var(--gris); }
+.crest.blq-c { width: 50px; height: 50px; padding: 5px; }
+.f-historia .blq-fila { height: 132px; }
+</style>
+<div class="titulo">
+  <h1>{{ s.titulo }}</h1>
+  <div class="bajada">{{ s.sup|sep }}</div>
+</div>
+<div class="cuerpo">
+  <div class="blq-rejilla">
+  {% for b in s.bloques %}
+    <div class="blq">
+      <div class="blq-tit">{{ b.titulo }}</div>
+      {% for f in b.filas %}
+      <div class="blq-fila">
+        <span class="blq-pos">{{ loop.index }}</span>
+        <span>{% if f.equipo|escudo %}<img class="crest blq-c" src="{{ f.equipo|escudo }}">{% endif %}</span>
+        <span class="blq-eq">{{ f.equipo|corto }}</span>
+        <span class="blq-val"><b>{{ f.valor }}</b><small>{{ b.unidad }}</small></span>
+      </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+  </div>
+</div>

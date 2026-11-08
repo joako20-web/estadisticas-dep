@@ -1,0 +1,38 @@
+{# Historia "¿Quién gana?": escudos enfrentados arriba y hueco libre abajo para el sticker de encuesta. #}
+<style>
+.qg-cruce { display: grid; grid-template-columns: 1fr 90px 1fr; align-items: start; margin-top: 30px; }
+.qg-lado { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+.qg-lado .crest { width: 250px; height: 250px; padding: 24px; }
+.qg-nom { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 600; font-size: 54px; line-height: .95; margin-top: 10px; }
+.qg-pos { font-size: 28px; color: var(--gris); }
+.qg-pos b { color: var(--acento-txt); }
+.qg-vs { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 700; font-size: 64px; color: var(--apagado); text-align: center; padding-top: 95px; }
+.qg-racha { display: flex; gap: 8px; }
+.qg-racha i { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; font-style: normal; font-size: 22px; font-weight: 700; background: var(--panel); color: var(--gris); }
+.qg-racha i.G { background: var(--acento); color: var(--sobre-acento); }
+.qg-cuando { text-align: center; margin-top: 46px; font-size: 30px; font-weight: 600; letter-spacing: 1px; }
+.qg-campo { text-align: center; font-size: 26px; color: var(--gris); margin-top: 6px; }
+.enc-pide { margin-top: 44px; font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 600; font-size: 46px; text-align: center; }
+.enc-hueco { margin: 18px auto 0; width: 820px; height: 330px; border: 3px dashed var(--linea); border-radius: 32px; }
+</style>
+<div class="titulo">
+  <h1>¿Quién gana?</h1>
+  <div class="bajada">El partido de la jornada</div>
+</div>
+<div class="cuerpo" style="margin-top: 40px">
+  <div class="qg-cruce">
+  {% for l in s.lados %}
+    {% if loop.index == 2 %}<div class="qg-vs">VS</div>{% endif %}
+    <div class="qg-lado">
+      {% if l.equipo|escudo %}<img class="crest" src="{{ l.equipo|escudo }}">{% endif %}
+      <div class="qg-nom">{{ l.equipo|corto }}</div>
+      {% if l.posicion %}<div class="qg-pos"><b>{{ l.posicion }}º</b> · {{ l.pt }} pts</div>{% endif %}
+      {% if l.racha %}<div class="qg-racha">{% for r in l.racha %}<i class="{{ r }}">{{ r }}</i>{% endfor %}</div>{% endif %}
+    </div>
+  {% endfor %}
+  </div>
+  <div class="qg-cuando">{{ s.cuando }}</div>
+  {% if s.campo %}<div class="qg-campo">{{ s.campo|titulo }}</div>{% endif %}
+  <div class="enc-pide">¿Quién se lleva el partido?</div>
+  <div class="enc-hueco"></div>
+</div>

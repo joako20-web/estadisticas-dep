@@ -1,0 +1,1269 @@
+{
+  "competicion": "dh_elite",
+  "nombre": "División de Honor Élite",
+  "grupo": "unico",
+  "temporada": "2026/27",
+  "jornada": 6,
+  "partidos": [
+    {
+      "id": 17761,
+      "jornada": 6,
+      "fecha": "2026-11-07T16:00:00",
+      "local": "RECOLETAS SALUD FENIX",
+      "visitante": "BARÇA RUGBI",
+      "puntos_local": 22,
+      "puntos_visitante": 28,
+      "campo": "Centro Deportivo Municipal David Cañada",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17759,
+      "jornada": 6,
+      "fecha": "2026-11-08T11:30:00",
+      "local": "C.P. LES ABELLES",
+      "visitante": "HERNANI CRE",
+      "puntos_local": 22,
+      "puntos_visitante": 23,
+      "campo": "Polideportivo Quatre Carreres - Campos de rugby Jorge Diego Pantera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17760,
+      "jornada": 6,
+      "fecha": "2026-11-08T12:00:00",
+      "local": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "visitante": "CLUB DE RUGBY SANT CUGAT",
+      "puntos_local": 52,
+      "puntos_visitante": 13,
+      "campo": "EL CANTIZAL",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17758,
+      "jornada": 6,
+      "fecha": "2026-11-08T12:30:00",
+      "local": "CAJASOL REAL CIENCIAS SEVILLA",
+      "visitante": "VALENCIA RC",
+      "puntos_local": 52,
+      "puntos_visitante": 5,
+      "campo": "CAMPO JUAN ANTONIO ARENAS POSADAS",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17762,
+      "jornada": 6,
+      "fecha": "2026-11-08T12:30:00",
+      "local": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "visitante": "STEELPHALT GETXO RUGBY",
+      "puntos_local": 34,
+      "puntos_visitante": 22,
+      "campo": "POLIDEPORTIVO URBIETA",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "descansa": [],
+  "partidos_temporada": [
+    {
+      "id": 17736,
+      "jornada": 1,
+      "fecha": "2026-09-26T16:00:00",
+      "local": "RECOLETAS SALUD FENIX",
+      "visitante": "C.P. LES ABELLES",
+      "puntos_local": 41,
+      "puntos_visitante": 26,
+      "campo": "Centro Deportivo Municipal David Cañada",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17737,
+      "jornada": 1,
+      "fecha": "2026-09-26T16:00:00",
+      "local": "VALENCIA RC",
+      "visitante": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "puntos_local": 27,
+      "puntos_visitante": 29,
+      "campo": "Polideportivo Quatre Carreres",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17734,
+      "jornada": 1,
+      "fecha": "2026-09-26T17:30:00",
+      "local": "STEELPHALT GETXO RUGBY",
+      "visitante": "HERNANI CRE",
+      "puntos_local": 40,
+      "puntos_visitante": 18,
+      "campo": "Fadura",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17733,
+      "jornada": 1,
+      "fecha": "2026-09-27T12:00:00",
+      "local": "BARÇA RUGBI",
+      "visitante": "CLUB DE RUGBY SANT CUGAT",
+      "puntos_local": 50,
+      "puntos_visitante": 34,
+      "campo": "Camp de Rugbi La Teixonera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17735,
+      "jornada": 1,
+      "fecha": "2026-09-27T12:00:00",
+      "local": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "visitante": "CAJASOL REAL CIENCIAS SEVILLA",
+      "puntos_local": 24,
+      "puntos_visitante": 22,
+      "campo": "POLIDEPORTIVO URBIETA",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17742,
+      "jornada": 2,
+      "fecha": "2026-10-03T16:00:00",
+      "local": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "visitante": "RECOLETAS SALUD FENIX",
+      "puntos_local": 29,
+      "puntos_visitante": 33,
+      "campo": "EL CANTIZAL",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17739,
+      "jornada": 2,
+      "fecha": "2026-10-04T12:00:00",
+      "local": "HERNANI CRE",
+      "visitante": "BARÇA RUGBI",
+      "puntos_local": 12,
+      "puntos_visitante": 11,
+      "campo": "LANDARE TOKI",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17740,
+      "jornada": 2,
+      "fecha": "2026-10-04T12:00:00",
+      "local": "STEELPHALT GETXO RUGBY",
+      "visitante": "CAJASOL REAL CIENCIAS SEVILLA",
+      "puntos_local": 39,
+      "puntos_visitante": 39,
+      "campo": "Fadura",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17741,
+      "jornada": 2,
+      "fecha": "2026-10-04T12:00:00",
+      "local": "C.P. LES ABELLES",
+      "visitante": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "puntos_local": 28,
+      "puntos_visitante": 41,
+      "campo": "Polideportivo Quatre Carreres - Campos de rugby Jorge Diego Pantera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17747,
+      "jornada": 3,
+      "fecha": "2026-10-10T16:00:00",
+      "local": "VALENCIA RC",
+      "visitante": "RECOLETAS SALUD FENIX",
+      "puntos_local": 18,
+      "puntos_visitante": 17,
+      "campo": "Polideportivo Quatre Carreres",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17743,
+      "jornada": 3,
+      "fecha": "2026-10-11T12:00:00",
+      "local": "CLUB DE RUGBY SANT CUGAT",
+      "visitante": "HERNANI CRE",
+      "puntos_local": 24,
+      "puntos_visitante": 40,
+      "campo": "ZEM LA GUINARDERA",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17744,
+      "jornada": 3,
+      "fecha": "2026-10-11T12:00:00",
+      "local": "BARÇA RUGBI",
+      "visitante": "CAJASOL REAL CIENCIAS SEVILLA",
+      "puntos_local": 31,
+      "puntos_visitante": 34,
+      "campo": "Camp de Rugbi La Teixonera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17746,
+      "jornada": 3,
+      "fecha": "2026-10-11T12:30:00",
+      "local": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "visitante": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "puntos_local": 35,
+      "puntos_visitante": 33,
+      "campo": "POLIDEPORTIVO URBIETA",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17745,
+      "jornada": 3,
+      "fecha": "2026-10-11T13:00:00",
+      "local": "STEELPHALT GETXO RUGBY",
+      "visitante": "C.P. LES ABELLES",
+      "puntos_local": 53,
+      "puntos_visitante": 19,
+      "campo": "Fadura",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17752,
+      "jornada": 4,
+      "fecha": "2026-10-24T16:00:00",
+      "local": "RECOLETAS SALUD FENIX",
+      "visitante": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "puntos_local": 24,
+      "puntos_visitante": 38,
+      "campo": "Centro Deportivo Municipal David Cañada",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17751,
+      "jornada": 4,
+      "fecha": "2026-10-24T17:00:00",
+      "local": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "visitante": "STEELPHALT GETXO RUGBY",
+      "puntos_local": 31,
+      "puntos_visitante": 37,
+      "campo": "EL CANTIZAL",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17749,
+      "jornada": 4,
+      "fecha": "2026-10-24T17:30:00",
+      "local": "CAJASOL REAL CIENCIAS SEVILLA",
+      "visitante": "CLUB DE RUGBY SANT CUGAT",
+      "puntos_local": 68,
+      "puntos_visitante": 12,
+      "campo": "CAMPO JUAN ANTONIO ARENAS POSADAS",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17748,
+      "jornada": 4,
+      "fecha": "2026-10-25T12:00:00",
+      "local": "HERNANI CRE",
+      "visitante": "VALENCIA RC",
+      "puntos_local": 43,
+      "puntos_visitante": 19,
+      "campo": "LANDARE TOKI",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17750,
+      "jornada": 4,
+      "fecha": "2026-10-25T12:30:00",
+      "local": "C.P. LES ABELLES",
+      "visitante": "BARÇA RUGBI",
+      "puntos_local": 21,
+      "puntos_visitante": 26,
+      "campo": "Polideportivo Quatre Carreres - Campos de rugby Jorge Diego Pantera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17755,
+      "jornada": 5,
+      "fecha": "2026-10-31T16:00:00",
+      "local": "BARÇA RUGBI",
+      "visitante": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "puntos_local": 26,
+      "puntos_visitante": 26,
+      "campo": "Camp de Rugbi La Teixonera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17756,
+      "jornada": 5,
+      "fecha": "2026-10-31T16:00:00",
+      "local": "STEELPHALT GETXO RUGBY",
+      "visitante": "RECOLETAS SALUD FENIX",
+      "puntos_local": 28,
+      "puntos_visitante": 45,
+      "campo": "Fadura",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17753,
+      "jornada": 5,
+      "fecha": "2026-11-01T11:30:00",
+      "local": "HERNANI CRE",
+      "visitante": "CAJASOL REAL CIENCIAS SEVILLA",
+      "puntos_local": 19,
+      "puntos_visitante": 40,
+      "campo": "LANDARE TOKI",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17757,
+      "jornada": 5,
+      "fecha": "2026-11-01T12:30:00",
+      "local": "VALENCIA RC",
+      "visitante": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "puntos_local": 46,
+      "puntos_visitante": 48,
+      "campo": "Polideportivo Quatre Carreres",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17754,
+      "jornada": 5,
+      "fecha": "2026-11-01T13:00:00",
+      "local": "CLUB DE RUGBY SANT CUGAT",
+      "visitante": "C.P. LES ABELLES",
+      "puntos_local": 36,
+      "puntos_visitante": 34,
+      "campo": "ZEM LA GUINARDERA",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17761,
+      "jornada": 6,
+      "fecha": "2026-11-07T16:00:00",
+      "local": "RECOLETAS SALUD FENIX",
+      "visitante": "BARÇA RUGBI",
+      "puntos_local": 22,
+      "puntos_visitante": 28,
+      "campo": "Centro Deportivo Municipal David Cañada",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17759,
+      "jornada": 6,
+      "fecha": "2026-11-08T11:30:00",
+      "local": "C.P. LES ABELLES",
+      "visitante": "HERNANI CRE",
+      "puntos_local": 22,
+      "puntos_visitante": 23,
+      "campo": "Polideportivo Quatre Carreres - Campos de rugby Jorge Diego Pantera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17760,
+      "jornada": 6,
+      "fecha": "2026-11-08T12:00:00",
+      "local": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "visitante": "CLUB DE RUGBY SANT CUGAT",
+      "puntos_local": 52,
+      "puntos_visitante": 13,
+      "campo": "EL CANTIZAL",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17758,
+      "jornada": 6,
+      "fecha": "2026-11-08T12:30:00",
+      "local": "CAJASOL REAL CIENCIAS SEVILLA",
+      "visitante": "VALENCIA RC",
+      "puntos_local": 52,
+      "puntos_visitante": 5,
+      "campo": "CAMPO JUAN ANTONIO ARENAS POSADAS",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17762,
+      "jornada": 6,
+      "fecha": "2026-11-08T12:30:00",
+      "local": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "visitante": "STEELPHALT GETXO RUGBY",
+      "puntos_local": 34,
+      "puntos_visitante": 22,
+      "campo": "POLIDEPORTIVO URBIETA",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "actas_pendientes": [
+    17761,
+    17759,
+    17760,
+    17758,
+    17762
+  ],
+  "anotadores": [],
+  "ensayadores": [],
+  "xv_ideal": null,
+  "foto_portada": null,
+  "candidatos_xv": [],
+  "clasificacion": [
+    {
+      "posicion": 1,
+      "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "racha": [
+        "G",
+        "G",
+        "G",
+        "G",
+        "G"
+      ],
+      "pt": 25,
+      "pj": 6,
+      "pg": 6,
+      "pe": 0,
+      "pp": 0,
+      "tf": 220,
+      "tc": 175,
+      "dt": 45,
+      "ef": 31,
+      "ec": 26,
+      "de": 5,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/75/square_35383067317163666665.jpg"
+    },
+    {
+      "posicion": 2,
+      "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+      "racha": [
+        "E",
+        "G",
+        "G",
+        "G",
+        "G"
+      ],
+      "pt": 22,
+      "pj": 6,
+      "pg": 4,
+      "pe": 1,
+      "pp": 1,
+      "tf": 255,
+      "tc": 130,
+      "dt": 125,
+      "ef": 38,
+      "ec": 18,
+      "de": 20,
+      "bo": 3,
+      "bd": 1,
+      "escudo": "@f/images/afiliacion_clubs/25/square_62763231767836756f32.jpg"
+    },
+    {
+      "posicion": 3,
+      "equipo": "HERNANI CRE",
+      "racha": [
+        "G",
+        "G",
+        "G",
+        "P",
+        "G"
+      ],
+      "pt": 17,
+      "pj": 6,
+      "pg": 4,
+      "pe": 0,
+      "pp": 2,
+      "tf": 155,
+      "tc": 156,
+      "dt": -1,
+      "ef": 20,
+      "ec": 22,
+      "de": -2,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/92/square_3730336270766b786e71.jpg"
+    },
+    {
+      "posicion": 4,
+      "equipo": "BARÇA RUGBI",
+      "racha": [
+        "P",
+        "P",
+        "G",
+        "E",
+        "G"
+      ],
+      "pt": 17,
+      "pj": 6,
+      "pg": 3,
+      "pe": 1,
+      "pp": 2,
+      "tf": 172,
+      "tc": 149,
+      "dt": 23,
+      "ef": 26,
+      "ec": 21,
+      "de": 5,
+      "bo": 1,
+      "bd": 2,
+      "escudo": "@f/images/afiliacion_clubs/37/square_34393938793774647062.jpg"
+    },
+    {
+      "posicion": 5,
+      "equipo": "STEELPHALT GETXO RUGBY",
+      "racha": [
+        "E",
+        "G",
+        "G",
+        "P",
+        "P"
+      ],
+      "pt": 16,
+      "pj": 6,
+      "pg": 3,
+      "pe": 1,
+      "pp": 2,
+      "tf": 219,
+      "tc": 186,
+      "dt": 33,
+      "ef": 31,
+      "ec": 25,
+      "de": 6,
+      "bo": 2,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/63/square_396e3565726975667168.jpg"
+    },
+    {
+      "posicion": 6,
+      "equipo": "RECOLETAS SALUD FENIX",
+      "racha": [
+        "G",
+        "P",
+        "P",
+        "G",
+        "P"
+      ],
+      "pt": 14,
+      "pj": 6,
+      "pg": 3,
+      "pe": 0,
+      "pp": 3,
+      "tf": 182,
+      "tc": 167,
+      "dt": 15,
+      "ef": 23,
+      "ec": 23,
+      "de": 0,
+      "bo": 0,
+      "bd": 2,
+      "escudo": "@f/images/afiliacion_clubs/86/square_656b3338723073396f74.jpg"
+    },
+    {
+      "posicion": 7,
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "racha": [
+        "P",
+        "P",
+        "P",
+        "E",
+        "G"
+      ],
+      "pt": 14,
+      "pj": 6,
+      "pg": 2,
+      "pe": 1,
+      "pp": 3,
+      "tf": 200,
+      "tc": 171,
+      "dt": 29,
+      "ef": 29,
+      "ec": 21,
+      "de": 8,
+      "bo": 1,
+      "bd": 3,
+      "escudo": "@f/images/afiliacion_clubs/8/square_783274646b71726a3131.jpg"
+    },
+    {
+      "posicion": 8,
+      "equipo": "VALENCIA RC",
+      "racha": [
+        "E",
+        "G",
+        "P",
+        "P",
+        "P"
+      ],
+      "pt": 6,
+      "pj": 5,
+      "pg": 1,
+      "pe": 0,
+      "pp": 4,
+      "tf": 115,
+      "tc": 189,
+      "dt": -74,
+      "ef": 18,
+      "ec": 30,
+      "de": -12,
+      "bo": 0,
+      "bd": 2,
+      "escudo": "@f/images/afiliacion_clubs/30/square_75756b6a723669773864.jpg"
+    },
+    {
+      "posicion": 9,
+      "equipo": "CLUB DE RUGBY SANT CUGAT",
+      "racha": [
+        "E",
+        "P",
+        "P",
+        "G",
+        "P"
+      ],
+      "pt": 4,
+      "pj": 5,
+      "pg": 1,
+      "pe": 0,
+      "pp": 4,
+      "tf": 119,
+      "tc": 244,
+      "dt": -125,
+      "ef": 15,
+      "ec": 34,
+      "de": -19,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/48/square_666e3068736979736476.jpg"
+    },
+    {
+      "posicion": 10,
+      "equipo": "C.P. LES ABELLES",
+      "racha": [
+        "P",
+        "P",
+        "P",
+        "P",
+        "P"
+      ],
+      "pt": 3,
+      "pj": 6,
+      "pg": 0,
+      "pe": 0,
+      "pp": 6,
+      "tf": 150,
+      "tc": 220,
+      "dt": -70,
+      "ef": 21,
+      "ec": 32,
+      "de": -11,
+      "bo": 0,
+      "bd": 3,
+      "escudo": "@f/images/afiliacion_clubs/36/square_6f75337230696d327239.jpg"
+    }
+  ],
+  "escudos": {
+    "TORREALDAY GERNIKA RUGBY TALDEA": "@f/images/afiliacion_clubs/75/square_35383067317163666665.jpg",
+    "CAJASOL REAL CIENCIAS SEVILLA": "@f/images/afiliacion_clubs/25/square_62763231767836756f32.jpg",
+    "HERNANI CRE": "@f/images/afiliacion_clubs/92/square_3730336270766b786e71.jpg",
+    "BARÇA RUGBI": "@f/images/afiliacion_clubs/37/square_34393938793774647062.jpg",
+    "STEELPHALT GETXO RUGBY": "@f/images/afiliacion_clubs/63/square_396e3565726975667168.jpg",
+    "RECOLETAS SALUD FENIX": "@f/images/afiliacion_clubs/86/square_656b3338723073396f74.jpg",
+    "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY": "@f/images/afiliacion_clubs/8/square_783274646b71726a3131.jpg",
+    "VALENCIA RC": "@f/images/afiliacion_clubs/30/square_75756b6a723669773864.jpg",
+    "CLUB DE RUGBY SANT CUGAT": "@f/images/afiliacion_clubs/48/square_666e3068736979736476.jpg",
+    "C.P. LES ABELLES": "@f/images/afiliacion_clubs/36/square_6f75337230696d327239.jpg"
+  },
+  "temporada_anotadores": [
+    {
+      "id": 1025753,
+      "nombre": "BEÑAT ARICETA MAESTRO",
+      "equipo": "HERNANI CRE",
+      "pj": 6,
+      "puntos": 63,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1061151,
+      "nombre": "LUCAS FERRER SPAGO",
+      "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "pj": 6,
+      "puntos": 61,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1032916,
+      "nombre": "IÑIGO RAPALLO DE LIS",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "pj": 6,
+      "puntos": 58,
+      "ensayos": 1,
+      "amarillas": 1,
+      "rojas": 0
+    },
+    {
+      "id": 1044667,
+      "nombre": "GABRIEL ENRIQUE TOBIO",
+      "equipo": "STEELPHALT GETXO RUGBY",
+      "pj": 6,
+      "puntos": 52,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1034164,
+      "nombre": "MANUEL VAZQUEZ FERNANDEZ",
+      "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+      "pj": 6,
+      "puntos": 48,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1043377,
+      "nombre": "JUAN CARLOS SANCHEZ CARRANCIA",
+      "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+      "pj": 4,
+      "puntos": 45,
+      "ensayos": 9,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1026847,
+      "nombre": "JOSE ANTONIO ORTUÑO JIMENEZ",
+      "equipo": "C.P. LES ABELLES",
+      "pj": 6,
+      "puntos": 42,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1025367,
+      "nombre": "DANIEL RAAM ESCOLA PHIMSEN",
+      "equipo": "RECOLETAS SALUD FENIX",
+      "pj": 4,
+      "puntos": 39,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1023785,
+      "nombre": "BRAIS REY GRANDE",
+      "equipo": "RECOLETAS SALUD FENIX",
+      "pj": 6,
+      "puntos": 36,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1024223,
+      "nombre": "FERRAN GIMENO SANTESMASES",
+      "equipo": "CLUB DE RUGBY SANT CUGAT",
+      "pj": 6,
+      "puntos": 35,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "temporada_ensayadores": [
+    {
+      "id": 1043377,
+      "nombre": "JUAN CARLOS SANCHEZ CARRANCIA",
+      "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+      "pj": 4,
+      "puntos": 45,
+      "ensayos": 9,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1024311,
+      "nombre": "ANDER ARISTI CAMARA",
+      "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "pj": 6,
+      "puntos": 30,
+      "ensayos": 6,
+      "amarillas": 1,
+      "rojas": 1
+    },
+    {
+      "id": 1043213,
+      "nombre": "JAUNDRE NEL",
+      "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "pj": 6,
+      "puntos": 30,
+      "ensayos": 6,
+      "amarillas": 1,
+      "rojas": 0
+    },
+    {
+      "id": 1024811,
+      "nombre": "IBON GONZALEZ PLA",
+      "equipo": "HERNANI CRE",
+      "pj": 6,
+      "puntos": 25,
+      "ensayos": 5,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1032961,
+      "nombre": "IGNACIO MORENO GUZMAN",
+      "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+      "pj": 6,
+      "puntos": 25,
+      "ensayos": 5,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "proxima_jornada": {
+    "numero": 7,
+    "partidos": [
+      {
+        "id": 17765,
+        "jornada": 7,
+        "fecha": "2026-12-12T16:00:00",
+        "local": "CLUB DE RUGBY SANT CUGAT",
+        "visitante": "RECOLETAS SALUD FENIX",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "ZEM LA GUINARDERA",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      },
+      {
+        "id": 17763,
+        "jornada": 7,
+        "fecha": "2026-12-13T11:00:00",
+        "local": "CAJASOL REAL CIENCIAS SEVILLA",
+        "visitante": "C.P. LES ABELLES",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "CAMPO JUAN ANTONIO ARENAS POSADAS",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      },
+      {
+        "id": 17764,
+        "jornada": 7,
+        "fecha": "2026-12-13T12:00:00",
+        "local": "HERNANI CRE",
+        "visitante": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "LANDARE TOKI",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      },
+      {
+        "id": 17766,
+        "jornada": 7,
+        "fecha": "2026-12-13T12:00:00",
+        "local": "BARÇA RUGBI",
+        "visitante": "TORREALDAY GERNIKA RUGBY TALDEA",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "Camp de Rugbi La Teixonera",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      },
+      {
+        "id": 17767,
+        "jornada": 7,
+        "fecha": "2026-12-13T12:00:00",
+        "local": "VALENCIA RC",
+        "visitante": "STEELPHALT GETXO RUGBY",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "Polideportivo Quatre Carreres",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      }
+    ],
+    "descansa": []
+  },
+  "rankings": {
+    "ensayadores": [],
+    "pateadores": [],
+    "ensayadores_t": [
+      {
+        "nombre": "JUAN CARLOS SANCHEZ CARRANCIA",
+        "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+        "valor": 9,
+        "detalle": "45 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "ANDER ARISTI CAMARA",
+        "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+        "valor": 5,
+        "detalle": "25 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "IBON GONZALEZ PLA",
+        "equipo": "HERNANI CRE",
+        "valor": 5,
+        "detalle": "25 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "JAUNDRE NEL",
+        "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+        "valor": 5,
+        "detalle": "25 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "IBON MARTINEZ ARRIETA",
+        "equipo": "STEELPHALT GETXO RUGBY",
+        "valor": 4,
+        "detalle": "20 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "IGNACIO MORENO GUZMAN",
+        "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+        "valor": 4,
+        "detalle": "20 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "ISMAEL GARCIA YBAÑEZ",
+        "equipo": "RECOLETAS SALUD FENIX",
+        "valor": 4,
+        "detalle": "20 puntos",
+        "rival": ""
+      }
+    ],
+    "pateadores_t": [
+      {
+        "nombre": "LUCAS FERRER SPAGO",
+        "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+        "valor": 47,
+        "detalle": "10 transf. · 9 golpes",
+        "rival": ""
+      },
+      {
+        "nombre": "GABRIEL ENRIQUE TOBIO",
+        "equipo": "STEELPHALT GETXO RUGBY",
+        "valor": 45,
+        "detalle": "18 transf. · 3 golpes",
+        "rival": ""
+      },
+      {
+        "nombre": "BEÑAT ARICETA MAESTRO",
+        "equipo": "HERNANI CRE",
+        "valor": 40,
+        "detalle": "11 transf. · 6 golpes",
+        "rival": ""
+      },
+      {
+        "nombre": "DANIEL RAAM ESCOLA PHIMSEN",
+        "equipo": "RECOLETAS SALUD FENIX",
+        "valor": 39,
+        "detalle": "6 transf. · 9 golpes",
+        "rival": ""
+      },
+      {
+        "nombre": "IÑIGO RAPALLO DE LIS",
+        "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+        "valor": 36,
+        "detalle": "15 transf. · 2 golpes",
+        "rival": ""
+      },
+      {
+        "nombre": "MANUEL VAZQUEZ FERNANDEZ",
+        "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+        "valor": 31,
+        "detalle": "14 transf. · 1 golpe",
+        "rival": ""
+      },
+      {
+        "nombre": "JOSE ANTONIO ORTUÑO JIMENEZ",
+        "equipo": "C.P. LES ABELLES",
+        "valor": 30,
+        "detalle": "12 transf. · 2 golpes",
+        "rival": ""
+      }
+    ],
+    "disciplina": [
+      {
+        "nombre": "PABLO CASTELLO VINOLO",
+        "equipo": "RECOLETAS SALUD FENIX",
+        "valor": 2,
+        "detalle": "1 amarilla · 1 roja",
+        "rival": ""
+      },
+      {
+        "nombre": "KERMAN PASTOR AYO",
+        "equipo": "STEELPHALT GETXO RUGBY",
+        "valor": 2,
+        "detalle": "2 amarillas",
+        "rival": ""
+      },
+      {
+        "nombre": "LEONARDO MARTIN ALBERTO GEREZ",
+        "equipo": "RECOLETAS SALUD FENIX",
+        "valor": 2,
+        "detalle": "2 amarillas",
+        "rival": ""
+      },
+      {
+        "nombre": "MARCOS LOPEZ RODRIGUEZ DE QUESADA",
+        "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+        "valor": 2,
+        "detalle": "2 amarillas",
+        "rival": ""
+      },
+      {
+        "nombre": "RAMIRO IVAN ROBLEDO",
+        "equipo": "BARÇA RUGBI",
+        "valor": 1,
+        "detalle": "1 roja",
+        "rival": ""
+      },
+      {
+        "nombre": "ADRIAN MARTIN MOROTE",
+        "equipo": "RECOLETAS SALUD FENIX",
+        "valor": 1,
+        "detalle": "1 amarilla",
+        "rival": ""
+      },
+      {
+        "nombre": "ADRIO LUIZ DE MELO",
+        "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+        "valor": 1,
+        "detalle": "1 amarilla",
+        "rival": ""
+      }
+    ],
+    "banquillo": [
+      {
+        "nombre": "ALEJANDRO IGLESIAS MENENDEZ",
+        "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+        "valor": 10,
+        "detalle": "2 ensayos",
+        "rival": ""
+      },
+      {
+        "nombre": "ARKAITZ TREBOLAZABALA BENITO",
+        "equipo": "STEELPHALT GETXO RUGBY",
+        "valor": 10,
+        "detalle": "2 ensayos",
+        "rival": ""
+      },
+      {
+        "nombre": "IBON MARTINEZ ARRIETA",
+        "equipo": "STEELPHALT GETXO RUGBY",
+        "valor": 10,
+        "detalle": "2 ensayos",
+        "rival": ""
+      },
+      {
+        "nombre": "JUAN CARLOS SANCHEZ CARRANCIA",
+        "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+        "valor": 10,
+        "detalle": "2 ensayos",
+        "rival": ""
+      },
+      {
+        "nombre": "NICOLAS CERVERO GOMEZ",
+        "equipo": "VALENCIA RC",
+        "valor": 10,
+        "detalle": "2 ensayos",
+        "rival": ""
+      },
+      {
+        "nombre": "MATEO MARTINEZ GORGUES",
+        "equipo": "C.P. LES ABELLES",
+        "valor": 7,
+        "detalle": "1 ensayo",
+        "rival": ""
+      },
+      {
+        "nombre": "VICENTE JUAN SAEZ ESTRELA",
+        "equipo": "VALENCIA RC",
+        "valor": 6,
+        "detalle": "",
+        "rival": ""
+      }
+    ],
+    "equipos": [
+      {
+        "titulo": "Mejor ataque",
+        "unidad": "pts a favor",
+        "filas": [
+          {
+            "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+            "valor": 255
+          },
+          {
+            "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+            "valor": 220
+          },
+          {
+            "equipo": "STEELPHALT GETXO RUGBY",
+            "valor": 219
+          }
+        ]
+      },
+      {
+        "titulo": "Mejor defensa",
+        "unidad": "pts en contra",
+        "filas": [
+          {
+            "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+            "valor": 130
+          },
+          {
+            "equipo": "BARÇA RUGBI",
+            "valor": 149
+          },
+          {
+            "equipo": "HERNANI CRE",
+            "valor": 156
+          }
+        ]
+      },
+      {
+        "titulo": "Más ensayos",
+        "unidad": "ensayos",
+        "filas": [
+          {
+            "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+            "valor": 38
+          },
+          {
+            "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+            "valor": 31
+          },
+          {
+            "equipo": "STEELPHALT GETXO RUGBY",
+            "valor": 31
+          }
+        ]
+      },
+      {
+        "titulo": "Más tarjetas",
+        "unidad": "tarjetas",
+        "filas": [
+          {
+            "equipo": "RECOLETAS SALUD FENIX",
+            "valor": 10
+          },
+          {
+            "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+            "valor": 7
+          },
+          {
+            "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+            "valor": 6
+          }
+        ]
+      }
+    ]
+  },
+  "datos_jornada": [
+    {
+      "clave": "datos",
+      "tipo": "dato",
+      "peso": 96,
+      "numero": "6",
+      "unidad": "partidos, todos ganados",
+      "titular": "Gernika sigue invicto",
+      "contexto": "Pleno de victorias tras 6 jornadas.",
+      "equipo": "TORREALDAY GERNIKA RUGBY TALDEA"
+    },
+    {
+      "clave": "datos",
+      "tipo": "dato",
+      "peso": 74,
+      "numero": "4",
+      "unidad": "victorias seguidas",
+      "titular": "Ciencias Sevilla no deja de ganar",
+      "contexto": "Encadena 4 triunfos consecutivos.",
+      "equipo": "CAJASOL REAL CIENCIAS SEVILLA"
+    },
+    {
+      "clave": "datos",
+      "tipo": "dato",
+      "peso": 64,
+      "numero": "6",
+      "unidad": "partidos sin ganar",
+      "titular": "Les Abelles sigue sin conocer la victoria",
+      "contexto": "Lleva 6 jornadas buscando su primer triunfo.",
+      "equipo": "C.P. LES ABELLES"
+    }
+  ]
+}

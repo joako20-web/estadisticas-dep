@@ -1,0 +1,30 @@
+{# "Árbitros: datos curiosos": 3-4 hallazgos, cada uno con su cifra y su muestra.
+   Sin tarjetas: bloques separados por filete, cifra grande a la derecha. #}
+<style>
+.arbd { display: flex; flex-direction: column; }
+.arbd-item { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px 40px; padding: 28px 0; }
+.arbd-item + .arbd-item { border-top: 1px solid var(--linea); }
+.arbd-item:first-child { border-bottom: var(--filete) solid var(--texto); padding-top: 10px; }
+.arbd-txt { min-width: 0; }
+.arbd-tit { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 600; font-size: 44px; line-height: 1.04; }
+.arbd-pie { font-size: 27px; color: var(--gris); margin-top: 12px; display: flex; align-items: center; gap: 14px; }
+.arbd-pie .crest { width: 46px; height: 46px; padding: 4px; }
+.arbd-cifra { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 92px; line-height: .9; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.arbd-item:first-child .arbd-cifra { color: var(--acento-txt); }
+.f-historia .arbd-item { padding: 54px 0; }
+</style>
+<div class="titulo">
+  <h1>{{ s.titulo }}</h1>
+  <div class="bajada">{{ s.sup }}</div>
+</div>
+<div class="cuerpo arbd">
+{% for d in s.datos %}
+  <div class="arbd-item">
+    <div class="arbd-txt">
+      <div class="arbd-tit">{{ d.titular }}</div>
+      <div class="arbd-pie">{% if d.equipo and d.equipo|escudo %}<img class="crest" src="{{ d.equipo|escudo }}">{% endif %}{{ d.pie }}</div>
+    </div>
+    <div class="arbd-cifra">{{ d.cifra }}</div>
+  </div>
+{% endfor %}
+</div>

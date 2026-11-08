@@ -1,0 +1,143 @@
+{# Jugador de la jornada (datosdep/carteles_mvp.py). Estilos locales con las variables del tema. #}
+<style>
+.mv { flex: 1; display: flex; flex-direction: column; margin-top: 34px; position: relative; z-index: 2; min-height: 0; }
+.mv-tit { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit, .64); }
+.mv-num { font-family: var(--f-num, var(--f-tit)); font-size-adjust: cap-height var(--aj-num, .64); font-variant-numeric: tabular-nums lining-nums; }
+.mv-kick { font-size: 28px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--acento-txt); }
+.mv-top { display: grid; grid-template-columns: auto 1fr; gap: 0 48px; margin-top: 26px; align-items: stretch; }
+.mv-visual { position: relative; width: 340px; height: 425px; }
+.mv-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: var(--radio);
+  box-shadow: 18px 18px 0 var(--acento); background: var(--panel); }
+.mv-visual .crest.mv-esc { position: absolute; right: -34px; bottom: -30px; width: 124px; height: 124px; box-shadow: 0 0 0 5px var(--fondo); }
+.mv-visual.sin-foto { display: flex; align-items: center; justify-content: center; }
+.mv-visual.sin-foto .crest.mv-grande { width: 330px; height: 330px; box-shadow: 0 0 0 8px var(--acento); }
+.mv-der { display: flex; flex-direction: column; justify-content: space-between; min-width: 0; text-align: right; }
+.mv-dorsal-k { font-size: 26px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); }
+.mv-dorsal { font-size: 250px; line-height: .8; font-weight: 700; color: transparent; -webkit-text-stroke: 6px var(--acento); margin-top: 10px; letter-spacing: -0.03em; }
+.mv-pos { font-size: 34px; font-weight: 600; line-height: 1.1; }
+.mv-eq { font-size: 30px; color: var(--gris); margin-top: 6px; line-height: 1.15; }
+.mv-pila { font-size: 58px; line-height: .9; color: var(--gris); margin-top: 44px; }
+.mv-ape { font-weight: 700; font-size: 150px; line-height: .86; text-transform: uppercase; margin-top: -10px;
+  white-space: nowrap; overflow: hidden; padding: .14em 0 .04em; } /* arriba: sitio para tildes (Ñ, Á) */
+.mv-ape.l { font-size: 124px; }
+.mv-ape.xl { font-size: 100px; }
+.mv-stats { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; margin-top: 24px;
+  border-top: var(--filete) solid var(--texto); border-bottom: var(--filete) solid var(--linea); }
+.mv-stats div { padding: 20px 0 16px; min-width: 0; }
+.mv-stats div + div { border-left: 1px solid var(--linea); padding-left: 24px; }
+.mv-stats b { display: block; font-size: 116px; line-height: .85; font-weight: 700; }
+.mv-stats .hero b { color: var(--acento-txt); }
+.mv-stats .cero b { color: var(--apagado); }
+.mv-stats span { font-size: 24px; color: var(--gris); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+.mv-partido { margin-top: auto; display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: 0 20px; padding-top: 24px; }
+.mv-partido .k { font-size: 26px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); }
+.mv-partido .crest { width: 72px; height: 72px; }
+.mv-partido .riv { font-size: 46px; font-weight: 600; line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.mv-res { text-align: right; }
+.mv-res .t { font-size: 26px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); }
+.mv-res .t.G { color: var(--acento-txt); }
+.mv-res .m { font-size: 64px; line-height: .9; font-weight: 700; }
+/* Votación de la afición (porcentajes de la encuesta de la red) */
+.mv-votos { margin-top: 22px; display: grid; gap: 10px; }
+.mv-voto { display: grid; grid-template-columns: 250px 1fr 92px; align-items: center; gap: 0 18px; }
+.mv-voto .n { font-size: 28px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--gris); }
+.mv-voto .b { height: 18px; background: var(--linea); border-radius: 9px; overflow: hidden; }
+.mv-voto .b i { display: block; height: 100%; background: var(--apagado); border-radius: 9px; }
+.mv-voto .p { font-size: 40px; line-height: 1; font-weight: 700; text-align: right; color: var(--gris); }
+.mv-voto.gana .n, .mv-voto.gana .p { color: var(--texto); }
+.mv-voto.gana .b i { background: var(--acento); }
+.mv-votos-k { font-size: 22px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); }
+.mv > * { flex-shrink: 0; }  /* que nada se aplaste (el apellido se cortaba) */
+.mv.con-votos .mv-top { margin-top: 18px; }
+.mv.con-votos .mv-visual { width: 250px; height: 312px; }
+.mv.con-votos .mv-visual.sin-foto .crest.mv-grande { width: 250px; height: 250px; }
+.mv.con-votos .mv-visual .crest.mv-esc { width: 100px; height: 100px; right: -26px; bottom: -24px; }
+.mv.con-votos .mv-dorsal { font-size: 170px; }
+.mv.con-votos .mv-pila { margin-top: 18px; font-size: 48px; }
+.mv.con-votos .mv-ape { font-size: 112px; }
+.mv.con-votos .mv-ape.l { font-size: 96px; }
+.mv.con-votos .mv-ape.xl { font-size: 80px; }
+.mv.con-votos .mv-stats { margin-top: 14px; }
+.mv.con-votos .mv-stats b { font-size: 84px; }
+.mv.con-votos .mv-stats div { padding: 12px 0 10px; }
+.mv.con-votos .mv-partido { padding-top: 14px; }
+/* Historia 9:16: más aire y foto más grande */
+.f-historia .mv { margin-top: 80px; }
+.f-historia .mv-top { margin-top: 40px; }
+.f-historia .mv-visual { width: 440px; height: 550px; }
+.f-historia .mv-visual.sin-foto .crest.mv-grande { width: 400px; height: 400px; }
+.f-historia .mv-dorsal { font-size: 300px; }
+.f-historia .mv-pila { margin-top: 80px; }
+.f-historia .mv-stats { margin-top: 50px; }
+.f-historia .mv-stats b { font-size: 124px; }
+.f-historia .mv-partido { margin-top: 70px; }
+.f-historia .mv.con-votos .mv-visual { width: 380px; height: 475px; }
+.f-historia .mv.con-votos .mv-visual.sin-foto .crest.mv-grande { width: 360px; height: 360px; }
+.f-historia .mv.con-votos .mv-dorsal { font-size: 260px; }
+.f-historia .mv.con-votos .mv-pila { margin-top: 50px; font-size: 58px; }
+.f-historia .mv.con-votos .mv-ape { font-size: 150px; }
+.f-historia .mv.con-votos .mv-ape.l { font-size: 124px; }
+.f-historia .mv.con-votos .mv-ape.xl { font-size: 100px; }
+.f-historia .mv.con-votos .mv-stats b { font-size: 110px; }
+.f-historia .mv-votos { margin-top: 44px; gap: 16px; }
+</style>
+{% set j = s.j %}
+{% set largo = j.apellidos|length %}
+<div class="mv {{ 'con-votos' if s.votos }}">
+  <div class="mv-kick">{% if s.aficion %}★ MVP de la afición · Jornada {{ s.jornada_n }}{% else %}★ Jugador de la jornada {{ s.jornada_n }}{% endif %}</div>
+  <div class="mv-top">
+    {% if j.foto %}
+    <div class="mv-visual">
+      <img class="mv-foto" src="{{ j.foto }}" alt="">
+      {% if j.escudo %}<img class="crest mv-esc" src="{{ j.escudo }}" alt="">{% endif %}
+    </div>
+    {% else %}
+    <div class="mv-visual sin-foto">
+      {% if j.escudo %}<img class="crest mv-grande" src="{{ j.escudo }}" alt="">{% endif %}
+    </div>
+    {% endif %}
+    <div class="mv-der">
+      {% if j.dorsal %}<div><div class="mv-dorsal-k">Dorsal</div><div class="mv-dorsal mv-num">{{ j.dorsal }}</div></div>{% else %}<div></div>{% endif %}
+      <div>
+        {% if j.posicion %}<div class="mv-pos">{{ j.posicion }}</div>{% endif %}
+        <div class="mv-eq">{{ j.equipo }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mv-pila mv-tit">{{ j.nombre }}</div>
+  <div class="mv-ape mv-tit {{ 'xl' if largo > 14 else 'l' if largo > 10 }}">{{ j.apellidos }}</div>
+
+  <div class="mv-stats">
+    {% if j.puntos %}
+    <div class="hero"><b class="mv-num">{{ j.puntos }}</b><span>{{ 'Punto' if j.puntos == 1 else 'Puntos' }}</span></div>
+    {% else %}
+    <div class="hero"><b class="mv-num">{{ '%.1f'|format(j.nota) }}</b><span>Nota</span></div>
+    {% endif %}
+    {% for st in j.stats %}
+    <div class="{{ 'cero' if not st.valor }}"><b class="mv-num">{{ st.valor }}</b><span>{{ st.texto }}</span></div>
+    {% endfor %}
+  </div>
+
+  {% if s.votos %}
+  <div class="mv-votos">
+    <div class="mv-votos-k">Votación en la red</div>
+    {% for v in s.votos %}
+    <div class="mv-voto {{ 'gana' if v.gana }}"><div class="n">{{ v.corto }}</div><div class="b"><i style="width: {{ v.pct }}%"></i></div><div class="p mv-num">{{ v.pct }}%</div></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if j.partido %}
+  {% set p = j.partido %}
+  <div class="mv-partido">
+    <div class="k">vs</div>
+    {% if p.escudoRival %}<img class="crest" src="{{ p.escudoRival }}" alt="">{% else %}<div></div>{% endif %}
+    <div class="riv mv-tit">{{ p.rival }}</div>
+    <div class="mv-res">
+      <div class="t {{ p.letra }}">{{ p.texto }}</div>
+      {% if p.propios is not none %}<div class="m mv-num">{{ p.propios }}-{{ p.contra }}</div>{% endif %}
+    </div>
+  </div>
+  {% endif %}
+</div>

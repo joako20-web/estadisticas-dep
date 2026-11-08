@@ -1,0 +1,448 @@
+{
+  "competicion": "cyl_fem",
+  "nombre": "Femenina Castilla y León",
+  "grupo": "unico",
+  "temporada": "2026/27",
+  "jornada": 1,
+  "partidos": [
+    {
+      "id": 18388,
+      "jornada": 1,
+      "fecha": null,
+      "local": "LEGIO CARS LEON RUGBY CLUB FEM",
+      "visitante": "C.R. EL SALVADOR EMERGING",
+      "puntos_local": null,
+      "puntos_visitante": null,
+      "campo": "·",
+      "estado": "pendiente",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18387,
+      "jornada": 1,
+      "fecha": "2026-10-03T16:00:00",
+      "local": "GIJON RUGBY CLUB",
+      "visitante": "CORMORAN RUGBY CLUB DE SANTANDER",
+      "puntos_local": 46,
+      "puntos_visitante": 10,
+      "campo": "CAMPO DE RUGBY LA LABORAL",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18386,
+      "jornada": 1,
+      "fecha": "2026-10-03T17:00:00",
+      "local": "Ciudad de Oviedo Rugby",
+      "visitante": "CLUB DEPORTIVO UNIVERSIDAD DE SALAMANCA",
+      "puntos_local": 27,
+      "puntos_visitante": 5,
+      "campo": "CAMPO DE RUGBY DE EL NARANCO",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "partidos_temporada": [
+    {
+      "id": 18387,
+      "jornada": 1,
+      "fecha": "2026-10-03T16:00:00",
+      "local": "GIJON RUGBY CLUB",
+      "visitante": "CORMORAN RUGBY CLUB DE SANTANDER",
+      "puntos_local": 46,
+      "puntos_visitante": 10,
+      "campo": "CAMPO DE RUGBY LA LABORAL",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18386,
+      "jornada": 1,
+      "fecha": "2026-10-03T17:00:00",
+      "local": "Ciudad de Oviedo Rugby",
+      "visitante": "CLUB DEPORTIVO UNIVERSIDAD DE SALAMANCA",
+      "puntos_local": 27,
+      "puntos_visitante": 5,
+      "campo": "CAMPO DE RUGBY DE EL NARANCO",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "actas_pendientes": [
+    18388,
+    18387,
+    18386
+  ],
+  "anotadores": [],
+  "ensayadores": [],
+  "xv_ideal": null,
+  "foto_portada": null,
+  "candidatos_xv": [],
+  "clasificacion": [
+    {
+      "posicion": 1,
+      "equipo": "GIJON RUGBY CLUB",
+      "racha": [
+        "G"
+      ],
+      "pt": 4,
+      "pj": 1,
+      "pg": 1,
+      "pe": 0,
+      "pp": 0,
+      "tf": 46,
+      "tc": 10,
+      "dt": 36,
+      "ef": 8,
+      "ec": 2,
+      "de": 6,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/71/square_78747576656468373463.jpg"
+    },
+    {
+      "posicion": 2,
+      "equipo": "Ciudad de Oviedo Rugby",
+      "racha": [
+        "G"
+      ],
+      "pt": 4,
+      "pj": 1,
+      "pg": 1,
+      "pe": 0,
+      "pp": 0,
+      "tf": 27,
+      "tc": 5,
+      "dt": 22,
+      "ef": 5,
+      "ec": 1,
+      "de": 4,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/11/square_38396e6b6b6b77673431.jpg"
+    },
+    {
+      "posicion": 3,
+      "equipo": "TERRITORIAL FEMENINO VRAC QUESOS ENTREPINARES",
+      "racha": [],
+      "pt": 0,
+      "pj": 0,
+      "pg": 0,
+      "pe": 0,
+      "pp": 0,
+      "tf": 0,
+      "tc": 0,
+      "dt": 0,
+      "ef": 0,
+      "ec": 0,
+      "de": 0,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/23/square_323530623173766c706f.jpg"
+    },
+    {
+      "posicion": 4,
+      "equipo": "LEGIO CARS LEON RUGBY CLUB FEM",
+      "racha": [],
+      "pt": 0,
+      "pj": 0,
+      "pg": 0,
+      "pe": 0,
+      "pp": 0,
+      "tf": 0,
+      "tc": 0,
+      "dt": 0,
+      "ef": 0,
+      "ec": 0,
+      "de": 0,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/89/square_373137306b36346b6967.jpg"
+    },
+    {
+      "posicion": 5,
+      "equipo": "C.R. EL SALVADOR EMERGING",
+      "racha": [],
+      "pt": 0,
+      "pj": 0,
+      "pg": 0,
+      "pe": 0,
+      "pp": 0,
+      "tf": 0,
+      "tc": 0,
+      "dt": 0,
+      "ef": 0,
+      "ec": 0,
+      "de": 0,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/21/square_726b7461656e75357439.jpg"
+    },
+    {
+      "posicion": 6,
+      "equipo": "CLUB DEPORTIVO UNIVERSIDAD DE SALAMANCA",
+      "racha": [
+        "P"
+      ],
+      "pt": 0,
+      "pj": 1,
+      "pg": 0,
+      "pe": 0,
+      "pp": 1,
+      "tf": 5,
+      "tc": 27,
+      "dt": -22,
+      "ef": 1,
+      "ec": 5,
+      "de": -4,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/135/square_7834667963796a387338.jpg"
+    },
+    {
+      "posicion": 7,
+      "equipo": "CORMORAN RUGBY CLUB DE SANTANDER",
+      "racha": [
+        "P"
+      ],
+      "pt": 0,
+      "pj": 1,
+      "pg": 0,
+      "pe": 0,
+      "pp": 1,
+      "tf": 10,
+      "tc": 46,
+      "dt": -36,
+      "ef": 2,
+      "ec": 8,
+      "de": -6,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/122/square_31626735797977757933.jpg"
+    }
+  ],
+  "escudos": {
+    "GIJON RUGBY CLUB": "@f/images/afiliacion_clubs/71/square_78747576656468373463.jpg",
+    "Ciudad de Oviedo Rugby": "@f/images/afiliacion_clubs/11/square_38396e6b6b6b77673431.jpg",
+    "TERRITORIAL FEMENINO VRAC QUESOS ENTREPINARES": "@f/images/afiliacion_clubs/23/square_323530623173766c706f.jpg",
+    "LEGIO CARS LEON RUGBY CLUB FEM": "@f/images/afiliacion_clubs/89/square_373137306b36346b6967.jpg",
+    "C.R. EL SALVADOR EMERGING": "@f/images/afiliacion_clubs/21/square_726b7461656e75357439.jpg",
+    "CLUB DEPORTIVO UNIVERSIDAD DE SALAMANCA": "@f/images/afiliacion_clubs/135/square_7834667963796a387338.jpg",
+    "CORMORAN RUGBY CLUB DE SANTANDER": "@f/images/afiliacion_clubs/122/square_31626735797977757933.jpg"
+  },
+  "temporada_anotadores": [
+    {
+      "id": 1061239,
+      "nombre": "NURIA MARIA RODRIGUEZ ARCONADA",
+      "equipo": "GIJON RUGBY CLUB",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1053414,
+      "nombre": "LAURA MENENDEZ DOS SANTOS",
+      "equipo": "GIJON RUGBY CLUB",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1053762,
+      "nombre": "LAURA FERNANDEZ MASSANA",
+      "equipo": "GIJON RUGBY CLUB",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1025856,
+      "nombre": "DANIELA HAYA CEBALLOS",
+      "equipo": "CORMORAN RUGBY CLUB DE SANTANDER",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1032332,
+      "nombre": "CANDELA CRESPO",
+      "equipo": "CORMORAN RUGBY CLUB DE SANTANDER",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1053012,
+      "nombre": "CLARA PRIVE CHAVARRI",
+      "equipo": "CORMORAN RUGBY CLUB DE SANTANDER",
+      "pj": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1050018,
+      "nombre": "LUCIA PEREZ GONZALEZ",
+      "equipo": "CORMORAN RUGBY CLUB DE SANTANDER",
+      "pj": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1049928,
+      "nombre": "VALERIA GUTIERREZ ARBOLEYA",
+      "equipo": "Ciudad de Oviedo Rugby",
+      "pj": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1044844,
+      "nombre": "MARIA MORENCIA LOPEZ",
+      "equipo": "Ciudad de Oviedo Rugby",
+      "pj": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1030648,
+      "nombre": "MARIA CRISTINA CAVA REGLERO",
+      "equipo": "CORMORAN RUGBY CLUB DE SANTANDER",
+      "pj": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "temporada_ensayadores": [
+    {
+      "id": 1061239,
+      "nombre": "NURIA MARIA RODRIGUEZ ARCONADA",
+      "equipo": "GIJON RUGBY CLUB",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1053414,
+      "nombre": "LAURA MENENDEZ DOS SANTOS",
+      "equipo": "GIJON RUGBY CLUB",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1053762,
+      "nombre": "LAURA FERNANDEZ MASSANA",
+      "equipo": "GIJON RUGBY CLUB",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1025856,
+      "nombre": "DANIELA HAYA CEBALLOS",
+      "equipo": "CORMORAN RUGBY CLUB DE SANTANDER",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1032332,
+      "nombre": "CANDELA CRESPO",
+      "equipo": "CORMORAN RUGBY CLUB DE SANTANDER",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "proxima_jornada": {
+    "numero": 2,
+    "partidos": [
+      {
+        "id": 18390,
+        "jornada": 2,
+        "fecha": null,
+        "local": "Ciudad de Oviedo Rugby",
+        "visitante": "LEGIO CARS LEON RUGBY CLUB FEM",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "·",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      },
+      {
+        "id": 18392,
+        "jornada": 2,
+        "fecha": null,
+        "local": "TERRITORIAL FEMENINO VRAC QUESOS ENTREPINARES",
+        "visitante": "GIJON RUGBY CLUB",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "·",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      },
+      {
+        "id": 18391,
+        "jornada": 2,
+        "fecha": "2026-10-18T11:30:00",
+        "local": "CORMORAN RUGBY CLUB DE SANTANDER",
+        "visitante": "CLUB DEPORTIVO UNIVERSIDAD DE SALAMANCA",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "·",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      }
+    ]
+  },
+  "datos_jornada": [
+    {
+      "clave": "datos",
+      "tipo": "dato",
+      "peso": 57,
+      "numero": "36",
+      "unidad": "puntos de diferencia",
+      "titular": "Exhibición de Gijón",
+      "contexto": "Gijón 46-10 Cormorán. Paliza ante Cormorán.",
+      "equipo": "GIJON RUGBY CLUB"
+    }
+  ]
+}

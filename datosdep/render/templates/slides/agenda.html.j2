@@ -1,0 +1,37 @@
+{# Agenda del finde: un día (o parte) por imagen, partidos agrupados por liga.
+   Estilos locales con las variables del tema. La etiqueta y el pie de la base
+   (que nombran una sola competición) los sustituye datosdep.agenda en el HTML. #}
+<style>
+.ag-tit { position: relative; }
+.ag-pag { position: absolute; right: 0; bottom: 6px; font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-size: 44px; color: var(--gris); }
+.ag-cuerpo { margin-top: 34px; flex: 1; display: flex; flex-direction: column; }
+.ag-liga { font-weight: 700; font-size: 26px; letter-spacing: 3px; text-transform: uppercase; color: var(--acento-txt);
+  height: 66px; display: flex; align-items: flex-end; padding-bottom: 10px; border-bottom: 2px solid var(--texto); }
+.ag-liga small { font-weight: 500; color: var(--gris); letter-spacing: 1px; margin-left: 10px; text-transform: none; font-size: 24px; }
+.ag-fila { display: grid; grid-template-columns: 112px 1fr 44px 1fr; align-items: center; height: var(--ag-h, 66px); border-bottom: 1px solid var(--linea); }
+.f-historia .ag-liga { height: 72px; }
+.ag-hora { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 600; font-size: 40px; font-variant-numeric: tabular-nums; }
+.ag-eq { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.ag-eq.loc { justify-content: flex-end; text-align: right; }
+.ag-eq span { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 500; font-size: 36px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-top: 4px; }
+.ag-vs { text-align: center; font-size: 24px; color: var(--gris); }
+.crest.ag-c { width: 44px; height: 44px; padding: 4px; }
+</style>
+<div class="titulo ag-tit">
+  <h1>{{ s.titulo }}</h1>
+  <div class="bajada">{{ s.subtitulo or "Agenda del finde" }}</div>
+  {% if s.pagina %}<span class="ag-pag">{{ s.pagina }}</span>{% endif %}
+</div>
+<div class="ag-cuerpo" style="--ag-h: {{ s.alto_fila }}px">
+{% for b in s.bloques %}
+  <div class="ag-liga">{{ b.liga }}{% if b.continua %}<small>(sigue)</small>{% endif %}</div>
+  {% for p in b.partidos %}
+  <div class="ag-fila">
+    <div class="ag-hora">{{ p.hora }}</div>
+    <div class="ag-eq loc"><span>{{ p.local|corto }}</span>{% if p.local|escudo %}<img class="crest ag-c" src="{{ p.local|escudo }}">{% endif %}</div>
+    <div class="ag-vs">vs</div>
+    <div class="ag-eq">{% if p.visitante|escudo %}<img class="crest ag-c" src="{{ p.visitante|escudo }}">{% endif %}<span>{{ p.visitante|corto }}</span></div>
+  </div>
+  {% endfor %}
+{% endfor %}
+</div>

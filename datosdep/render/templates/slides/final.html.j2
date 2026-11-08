@@ -1,0 +1,18 @@
+{% set p = s.partido %}
+{% set gl = p.puntos_local > p.puntos_visitante %}
+{% set gv = p.puntos_visitante > p.puntos_local %}
+<div class="cuerpo final">
+  <div class="final-tag">Final</div>
+  <div class="final-sub">{{ s.cuando|sep }}</div>
+  <div class="final-equipos">
+    <div class="final-eq {{ 'pierde' if gv }}">{% if p.local|escudo %}<img class="crest" src="{{ p.local|escudo }}">{% endif %}<div class="nom">{{ p.local|corto }}</div></div>
+    <div class="final-eq {{ 'pierde' if gl }}">{% if p.visitante|escudo %}<img class="crest" src="{{ p.visitante|escudo }}">{% endif %}<div class="nom">{{ p.visitante|corto }}</div></div>
+  </div>
+  <div class="final-marcador"><span class="{{ 'g' if gl else 'p' if gv }}">{{ p.puntos_local }}</span><span class="sep"></span><span class="{{ 'g' if gv else 'p' if gl }}">{{ p.puntos_visitante }}</span></div>
+  {% if s.anot_local or s.anot_visitante %}
+  <div class="final-anot">
+    <ul>{% for a in s.anot_local %}<li><b>{{ (a.nombre|jugador).completo }}</b><span>{{ a.puntos }} pts{% if a.detalle %}, {{ a.detalle|sep }}{% endif %}</span></li>{% endfor %}</ul>
+    <ul class="vis">{% for a in s.anot_visitante %}<li><b>{{ (a.nombre|jugador).completo }}</b><span>{{ a.puntos }} pts{% if a.detalle %}, {{ a.detalle|sep }}{% endif %}</span></li>{% endfor %}</ul>
+  </div>
+  {% elif s.nota %}<div class="final-nota">{{ s.nota }}</div>{% endif %}
+</div>

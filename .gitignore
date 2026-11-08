@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+.cache/
+out/
+.pytest_cache/
+.claude/
+video/node_modules/
+video/out/
+video/public/props.json
+video/public/sfx/
+video/public/fuentes/
+video/.bundles/
+video/.instalando
+estado_lab/
+
+# Privado: va cifrado dentro de paquete.bin
+estado/
+assets/logo_original.png
+config/marca.yaml
+config/publicacion.yaml
+data/fotos/
+NOTAS_PRIVADAS.md
+.paquete_clave
+video/.agents/

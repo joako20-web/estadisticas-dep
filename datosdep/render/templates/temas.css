@@ -1,0 +1,171 @@
+/* =====================================================================
+   TEMAS. Cada uno es una dirección de arte comprometida, no un cambio de
+   color: tipografía (titular / datos / texto), forma y un único recurso
+   propio. La maqueta común está en post.html.j2.
+   --aj-*: altura de mayúscula a la que se normaliza cada tipografía, para
+   que fuentes más anchas o más altas no rompan la maqueta.
+   ===================================================================== */
+
+/* ---------- NOCHE: la marca. Negro cálido, un solo acento lima, condensada
+   deportiva. Plano, sin brillos: el lima solo marca al que gana o lidera. ---------- */
+:root, .tema-noche {
+  --fondo: #0f100d; --panel: #181a15; --linea: #2d2f28; --texto: #f2f1ea; --gris: #9d9e95; --apagado: #5f6058;
+  --acento: #cdf545; --acento-txt: #cdf545; --sobre-acento: #0f100d;
+  --f-tit: Teko, sans-serif; --f-num: Teko, sans-serif; --f-txt: "Barlow Condensed", sans-serif;
+  --aj-tit: 0.64; --aj-num: 0.64; --aj-txt: 0.70;
+  --textura: none; --radio: 0px; --filete: 2px;
+}
+.tema-noche h1 { font-weight: 600; }
+.tema-noche .t-portada .mvp-apellido { color: var(--texto); }
+
+/* ---------- BRUTAL: impresión industrial suiza. Papel mate, tinta negra, un
+   único rojo de señalización; mayúsculas compactas alineadas a la izquierda y
+   filetes gruesos que estructuran (no decoran). Esquinas a 90°. ---------- */
+.tema-brutal {
+  --fondo: #eeece5; --panel: #e3e1d9; --linea: #c9c6bc; --texto: #121212; --gris: #55534d; --apagado: #a29f95;
+  --acento: #d9361e; --acento-txt: #d9361e; --sobre-acento: #ffffff;
+  --f-tit: Anton, sans-serif; --f-num: Anton, sans-serif; --f-txt: "Archivo Narrow", sans-serif;
+  --aj-tit: 0.66; --aj-num: 0.6; --aj-txt: 0.62;
+  --textura: none; --radio: 0px; --filete: 4px;
+  --z-titulo: #d9361e; --z-ascenso: #2357d6; --z-promocion: #d99a00; --z-descenso: #121212; --z-fase: #6c4bd1;
+}
+.tema-brutal .meta-comp { text-transform: uppercase; letter-spacing: .06em; font-size: 26px; }
+.tema-brutal .titulo { border-top: 14px solid var(--texto); padding-top: 22px; margin-top: 54px; }
+.tema-brutal h1 { text-transform: uppercase; font-weight: 400; font-size: 124px; line-height: .88; letter-spacing: -0.005em; }
+.tema-brutal .bajada { color: var(--texto); font-weight: 600; }
+.tema-brutal .t-portada .texto { border-top: 14px solid var(--texto); padding-top: 26px; }
+.tema-brutal .t-portada h1 span { color: var(--acento); }
+.tema-brutal .t-portada .mvp { border-top: 4px solid var(--texto); }
+.tema-brutal .t-portada .mvp-apellido, .tema-brutal .dato-titular, .tema-brutal .final-tag { text-transform: uppercase; font-weight: 400; }
+.tema-brutal .equipo .nom, .tema-brutal .jug-nom, .tema-brutal td.eq, .tema-brutal .cnom, .tema-brutal .geq,
+.tema-brutal .previa .cruce, .tema-brutal .blq-eq, .tema-brutal .ficha .n2, .tema-brutal .grupo-tit, .tema-brutal .blq-tit { text-transform: uppercase; font-weight: 400; }
+.tema-brutal .marcador, .tema-brutal .pts, .tema-brutal .final-marcador, .tema-brutal .dato-num { font-weight: 400; }
+.tema-brutal .marcador .g, .tema-brutal .fila:first-child .pts, .tema-brutal .fila:first-child .pos { color: var(--acento); }
+.tema-brutal .marcador .sep { background: var(--texto); }
+.tema-brutal .fila:first-child { border-bottom: 6px solid var(--texto); }
+.tema-brutal th { color: var(--texto); text-transform: uppercase; letter-spacing: .06em; border-bottom: 6px solid var(--texto); }
+.tema-brutal td.pt { font-weight: 400; }
+.tema-brutal .ficha .dorsal { border-radius: 0; }
+.tema-brutal .crest { box-shadow: 0 0 0 2px var(--texto); }
+.tema-brutal .escudo img { box-shadow: 0 0 0 3px var(--texto); }
+.tema-brutal .campo { background: repeating-linear-gradient(180deg, transparent 0 calc(20% - 2px), var(--texto) calc(20% - 2px) 20%); }
+.tema-brutal .cuadro .cruce { border-left-color: var(--texto); }
+.tema-brutal .cuadro .cruce.final { border-left-color: var(--acento); }
+
+/* ---------- PRENSA: la página de deportes del periódico. Titulares en serif
+   (el género lo justifica), cifras y texto en grotesca estrecha, un solo filete
+   de cabecero y el rojo reservado al número clave. ---------- */
+.tema-prensa {
+  --fondo: #f8f6f0; --panel: #efebe1; --linea: #dcd6c8; --texto: #161616; --gris: #5a5750; --apagado: #a8a398;
+  --acento: #b8121f; --acento-txt: #b8121f; --sobre-acento: #ffffff;
+  --f-tit: "Playfair Display", serif; --f-num: "IBM Plex Sans Condensed", sans-serif; --f-txt: "IBM Plex Sans Condensed", sans-serif;
+  --aj-tit: 0.56; --aj-num: 0.54; --aj-txt: 0.6;
+  --textura: none; --radio: 0px; --filete: 1px;
+  --z-titulo: #161616; --z-ascenso: #1f5fbf; --z-promocion: #c98a00; --z-descenso: #b8121f; --z-fase: #6b4fbf;
+}
+.tema-prensa .cabecera { border-bottom: 4px solid var(--texto); padding-bottom: 20px; }
+.tema-prensa .meta-comp { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 900; font-size: 34px; }
+.tema-prensa .escudo img { box-shadow: 0 0 0 1px var(--linea); }
+.tema-prensa h1 { font-weight: 900; font-size: 116px; line-height: .98; letter-spacing: -0.015em; }
+.tema-prensa .titulo { margin-top: 50px; }
+.tema-prensa .t-portada .mvp-apellido { text-transform: none; font-weight: 900; font-size: 140px; }
+.tema-prensa .t-portada .mvp-pila { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-size: 46px; }
+.tema-prensa .marcador .g { color: var(--texto); }
+.tema-prensa .marcador .sep { background: var(--acento); height: 4px; }
+.tema-prensa .equipo .nom, .tema-prensa .jug-nom { font-weight: 600; }
+.tema-prensa .fila:first-child .pts, .tema-prensa .fila:first-child .pos { color: var(--acento); }
+.tema-prensa .pos { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 900; }
+.tema-prensa th { color: var(--texto); text-transform: uppercase; letter-spacing: .08em; font-size: 22px; border-bottom: 2px solid var(--texto); }
+.tema-prensa .grupo-tit, .tema-prensa .blq-tit { font-weight: 900; border-bottom-width: 2px; }
+.tema-prensa .dato-num, .tema-prensa .final-tag { font-weight: 900; }
+.tema-prensa .dato-titular, .tema-prensa .campeon b { font-weight: 900; }
+.tema-prensa .previa .hora { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 900; }
+.tema-prensa .crest { box-shadow: 0 0 0 1px var(--linea); }
+
+/* ---------- TELE: grafismo de retransmisión. Marino plano, amarillo de rótulo,
+   condensada de marcador. Un solo recurso propio: la placa del titular con
+   corte diagonal y la placa del líder; el resto, bandas planas. ---------- */
+.tema-tele {
+  --fondo: #0c1631; --panel: #14224a; --linea: #24365f; --texto: #ffffff; --gris: #aab7d6; --apagado: #66769c;
+  --acento: #f5c518; --acento-txt: #f5c518; --sobre-acento: #0c1631;
+  --f-tit: Oswald, sans-serif; --f-num: Oswald, sans-serif; --f-txt: "Roboto Condensed", sans-serif;
+  --aj-tit: 0.66; --aj-num: 0.6; --aj-txt: 0.6;
+  --textura: none; --radio: 0px; --filete: 2px;
+}
+.tema-tele .cabecera { margin: -60px -72px 0; padding: 26px 72px 24px; background: #ffffff; }
+.tema-tele .f-historia .cabecera { margin-top: -220px; padding-top: 186px; }
+.tema-tele .meta-comp { color: #0c1631; text-transform: uppercase; letter-spacing: .05em; }
+.tema-tele .meta-sub { color: #4a5677; }
+.tema-tele .escudo img { box-shadow: 0 0 0 3px #0c1631; }
+.tema-tele .escudo .flechas { color: #0c1631; }
+.tema-tele .titulo { margin-top: 56px; }
+.tema-tele h1 { display: inline-block; background: var(--acento); color: var(--sobre-acento); text-transform: uppercase; font-weight: 700;
+  font-size: 92px; line-height: 1; padding: 18px 76px 14px 72px; margin-left: -72px; clip-path: polygon(0 0, 100% 0, calc(100% - 44px) 100%, 0 100%); }
+.tema-tele .bajada { text-transform: uppercase; letter-spacing: .08em; font-weight: 700; font-size: 26px; margin-top: 22px; }
+.tema-tele .t-portada h1 { background: none; color: var(--texto); clip-path: none; padding: 0; margin-left: 0; display: block; }
+.tema-tele .t-portada h1 span { color: var(--acento); }
+.tema-tele .t-portada .bajada { text-transform: none; letter-spacing: 0; font-size: 34px; font-weight: 500; }
+.tema-tele .t-portada .mvp-apellido, .tema-tele .equipo .nom, .tema-tele .jug-nom, .tema-tele td.eq, .tema-tele .cnom,
+.tema-tele .previa .cruce, .tema-tele .ficha .n2, .tema-tele .geq, .tema-tele .blq-eq, .tema-tele .dato-titular { text-transform: uppercase; }
+.tema-tele .partido + .partido, .tema-tele .previa + .previa { border-top: 0; }
+.tema-tele .partido, .tema-tele .previa { background: var(--panel); margin-bottom: 12px; padding: 0 28px; }
+.tema-tele .previa { padding: 18px 28px; }
+.tema-tele .partido { height: 132px; }
+.tema-tele .equipo .nom { font-size: 44px; }
+.tema-tele .marcador { font-size: 90px; }
+.tema-tele .marcador .sep { background: var(--acento); }
+.tema-tele .fila:first-child { background: var(--acento); color: var(--sobre-acento); padding: 0 28px; margin: 0 -28px 10px; border: 0; }
+.tema-tele .fila:first-child .pts, .tema-tele .fila:first-child .pos { color: var(--sobre-acento); }
+.tema-tele .fila:first-child .jug-eq, .tema-tele .fila:first-child .det, .tema-tele .fila:first-child .pts small { color: rgba(12,22,49,.72); }
+.tema-tele th { background: var(--acento); color: var(--sobre-acento); border: 0; padding: 12px 0 10px; text-transform: uppercase; }
+.tema-tele th.p { padding-left: 12px; }
+.tema-tele tbody tr:nth-child(odd) td { background: rgba(255,255,255,.04); }
+.tema-tele tbody tr + tr td { border-top: 0; }
+.tema-tele .ficha .dorsal { border-radius: 0; background: var(--acento); color: var(--sobre-acento); }
+.tema-tele .ficha.top .dorsal { background: #ffffff; }
+.tema-tele .grupo-tit, .tema-tele .blq-tit { background: var(--acento); color: var(--sobre-acento); border: 0; padding: 10px 16px 8px; text-transform: uppercase; }
+.tema-tele .final-tag { display: inline-block; background: var(--acento); color: var(--sobre-acento); padding: 14px 40px 10px; text-transform: uppercase; align-self: flex-start; }
+
+/* ---------- RETRO: programa de partido de los años 70. Papel, dos tintas
+   (verde botella y rojo teja), slab gruesa para titulares, retícula de puntos
+   de imprenta muy leve. Sin sombras falsas ni franjas. ---------- */
+.tema-retro {
+  --fondo: #f2ebdb; --panel: #e8dfca; --linea: #cfc3a7; --texto: #173d2c; --gris: #55685c; --apagado: #a9a58f;
+  --acento: #cf4a1f; --acento-txt: #c2421a; --sobre-acento: #f6efe0;
+  --f-tit: "Alfa Slab One", serif; --f-num: "Barlow Condensed", sans-serif; --f-txt: "Barlow Condensed", sans-serif;
+  --aj-tit: 0.5; --aj-num: 0.68; --aj-txt: 0.7;
+  --textura: radial-gradient(rgba(23,61,44,.07) 1.4px, transparent 1.5px) 0 0 / 16px 16px;
+  --radio: 0px; --filete: 3px;
+  --z-titulo: #cf4a1f; --z-ascenso: #2a7f78; --z-promocion: #d9a032; --z-descenso: #173d2c; --z-fase: #7a5aa8;
+}
+.tema-retro .meta-comp { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 400; font-size: 30px; }
+.tema-retro .escudo img { box-shadow: 0 0 0 3px var(--texto); }
+.tema-retro .titulo { border-top: 3px solid var(--texto); padding-top: 28px; margin-top: 50px; }
+.tema-retro h1 { font-weight: 400; font-size: 96px; line-height: 1; }
+.tema-retro .t-portada .texto { border-top: 3px solid var(--texto); padding-top: 34px; }
+.tema-retro .t-portada h1 span { color: var(--acento); }
+.tema-retro .t-portada .mvp-apellido, .tema-retro .dato-titular, .tema-retro .grupo-tit, .tema-retro .blq-tit,
+.tema-retro .final-tag, .tema-retro .campeon b, .tema-retro .dato-num { font-weight: 400; }
+.tema-retro .t-portada .mvp-apellido { text-transform: none; font-size: 120px; }
+.tema-retro .t-portada .mvp-pila { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 50px; }
+.tema-retro .equipo .nom, .tema-retro .jug-nom, .tema-retro td.eq, .tema-retro .cnom, .tema-retro .geq,
+.tema-retro .previa .cruce, .tema-retro .ficha .n2 { font-weight: 700; }
+.tema-retro .marcador, .tema-retro .pts, .tema-retro td.pt, .tema-retro .gpt, .tema-retro .previa .hora, .tema-retro .final-marcador {
+  font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 400; }
+.tema-retro .marcador { font-size: 92px; }
+.tema-retro .marcador .g, .tema-retro .fila:first-child .pts, .tema-retro .fila:first-child .pos { color: var(--acento); }
+.tema-retro .marcador .sep { background: var(--texto); }
+.tema-retro .previa .hora { color: var(--acento-txt); }
+.tema-retro th { color: var(--texto); text-transform: uppercase; letter-spacing: .06em; border-bottom: 3px solid var(--texto); }
+.tema-retro .ficha .dorsal { background: var(--texto); color: var(--fondo); font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 400; }
+.tema-retro .ficha.top .dorsal { background: var(--acento); color: var(--sobre-acento); }
+.tema-retro .crest { box-shadow: 0 0 0 2px var(--texto); }
+
+/* Número de jornada de portada: cada tipografía necesita su propia escala
+   (la normalización de mayúscula deja más pequeñas las cifras de algunas) */
+.tema-prensa .t-portada h1 span { font-size: 4.6em; line-height: .82; }
+.tema-tele .t-portada h1 span { font-size: 4.8em; }
+.tema-retro .t-portada h1 span { font-size: 4.6em; line-height: .8; }
+.tema-retro .previa { padding: 12px 0; }
+.tema-retro .previa .cruce + .cruce { margin-top: 2px; }
+.tema-retro .previa .lugar { margin-top: 6px; }

@@ -1,0 +1,162 @@
+# Ids de el origen A (origen-a.invalid). Se revisan una vez por temporada:
+# en competicion.php?id_competicion=<comp>&id_temp=<temporada> el desplegable
+# "grupo" muestra el id de cada fase/grupo.
+temporada: "2026/27"
+
+# Foto de portada sacada de las fichas de el origen A (a menudo selfis o fotos de
+# carnet). Desactivado: la portada es gráfica salvo que se añada una foto a mano.
+foto_portada_auto: false
+
+# categoria: nacional | copa | regional (organiza el menú de Telegram).
+# semanal: false -> no entra en el envío de los lunes (solo bajo pedido).
+# Para buscar ligas regionales nuevas en el origen A: python -m datosdep descubrir
+
+# Zonas de la clasificación (franja de color + leyenda). Posiciones negativas
+# cuentan desde el final (-1 = último). Colores: titulo, ascenso, promocion, descenso, fase.
+# Formato 2026/27 según el origen A (revisar cada temporada).
+
+competiciones:
+  dh_masc:
+    categoria: nacional
+    nombre: "División de Honor"
+    corto: "DH"
+    grupos: {unico: 1296}
+    xv_ideal: true
+    directo: true   # resultado final al momento el fin de semana
+    playoff: [[1, 4], [2, 3]]  # semifinales "si acabara hoy"
+    zonas:
+      - {desde: 1, hasta: 4, color: titulo, texto: "Semifinales por el título"}
+      - {desde: -1, hasta: -1, color: descenso, texto: "Desciende a DH Élite"}
+  dh_fem:
+    categoria: nacional
+    nombre: "Liga Iberdrola"
+    corto: "DH Fem"
+    grupos: {unico: 1329}
+    xv_ideal: true
+    directo: true   # resultado final al momento el fin de semana
+    playoff: [[1, 4], [2, 3]]
+    zonas:
+      - {desde: 1, hasta: 4, color: titulo, texto: "Play-off por el título"}
+      - {desde: -2, hasta: -2, color: promocion, texto: "Promoción ante el 2º de DHB"}
+      - {desde: -1, hasta: -1, color: descenso, texto: "Desciende a DHB Femenina"}
+  dh_elite:
+    categoria: nacional
+    nombre: "División de Honor Élite"
+    corto: "DH Élite"
+    grupos: {unico: 1297}
+    xv_ideal: true
+    directo: true   # resultado final al momento el fin de semana
+    playoff: [[1, 4], [2, 3]]
+    zonas:
+      - {desde: 1, hasta: 4, color: titulo, texto: "Play-off por el ascenso a DH"}
+      - {desde: -1, hasta: -1, color: descenso, texto: "Desciende a DH B"}
+  dhb_masc:
+    categoria: nacional
+    nombre: "División de Honor B"
+    corto: "DH B"
+    grupos: {A: 1300, B: 1301, C: 1302, D: 1303}
+    xv_ideal: true
+    directo: false
+    zonas:
+      - {desde: 1, hasta: 3, color: ascenso, texto: "Grupo de ascenso a DH Élite"}
+      - {desde: -1, hasta: -1, color: descenso, texto: "Desciende"}
+    zonas_grupo:  # el grupo D solo clasifica al primero (el origen A habla de 5 descensos, pero el grupo tiene 5 equipos: sin confirmar)
+      D:
+        - {desde: 1, hasta: 1, color: ascenso, texto: "Grupo de ascenso a DH Élite"}
+  dhb_fem:
+    categoria: nacional
+    nombre: "División de Honor B Femenina"
+    corto: "DH B Fem"
+    grupos: {unico: 1330}
+    xv_ideal: true
+    directo: false
+    zonas:
+      - {desde: 1, hasta: 4, color: titulo, texto: "Grupo A de la 2ª fase (título)"}
+      - {desde: 5, hasta: 8, color: fase, texto: "Grupo B de la 2ª fase"}
+  copa:
+    categoria: copa
+    nombre: "Copa del Rey"
+    corto: "Copa"
+    grupos: {A: 1322, B: 1323, C: 1324, D: 1325, E: 1326, F: 1327}
+    xv_ideal: false
+    directo: true
+    torneo: true  # fase de grupos + cuadro final: resumen conjunto en vez de un carrusel por grupo
+    exentos: ["SILICIUS ALCOBENDAS RUGBY", "VRAC QUESOS ENTREPINARES"]  # directos a cuartos
+    zonas:
+      - {desde: 1, hasta: 1, color: titulo, texto: "Pasa a cuartos de final"}
+
+  # ---- Regionales (solo Castilla y León y Galicia publican en el origen A) ----
+  cyl_masc:
+    categoria: regional
+    region: "Castilla y León"
+    nombre: "Senior Masculino Castilla y León"
+    corto: "CyL"
+    grupos: {unico: 1306}
+    xv_ideal: true
+    directo: false
+    semanal: false
+  cyl_fem:
+    categoria: regional
+    region: "Castilla y León"
+    nombre: "Femenina Castilla y León"
+    corto: "CyL Fem"
+    grupos: {unico: 1308}
+    xv_ideal: true
+    directo: false
+    semanal: false
+  m23:
+    categoria: nacional
+    nombre: "Competición Nacional M23"
+    corto: "M23"
+    grupos: {A: 1304, B: 1305}
+    xv_ideal: true
+    directo: false
+    semanal: false
+
+  # ---- Regionales en OrigenB (fuente: origen_b; grupo = "<temporada>/<competicion>") ----
+  # Los ids salen de la URL del iframe de cada región: .../public/calendar/67/54/combined/
+  mad_1r:
+    {categoria: regional, region: "Madrid", fuente: origen_b, base: "$ORIGEN_B_URL/es",
+     nombre: "1ª Regional Madrid", corto: "1ª Reg. Madrid", grupos: {unico: "67/1"}, xv_ideal: true, directo: false, semanal: false}
+  mad_2r:
+    {categoria: regional, region: "Madrid", fuente: origen_b, base: "$ORIGEN_B_URL/es",
+     nombre: "2ª Regional Madrid", corto: "2ª Reg. Madrid", grupos: {A: "67/2", B: "67/12"}, xv_ideal: true, directo: false, semanal: false}
+  mad_3r:
+    {categoria: regional, region: "Madrid", fuente: origen_b, base: "$ORIGEN_B_URL/es",
+     nombre: "3ª Regional Madrid", corto: "3ª Reg. Madrid", grupos: {A: "67/3", B: "67/13"}, xv_ideal: true, directo: false, semanal: false}
+  mad_fem1:
+    {categoria: regional, region: "Madrid", fuente: origen_b, base: "$ORIGEN_B_URL/es",
+     nombre: "Femenina 1ª División Madrid", corto: "Fem 1ª Madrid", grupos: {unico: "67/54"}, xv_ideal: true, directo: false, semanal: false}
+  mad_fem2:
+    {categoria: regional, region: "Madrid", fuente: origen_b, base: "$ORIGEN_B_URL/es",
+     nombre: "Femenina 2ª División Madrid", corto: "Fem 2ª Madrid", grupos: {unico: "67/55"}, xv_ideal: true, directo: false, semanal: false}
+  cat_dhc:
+    {categoria: regional, region: "Cataluña", fuente: origen_b, base: "$ORIGEN_B_CAT_URL/rugbycat/web/es",
+     nombre: "Divisió d'Honor Catalana", corto: "DHCat", grupos: {unico: "56/115"}, xv_ideal: true, directo: false, semanal: false}
+  cat_1a:
+    {categoria: regional, region: "Cataluña", fuente: origen_b, base: "$ORIGEN_B_CAT_URL/rugbycat/web/es",
+     nombre: "1a Catalana", corto: "1a Cat", grupos: {unico: "56/36"}, xv_ideal: true, directo: false, semanal: false}
+  cat_2a:
+    {categoria: regional, region: "Cataluña", fuente: origen_b, base: "$ORIGEN_B_CAT_URL/rugbycat/web/es",
+     nombre: "2a Catalana", corto: "2a Cat", grupos: {unico: "56/37"}, xv_ideal: true, directo: false, semanal: false}
+  cat_3a:
+    {categoria: regional, region: "Cataluña", fuente: origen_b, base: "$ORIGEN_B_CAT_URL/rugbycat/web/es",
+     nombre: "3a Catalana", corto: "3a Cat", grupos: {A: "56/165", B: "56/166"}, xv_ideal: true, directo: false, semanal: false}
+  cat_dhc_fem:
+    {categoria: regional, region: "Cataluña", fuente: origen_b, base: "$ORIGEN_B_CAT_URL/rugbycat/web/es",
+     nombre: "Divisió d'Honor Catalana Femenina", corto: "DHCat Fem", grupos: {unico: "57/112"}, xv_ideal: true, directo: false, semanal: false}
+  cat_copa_fem:
+    {categoria: regional, region: "Cataluña", fuente: origen_b, base: "$ORIGEN_B_CAT_URL/rugbycat/web/es",
+     nombre: "Copa Catalana Femenina", corto: "Copa Cat Fem", grupos: {A: "57/102", B: "57/103"}, xv_ideal: true, directo: false, semanal: false}
+  and_1t:
+    {categoria: regional, region: "Andalucía", fuente: origen_b, base: "$ORIGEN_B_AND_URL/es",
+     nombre: "1ª Territorial Andalucía", corto: "1ª And.", grupos: {unico: "35/85"}, xv_ideal: true, directo: false, semanal: false}
+  eus_s1:
+    {categoria: regional, region: "Euskadi", fuente: origen_b, base: "$ORIGEN_B_EUS_URL/es",
+     nombre: "Euskal Liga Senior 1", corto: "Euskal 1", grupos: {unico: "31/1"}, xv_ideal: true, directo: false, semanal: false}
+  eus_s2:
+    {categoria: regional, region: "Euskadi", fuente: origen_b, base: "$ORIGEN_B_EUS_URL/es",
+     nombre: "Euskal Liga Senior 2", corto: "Euskal 2", grupos: {unico: "31/2"}, xv_ideal: true, directo: false, semanal: false}
+  eus_fem:
+    {categoria: regional, region: "Euskadi", fuente: origen_b, base: "$ORIGEN_B_EUS_URL/es",
+     nombre: "Euskal Liga Senior Femenina", corto: "Euskal Fem", grupos: {unico: "31/60"}, xv_ideal: true, directo: false, semanal: false}

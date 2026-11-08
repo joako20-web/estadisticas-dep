@@ -1,0 +1,66 @@
+# Nombre oficial en el origen A -> nombre corto y abreviatura para las imágenes.
+# Si un equipo no aparece aquí se acorta automáticamente (ver render/nombres.py).
+"VRAC QUESOS ENTREPINARES": {corto: "VRAC Entrepinares", abr: "VRAC"}
+"RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES": {corto: "Aparejadores Burgos", abr: "BUR"}
+"VULCANIZADOS ALVAREZ EL SALVADOR": {corto: "El Salvador", abr: "SAL"}
+"AMPO ORDIZIA": {corto: "Ordizia", abr: "ORD"}
+"SILICIUS ALCOBENDAS RUGBY": {corto: "Alcobendas", abr: "ALC"}
+"UNIO ESPORTIVA SANTBOIANA": {corto: "Santboiana", abr: "UES"}
+"HUESITOS LA VILA RUGBY CLUB": {corto: "La Vila", abr: "VIL"}
+"INVERSUS LICEO FRANCES": {corto: "Liceo Francés", abr: "LIC"}
+"COMPLUTENSE CISNEROS": {corto: "Cisneros", abr: "CIS"}
+"CRC POZUELO RUGBY": {corto: "CRC Pozuelo", abr: "CRC"}
+"C.R. EL SALVADOR DHB": {corto: "El Salvador B", abr: "SAL"}
+"CRAT SENIOR MASCULINO": {corto: "CRAT Coruña", abr: "CRA"}
+"A.D. INGENIEROS INDUSTRIALES LAS ROZAS": {corto: "Ingenieros", abr: "ING"}
+"RECOLETAS SALUD FENIX": {corto: "Fénix", abr: "FEN"}
+"STEELPHALT GETXO RUGBY": {corto: "Getxo", abr: "GET"}
+"CAJASOL REAL CIENCIAS SEVILLA": {corto: "Ciencias Sevilla", abr: "CIE"}
+"TORREALDAY GERNIKA RUGBY TALDEA": {corto: "Gernika", abr: "GER"}
+"HERNANI CRE": {corto: "Hernani", abr: "HER"}
+"BARÇA RUGBI": {corto: "Barça", abr: "FCB"}
+"VALENCIA RC": {corto: "Valencia", abr: "VAL"}
+"CLUB DE RUGBY SANT CUGAT": {corto: "Sant Cugat", abr: "SCU"}
+"C.P. LES ABELLES": {corto: "Les Abelles", abr: "ABE"}
+"INVERSUS LICEO FRANCÉS": {corto: "Liceo Francés", abr: "LIC"}
+"RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES": {corto: "Aparejadores Burgos", abr: "BUR"}
+# Castilla y León
+"TERRITORIAL MASCULINO VRAC QUESOS ENTREPINARES": {corto: "VRAC Territorial", abr: "VRA"}
+"SILICIUS-PALENCIA RUGBY CLUB": {corto: "Palencia", abr: "PAL"}
+"JANOCARGO ARROYO LIONS": {corto: "Arroyo Lions", abr: "ARL"}
+'C.R. EL SALVADOR "C"': {corto: "El Salvador C", abr: "SAL"}
+"ASCENSORES ZENER RUGBY ARROYO": {corto: "Rugby Arroyo", abr: "ARR"}
+"APAREJADORES RUGBY ARANDA A.R.A.": {corto: "Aranda", abr: "ARA"}
+"LEGIO CARS LEON RUGBY CLUB": {corto: "León", abr: "LEO"}
+"SALAMANCA RUGBY CLUB": {corto: "Salamanca", abr: "SAL"}
+"GIJON RUGBY CLUB": {corto: "Gijón", abr: "GIJ"}
+"Ciudad de Oviedo Rugby": {corto: "Ciudad de Oviedo", abr: "OVI"}
+"TERRITORIAL FEMENINO VRAC QUESOS ENTREPINARES": {corto: "VRAC Territorial", abr: "VRA"}
+"LEGIO CARS LEON RUGBY CLUB FEM": {corto: "León", abr: "LEO"}
+"C.R. EL SALVADOR EMERGING": {corto: "El Salvador Emerging", abr: "SAL"}
+"CLUB DEPORTIVO UNIVERSIDAD DE SALAMANCA": {corto: "Universidad Salamanca", abr: "USA"}
+"CORMORAN RUGBY CLUB DE SANTANDER": {corto: "Cormorán", abr: "COR"}
+# Equipos conjunto (varios clubes): `clubes` = nombre de cada club tal y como aparece
+# en alguna liga que leemos; se dibujan sus escudos juntos en el mismo círculo.
+"SAN ISIDRO - CISNEROS": {corto: "San Isidro / Cisneros", abr: "SIC", clubes: ["SAN ISIDRO", "CISNEROS"]}
+"SOLISS ÁGUILAS DE TOLEDO - ALCORCÓN": {corto: "Toledo / Alcorcón", abr: "TOA", clubes: ["TOLEDO", "ALCORCON"]}
+"XV HORTALEZA - GORILAS - LICEO FRANCÉS": {corto: "Hortaleza / Gorilas / Liceo", abr: "HGL", clubes: ["HORTALEZA", "GORILAS", "LICEO FRANCES"]}
+# Madrid
+"CRC - FILO- GEO": {corto: "CRC / Filo / Geológicas", abr: "CFG", clubes: ["CRC POZUELO", "FILO", "GEOLOGICAS"]}
+"CRC - FILO FARMA - GEO": {corto: "CRC / Filo / Geológicas", abr: "CFG", clubes: ["CRC POZUELO", "FILO", "GEOLOGICAS"]}
+"TORRELODONES - VILLALBA": {corto: "Torrelodones / Villalba", abr: "TOV", clubes: ["TORRELODONES", "INDUSTRIALES VILLALBA"]}
+"TORRELODONES - ARQUITECTURA": {corto: "Torrelodones / Arquitectura", abr: "TOA", clubes: ["TORRELODONES", "ARQUITECTURA"]}
+"MAD BOADILLA - RUGBY ALCORCÓN": {corto: "Boadilla / Alcorcón", abr: "BOA", clubes: ["BOADILLA", "RUGBY ALCORCON"]}
+"QUIJOTE - GORILAS": {corto: "Quijote / Gorilas", abr: "QUG"}
+# Cataluña (siglas: CEU, BUC, CRUC... se buscan por el nombre del club)
+"AVRFCB/CEU": {corto: "Barça / CEU", abr: "FCB", clubes: ["BARCA RUGBY", "CEU"]}
+"CEU/AVRFCB": {corto: "CEU / Barça", abr: "CEU", clubes: ["CEU", "BARCA RUGBY"]}
+"CORNE/CRUC": {corto: "Cornellà / CRUC", abr: "COR", clubes: ["CORNELLA", "CRUC"]}
+"CR TARRAGONA/SEL VNG": {corto: "Tarragona / Vilanova", abr: "TAR", clubes: ["CR TARRAGONA", "SEL VILANOVA"]}
+"BUC/SENGLARS/BADALONA": {corto: "BUC / Senglars / Badalona", abr: "BUC", clubes: ["BUC", "SENGLARS"]}
+"COCOS/LIONS BARBARIANS": {corto: "Cocos / Lions", abr: "COC"}
+"COQUES RSV/INEF BCN": {corto: "Coques / INEF BCN", abr: "COQ"}
+"TÀRREGA/INEF LLEIDA B": {corto: "Tàrrega / INEF Lleida", abr: "TAR"}
+"RCLH/RCS/SHARC": {corto: "L'Hospitalet / RCS / Sharc", abr: "RCL"}
+"RCS/CRT B": {corto: "RCS / CRT B", abr: "RCS"}
+"OLÍMPICO - OSAS": {corto: "Olímpico / Osos del Pardo", abr: "OLO", clubes: ["OLIMPICO DE POZUELO RUGBY", "OSOS DEL PARDO"]}

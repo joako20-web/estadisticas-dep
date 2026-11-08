@@ -1,0 +1,30 @@
+<div class="titulo">
+  <h1>{{ 'Fase de grupos' if s.exentos else 'Todos los grupos' }}</h1>
+  <div class="bajada">Clasificación de cada grupo</div>
+</div>
+<div class="cuerpo">
+  <div class="grupos {{ 'compacto' if s.compacto }}">
+  {% for g in s.grupos %}
+    <div class="grupo">
+      <div class="grupo-tit">{{ g.nombre }}</div>
+      {% for f in g.filas %}
+      <div class="gfila {{ 'z-' ~ f.zona if f.zona }}">
+        <span class="gpos">{{ f.posicion }}</span>
+        {% if f.equipo|escudo %}<img class="crest g" src="{{ f.equipo|escudo }}">{% endif %}
+        <span class="geq">{{ f.equipo|corto }}</span>
+        <span class="gpj">{{ f.pj }}</span>
+        <span class="gpt">{{ f.pt }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+  </div>
+  {% if s.exentos %}
+  <div class="exentos">Directos a cuartos:
+    {% for e in s.exentos %}{% if e|escudo %}<img class="crest x" src="{{ e|escudo }}">{% endif %}<b>{{ e|corto }}</b>{% if not loop.last %} y {% endif %}{% endfor %}
+  </div>
+  {% endif %}
+  {% if s.leyenda %}
+  <div class="leyenda">{% for z in s.leyenda %}<span class="ley z-{{ z.color }}"><i></i>{{ z.texto }}</span>{% endfor %}</div>
+  {% endif %}
+</div>

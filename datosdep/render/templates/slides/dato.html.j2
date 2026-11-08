@@ -1,0 +1,8 @@
+<div class="cuerpo dato">
+  {% if s.equipo|escudo %}<img class="crest m" src="{{ s.equipo|escudo }}">{% endif %}
+  <div class="dato-kicker">El dato de la jornada</div>
+  <div class="dato-num {{ 'largo' if s.numero|length > 3 }}">{{ s.numero }}</div>
+  <div class="dato-unidad">{{ s.unidad }}</div>
+  <div class="dato-titular">{{ s.titular }}</div>
+  <div class="dato-contexto">{{ s.contexto }}</div>
+</div>

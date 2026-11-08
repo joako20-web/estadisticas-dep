@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>{{ fuentes|safe }}</style>
+<style>
+/* =====================================================================
+   BASE COMÚN. Reglas de diseño (ver temas.css para cada dirección de arte):
+   - Alineado a la izquierda sobre una rejilla de 72 px de margen; nada de
+     centrar por defecto (solo marcadores, que son simétricos por naturaleza).
+   - Escala tipográfica marcada: titular 112, dato 56-60, texto 30, nota 26.
+   - Separadores: un filete fino ENTRE filas, nunca arriba y abajo de cada una.
+   - Sin píldoras, sin marca de agua, sin brillos. El acento se usa solo para
+     lo que importa (ganador, líder, número clave).
+   - Números en cifras tabulares para que las columnas cuadren.
+   - Un único radio por tema (--radio); 0 en los temas rectos.
+   ===================================================================== */
+:root {
+  --z-titulo: #cdf545; --z-ascenso: #5aa9f0; --z-promocion: #f0a830; --z-descenso: #ef5b4b; --z-fase: #a98be8;
+  --radio: 0px; --filete: 2px; --k-tit: 1;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111; font-family: var(--f-txt); font-size-adjust: cap-height var(--aj-txt); color: var(--texto);
+  font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased; }
+.slide {
+  width: 1080px; height: 1350px; position: relative; overflow: hidden;
+  background: var(--textura), var(--fondo);
+  padding: 60px 72px 72px; display: flex; flex-direction: column; margin-bottom: 20px;
+}
+.num, .marcador, .pts, td, .hora, .cpts, .gpt, .dato-num, .final-marcador, .pos, .blq-val { font-variant-numeric: tabular-nums lining-nums; }
+
+/* ---------- Cabecera: quién y cuándo, a la izquierda; escudo a la derecha ---------- */
+.cabecera { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; min-height: 88px; }
+.meta { display: flex; flex-direction: column; gap: 4px; }
+.meta-comp { font-weight: 700; font-size: 30px; line-height: 1.1; color: var(--texto); }
+.meta-sub { font-weight: 500; font-size: 26px; line-height: 1.1; color: var(--gris); }
+.escudo { display: flex; align-items: center; gap: 14px; }
+.escudo img { width: 88px; height: 88px; border-radius: 50%; background: #fff; }
+.escudo .flechas { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 600; font-size: 40px; line-height: 1; color: var(--gris); }
+
+/* ---------- Titular ---------- */
+.titulo { margin-top: 64px; position: relative; z-index: 2; }
+h1 { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 600;
+  font-size: calc(112px * var(--k-tit)); line-height: .86; letter-spacing: -0.01em; text-wrap: balance; }
+.bajada { font-size: 30px; line-height: 1.25; color: var(--gris); margin-top: 16px; font-weight: 500; }
+.cuerpo { flex: 1; margin-top: 44px; display: flex; flex-direction: column; position: relative; z-index: 2; min-height: 0; }
+
+/* ---------- Portada: el mensaje arriba (tercio superior), el protagonista abajo ---------- */
+.t-portada .texto { margin-top: 72px; position: relative; z-index: 2; }
+.t-portada h1 { font-size: calc(132px * var(--k-tit)); line-height: .9; letter-spacing: -0.01em; }
+.t-portada h1 span { display: block; font-variant-numeric: lining-nums tabular-nums; color: var(--acento-txt); font-size: 4.2em; line-height: .76; letter-spacing: -0.04em; margin: 6px 0 0 -0.04em; }
+.t-portada .bajada { font-size: 36px; color: var(--texto); margin-top: 26px; max-width: 760px; }
+.t-portada .foto { position: absolute; inset: 0; background-size: cover; background-position: center 18%; }
+.t-portada .foto::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(14,15,12,.55) 0%, rgba(14,15,12,.1) 30%, rgba(14,15,12,.2) 50%, var(--fondo) 82%); }
+.t-portada .credito { font-size: 28px; color: var(--gris); margin-top: 22px; }
+.t-portada .credito b { color: var(--acento-txt); font-weight: 600; }
+.t-portada .mvp { margin-top: auto; position: relative; z-index: 2; display: grid; grid-template-columns: 150px 1fr; gap: 0 36px;
+  padding-top: 40px; border-top: var(--filete) solid var(--linea); align-items: start; }
+.t-portada .mvp .crest.m { grid-row: span 5; width: 150px; height: 150px; padding: 16px; margin: 0; }
+.t-portada .mvp-motivo { font-weight: 600; font-size: 28px; color: var(--acento-txt); }
+.t-portada .mvp-pila { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 400; font-size: 64px; line-height: .95; margin-top: 18px; color: var(--gris); }
+.t-portada .mvp-apellido { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 700; font-size: 168px; line-height: .82; text-transform: uppercase; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; min-width: 0; padding-bottom: .06em; }
+.t-portada .mvp-datos { margin-top: 22px; font-size: 30px; font-weight: 600; color: var(--texto); }
+.t-portada .mvp-pos { color: var(--gris); font-weight: 500; }
+.t-portada .mvp-linea { margin-top: 6px; font-size: 30px; color: var(--gris); }
+.t-portada .mvp-linea b { color: var(--texto); }
+
+/* ---------- El dato de la jornada: número enorme a la izquierda, frase debajo ---------- */
+.dato { justify-content: center; margin-top: 0; padding-bottom: 40px; }
+.dato .crest.m { width: 120px; height: 120px; padding: 13px; margin: 0 0 30px; }
+.dato-kicker { font-weight: 600; font-size: 30px; color: var(--acento-txt); }
+.dato-num { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 700; font-size: 460px; line-height: .8; color: var(--acento-txt); margin: 30px 0 0 -14px; letter-spacing: -0.03em; }
+.dato-num.largo { font-size: 330px; }
+.dato-unidad { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 500; font-size: 60px; line-height: .95; margin-top: 18px; }
+.dato-titular { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 600; font-size: 84px; line-height: .95; margin-top: 64px; max-width: 900px; text-wrap: balance; }
+.dato-contexto { font-size: 32px; color: var(--gris); margin-top: 20px; line-height: 1.3; max-width: 860px; }
+
+/* ---------- Resultado final (historia) ---------- */
+.final { justify-content: center; }
+.final-tag { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 700; font-size: 96px; line-height: .9; color: var(--acento-txt); }
+.final-sub { font-size: 30px; color: var(--gris); margin-top: 14px; }
+.final-equipos { display: grid; grid-template-columns: 1fr 1fr; width: 100%; margin-top: 80px; gap: 40px; }
+.final-eq { display: flex; flex-direction: column; align-items: flex-start; }
+.final-eq + .final-eq { align-items: flex-end; text-align: right; }
+.final-eq img { width: 200px; height: 200px; padding: 20px; }
+.final-eq .nom { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 60px; line-height: .9; margin-top: 26px; }
+.final-eq.pierde .nom { color: var(--apagado); }
+.final-marcador { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 280px; line-height: .8; margin-top: 40px; }
+.final-marcador span:first-child { text-align: left; }
+.final-marcador span:last-child { text-align: right; }
+.final-marcador .g { color: var(--acento-txt); }
+.final-marcador .p { color: var(--apagado); }
+.final-marcador .sep { width: 56px; height: 10px; background: var(--linea); }
+.final-anot { display: grid; grid-template-columns: 1fr 1fr; width: 100%; margin-top: 70px; gap: 40px; padding-top: 34px; border-top: var(--filete) solid var(--linea); }
+.final-anot ul { list-style: none; }
+.final-anot li { margin-bottom: 20px; }
+.final-anot li b { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 40px; display: block; line-height: .95; }
+.final-anot li span { color: var(--gris); font-size: 28px; }
+.final-anot .vis { text-align: right; }
+.final-nota { font-size: 30px; color: var(--gris); margin-top: 50px; }
+
+/* ---------- Todos los grupos ---------- */
+.grupos { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 48px; }
+.grupo-tit { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 600; font-size: 42px; line-height: 1; color: var(--texto); padding-bottom: 10px; border-bottom: var(--filete) solid var(--texto); }
+.gfila { display: grid; grid-template-columns: 30px 46px 1fr 34px 46px; align-items: center; gap: 8px; height: 62px; position: relative; }
+.gfila + .gfila { border-top: 1px solid var(--linea); }
+.compacto .gfila { height: 44px; grid-template-columns: 26px 36px 1fr 30px 40px; }
+.gpos { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-size: 30px; color: var(--gris); }
+.geq { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 500; font-size: 32px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.compacto .geq { font-size: 27px; }
+.gpj { font-size: 26px; color: var(--gris); text-align: right; }
+.gpt { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 36px; color: var(--texto); text-align: right; }
+.gfila[class*="z-"]::before { content: ""; position: absolute; left: -14px; top: 8px; bottom: 8px; width: 5px; background: var(--zc); }
+.crest.g { width: 42px; height: 42px; padding: 4px; }
+.compacto .crest.g { width: 34px; height: 34px; padding: 3px; }
+.exentos { margin-top: 30px; font-size: 28px; color: var(--gris); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.exentos b { color: var(--texto); font-weight: 600; }
+
+/* ---------- Cuadro de eliminatorias ---------- */
+.cuadro { flex: 1; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 40px; }
+.ronda { display: flex; flex-direction: column; min-width: 0; }
+.ronda-tit { font-weight: 600; font-size: 28px; color: var(--gris); padding-bottom: 12px; border-bottom: var(--filete) solid var(--linea); }
+.cruces { flex: 1; display: flex; flex-direction: column; justify-content: space-around; }
+.cuadro .cruce { border-left: 6px solid var(--linea); padding: 4px 0 4px 18px; position: relative; }
+.ronda:not(:last-child) .cruce::after { content: ""; position: absolute; right: -40px; top: 50%; width: 30px; border-top: var(--filete) solid var(--linea); }
+.cuadro .cruce.final { border-left-color: var(--acento); }
+.ceq { display: flex; align-items: center; gap: 12px; height: 84px; }
+.ceq + .ceq { border-top: 1px solid var(--linea); }
+.cnom { flex: 1; font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 40px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cpts { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 48px; }
+.cpos { font-size: 26px; color: var(--gris); width: 34px; }
+.ceq.gana .cnom, .ceq.gana .cpts { color: var(--acento-txt); }
+.ceq.pierde { color: var(--apagado); }
+.campeon { display: flex; align-items: center; gap: 26px; margin-bottom: 40px; }
+.campeon img { width: 120px; height: 120px; padding: 12px; }
+.campeon span { display: block; font-size: 28px; font-weight: 600; color: var(--acento-txt); }
+.campeon b { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 700; font-size: 92px; line-height: .9; }
+
+/* ---------- Formato historia 9:16: márgenes para la interfaz de la red ---------- */
+.f-historia { height: 1920px; padding: 220px 72px 230px; }
+.f-historia .cuerpo { justify-content: flex-start; margin-top: 90px; }
+.f-historia .cuerpo.dato { justify-content: center; margin-top: 0; }
+.f-historia .cuerpo.final { justify-content: center; margin-top: 0; }
+.f-historia .flechas { display: none; }
+.f-historia .campo { flex: none; height: 1180px; }
+
+/* ---------- Escudos de los clubes: círculo blanco (vienen con fondo blanco) ---------- */
+.crest { border-radius: 50%; background: #fff; object-fit: contain; flex: none; }
+/* El margen de seguridad va dentro de la imagen (render._seguro_en_circulo): sin relleno */
+.crest { padding: 0 !important; }
+.crest.r { width: 72px; height: 72px; padding: 7px; }
+.crest.c { width: 50px; height: 50px; padding: 5px; vertical-align: middle; margin-right: 16px; position: relative; top: -3px; }
+.crest.a { width: 60px; height: 60px; padding: 6px; }
+.crest.p { width: 44px; height: 44px; padding: 4px; vertical-align: middle; margin-right: 14px; position: relative; top: -4px; }
+.crest.x { width: 32px; height: 32px; padding: 3px; vertical-align: middle; margin-right: 8px; }
+.crest.m { width: 150px; height: 150px; padding: 16px; display: block; }
+
+/* ---------- Resultados ---------- */
+.partido { display: grid; grid-template-columns: 1fr 250px 1fr; align-items: center; height: 148px; }
+.partido + .partido { border-top: 1px solid var(--linea); }
+.equipo { min-width: 0; display: flex; align-items: center; gap: 20px; }
+.equipo.vis { justify-content: flex-end; text-align: right; }
+.equipo .nom { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 500; font-size: 50px; line-height: .92; }
+.equipo.pierde .nom { color: var(--apagado); }
+.marcador { display: grid; grid-template-columns: 1fr 34px 1fr; align-items: center; font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 100px; line-height: 1; }
+.marcador span:first-child { text-align: right; }
+.marcador span:last-child { text-align: left; }
+.marcador .g { color: var(--acento-txt); }
+.marcador .p { color: var(--apagado); }
+.marcador .sep { justify-self: center; width: 18px; height: 6px; background: var(--linea); }
+.pend { grid-column: 1 / -1; text-align: center; font-size: 30px; color: var(--gris); font-family: var(--f-txt); font-size-adjust: cap-height var(--aj-txt); font-weight: 500; }
+.nota-pie { font-size: 26px; color: var(--gris); margin-top: auto; }
+
+/* ---------- Rankings: el líder se distingue por escala y color, no por una tarjeta ---------- */
+.fila { display: grid; grid-template-columns: 52px 60px 1fr auto; align-items: center; gap: 0 22px; height: 106px; }
+.fila + .fila { border-top: 1px solid var(--linea); }
+.fila:first-child { height: 176px; grid-template-columns: 52px 84px 1fr auto; border-bottom: var(--filete) solid var(--texto); margin-bottom: 4px; }
+.fila:first-child + .fila { border-top: 0; }
+.fila:first-child .crest.a { width: 84px; height: 84px; padding: 8px; }
+.fila:first-child .jug-nom { font-size: 56px; }
+.fila:first-child .pts { font-size: 120px; color: var(--acento-txt); }
+.fila:first-child .pos { color: var(--acento-txt); }
+.pos { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 44px; color: var(--apagado); }
+.jug-nom { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 46px; line-height: .95; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.jug-eq { font-size: 27px; color: var(--gris); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pts { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 80px; text-align: right; line-height: .85; }
+.pts small { font-family: var(--f-txt); font-size-adjust: cap-height var(--aj-txt); font-size: 26px; font-weight: 600; margin-left: 8px; color: var(--gris); letter-spacing: 0; }
+.det { font-size: 26px; text-align: right; color: var(--gris); margin-top: 6px; white-space: nowrap; }
+
+/* ---------- XV ideal ---------- */
+.campo { flex: 1; margin: 0 -8px; position: relative; display: flex; flex-direction: column; justify-content: space-evenly;
+  background: repeating-linear-gradient(180deg, transparent 0 calc(20% - 1px), var(--linea) calc(20% - 1px) 20%); }
+.campo .fila-xv { display: flex; justify-content: center; gap: 26px; }
+.ficha { width: 196px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.ficha .dorsal { width: 56px; height: 56px; border-radius: 50%; background: var(--texto); color: var(--fondo); display: grid; place-items: center; font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 36px; }
+.ficha.top .dorsal { background: var(--acento); color: var(--sobre-acento); }
+.ficha .n1 { font-size: 24px; color: var(--gris); margin-top: 8px; white-space: nowrap; line-height: 1.1; }
+.ficha .n2 { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 34px; line-height: .95; white-space: nowrap; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
+.ficha .n2.l { font-size: 30px; }
+.ficha .n2.xl { font-size: 27px; }
+.ficha .eq { display: flex; align-items: center; margin-top: 6px; font-size: 24px; font-weight: 700; letter-spacing: .04em; color: var(--gris); }
+
+/* ---------- Clasificación ---------- */
+table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+th { font-weight: 600; font-size: 25px; color: var(--gris); text-align: center; padding-bottom: 12px; border-bottom: var(--filete) solid var(--texto); }
+th.izq, td.izq { text-align: left; }
+td { height: 76px; text-align: center; font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 500; font-size: 42px; }
+tbody tr + tr td { border-top: 1px solid var(--linea); }
+td.eq { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+td.pt { color: var(--texto); font-weight: 700; font-size: 48px; }
+td.p, th.p { color: var(--gris); width: 58px; text-align: left; }
+td.n, th.n { width: 56px; }
+td.n { color: var(--gris); }
+td.dif, th.dif { width: 92px; }
+td.pt, th.pt { width: 88px; text-align: right; }
+td.p { position: relative; }
+tr[class^="z-"] td.p::before { content: ""; position: absolute; left: -16px; top: 12px; bottom: 12px; width: 6px; background: var(--zc); }
+tr[class^="z-"] td.p { color: var(--texto); }
+.z-titulo { --zc: var(--z-titulo); } .z-ascenso { --zc: var(--z-ascenso); }
+.z-promocion { --zc: var(--z-promocion); } .z-descenso { --zc: var(--z-descenso); } .z-fase { --zc: var(--z-fase); }
+.leyenda { display: flex; flex-wrap: wrap; gap: 10px 40px; margin-top: 28px; }
+.ley { display: inline-flex; align-items: center; gap: 14px; font-size: 26px; font-weight: 500; color: var(--gris); }
+.ley i { width: 6px; height: 28px; background: var(--zc); }
+
+/* ---------- Próxima jornada ---------- */
+.previa { display: grid; grid-template-columns: 180px 1fr; align-items: center; padding: 20px 0; gap: 30px; }
+.previa + .previa { border-top: 1px solid var(--linea); }
+.previa .dia { font-weight: 600; font-size: 26px; color: var(--gris); }
+.previa .hora { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 70px; line-height: .9; margin-top: 4px; }
+.previa .cruce { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 500; font-size: 46px; line-height: 1.02; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.previa > div { min-width: 0; }
+.previa .cruce + .cruce { margin-top: 6px; }
+.previa .lugar { font-size: 26px; color: var(--gris); margin-top: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.descansa { font-size: 28px; color: var(--gris); margin-top: 22px; letter-spacing: .06em; text-transform: uppercase; }
+{% include "temas.css" %}
+</style>
+</head>
+<body class="tema-{{ tema }}">
+{% for s in slides %}
+<section class="slide t-{{ s.tipo }} f-{{ formato }}">
+  {% if s.tipo == "portada" and s.foto %}<div class="foto" style="background-image:url('{{ s.foto }}')"></div>{% endif %}
+  <div class="cabecera">
+    <div class="meta">
+      <div class="meta-comp">{{ comp.nombre }}</div>
+      <div class="meta-sub">{% if comp.sub %}{{ comp.sub }}{% else %}{% if comp.grupo %}{{ comp.grupo }}, {% endif %}{% if s.tipo == "previa" and s.numero %}jornada {{ s.numero }}{% elif jornada and s.tipo != "portada" %}jornada {{ jornada }}{% else %}temporada {{ temporada }}{% endif %}{% endif %}</div>
+    </div>
+    <div class="escudo">
+      {% if not loop.last %}<div class="flechas">»</div>{% endif %}
+      <img src="{{ logo }}" alt="">
+    </div>
+  </div>
+  {% include "slides/" ~ s.tipo ~ ".html.j2" %}
+</section>
+{% endfor %}
+</body>
+</html>

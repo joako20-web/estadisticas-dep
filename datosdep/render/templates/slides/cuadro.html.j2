@@ -1,0 +1,32 @@
+<div class="titulo">
+  <h1>{{ 'Si acabara hoy' if s.provisional else 'Cuadro final' }}</h1>
+  <div class="bajada">{{ 'Así quedarían las semifinales según la clasificación' if s.provisional else 'Eliminatorias por el título' }}</div>
+</div>
+<div class="cuerpo">
+  {% if s.campeon %}
+  <div class="campeon">{% if s.campeon|escudo %}<img class="crest" src="{{ s.campeon|escudo }}">{% endif %}<div><span>Campeón</span><b>{{ s.campeon|corto }}</b></div></div>
+  {% endif %}
+  <div class="cuadro">
+  {% for r in s.rondas %}
+    <div class="ronda">
+      <div class="ronda-tit">{{ r.nombre }}</div>
+      <div class="cruces">
+      {% for c in r.cruces %}
+        <div class="cruce {{ 'final' if loop.length == 1 and loop.last and r.nombre == 'Final' }}">
+          {% for lado in ['local', 'visitante'] %}
+          {% set eq = c[lado] %}
+          {% set pts = c.pl if lado == 'local' else c.pv %}
+          <div class="ceq {{ 'gana' if c.gana and c.gana == eq }} {{ 'pierde' if c.gana and c.gana != eq }}">
+            {% if c.pos %}<span class="cpos">{{ c.pos[loop.index0] }}º</span>{% endif %}
+            {% if eq and eq|escudo %}<img class="crest x" src="{{ eq|escudo }}">{% endif %}
+            <span class="cnom">{{ eq|corto if eq else 'Por decidir' }}</span>
+            <span class="cpts">{{ pts if pts is not none else '' }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>

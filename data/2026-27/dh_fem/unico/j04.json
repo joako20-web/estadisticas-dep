@@ -1,0 +1,1020 @@
+{
+  "competicion": "dh_fem",
+  "nombre": "Liga Iberdrola",
+  "grupo": "unico",
+  "temporada": "2026/27",
+  "jornada": 4,
+  "partidos": [
+    {
+      "id": 18954,
+      "jornada": 4,
+      "fecha": "2026-11-07T16:00:00",
+      "local": "OLIMPICO DE POZUELO CR",
+      "visitante": "GETXO RUGBY",
+      "puntos_local": 20,
+      "puntos_visitante": 57,
+      "campo": "Ciudad deportiva Valle de las Cañas",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18952,
+      "jornada": 4,
+      "fecha": "2026-11-08T11:00:00",
+      "local": "CLUB DE RUGBY SANT CUGAT",
+      "visitante": "RIALTA CRAT CORUÑA.",
+      "puntos_local": null,
+      "puntos_visitante": null,
+      "campo": "ZEM LA GUINARDERA",
+      "estado": "pendiente",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18955,
+      "jornada": 4,
+      "fecha": "2026-11-08T13:00:00",
+      "local": "BARCELONA UNIVERSITARI CLUB",
+      "visitante": "CAJASOL SEVILLA COCOS",
+      "puntos_local": 12,
+      "puntos_visitante": 31,
+      "campo": "Camp Municipal de Rugby de La Foixarda",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18953,
+      "jornada": 4,
+      "fecha": "2026-11-08T14:15:00",
+      "local": "SILICIUS RUGBY MAJADAHONDA",
+      "visitante": "TURIA",
+      "puntos_local": 48,
+      "puntos_visitante": 12,
+      "campo": "Parque Deportivo Puerta de Hierro",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "descansa": [],
+  "partidos_temporada": [
+    {
+      "id": 17826,
+      "jornada": 1,
+      "fecha": "2026-10-10T16:00:00",
+      "local": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "visitante": "SILICIUS RUGBY MAJADAHONDA",
+      "puntos_local": 34,
+      "puntos_visitante": 22,
+      "campo": "CAMPO DE RUGBY DE PEPE ROJO 1",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17823,
+      "jornada": 1,
+      "fecha": "2026-10-11T11:00:00",
+      "local": "RIALTA CRAT CORUÑA.",
+      "visitante": "TURIA",
+      "puntos_local": 41,
+      "puntos_visitante": 24,
+      "campo": "ESTADIO UNIVERSITARIO UNIVERSIDAD DE CORUÑA - CAMPUS ELVIÑA",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 17825,
+      "jornada": 1,
+      "fecha": "2026-10-11T11:00:00",
+      "local": "GETXO RUGBY",
+      "visitante": "CLUB DE RUGBY SANT CUGAT",
+      "puntos_local": 57,
+      "puntos_visitante": 5,
+      "campo": "Fadura",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18942,
+      "jornada": 1,
+      "fecha": "2026-10-24T15:00:00",
+      "local": "OLIMPICO DE POZUELO CR",
+      "visitante": "BARCELONA UNIVERSITARI CLUB",
+      "puntos_local": 22,
+      "puntos_visitante": 22,
+      "campo": "Ciudad deportiva Valle de las Cañas",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18947,
+      "jornada": 2,
+      "fecha": "2026-10-17T14:15:00",
+      "local": "RIALTA CRAT CORUÑA.",
+      "visitante": "CAJASOL SEVILLA COCOS",
+      "puntos_local": 22,
+      "puntos_visitante": 17,
+      "campo": "ESTADIO UNIVERSITARIO UNIVERSIDAD DE CORUÑA - CAMPUS ELVIÑA",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18946,
+      "jornada": 2,
+      "fecha": "2026-10-18T12:00:00",
+      "local": "CLUB DE RUGBY SANT CUGAT",
+      "visitante": "BARCELONA UNIVERSITARI CLUB",
+      "puntos_local": 38,
+      "puntos_visitante": 6,
+      "campo": "ZEM LA GUINARDERA",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18944,
+      "jornada": 2,
+      "fecha": "2026-10-18T13:00:00",
+      "local": "GETXO RUGBY",
+      "visitante": "SILICIUS RUGBY MAJADAHONDA",
+      "puntos_local": 18,
+      "puntos_visitante": 15,
+      "campo": "Fadura",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18945,
+      "jornada": 2,
+      "fecha": "2026-10-25T10:30:00",
+      "local": "TURIA",
+      "visitante": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "puntos_local": 0,
+      "puntos_visitante": 62,
+      "campo": "Polideportivo Quatre Carreres",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18949,
+      "jornada": 3,
+      "fecha": "2026-10-31T14:00:00",
+      "local": "TURIA",
+      "visitante": "OLIMPICO DE POZUELO CR",
+      "puntos_local": 47,
+      "puntos_visitante": 15,
+      "campo": "Polideportivo Quatre Carreres",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18948,
+      "jornada": 3,
+      "fecha": "2026-11-01T13:00:00",
+      "local": "SILICIUS RUGBY MAJADAHONDA",
+      "visitante": "RIALTA CRAT CORUÑA.",
+      "puntos_local": 49,
+      "puntos_visitante": 10,
+      "campo": "Parque Deportivo Puerta de Hierro",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18950,
+      "jornada": 3,
+      "fecha": "2026-11-01T13:00:00",
+      "local": "GETXO RUGBY",
+      "visitante": "CAJASOL SEVILLA COCOS",
+      "puntos_local": 20,
+      "puntos_visitante": 12,
+      "campo": "Fadura",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18951,
+      "jornada": 3,
+      "fecha": "2026-11-01T14:00:00",
+      "local": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "visitante": "BARCELONA UNIVERSITARI CLUB",
+      "puntos_local": 92,
+      "puntos_visitante": 0,
+      "campo": "CAMPO DE RUGBY DE PEPE ROJO 1",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18954,
+      "jornada": 4,
+      "fecha": "2026-11-07T16:00:00",
+      "local": "OLIMPICO DE POZUELO CR",
+      "visitante": "GETXO RUGBY",
+      "puntos_local": 20,
+      "puntos_visitante": 57,
+      "campo": "Ciudad deportiva Valle de las Cañas",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18955,
+      "jornada": 4,
+      "fecha": "2026-11-08T13:00:00",
+      "local": "BARCELONA UNIVERSITARI CLUB",
+      "visitante": "CAJASOL SEVILLA COCOS",
+      "puntos_local": 12,
+      "puntos_visitante": 31,
+      "campo": "Camp Municipal de Rugby de La Foixarda",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    },
+    {
+      "id": 18953,
+      "jornada": 4,
+      "fecha": "2026-11-08T14:15:00",
+      "local": "SILICIUS RUGBY MAJADAHONDA",
+      "visitante": "TURIA",
+      "puntos_local": 48,
+      "puntos_visitante": 12,
+      "campo": "Parque Deportivo Puerta de Hierro",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "actas_pendientes": [
+    18954,
+    18955,
+    18953
+  ],
+  "anotadores": [],
+  "ensayadores": [],
+  "xv_ideal": null,
+  "foto_portada": null,
+  "candidatos_xv": [],
+  "clasificacion": [
+    {
+      "posicion": 1,
+      "equipo": "GETXO RUGBY",
+      "racha": [
+        "G",
+        "G",
+        "G",
+        "G"
+      ],
+      "pt": 18,
+      "pj": 4,
+      "pg": 4,
+      "pe": 0,
+      "pp": 0,
+      "tf": 152,
+      "tc": 52,
+      "dt": 100,
+      "ef": 21,
+      "ec": 9,
+      "de": 12,
+      "bo": 2,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/63/square_396e3565726975667168.jpg"
+    },
+    {
+      "posicion": 2,
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "racha": [
+        "G",
+        "G",
+        "G"
+      ],
+      "pt": 14,
+      "pj": 3,
+      "pg": 3,
+      "pe": 0,
+      "pp": 0,
+      "tf": 188,
+      "tc": 22,
+      "dt": 166,
+      "ef": 30,
+      "ec": 4,
+      "de": 26,
+      "bo": 2,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/21/square_726b7461656e75357439.jpg"
+    },
+    {
+      "posicion": 3,
+      "equipo": "SILICIUS RUGBY MAJADAHONDA",
+      "racha": [
+        "P",
+        "P",
+        "G",
+        "G"
+      ],
+      "pt": 11,
+      "pj": 4,
+      "pg": 2,
+      "pe": 0,
+      "pp": 2,
+      "tf": 134,
+      "tc": 74,
+      "dt": 60,
+      "ef": 23,
+      "ec": 12,
+      "de": 11,
+      "bo": 2,
+      "bd": 1,
+      "escudo": "@f/images/afiliacion_clubs/44/square_6b6d69766e726e396168.jpg"
+    },
+    {
+      "posicion": 4,
+      "equipo": "RIALTA CRAT CORUÑA.",
+      "racha": [
+        "G",
+        "G",
+        "P",
+        "P"
+      ],
+      "pt": 9,
+      "pj": 3,
+      "pg": 2,
+      "pe": 0,
+      "pp": 1,
+      "tf": 73,
+      "tc": 90,
+      "dt": -17,
+      "ef": 12,
+      "ec": 14,
+      "de": -2,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/64/square_336b6473333976396a36.jpg"
+    },
+    {
+      "posicion": 5,
+      "equipo": "CAJASOL SEVILLA COCOS",
+      "racha": [
+        "P",
+        "P",
+        "G"
+      ],
+      "pt": 6,
+      "pj": 3,
+      "pg": 1,
+      "pe": 0,
+      "pp": 2,
+      "tf": 60,
+      "tc": 54,
+      "dt": 6,
+      "ef": 9,
+      "ec": 8,
+      "de": 1,
+      "bo": 1,
+      "bd": 1,
+      "escudo": "@f/images/afiliacion_clubs/82/square_78687075693378306e6c.jpg"
+    },
+    {
+      "posicion": 6,
+      "equipo": "CLUB DE RUGBY SANT CUGAT",
+      "racha": [
+        "P",
+        "G",
+        "G"
+      ],
+      "pt": 5,
+      "pj": 2,
+      "pg": 1,
+      "pe": 0,
+      "pp": 1,
+      "tf": 43,
+      "tc": 63,
+      "dt": -20,
+      "ef": 7,
+      "ec": 8,
+      "de": -1,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/48/square_666e3068736979736476.jpg"
+    },
+    {
+      "posicion": 7,
+      "equipo": "TURIA",
+      "racha": [
+        "P",
+        "P",
+        "G",
+        "P"
+      ],
+      "pt": 5,
+      "pj": 4,
+      "pg": 1,
+      "pe": 0,
+      "pp": 3,
+      "tf": 83,
+      "tc": 166,
+      "dt": -83,
+      "ef": 12,
+      "ec": 27,
+      "de": -15,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/67/square_3563376f66686f673933.jpg"
+    },
+    {
+      "posicion": 8,
+      "equipo": "OLIMPICO DE POZUELO CR",
+      "racha": [
+        "E",
+        "P",
+        "P"
+      ],
+      "pt": 2,
+      "pj": 3,
+      "pg": 0,
+      "pe": 1,
+      "pp": 2,
+      "tf": 57,
+      "tc": 126,
+      "dt": -69,
+      "ef": 9,
+      "ec": 19,
+      "de": -10,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/70/square_6f3974716c7130626f39.jpg"
+    },
+    {
+      "posicion": 9,
+      "equipo": "BARCELONA UNIVERSITARI CLUB",
+      "racha": [
+        "E",
+        "P",
+        "P",
+        "P"
+      ],
+      "pt": 2,
+      "pj": 4,
+      "pg": 0,
+      "pe": 1,
+      "pp": 3,
+      "tf": 40,
+      "tc": 183,
+      "dt": -143,
+      "ef": 6,
+      "ec": 28,
+      "de": -22,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/15/square_63613932323033633064643364653661.jpg"
+    }
+  ],
+  "escudos": {
+    "GETXO RUGBY": "@f/images/afiliacion_clubs/63/square_396e3565726975667168.jpg",
+    "VULCANIZADOS ALVAREZ EL SALVADOR": "@f/images/afiliacion_clubs/21/square_726b7461656e75357439.jpg",
+    "SILICIUS RUGBY MAJADAHONDA": "@f/images/afiliacion_clubs/44/square_6b6d69766e726e396168.jpg",
+    "RIALTA CRAT CORUÑA.": "@f/images/afiliacion_clubs/64/square_336b6473333976396a36.jpg",
+    "CAJASOL SEVILLA COCOS": "@f/images/afiliacion_clubs/82/square_78687075693378306e6c.jpg",
+    "CLUB DE RUGBY SANT CUGAT": "@f/images/afiliacion_clubs/48/square_666e3068736979736476.jpg",
+    "TURIA": "@f/images/afiliacion_clubs/67/square_3563376f66686f673933.jpg",
+    "OLIMPICO DE POZUELO CR": "@f/images/afiliacion_clubs/70/square_6f3974716c7130626f39.jpg",
+    "BARCELONA UNIVERSITARI CLUB": "@f/images/afiliacion_clubs/15/square_63613932323033633064643364653661.jpg"
+  },
+  "temporada_anotadores": [
+    {
+      "id": 1024218,
+      "nombre": "ARIADNA BINGBING VERGARA PIQUERAS",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 3,
+      "puntos": 44,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1037999,
+      "nombre": "ADRIANA URQUIZU VIDAURRE",
+      "equipo": "GETXO RUGBY",
+      "pj": 4,
+      "puntos": 36,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1028380,
+      "nombre": "SONIA MONTERO GONZALEZ",
+      "equipo": "OLIMPICO DE POZUELO CR",
+      "pj": 3,
+      "puntos": 32,
+      "ensayos": 4,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1026141,
+      "nombre": "NAROA AZPITARTE MAGUREGUI",
+      "equipo": "GETXO RUGBY",
+      "pj": 4,
+      "puntos": 31,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1025278,
+      "nombre": "CRISTINA LOPEZ CALDERON",
+      "equipo": "TURIA",
+      "pj": 4,
+      "puntos": 28,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1053276,
+      "nombre": "ADELINA DA COSTA",
+      "equipo": "SILICIUS RUGBY MAJADAHONDA",
+      "pj": 4,
+      "puntos": 25,
+      "ensayos": 5,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1029036,
+      "nombre": "MARTINA MARQUEZ ALPAÑEZ",
+      "equipo": "SILICIUS RUGBY MAJADAHONDA",
+      "pj": 4,
+      "puntos": 21,
+      "ensayos": 2,
+      "amarillas": 1,
+      "rojas": 0
+    },
+    {
+      "id": 1023764,
+      "nombre": "MARIA MIGUEL GIL",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 3,
+      "puntos": 20,
+      "ensayos": 4,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1035181,
+      "nombre": "GORETI BARRUTIETA BARRENETXEA",
+      "equipo": "GETXO RUGBY",
+      "pj": 4,
+      "puntos": 20,
+      "ensayos": 4,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1025697,
+      "nombre": "LAURA MAESTRO GARCIA",
+      "equipo": "RIALTA CRAT CORUÑA.",
+      "pj": 4,
+      "puntos": 17,
+      "ensayos": 3,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "temporada_ensayadores": [
+    {
+      "id": 1053276,
+      "nombre": "ADELINA DA COSTA",
+      "equipo": "SILICIUS RUGBY MAJADAHONDA",
+      "pj": 4,
+      "puntos": 25,
+      "ensayos": 5,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1028380,
+      "nombre": "SONIA MONTERO GONZALEZ",
+      "equipo": "OLIMPICO DE POZUELO CR",
+      "pj": 3,
+      "puntos": 32,
+      "ensayos": 4,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1023764,
+      "nombre": "MARIA MIGUEL GIL",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 3,
+      "puntos": 20,
+      "ensayos": 4,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1035181,
+      "nombre": "GORETI BARRUTIETA BARRENETXEA",
+      "equipo": "GETXO RUGBY",
+      "pj": 4,
+      "puntos": 20,
+      "ensayos": 4,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": 1025697,
+      "nombre": "LAURA MAESTRO GARCIA",
+      "equipo": "RIALTA CRAT CORUÑA.",
+      "pj": 4,
+      "puntos": 17,
+      "ensayos": 3,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "proxima_jornada": {
+    "numero": 5,
+    "partidos": [
+      {
+        "id": 18959,
+        "jornada": 5,
+        "fecha": "2026-11-21T15:00:00",
+        "local": "CAJASOL SEVILLA COCOS",
+        "visitante": "CLUB DE RUGBY SANT CUGAT",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "CAMPO JUAN ANTONIO ARENAS POSADAS",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      },
+      {
+        "id": 18957,
+        "jornada": 5,
+        "fecha": "2026-11-21T18:00:00",
+        "local": "TURIA",
+        "visitante": "BARCELONA UNIVERSITARI CLUB",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "Polideportivo Quatre Carreres",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      },
+      {
+        "id": 18956,
+        "jornada": 5,
+        "fecha": "2026-11-22T12:00:00",
+        "local": "OLIMPICO DE POZUELO CR",
+        "visitante": "RIALTA CRAT CORUÑA.",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "Ciudad deportiva Valle de las Cañas",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      },
+      {
+        "id": 18958,
+        "jornada": 5,
+        "fecha": "2026-11-22T13:45:00",
+        "local": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "visitante": "GETXO RUGBY",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "CAMPO DE RUGBY DE PEPE ROJO 1",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      }
+    ],
+    "descansa": []
+  },
+  "rankings": {
+    "ensayadores": [],
+    "pateadores": [],
+    "ensayadores_t": [
+      {
+        "nombre": "MARIA MIGUEL GIL",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 4,
+        "detalle": "20 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "ADELINA DA COSTA",
+        "equipo": "SILICIUS RUGBY MAJADAHONDA",
+        "valor": 3,
+        "detalle": "15 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "CARLA MENDEZ VAZQUEZ",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 3,
+        "detalle": "15 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "CARLOTA PARDO PEINADOR",
+        "equipo": "TURIA",
+        "valor": 3,
+        "detalle": "15 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "CLAUDIA DE LA LOMA DEHESA",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 3,
+        "detalle": "15 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "GORETI BARRUTIETA BARRENETXEA",
+        "equipo": "GETXO RUGBY",
+        "valor": 3,
+        "detalle": "15 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "LEIRE MARKIEGI GORTAZAR",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 3,
+        "detalle": "15 puntos",
+        "rival": ""
+      }
+    ],
+    "pateadores_t": [
+      {
+        "nombre": "ARIADNA BINGBING VERGARA PIQUERAS",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 34,
+        "detalle": "17 transf.",
+        "rival": ""
+      },
+      {
+        "nombre": "CRISTINA LOPEZ CALDERON",
+        "equipo": "TURIA",
+        "valor": 21,
+        "detalle": "9 transf. · 1 golpe",
+        "rival": ""
+      },
+      {
+        "nombre": "NAROA AZPITARTE MAGUREGUI",
+        "equipo": "GETXO RUGBY",
+        "valor": 21,
+        "detalle": "6 transf. · 3 golpes",
+        "rival": ""
+      },
+      {
+        "nombre": "SONIA MONTERO GONZALEZ",
+        "equipo": "OLIMPICO DE POZUELO CR",
+        "valor": 12,
+        "detalle": "3 transf. · 2 golpes",
+        "rival": ""
+      },
+      {
+        "nombre": "ADRIANA URQUIZU VIDAURRE",
+        "equipo": "GETXO RUGBY",
+        "valor": 9,
+        "detalle": "3 transf. · 1 golpe",
+        "rival": ""
+      },
+      {
+        "nombre": "LEA DUCHER PEYCE",
+        "equipo": "CAJASOL SEVILLA COCOS",
+        "valor": 9,
+        "detalle": "3 transf. · 1 golpe",
+        "rival": ""
+      },
+      {
+        "nombre": "MARTINA MARQUEZ ALPAÑEZ",
+        "equipo": "SILICIUS RUGBY MAJADAHONDA",
+        "valor": 9,
+        "detalle": "3 transf. · 1 golpe",
+        "rival": ""
+      }
+    ],
+    "disciplina": [
+      {
+        "nombre": "CAROLINA FERNANDA ALFARO CHIA",
+        "equipo": "RIALTA CRAT CORUÑA.",
+        "valor": 2,
+        "detalle": "2 amarillas",
+        "rival": ""
+      },
+      {
+        "nombre": "LUCIA CALVO CORREDERA",
+        "equipo": "SILICIUS RUGBY MAJADAHONDA",
+        "valor": 2,
+        "detalle": "2 amarillas",
+        "rival": ""
+      },
+      {
+        "nombre": "MARINA SAN ROMAN LOPEZ",
+        "equipo": "CAJASOL SEVILLA COCOS",
+        "valor": 2,
+        "detalle": "2 amarillas",
+        "rival": ""
+      },
+      {
+        "nombre": "MIREIA MARTINEZ JAÑEZ",
+        "equipo": "BARCELONA UNIVERSITARI CLUB",
+        "valor": 2,
+        "detalle": "2 amarillas",
+        "rival": ""
+      },
+      {
+        "nombre": "VALENTINA MALDONADO JAIMES",
+        "equipo": "SILICIUS RUGBY MAJADAHONDA",
+        "valor": 2,
+        "detalle": "2 amarillas",
+        "rival": ""
+      },
+      {
+        "nombre": "ALBA MARIA ALONSO PEREZ",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 1,
+        "detalle": "1 amarilla",
+        "rival": ""
+      },
+      {
+        "nombre": "ALBA MASDEVALL JIMENEZ",
+        "equipo": "CLUB DE RUGBY SANT CUGAT",
+        "valor": 1,
+        "detalle": "1 amarilla",
+        "rival": ""
+      }
+    ],
+    "banquillo": [
+      {
+        "nombre": "ADRIANA URQUIZU VIDAURRE",
+        "equipo": "GETXO RUGBY",
+        "valor": 9,
+        "detalle": "",
+        "rival": ""
+      },
+      {
+        "nombre": "AMETSA ULIBARRI PEREZ DE NANCLARES",
+        "equipo": "SILICIUS RUGBY MAJADAHONDA",
+        "valor": 7,
+        "detalle": "1 ensayo",
+        "rival": ""
+      },
+      {
+        "nombre": "BEATRIZ RIVERA ZAPATERO",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 5,
+        "detalle": "1 ensayo",
+        "rival": ""
+      },
+      {
+        "nombre": "BELSAY ESCUDERO LOPEZ",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 5,
+        "detalle": "1 ensayo",
+        "rival": ""
+      },
+      {
+        "nombre": "CARLA MENDEZ VAZQUEZ",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 5,
+        "detalle": "1 ensayo",
+        "rival": ""
+      },
+      {
+        "nombre": "CLAUDIA PEREZ PEREZ",
+        "equipo": "SILICIUS RUGBY MAJADAHONDA",
+        "valor": 5,
+        "detalle": "1 ensayo",
+        "rival": ""
+      },
+      {
+        "nombre": "GORETI BARRUTIETA BARRENETXEA",
+        "equipo": "GETXO RUGBY",
+        "valor": 5,
+        "detalle": "1 ensayo",
+        "rival": ""
+      }
+    ],
+    "equipos": [
+      {
+        "titulo": "Mejor ataque",
+        "unidad": "pts a favor",
+        "filas": [
+          {
+            "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+            "valor": 188
+          },
+          {
+            "equipo": "GETXO RUGBY",
+            "valor": 152
+          },
+          {
+            "equipo": "SILICIUS RUGBY MAJADAHONDA",
+            "valor": 134
+          }
+        ]
+      },
+      {
+        "titulo": "Mejor defensa",
+        "unidad": "pts en contra",
+        "filas": [
+          {
+            "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+            "valor": 22
+          },
+          {
+            "equipo": "GETXO RUGBY",
+            "valor": 52
+          },
+          {
+            "equipo": "CAJASOL SEVILLA COCOS",
+            "valor": 54
+          }
+        ]
+      },
+      {
+        "titulo": "Más ensayos",
+        "unidad": "ensayos",
+        "filas": [
+          {
+            "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+            "valor": 30
+          },
+          {
+            "equipo": "SILICIUS RUGBY MAJADAHONDA",
+            "valor": 23
+          },
+          {
+            "equipo": "GETXO RUGBY",
+            "valor": 21
+          }
+        ]
+      },
+      {
+        "titulo": "Más tarjetas",
+        "unidad": "tarjetas",
+        "filas": [
+          {
+            "equipo": "SILICIUS RUGBY MAJADAHONDA",
+            "valor": 6
+          },
+          {
+            "equipo": "RIALTA CRAT CORUÑA.",
+            "valor": 5
+          },
+          {
+            "equipo": "CAJASOL SEVILLA COCOS",
+            "valor": 4
+          }
+        ]
+      }
+    ]
+  },
+  "datos_jornada": [
+    {
+      "clave": "datos",
+      "tipo": "dato",
+      "peso": 84,
+      "numero": "4",
+      "unidad": "partidos, todos ganados",
+      "titular": "Getxo Rugby sigue invicto",
+      "contexto": "Pleno de victorias tras 4 jornadas.",
+      "equipo": "GETXO RUGBY"
+    },
+    {
+      "clave": "datos",
+      "tipo": "dato",
+      "peso": 57,
+      "numero": "36",
+      "unidad": "puntos de diferencia",
+      "titular": "Exhibición de Silicius Majadahonda",
+      "contexto": "Silicius Majadahonda 48-12 Turia. Paliza ante Turia.",
+      "equipo": "SILICIUS RUGBY MAJADAHONDA"
+    },
+    {
+      "clave": "datos",
+      "tipo": "dato",
+      "peso": 56,
+      "numero": "4",
+      "unidad": "partidos sin ganar",
+      "titular": "Barcelona Universitari sigue sin conocer la victoria",
+      "contexto": "Lleva 4 jornadas buscando su primer triunfo.",
+      "equipo": "BARCELONA UNIVERSITARI CLUB"
+    }
+  ]
+}

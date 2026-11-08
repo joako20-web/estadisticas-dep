@@ -1,0 +1,64 @@
+{# Cartel "Matchday" de un partido (datosdep/carteles.py): escudos enfrentados en grande,
+   posición en la tabla, día en la bajada y, abajo, hora de inicio y campo. #}
+<style>
+.md { margin-top: 64px; }
+.md-cruce { display: grid; grid-template-columns: 1fr 110px 1fr; align-items: start; }
+.md-lado { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+.md-lado .crest { width: 290px; height: 290px; }
+.md-nom { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 62px; line-height: .95;
+  margin-top: 30px; max-width: 100%; text-wrap: balance; overflow-wrap: anywhere; }
+.md-pos { margin-top: 14px; font-size: 28px; font-weight: 600; color: var(--gris); }
+.md-pos b { color: var(--acento-txt); font-weight: 700; }
+.md-vs { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 700; font-size: 80px; line-height: 1;
+  color: var(--acento-txt); text-align: center; padding-top: 108px; }
+.md-info { margin-top: auto; display: grid; grid-template-columns: auto 1fr; gap: 0 48px; align-items: end;
+  padding-top: 30px; border-top: var(--filete) solid var(--linea); }
+.md-et { font-size: 24px; font-weight: 600; color: var(--gris); text-transform: uppercase; letter-spacing: .08em; }
+.md-hora { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 150px; line-height: .8;
+  margin-top: 14px; color: var(--acento-txt); }
+.slide .md-hora.pend { font-size: 54px; line-height: 1; color: var(--texto); font-style: normal; }
+.md-campo { text-align: right; padding-bottom: 6px; min-width: 0; }
+.md-campo b { display: block; font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 46px;
+  line-height: 1; margin-top: 10px; text-wrap: balance; }
+/* Historia: más aire y escudos más grandes */
+.f-historia .md { margin-top: 140px; }
+.f-historia .md-lado .crest { width: 370px; height: 370px; }
+.f-historia .md-vs { padding-top: 148px; font-size: 96px; }
+.f-historia .md-nom { font-size: 70px; }
+.f-historia .md-hora { font-size: 190px; }
+/* Temas */
+.tema-tele .md-nom, .tema-brutal .md-nom, .tema-tele .md-campo b, .tema-brutal .md-campo b { text-transform: uppercase; }
+.tema-brutal .md-nom, .tema-brutal .md-hora, .tema-brutal .md-vs, .tema-brutal .md-campo b { font-weight: 400; }
+.tema-brutal .md-info { border-top: 6px solid var(--texto); }
+.tema-tele .md-lado .crest { box-shadow: 0 0 0 8px var(--acento); }
+.tema-tele .md-vs { font-style: italic; }
+.tema-tele .md-info { border: 0; background: var(--panel); margin: auto -72px 0; padding: 30px 72px 34px; }
+.tema-prensa .md-vs, .tema-prensa .md-hora { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 900; font-style: italic; }
+.tema-prensa .md-hora { color: var(--texto); }
+.tema-prensa .md-vs { color: var(--acento); }
+.tema-retro .md-vs, .tema-retro .md-hora { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 400; }
+.tema-retro .md-info { border-top: 3px solid var(--texto); }
+</style>
+<div class="titulo">
+  <h1>Matchday</h1>
+  <div class="bajada">{{ s.dia }}</div>
+</div>
+<div class="cuerpo md">
+  <div class="md-cruce">
+  {% for l in s.lados %}
+    {% if loop.index == 2 %}<div class="md-vs">VS</div>{% endif %}
+    <div class="md-lado">
+      {% if l.equipo|escudo %}<img class="crest" src="{{ l.equipo|escudo }}">{% endif %}
+      <div class="md-nom">{{ l.equipo|corto }}</div>
+      {% if l.posicion %}<div class="md-pos"><b>{{ l.posicion }}º</b> en la tabla, {{ l.pt }} pts</div>{% endif %}
+    </div>
+  {% endfor %}
+  </div>
+  <div class="md-info">
+    <div>
+      <div class="md-et">Saque inicial</div>
+      {% if s.hora %}<div class="md-hora">{{ s.hora }}</div>{% else %}<div class="md-hora pend">Por confirmar</div>{% endif %}
+    </div>
+    {% if s.campo %}<div class="md-campo"><div class="md-et">Campo</div><b>{{ s.campo|titulo }}</b></div>{% endif %}
+  </div>
+</div>

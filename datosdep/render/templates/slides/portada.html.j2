@@ -1,0 +1,17 @@
+{% set d = s.credito %}
+<div class="texto">
+  <h1>Jornada <span>{{ jornada }}</span></h1>
+  <div class="bajada">{{ s.bajada }}</div>
+  {% if s.foto and d %}<div class="credito"><b>{{ d.motivo }}</b>: {{ (d.jugador|jugador).completo }}, {{ d.equipo|corto }}</div>{% endif %}
+</div>
+{% if not s.foto and d %}
+{% set n = d.jugador|jugador %}
+<div class="mvp">
+  {% if d.equipo|escudo %}<img class="crest m" src="{{ d.equipo|escudo }}">{% endif %}
+  <div class="mvp-motivo">{{ d.motivo }}</div>
+  <div class="mvp-pila">{{ n.nombre }}</div>
+  <div class="mvp-apellido">{{ n.corto }}</div>
+  <div class="mvp-datos">{{ d.equipo|corto }} <span class="mvp-pos">{{ d.dorsal|posicion|lower }} ({{ d.dorsal }})</span></div>
+  {% if d.puntos %}<div class="mvp-linea"><b>{{ d.puntos }} puntos</b>{% if d.linea %}: {{ d.linea|sep }}{% endif %}</div>{% endif %}
+</div>
+{% endif %}

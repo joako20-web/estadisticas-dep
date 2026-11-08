@@ -1,0 +1,39 @@
+{# "Hace un año": resultados de la misma jornada la temporada pasada. #}
+<style>
+.hu { flex: 1; display: flex; flex-direction: column; margin-top: 30px; position: relative; z-index: 2; }
+.hu-num { font-family: var(--f-num, var(--f-tit)); font-size-adjust: cap-height var(--aj-num, .64); font-variant-numeric: tabular-nums; }
+.hu-tit { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit, .64); }
+.hu-p { display: grid; grid-template-columns: 1fr 210px 1fr; align-items: center; height: 118px; border-top: 1px solid var(--linea); }
+.hu-p:last-of-type { border-bottom: 1px solid var(--linea); }
+.hu-eq { display: flex; align-items: center; gap: 14px; min-width: 0; font-size: 40px; font-weight: 500; }
+.hu-eq.v { justify-content: flex-end; text-align: right; }
+.hu-eq span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hu-eq .crest { width: 60px; height: 60px; padding: 6px; }
+.hu-eq.pierde span { color: var(--apagado); }
+.hu-m { text-align: center; font-size: 72px; line-height: 1; }
+.hu-m .g { color: var(--acento-txt); }
+.hu-m .p { color: var(--apagado); }
+.hu-p.mayor { background: var(--panel); }
+.hu-nota { margin-top: 26px; font-size: 28px; color: var(--gris); line-height: 1.35; }
+.hu-nota b { color: var(--texto); }
+.f-historia .hu-p { height: 150px; }
+</style>
+<div class="titulo">
+  <h1>Hace un año</h1>
+  <div class="bajada">Jornada {{ s.jornada }} · {{ s.temporada }}{% if s.cuando %} · {{ s.cuando }}{% endif %}</div>
+</div>
+<div class="hu">
+  {% for p in s.partidos %}
+  {% set gl = p.puntos_local > p.puntos_visitante %}{% set gv = p.puntos_visitante > p.puntos_local %}
+  <div class="hu-p {{ 'mayor' if p == s.mayor }}">
+    <div class="hu-eq {{ 'pierde' if gv }}">{% if p.local|escudo %}<img class="crest" src="{{ p.local|escudo }}">{% endif %}<span class="hu-tit">{{ p.local|corto }}</span></div>
+    <div class="hu-m hu-num"><span class="{{ 'g' if gl else 'p' if gv }}">{{ p.puntos_local }}</span>-<span class="{{ 'g' if gv else 'p' if gl }}">{{ p.puntos_visitante }}</span></div>
+    <div class="hu-eq v {{ 'pierde' if gl }}"><span class="hu-tit">{{ p.visitante|corto }}</span>{% if p.visitante|escudo %}<img class="crest" src="{{ p.visitante|escudo }}">{% endif %}</div>
+  </div>
+  {% endfor %}
+  <div class="hu-nota">
+    {% set m = s.mayor %}{% set dif = (m.puntos_local - m.puntos_visitante)|abs %}
+    El resultado más abultado: <b>{{ (m.local if m.puntos_local > m.puntos_visitante else m.visitante)|corto }}</b>, por {{ dif }} puntos.
+    {% if s.campeon %}Aquella temporada terminó con <b>{{ s.campeon|corto }}</b> campeón.{% endif %}
+  </div>
+</div>

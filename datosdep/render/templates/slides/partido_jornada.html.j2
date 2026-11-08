@@ -1,0 +1,95 @@
+{# Previa del partido de la jornada: duelo arriba, comparativa en espejo debajo.
+   Estilos locales con las variables del tema. #}
+{% set l = s.local %}{% set v = s.visitante %}
+<style>
+.t-partido_jornada h1 { font-size: calc(86px * var(--k-tit, 1)); }
+.pj-duelo { display: grid; grid-template-columns: 1fr 120px 1fr; align-items: center; margin-top: 26px; }
+.f-historia .pj-duelo { margin-top: 40px; }
+.pj-eq { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+.pj-eq .crest { width: 156px; height: 156px; padding: 16px; }
+.f-historia .pj-eq .crest { width: 230px; height: 230px; padding: 22px; }
+.pj-nom { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 600; font-size: 50px; line-height: .95; margin-top: 16px; max-width: 100%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pj-pos { font-size: 28px; color: var(--gris); margin-top: 8px; font-variant-numeric: tabular-nums; }
+.pj-pos b { color: var(--texto); }
+.pj-vs { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 700; font-size: 64px; color: var(--acento-txt); text-align: center; }
+.pj-tabla { margin-top: 30px; }
+.f-historia .pj-tabla { margin-top: 70px; }
+.pj-fila { display: grid; grid-template-columns: 1fr 250px 1fr; align-items: center; height: 86px; border-top: 1px solid var(--linea); }
+.pj-fila.alta { height: 112px; }
+.f-historia .pj-fila { height: 112px; }
+.f-historia .pj-fila.alta { height: 140px; }
+.pj-fila:last-child { border-bottom: 1px solid var(--linea); }
+.pj-lab { text-align: center; font-weight: 600; font-size: 24px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); }
+.pj-val { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 600; font-size: 46px; font-variant-numeric: tabular-nums; }
+.pj-val.izq { text-align: right; padding-right: 10px; }
+.pj-val.der { text-align: left; padding-left: 10px; }
+.pj-val.mejor { color: var(--acento-txt); }
+.pj-val small { display: block; font-family: var(--f-txt); font-size: 24px; font-weight: 500; color: var(--gris); line-height: 1.1; }
+.pj-forma { display: flex; gap: 6px; }
+.pj-val.izq .pj-forma { justify-content: flex-end; }
+.pj-forma i { width: 34px; height: 34px; border-radius: 6px; display: grid; place-items: center; font-style: normal;
+  font-family: var(--f-txt); font-weight: 700; font-size: 20px; background: var(--panel); color: var(--gris); border: 1px solid var(--linea); }
+.pj-forma i.G { background: var(--acento); color: var(--sobre-acento); border-color: var(--acento); }
+.pj-forma i.P { color: var(--apagado); }
+.pj-nota { margin-top: 20px; font-size: 26px; color: var(--gris); text-align: center; line-height: 1.3; }
+.pj-nota b { color: var(--texto); font-weight: 600; }
+</style>
+<div class="titulo">
+  <h1>Partido de la jornada</h1>
+  <div class="bajada">{{ s.cuando }}</div>
+</div>
+<div class="cuerpo" style="margin-top: 0">
+  <div class="pj-duelo">
+    <div class="pj-eq">
+      {% if l.equipo|escudo %}<img class="crest" src="{{ l.equipo|escudo }}">{% endif %}
+      <div class="pj-nom">{{ l.equipo|corto }}</div>
+      {% if l.posicion %}<div class="pj-pos"><b>{{ l.posicion }}º</b> · {{ l.pt }} pts</div>{% endif %}
+    </div>
+    <div class="pj-vs">VS</div>
+    <div class="pj-eq">
+      {% if v.equipo|escudo %}<img class="crest" src="{{ v.equipo|escudo }}">{% endif %}
+      <div class="pj-nom">{{ v.equipo|corto }}</div>
+      {% if v.posicion %}<div class="pj-pos"><b>{{ v.posicion }}º</b> · {{ v.pt }} pts</div>{% endif %}
+    </div>
+  </div>
+
+  <div class="pj-tabla">
+    {% if l.forma or v.forma %}
+    <div class="pj-fila">
+      <div class="pj-val izq"><div class="pj-forma">{% for r in l.forma %}<i class="{{ r }}">{{ r }}</i>{% endfor %}</div></div>
+      <div class="pj-lab">Últimos partidos</div>
+      <div class="pj-val der"><div class="pj-forma">{% for r in v.forma %}<i class="{{ r }}">{{ r }}</i>{% endfor %}</div></div>
+    </div>
+    {% endif %}
+    {% if l.pj or v.pj %}
+    <div class="pj-fila">
+      <div class="pj-val izq {{ 'mejor' if l.pf > v.pf }}">{{ l.pf }}</div>
+      <div class="pj-lab">Puntos a favor<br>por partido</div>
+      <div class="pj-val der {{ 'mejor' if v.pf > l.pf }}">{{ v.pf }}</div>
+    </div>
+    <div class="pj-fila">
+      <div class="pj-val izq {{ 'mejor' if l.pc < v.pc }}">{{ l.pc }}</div>
+      <div class="pj-lab">Puntos en contra<br>por partido</div>
+      <div class="pj-val der {{ 'mejor' if v.pc < l.pc }}">{{ v.pc }}</div>
+    </div>
+    <div class="pj-fila">
+      <div class="pj-val izq {{ 'mejor' if l.ensayos > v.ensayos }}">{{ l.ensayos }}</div>
+      <div class="pj-lab">Ensayos<br>a favor</div>
+      <div class="pj-val der {{ 'mejor' if v.ensayos > l.ensayos }}">{{ v.ensayos }}</div>
+    </div>
+    {% endif %}
+    {% if l.anotador or v.anotador %}
+    <div class="pj-fila alta">
+      <div class="pj-val izq">{% if l.anotador %}{{ l.anotador.puntos }}<small>{{ (l.anotador.nombre|jugador).completo }}</small>{% else %}–{% endif %}</div>
+      <div class="pj-lab">Máximo<br>anotador</div>
+      <div class="pj-val der">{% if v.anotador %}{{ v.anotador.puntos }}<small>{{ (v.anotador.nombre|jugador).completo }}</small>{% else %}–{% endif %}</div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="pj-nota">
+    {% if s.razones %}<b>Por qué:</b> {{ s.razones|join(' · ') }}{% endif %}
+    {% if s.cara_a_cara %}{% set c = s.cara_a_cara %}<br><b>Último cara a cara:</b> {{ c.local|corto }} {{ c.puntos_local }}-{{ c.puntos_visitante }} {{ c.visitante|corto }} (J{{ c.jornada }}){% endif %}
+  </div>
+</div>

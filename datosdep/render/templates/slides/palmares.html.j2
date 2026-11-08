@@ -1,0 +1,35 @@
+{# Palmarés: campeones de las últimas temporadas. Estilos locales con variables del tema. #}
+<style>
+.pm { flex: 1; display: flex; flex-direction: column; margin-top: 34px; position: relative; z-index: 2; }
+.pm-num { font-family: var(--f-num, var(--f-tit)); font-size-adjust: cap-height var(--aj-num, .64); font-variant-numeric: tabular-nums; }
+.pm-tit { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit, .64); }
+.pm-fila { display: grid; grid-template-columns: 170px 140px 1fr; align-items: center; gap: 24px; padding: 26px 0; border-top: 2px solid var(--linea); }
+.pm-fila:last-of-type { border-bottom: 2px solid var(--linea); }
+.pm-temp { font-size: 54px; line-height: .9; color: var(--gris); }
+.pm-fila:first-of-type .pm-temp { color: var(--acento-txt); }
+.pm-fila .crest { width: 130px; height: 130px; padding: 14px; }
+.pm-camp { font-weight: 600; font-size: 66px; line-height: .9; }
+.pm-final { font-size: 28px; color: var(--gris); margin-top: 10px; }
+.pm-final b { color: var(--texto); font-weight: 600; }
+.pm-nota { margin-top: 30px; font-size: 28px; color: var(--gris); }
+.pm-nota b { color: var(--texto); }
+.f-historia .pm-fila { padding: 46px 0; }
+</style>
+<div class="titulo">
+  <h1>Palmarés</h1>
+  <div class="bajada">{{ s.nombre }} · últimas temporadas</div>
+</div>
+<div class="pm">
+  {% for f in s.filas %}
+  <div class="pm-fila">
+    <div class="pm-temp pm-num">{{ f.temporada }}</div>
+    {% if f.campeon|escudo %}<img class="crest" src="{{ f.campeon|escudo }}">{% else %}<span></span>{% endif %}
+    <div>
+      <div class="pm-camp pm-tit">{{ f.campeon|corto }}</div>
+      <div class="pm-final">Final: <b>{{ f.marcador }}</b> ante {{ f.subcampeon|corto }}</div>
+    </div>
+  </div>
+  {% endfor %}
+  {% set mas = s.titulos|dictsort(by='value', reverse=true)|first %}
+  {% if mas and mas[1] > 1 %}<div class="pm-nota"><b>{{ mas[0]|corto }}</b> suma {{ mas[1] }} títulos en estas {{ s.filas|length }} temporadas.</div>{% endif %}
+</div>

@@ -1,0 +1,21 @@
+<div class="titulo">
+  <h1>{{ s.titulo }}</h1>
+  <div class="bajada">{{ s.sup|sep }}</div>
+</div>
+<div class="cuerpo">
+{% for j in s.filas %}
+  {% set n = j.nombre|jugador %}
+  <div class="fila">
+    <div class="pos">{{ loop.index }}</div>
+    <div>{% if j.equipo|escudo %}<img class="crest a" src="{{ j.equipo|escudo }}">{% endif %}</div>
+    <div style="min-width:0">
+      <div class="jug-nom">{{ n.completo }}</div>
+      <div class="jug-eq">{{ j.equipo|corto }}{% if j.extra %}, {{ j.extra }}{% endif %}</div>
+    </div>
+    <div>
+      <div class="pts">{{ j.valor }}<small>{{ s.unidad|unidad(j.valor) }}</small></div>
+      {% if j.detalle %}<div class="det">{{ j.detalle|sep }}</div>{% endif %}
+    </div>
+  </div>
+{% endfor %}
+</div>

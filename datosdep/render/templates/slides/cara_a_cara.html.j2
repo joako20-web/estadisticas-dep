@@ -1,0 +1,48 @@
+{# Cara a cara histórico entre dos equipos. #}
+<style>
+.cc { flex: 1; display: flex; flex-direction: column; margin-top: 30px; position: relative; z-index: 2; }
+.cc-num { font-family: var(--f-num, var(--f-tit)); font-size-adjust: cap-height var(--aj-num, .64); font-variant-numeric: tabular-nums; }
+.cc-tit { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit, .64); }
+.cc-top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; }
+.cc-eq { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+.cc-eq .crest { width: 150px; height: 150px; padding: 16px; }
+.cc-eq b { font-size: 46px; line-height: .95; font-weight: 600; }
+.cc-bal { display: grid; grid-template-columns: repeat(3, auto); gap: 26px; align-items: end; text-align: center; }
+.cc-bal div b { display: block; font-size: 110px; line-height: .85; }
+.cc-bal div span { font-size: 24px; color: var(--gris); text-transform: uppercase; letter-spacing: 2px; }
+.cc-bal div:first-child b, .cc-bal div:last-child b { color: var(--acento-txt); }
+.cc-sub { margin-top: 30px; font-size: 24px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); }
+.cc-p { display: grid; grid-template-columns: 210px 1fr auto; gap: 18px; align-items: center; height: 80px; border-top: 1px solid var(--linea); }
+.cc-p:last-of-type { border-bottom: 1px solid var(--linea); }
+.cc-p .q { font-size: 24px; color: var(--gris); line-height: 1.15; }
+.cc-p .q b { display: block; color: var(--texto); font-size: 26px; font-weight: 600; }
+.cc-p .eqs { font-size: 32px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cc-p .eqs i { font-style: normal; color: var(--gris); font-weight: 500; }
+.cc-p .mc { font-size: 46px; }
+.cc-mas { margin-top: 16px; font-size: 24px; color: var(--gris); }
+.f-historia .cc-p { height: 104px; }
+</style>
+<div class="titulo">
+  <h1>Cara a cara</h1>
+  <div class="bajada">Todos sus partidos desde la 2023/24</div>
+</div>
+<div class="cc">
+  <div class="cc-top">
+    <div class="cc-eq">{% if s.a.equipo|escudo %}<img class="crest" src="{{ s.a.equipo|escudo }}">{% endif %}<b class="cc-tit">{{ s.a.equipo|corto }}</b></div>
+    <div class="cc-bal">
+      <div><b class="cc-num">{{ s.ga }}</b><span>Victorias</span></div>
+      <div><b class="cc-num">{{ s.e }}</b><span>Empates</span></div>
+      <div><b class="cc-num">{{ s.gb }}</b><span>Victorias</span></div>
+    </div>
+    <div class="cc-eq">{% if s.b.equipo|escudo %}<img class="crest" src="{{ s.b.equipo|escudo }}">{% endif %}<b class="cc-tit">{{ s.b.equipo|corto }}</b></div>
+  </div>
+  <div class="cc-sub">Últimos enfrentamientos</div>
+  {% for p in s.partidos %}
+  <div class="cc-p">
+    <div class="q"><b>{{ p.temporada }}</b>{{ p.fase }}</div>
+    <div class="eqs cc-tit">{{ p.local|corto }} <i>vs</i> {{ p.visitante|corto }}</div>
+    <div class="mc cc-num">{{ p.pl }}-{{ p.pv }}</div>
+  </div>
+  {% endfor %}
+  {% set resto = s.total - s.partidos|length %}{% if resto > 0 %}<div class="cc-mas">Y {{ resto }} partido{{ 's' if resto > 1 }} más.</div>{% endif %}
+</div>

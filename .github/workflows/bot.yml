@@ -1,0 +1,127 @@
+# Cada ejecución escucha Telegram 55 minutos y al acabar lanza la siguiente
+# (relevo); el cron es el respaldo. Así responde en segundos. Los lunes a las 10:00 (Madrid) manda los
+# carruseles de la semana; los martes reintenta los que tenían actas incompletas.
+name: bot
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write  # para lanzar el relevo
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - name: ¿Está el token de Telegram?
+        id: token
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        run: |
+          if [ -n "$TELEGRAM_TOKEN" ]; then echo "ok=true" >> "$GITHUB_OUTPUT";
+          else echo "::notice::Falta el secreto TELEGRAM_TOKEN: no hago nada"; fi
+
+      - uses: actions/checkout@v4
+        if: steps.token.outputs.ok == 'true'
+        with:
+          ref: main  # la última versión al empezar, no la del momento en que se lanzó
+
+      - uses: astral-sh/setup-uv@v6
+        if: steps.token.outputs.ok == 'true'
+        with:
+          enable-cache: true
+
+      - uses: actions/setup-node@v4  # vídeos para vídeos (Remotion); se instala al pedir el primero
+        if: steps.token.outputs.ok == 'true'
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: video/package-lock.json
+
+      - run: uv sync --frozen
+        if: steps.token.outputs.ok == 'true'
+
+      - name: Abrir paquete privado
+        if: steps.token.outputs.ok == 'true'
+        env:
+          PAQUETE_CLAVE: ${{ secrets.PAQUETE_CLAVE }}
+        run: bash herramientas/paquete.sh abrir
+
+      - name: Caché de el origen A (actas y escudos) y vídeos ya hechos
+        if: steps.token.outputs.ok == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            .cache/origen_a
+            .cache/videos
+          key: origen_a-${{ github.run_id }}
+          restore-keys: origen_a-
+
+      - name: Navegador (usa el Chrome del runner; si no hay, instala Chromium)
+        if: steps.token.outputs.ok == 'true'
+        run: |
+          if command -v google-chrome >/dev/null; then
+            echo "PLAYWRIGHT_CHANNEL=chrome" >> "$GITHUB_ENV"
+          else
+            uv run playwright install --with-deps chromium
+          fi
+
+      - name: Motor de vídeo en segundo plano (el bot arranca ya; los vídeos esperan a que acabe)
+        if: steps.token.outputs.ok == 'true'
+        run: |
+          touch video/.instalando
+          nohup bash -c 'cd video && npm ci --no-audit --no-fund && npx remotion browser ensure && touch node_modules/.listo; rm -f .instalando' > /tmp/motor_video.log 2>&1 &
+
+      - name: Escuchar Telegram
+        id: escuchar
+        if: steps.token.outputs.ok == 'true'
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          ORIGEN_A_URL: ${{ secrets.ORIGEN_A_URL }}
+          ORIGEN_A_IMG_URL: ${{ secrets.ORIGEN_A_IMG_URL }}
+          ORIGEN_A_ACTA_URL: ${{ secrets.ORIGEN_A_ACTA_URL }}
+          ORIGEN_B_URL: ${{ secrets.ORIGEN_B_URL }}
+          ORIGEN_B_AND_URL: ${{ secrets.ORIGEN_B_AND_URL }}
+          ORIGEN_B_CAT_URL: ${{ secrets.ORIGEN_B_CAT_URL }}
+          ORIGEN_B_EUS_URL: ${{ secrets.ORIGEN_B_EUS_URL }}
+        run: uv run python -m datosdep bot --minutos 55
+
+      - name: Guardar caché (también si se cancela, para no repetir descargas)
+        if: always() && steps.token.outputs.ok == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            .cache/origen_a
+            .cache/videos
+          key: origen_a-${{ github.run_id }}
+
+      - name: Guardar estado
+        if: always() && steps.token.outputs.ok == 'true'
+        env:
+          PAQUETE_CLAVE: ${{ secrets.PAQUETE_CLAVE }}
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@users.noreply.github.com"
+          mkdir -p estado data
+          bash herramientas/paquete.sh cerrar
+          git add paquete.bin paquete.sha data
+          git diff --cached --quiet && exit 0
+          git commit -m "Estado del bot"
+          # Si choca con otro guardado, gana el estado de esta ejecución (es el más reciente)
+          for i in 1 2 3; do git pull --rebase -X theirs && git push && exit 0; git rebase --abort 2>/dev/null; sleep 5; done
+          exit 1
+
+      - name: Relevo (lanza la siguiente ejecución; el cron queda de respaldo)
+        # Si el bot falla no se relanza en bucle: el cron lo reintenta
+        if: always() && steps.token.outputs.ok == 'true' && steps.escuchar.outcome != 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run bot.yml --ref main

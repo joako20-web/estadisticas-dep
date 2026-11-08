@@ -1,0 +1,23 @@
+<div class="titulo">
+  <h1>XV de la temporada</h1>
+  <div class="bajada">Tras {{ s.jornadas }} jornada{{ "s" if s.jornadas != 1 }} · valoración acumulada</div>
+</div>
+<div class="cuerpo" style="margin-top:24px">
+  <div class="campo">
+  {% for fila in s.filas %}
+    <div class="fila-xv">
+    {% for d in fila.dorsales %}
+      {% set j = s.xv[d|string] %}
+      {% set n = j.nombre|jugador %}
+      {% set largo = n.corto|length %}
+      <div class="ficha {{ 'top' if d == s.mvp }}">
+        <div class="dorsal">{{ d }}</div>
+        <div class="n1">{{ n.nombre }}</div>
+        <div class="n2 {{ 'xl' if largo > 17 else 'l' if largo > 13 }}">{{ n.corto }}</div>
+        <div class="eq">{% if j.equipo|escudo %}<img class="crest x" src="{{ j.equipo|escudo }}">{% endif %}{{ j.equipo|abr }}</div>
+      </div>
+    {% endfor %}
+    </div>
+  {% endfor %}
+  </div>
+</div>
