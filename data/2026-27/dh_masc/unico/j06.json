@@ -61,7 +61,7 @@
       "id": 17668,
       "jornada": 6,
       "fecha": "2026-11-08T13:00:00",
-      "local": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+      "local": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
       "visitante": "UNIO ESPORTIVA SANTBOIANA",
       "puntos_local": 30,
       "puntos_visitante": 21,
@@ -130,7 +130,7 @@
       "jornada": 1,
       "fecha": "2026-09-27T13:00:00",
       "local": "CRC POZUELO RUGBY",
-      "visitante": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+      "visitante": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
       "puntos_local": 20,
       "puntos_visitante": 39,
       "campo": "ECOPILAS VALLE DE LAS CAÑAS",
@@ -194,7 +194,7 @@
       "id": 17650,
       "jornada": 2,
       "fecha": "2026-10-04T13:00:00",
-      "local": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+      "local": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
       "visitante": "SILICIUS ALCOBENDAS RUGBY",
       "puntos_local": 18,
       "puntos_visitante": 15,
@@ -234,7 +234,7 @@
       "jornada": 3,
       "fecha": "2026-10-11T12:00:00",
       "local": "VRAC QUESOS ENTREPINARES",
-      "visitante": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+      "visitante": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
       "puntos_local": 24,
       "puntos_visitante": 19,
       "campo": "CAMPOS DE RUGBY DE PEPE ROJO (INSTALACIONES DEPORTIVAS CIUDAD DE VALLADOLID)",
@@ -324,7 +324,7 @@
       "id": 17659,
       "jornada": 4,
       "fecha": "2026-10-25T13:00:00",
-      "local": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+      "local": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
       "visitante": "HUESITOS LA VILA RUGBY CLUB",
       "puntos_local": 61,
       "puntos_visitante": 19,
@@ -338,7 +338,7 @@
       "jornada": 5,
       "fecha": "2026-10-31T14:00:00",
       "local": "COMPLUTENSE CISNEROS",
-      "visitante": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+      "visitante": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
       "puntos_local": 32,
       "puntos_visitante": 47,
       "campo": "ESTADIO NACIONAL COMPLUTENSE - CAMPO 1",
@@ -454,7 +454,7 @@
       "id": 17668,
       "jornada": 6,
       "fecha": "2026-11-08T13:00:00",
-      "local": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+      "local": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
       "visitante": "UNIO ESPORTIVA SANTBOIANA",
       "puntos_local": 30,
       "puntos_visitante": 21,
@@ -3367,7 +3367,7 @@
   "clasificacion": [
     {
       "posicion": 1,
-      "equipo": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+      "equipo": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
       "racha": [
         "G",
         "P",
@@ -3626,13 +3626,14 @@
     "INVERSUS LICEO FRANCES": "@f/images/afiliacion_clubs/28/square_7972786233646a373068.jpg",
     "COMPLUTENSE CISNEROS": "@f/images/afiliacion_clubs/9/square_6d6662357173746c7130.jpg",
     "HUESITOS LA VILA RUGBY CLUB": "@f/images/afiliacion_clubs/80/square_366b6c7131766c643763.jpg",
-    "CRC POZUELO RUGBY": "@f/images/afiliacion_clubs/54/square_6e7677343030676c6b30.jpg"
+    "CRC POZUELO RUGBY": "@f/images/afiliacion_clubs/54/square_6e7677343030676c6b30.jpg",
+    "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES": "@f/images/afiliacion_clubs/14/square_75386c65796e356c756b.jpg"
   },
   "temporada_anotadores": [
     {
       "id": 1027011,
       "nombre": "SANTIAGO IGNACIO MANSILLA",
-      "equipo": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+      "equipo": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
       "pj": 6,
       "puntos": 101,
       "ensayos": 1,
@@ -3841,7 +3842,7 @@
         "id": 17673,
         "jornada": 7,
         "fecha": "2026-12-13T13:00:00",
-        "local": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+        "local": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
         "visitante": "AMPO ORDIZIA",
         "puntos_local": null,
         "puntos_visitante": null,
@@ -4166,7 +4167,7 @@
         "unidad": "pts a favor",
         "filas": [
           {
-            "equipo": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+            "equipo": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
             "valor": 214
           },
           {
@@ -4192,7 +4193,7 @@
             "valor": 120
           },
           {
-            "equipo": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
+            "equipo": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
             "valor": 131
           }
         ]
@@ -4249,12 +4250,12 @@
     {
       "clave": "datos",
       "tipo": "dato",
-      "peso": 68,
-      "numero": "3",
-      "unidad": "victorias seguidas",
-      "titular": "Aparejadores Burgos no deja de ganar",
-      "contexto": "Encadena 3 triunfos consecutivos.",
-      "equipo": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES"
+      "peso": 70,
+      "numero": "22",
+      "unidad": "puntos",
+      "titular": "Rural Aparejadores, nuevo líder",
+      "contexto": "Desbanca a Aparejadores Burgos de lo más alto de la tabla.",
+      "equipo": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES"
     },
     {
       "clave": "datos",
