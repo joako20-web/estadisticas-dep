@@ -25,7 +25,7 @@
       "local": "GAZTEDI RT",
       "visitante": "UNIO ESPORTIVA SANTBOIANA",
       "puntos_local": 46,
-      "puntos_visitante": 15,
+      "puntos_visitante": 12,
       "campo": "Gamarra",
       "estado": "jugado",
       "grupo": null,
@@ -184,7 +184,7 @@
       "local": "GAZTEDI RT",
       "visitante": "UNIO ESPORTIVA SANTBOIANA",
       "puntos_local": 46,
-      "puntos_visitante": 15,
+      "puntos_visitante": 12,
       "campo": "Gamarra",
       "estado": "jugado",
       "grupo": null,
@@ -204,7 +204,9 @@
       "ronda": ""
     }
   ],
-  "actas_pendientes": [],
+  "actas_pendientes": [
+    19021
+  ],
   "anotadores": [
     {
       "nombre": "INGRID ALGAR GONZALEZ",
@@ -220,22 +222,6 @@
       "margen": 36,
       "rival": "PRB",
       "nota": 27.0,
-      "foto": ""
-    },
-    {
-      "nombre": "CHENOA INGRID RINGTOUMDA KABORE",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 14,
-      "puntos": 10,
-      "ensayos": 2,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 23.0,
       "foto": ""
     },
     {
@@ -271,22 +257,6 @@
       "foto": ""
     },
     {
-      "nombre": "LUCIA INES PETRACCARO INCHUSTA",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 10,
-      "puntos": 9,
-      "ensayos": 1,
-      "conversiones": 2,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 19.0,
-      "foto": ""
-    },
-    {
       "nombre": "ADARA ALFONSO BOUBETA",
       "equipo": "EIBAR RUGBY TALDEA",
       "dorsal": 6,
@@ -303,54 +273,6 @@
       "foto": ""
     },
     {
-      "nombre": "AINA MARTINEZ PUIG",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 4,
-      "puntos": 5,
-      "ensayos": 1,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": 5.0,
-      "foto": ""
-    },
-    {
-      "nombre": "ANDRE MAIRU FERNANDEZ COMPAÑON",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 17,
-      "puntos": 5,
-      "ensayos": 1,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 15.0,
-      "foto": ""
-    },
-    {
-      "nombre": "ANE ROMAN MADRUGA",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 7,
-      "puntos": 5,
-      "ensayos": 1,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 15.0,
-      "foto": ""
-    },
-    {
       "nombre": "AROA PRESA VINAGRE",
       "equipo": "PRB",
       "dorsal": 1,
@@ -364,6 +286,86 @@
       "margen": -36,
       "rival": "COMPLUTENSE CISNEROS",
       "nota": 5.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ISIS YARA TOUW",
+      "equipo": "EIBAR RUGBY TALDEA",
+      "dorsal": 15,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 12,
+      "rival": "UNIVERSITARIO BILBAO RUGBY",
+      "nota": 13.2,
+      "foto": ""
+    },
+    {
+      "nombre": "LOREA SEGOVIA CINCUNEGUI",
+      "equipo": "EIBAR RUGBY TALDEA",
+      "dorsal": 8,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 12,
+      "rival": "UNIVERSITARIO BILBAO RUGBY",
+      "nota": 13.2,
+      "foto": ""
+    },
+    {
+      "nombre": "LOURDES MARIA NOVILLO LUCAS-VAQUERO",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 7,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 36,
+      "rival": "PRB",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MARIA ESTEPA NAVARRO",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 23,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 36,
+      "rival": "PRB",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "NICOLE VANESSA REINA ESCOVAR",
+      "equipo": "UNIVERSITARIO BILBAO RUGBY",
+      "dorsal": 5,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -12,
+      "rival": "EIBAR RUGBY TALDEA",
+      "nota": 6.8,
       "foto": ""
     }
   ],
@@ -385,22 +387,6 @@
       "foto": ""
     },
     {
-      "nombre": "CHENOA INGRID RINGTOUMDA KABORE",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 14,
-      "puntos": 10,
-      "ensayos": 2,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 23.0,
-      "foto": ""
-    },
-    {
       "nombre": "JULIA GONZALEZ SANDE",
       "equipo": "COMPLUTENSE CISNEROS",
       "dorsal": 8,
@@ -433,27 +419,9 @@
       "foto": ""
     },
     {
-      "nombre": "LUCIA INES PETRACCARO INCHUSTA",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 10,
-      "puntos": 9,
-      "ensayos": 1,
-      "conversiones": 2,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 19.0,
-      "foto": ""
-    }
-  ],
-  "xv_ideal": {
-    "1": {
-      "nombre": "GARAZI ITURRIETA OCHOA DE ALAIZA",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 1,
+      "nombre": "ADARA ALFONSO BOUBETA",
+      "equipo": "EIBAR RUGBY TALDEA",
+      "dorsal": 6,
       "puntos": 5,
       "ensayos": 1,
       "conversiones": 0,
@@ -461,9 +429,43 @@
       "drops": 0,
       "tarjetas": [],
       "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 15.0,
+      "margen": 12,
+      "rival": "UNIVERSITARIO BILBAO RUGBY",
+      "nota": 13.2,
+      "foto": ""
+    },
+    {
+      "nombre": "AROA PRESA VINAGRE",
+      "equipo": "PRB",
+      "dorsal": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -36,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": 5.0,
+      "foto": ""
+    }
+  ],
+  "xv_ideal": {
+    "1": {
+      "nombre": "AROA PRESA VINAGRE",
+      "equipo": "PRB",
+      "dorsal": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -36,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": 5.0,
       "foto": ""
     },
     "2": {
@@ -483,8 +485,8 @@
       "foto": ""
     },
     "3": {
-      "nombre": "PAULA CERDA BRUFAL",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "nombre": "PAULA CASADO SANTAMARIA",
+      "equipo": "PRB",
       "dorsal": 3,
       "puntos": 0,
       "ensayos": 0,
@@ -493,8 +495,8 @@
       "drops": 0,
       "tarjetas": [],
       "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
+      "margen": -36,
+      "rival": "COMPLUTENSE CISNEROS",
       "nota": -3.0,
       "foto": ""
     },
@@ -547,9 +549,9 @@
       "foto": ""
     },
     "7": {
-      "nombre": "ANE ROMAN MADRUGA",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 7,
+      "nombre": "ADARA ALFONSO BOUBETA",
+      "equipo": "EIBAR RUGBY TALDEA",
+      "dorsal": 6,
       "puntos": 5,
       "ensayos": 1,
       "conversiones": 0,
@@ -557,9 +559,9 @@
       "drops": 0,
       "tarjetas": [],
       "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 15.0,
+      "margen": 12,
+      "rival": "UNIVERSITARIO BILBAO RUGBY",
+      "nota": 13.2,
       "foto": ""
     },
     "8": {
@@ -579,24 +581,24 @@
       "foto": ""
     },
     "9": {
-      "nombre": "MARIA ISABEL HERNANDEZ FERRAND",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "nombre": "NAROA ALONSO GIL",
+      "equipo": "PRB",
       "dorsal": 9,
-      "puntos": 5,
-      "ensayos": 1,
+      "puntos": 0,
+      "ensayos": 0,
       "conversiones": 0,
       "golpes": 0,
       "drops": 0,
       "tarjetas": [],
       "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": 5.0,
+      "margen": -36,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
       "foto": ""
     },
     "10": {
-      "nombre": "LUCIA INES PETRACCARO INCHUSTA",
-      "equipo": "GAZTEDI RT",
+      "nombre": "JANIRE ALTUNA ARZA",
+      "equipo": "EIBAR RUGBY TALDEA",
       "dorsal": 10,
       "puntos": 9,
       "ensayos": 1,
@@ -605,25 +607,25 @@
       "drops": 0,
       "tarjetas": [],
       "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 19.0,
+      "margen": 12,
+      "rival": "UNIVERSITARIO BILBAO RUGBY",
+      "nota": 17.2,
       "foto": ""
     },
     "11": {
-      "nombre": "CHENOA INGRID RINGTOUMDA KABORE",
-      "equipo": "GAZTEDI RT",
+      "nombre": "CLARA RUIZ GARCIA",
+      "equipo": "UNIVERSITARIO BILBAO RUGBY",
       "dorsal": 14,
-      "puntos": 10,
-      "ensayos": 2,
+      "puntos": 0,
+      "ensayos": 0,
       "conversiones": 0,
       "golpes": 0,
       "drops": 0,
       "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 23.0,
+      "resultado": "P",
+      "margen": -12,
+      "rival": "EIBAR RUGBY TALDEA",
+      "nota": -1.2,
       "foto": ""
     },
     "12": {
@@ -643,35 +645,35 @@
       "foto": ""
     },
     "13": {
-      "nombre": "LIDE ERBINA ARAÑA",
-      "equipo": "EIBAR RUGBY TALDEA",
-      "dorsal": 13,
-      "puntos": 0,
+      "nombre": "ALBA MARLASCA ABASOLO",
+      "equipo": "UNIVERSITARIO BILBAO RUGBY",
+      "dorsal": 12,
+      "puntos": 2,
       "ensayos": 0,
-      "conversiones": 0,
+      "conversiones": 1,
       "golpes": 0,
       "drops": 0,
       "tarjetas": [],
-      "resultado": "G",
-      "margen": 12,
-      "rival": "UNIVERSITARIO BILBAO RUGBY",
-      "nota": 5.2,
+      "resultado": "P",
+      "margen": -12,
+      "rival": "EIBAR RUGBY TALDEA",
+      "nota": 0.8,
       "foto": ""
     },
     "14": {
-      "nombre": "INAYA ENDEIZA BASTERRETXEA",
-      "equipo": "EIBAR RUGBY TALDEA",
-      "dorsal": 14,
+      "nombre": "ISABEL GOMEZ VIDORRETA",
+      "equipo": "UNIVERSITARIO BILBAO RUGBY",
+      "dorsal": 11,
       "puntos": 0,
       "ensayos": 0,
       "conversiones": 0,
       "golpes": 0,
       "drops": 0,
       "tarjetas": [],
-      "resultado": "G",
-      "margen": 12,
-      "rival": "UNIVERSITARIO BILBAO RUGBY",
-      "nota": 5.2,
+      "resultado": "P",
+      "margen": -12,
+      "rival": "EIBAR RUGBY TALDEA",
+      "nota": -1.2,
       "foto": ""
     },
     "15": {
@@ -693,22 +695,6 @@
   },
   "foto_portada": null,
   "candidatos_xv": [
-    {
-      "nombre": "GARAZI ITURRIETA OCHOA DE ALAIZA",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 1,
-      "puntos": 5,
-      "ensayos": 1,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 15.0,
-      "foto": ""
-    },
     {
       "nombre": "LUCIA MALAGON SANCHEZ",
       "equipo": "COMPLUTENSE CISNEROS",
@@ -774,22 +760,6 @@
       "foto": ""
     },
     {
-      "nombre": "INES IGLESIAS DUVAL",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 1,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
-      "foto": ""
-    },
-    {
       "nombre": "VICTORIA ROSELL MARTINEZ",
       "equipo": "COMPLUTENSE CISNEROS",
       "dorsal": 2,
@@ -806,22 +776,6 @@
       "foto": ""
     },
     {
-      "nombre": "ANNE SAN MATEOS HERNANDO",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 2,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 7.0,
-      "foto": ""
-    },
-    {
       "nombre": "DOHA BENSLAIMAN KRAICHI",
       "equipo": "EIBAR RUGBY TALDEA",
       "dorsal": 2,
@@ -835,22 +789,6 @@
       "margen": 12,
       "rival": "UNIVERSITARIO BILBAO RUGBY",
       "nota": 5.2,
-      "foto": ""
-    },
-    {
-      "nombre": "LOLA AUZMENDI GOMEZ",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 2,
-      "puntos": 5,
-      "ensayos": 1,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": 5.0,
       "foto": ""
     },
     {
@@ -886,22 +824,6 @@
       "foto": ""
     },
     {
-      "nombre": "ILARGI DIAZ PEREZ",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 3,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 7.0,
-      "foto": ""
-    },
-    {
       "nombre": "ANGELA MARIA PEREZ VIÑA",
       "equipo": "COMPLUTENSE CISNEROS",
       "dorsal": 3,
@@ -931,22 +853,6 @@
       "margen": 12,
       "rival": "UNIVERSITARIO BILBAO RUGBY",
       "nota": 5.2,
-      "foto": ""
-    },
-    {
-      "nombre": "PAULA CERDA BRUFAL",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 3,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
       "foto": ""
     },
     {
@@ -984,22 +890,6 @@
       "foto": ""
     },
     {
-      "nombre": "MIREN LEGIDO PEREZ DE SAN ROMAN",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 4,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 7.0,
-      "foto": ""
-    },
-    {
       "nombre": "PAULA CANALES SILVAN",
       "equipo": "COMPLUTENSE CISNEROS",
       "dorsal": 4,
@@ -1013,22 +903,6 @@
       "margen": 36,
       "rival": "PRB",
       "nota": 7.0,
-      "foto": ""
-    },
-    {
-      "nombre": "AINA MARTINEZ PUIG",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 4,
-      "puntos": 5,
-      "ensayos": 1,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": 5.0,
       "foto": ""
     },
     {
@@ -1098,22 +972,6 @@
       "foto": ""
     },
     {
-      "nombre": "NAIARA PEREA CUERDA",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 5,
-      "puntos": 2,
-      "ensayos": 0,
-      "conversiones": 1,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 9.0,
-      "foto": ""
-    },
-    {
       "nombre": "NICOLE VANESSA REINA ESCOVAR",
       "equipo": "UNIVERSITARIO BILBAO RUGBY",
       "dorsal": 5,
@@ -1146,22 +1004,6 @@
       "foto": ""
     },
     {
-      "nombre": "GEMMA MARTINEZ VENDRELL",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 5,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
-      "foto": ""
-    },
-    {
       "nombre": "SABELA CHAN MARCOS",
       "equipo": "PRB",
       "dorsal": 5,
@@ -1175,22 +1017,6 @@
       "margen": -36,
       "rival": "COMPLUTENSE CISNEROS",
       "nota": -3.0,
-      "foto": ""
-    },
-    {
-      "nombre": "KETLYN CRISTINA CARDOSO DA LUZ",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 6,
-      "puntos": 5,
-      "ensayos": 1,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 15.0,
       "foto": ""
     },
     {
@@ -1242,22 +1068,6 @@
       "foto": ""
     },
     {
-      "nombre": "MARWA FARES",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 6,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
-      "foto": ""
-    },
-    {
       "nombre": "IXEYA MORENO BALFAGON",
       "equipo": "PRB",
       "dorsal": 6,
@@ -1271,22 +1081,6 @@
       "margen": -36,
       "rival": "COMPLUTENSE CISNEROS",
       "nota": -3.0,
-      "foto": ""
-    },
-    {
-      "nombre": "ANE ROMAN MADRUGA",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 7,
-      "puntos": 5,
-      "ensayos": 1,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 15.0,
       "foto": ""
     },
     {
@@ -1338,22 +1132,6 @@
       "foto": ""
     },
     {
-      "nombre": "MARIONA VENTURA ROMERO",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 7,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
-      "foto": ""
-    },
-    {
       "nombre": "IVET FRANCES TIRAPU",
       "equipo": "PRB",
       "dorsal": 7,
@@ -1402,38 +1180,6 @@
       "foto": ""
     },
     {
-      "nombre": "ICIAR POZO EIZAGUIRRE",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 8,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 7.0,
-      "foto": ""
-    },
-    {
-      "nombre": "NAIARA CARO CABALLERO",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 8,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
-      "foto": ""
-    },
-    {
       "nombre": "MARIANA LOURDES DIAZ",
       "equipo": "PRB",
       "dorsal": 8,
@@ -1465,22 +1211,6 @@
       "margen": -12,
       "rival": "EIBAR RUGBY TALDEA",
       "nota": -5.2,
-      "foto": ""
-    },
-    {
-      "nombre": "GARAZI IZAGUIRRE AGUINAGALDE",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 9,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 7.0,
       "foto": ""
     },
     {
@@ -1516,22 +1246,6 @@
       "foto": ""
     },
     {
-      "nombre": "MARIA ISABEL HERNANDEZ FERRAND",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 9,
-      "puntos": 5,
-      "ensayos": 1,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": 5.0,
-      "foto": ""
-    },
-    {
       "nombre": "SALMA MEJAITI BOULKHRIF",
       "equipo": "UNIVERSITARIO BILBAO RUGBY",
       "dorsal": 9,
@@ -1561,22 +1275,6 @@
       "margen": -36,
       "rival": "COMPLUTENSE CISNEROS",
       "nota": -3.0,
-      "foto": ""
-    },
-    {
-      "nombre": "LUCIA INES PETRACCARO INCHUSTA",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 10,
-      "puntos": 9,
-      "ensayos": 1,
-      "conversiones": 2,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 19.0,
       "foto": ""
     },
     {
@@ -1628,22 +1326,6 @@
       "foto": ""
     },
     {
-      "nombre": "OLGA MARTINEZ LOPEZ",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 10,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
-      "foto": ""
-    },
-    {
       "nombre": "EIDER GARCIA SANTAMARIA",
       "equipo": "PRB",
       "dorsal": 10,
@@ -1657,22 +1339,6 @@
       "margen": -36,
       "rival": "COMPLUTENSE CISNEROS",
       "nota": -3.0,
-      "foto": ""
-    },
-    {
-      "nombre": "MARIA ROA SALAZAR",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 11,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 7.0,
       "foto": ""
     },
     {
@@ -1724,22 +1390,6 @@
       "foto": ""
     },
     {
-      "nombre": "NADIA LAZARO ROMA",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 11,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
-      "foto": ""
-    },
-    {
       "nombre": "RAQUEL ABAJO PARDO",
       "equipo": "PRB",
       "dorsal": 11,
@@ -1753,22 +1403,6 @@
       "margen": -36,
       "rival": "COMPLUTENSE CISNEROS",
       "nota": -3.0,
-      "foto": ""
-    },
-    {
-      "nombre": "MERCEDES RAMOS RODRIGUEZ",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 12,
-      "puntos": 5,
-      "ensayos": 1,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 15.0,
       "foto": ""
     },
     {
@@ -1820,22 +1454,6 @@
       "foto": ""
     },
     {
-      "nombre": "JULIA TORRENTS CABALLE",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 12,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
-      "foto": ""
-    },
-    {
       "nombre": "BEATRIZ RODRIGUEZ REVILLA",
       "equipo": "PRB",
       "dorsal": 12,
@@ -1849,22 +1467,6 @@
       "margen": -36,
       "rival": "COMPLUTENSE CISNEROS",
       "nota": -3.0,
-      "foto": ""
-    },
-    {
-      "nombre": "SINEAD ROSS-MAGAHY KAREAGA",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 13,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 7.0,
       "foto": ""
     },
     {
@@ -1916,22 +1518,6 @@
       "foto": ""
     },
     {
-      "nombre": "RUT FIGUERAS SERRA",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 13,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
-      "foto": ""
-    },
-    {
       "nombre": "TANIA GIULIANADEL ROSARIO AGUERO",
       "equipo": "PRB",
       "dorsal": 13,
@@ -1945,22 +1531,6 @@
       "margen": -36,
       "rival": "COMPLUTENSE CISNEROS",
       "nota": -3.0,
-      "foto": ""
-    },
-    {
-      "nombre": "CHENOA INGRID RINGTOUMDA KABORE",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 14,
-      "puntos": 10,
-      "ensayos": 2,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 23.0,
       "foto": ""
     },
     {
@@ -2012,22 +1582,6 @@
       "foto": ""
     },
     {
-      "nombre": "ERIKA BELTRAN BUJALANCE",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 14,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
-      "foto": ""
-    },
-    {
       "nombre": "YANIRA SEGURA MARTINEZ",
       "equipo": "PRB",
       "dorsal": 14,
@@ -2060,22 +1614,6 @@
       "foto": ""
     },
     {
-      "nombre": "AIZPEA RACAMONDE MENDILUCE",
-      "equipo": "GAZTEDI RT",
-      "dorsal": 15,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "G",
-      "margen": 31,
-      "rival": "UNIO ESPORTIVA SANTBOIANA",
-      "nota": 7.0,
-      "foto": ""
-    },
-    {
       "nombre": "NATALIA CASTRO ALONSO",
       "equipo": "COMPLUTENSE CISNEROS",
       "dorsal": 15,
@@ -2105,22 +1643,6 @@
       "margen": -12,
       "rival": "EIBAR RUGBY TALDEA",
       "nota": -1.2,
-      "foto": ""
-    },
-    {
-      "nombre": "ONA LARA VALVERDE",
-      "equipo": "UNIO ESPORTIVA SANTBOIANA",
-      "dorsal": 15,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -31,
-      "rival": "GAZTEDI RT",
-      "nota": -3.0,
       "foto": ""
     },
     {
@@ -2203,11 +1725,11 @@
       "pe": 0,
       "pp": 0,
       "tf": 103,
-      "tc": 30,
-      "dt": 73,
+      "tc": 27,
+      "dt": 76,
       "ef": 17,
-      "ec": 5,
-      "de": 12,
+      "ec": 4,
+      "de": 13,
       "bo": 2,
       "bd": 0,
       "escudo": "@f/images/afiliacion_clubs/61/square_683574657438696c6a6a.jpg"
@@ -2272,12 +1794,12 @@
       "pg": 0,
       "pe": 0,
       "pp": 3,
-      "tf": 34,
+      "tf": 31,
       "tc": 126,
-      "dt": -92,
-      "ef": 5,
+      "dt": -95,
+      "ef": 4,
       "ec": 21,
-      "de": -16,
+      "de": -17,
       "bo": 0,
       "bd": 0,
       "escudo": "@f/images/afiliacion_clubs/39/square_62397833623562636372.jpg"
@@ -2524,13 +2046,6 @@
         "rival": "PRB"
       },
       {
-        "nombre": "CHENOA INGRID RINGTOUMDA KABORE",
-        "equipo": "GAZTEDI RT",
-        "valor": 2,
-        "detalle": "10 puntos",
-        "rival": "UNIO ESPORTIVA SANTBOIANA"
-      },
-      {
         "nombre": "JULIA GONZALEZ SANDE",
         "equipo": "COMPLUTENSE CISNEROS",
         "valor": 2,
@@ -2545,13 +2060,6 @@
         "rival": "UNIVERSITARIO BILBAO RUGBY"
       },
       {
-        "nombre": "LUCIA INES PETRACCARO INCHUSTA",
-        "equipo": "GAZTEDI RT",
-        "valor": 1,
-        "detalle": "9 puntos",
-        "rival": "UNIO ESPORTIVA SANTBOIANA"
-      },
-      {
         "nombre": "ADARA ALFONSO BOUBETA",
         "equipo": "EIBAR RUGBY TALDEA",
         "valor": 1,
@@ -2559,11 +2067,25 @@
         "rival": "UNIVERSITARIO BILBAO RUGBY"
       },
       {
-        "nombre": "AINA MARTINEZ PUIG",
-        "equipo": "UNIO ESPORTIVA SANTBOIANA",
+        "nombre": "AROA PRESA VINAGRE",
+        "equipo": "PRB",
         "valor": 1,
         "detalle": "5 puntos",
-        "rival": "GAZTEDI RT"
+        "rival": "COMPLUTENSE CISNEROS"
+      },
+      {
+        "nombre": "ISIS YARA TOUW",
+        "equipo": "EIBAR RUGBY TALDEA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "UNIVERSITARIO BILBAO RUGBY"
+      },
+      {
+        "nombre": "LOREA SEGOVIA CINCUNEGUI",
+        "equipo": "EIBAR RUGBY TALDEA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "UNIVERSITARIO BILBAO RUGBY"
       }
     ],
     "pateadores": [
@@ -2582,13 +2104,6 @@
         "rival": "UNIVERSITARIO BILBAO RUGBY"
       },
       {
-        "nombre": "LUCIA INES PETRACCARO INCHUSTA",
-        "equipo": "GAZTEDI RT",
-        "valor": 4,
-        "detalle": "2 transf.",
-        "rival": "UNIO ESPORTIVA SANTBOIANA"
-      },
-      {
         "nombre": "AIORA HIJARRUBIA LANAU",
         "equipo": "COMPLUTENSE CISNEROS",
         "valor": 2,
@@ -2601,13 +2116,6 @@
         "valor": 2,
         "detalle": "1 transf.",
         "rival": "EIBAR RUGBY TALDEA"
-      },
-      {
-        "nombre": "NAIARA PEREA CUERDA",
-        "equipo": "GAZTEDI RT",
-        "valor": 2,
-        "detalle": "1 transf.",
-        "rival": "UNIO ESPORTIVA SANTBOIANA"
       }
     ],
     "ensayadores_t": [
@@ -2832,7 +2340,7 @@
         "filas": [
           {
             "equipo": "GAZTEDI RT",
-            "valor": 30
+            "valor": 27
           },
           {
             "equipo": "COMPLUTENSE CISNEROS",
