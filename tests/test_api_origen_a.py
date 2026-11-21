@@ -259,3 +259,14 @@ def test_actuales_con_id_une_por_nombre_y_equipo():
     con_id = [J(9, "ANA PEREZ", "EQ A", 5, 0, 0, 0, 0)]
     r = fichas._actuales_con_id(tabla, con_id)
     assert [(j.id, j.nombre, j.puntos) for j in r] == [(9, "ANA PEREZ", 30)]
+
+
+def test_acta_con_el_nombre_del_equipo_en_otro_orden_usa_el_de_la_competicion(cliente):
+    from datosdep.models import Acta, Evento
+
+    c = cliente()
+    c._equipos[1] = {5: ("RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES", "")}
+    acta = Acta(1, "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES", "OTRO", [Evento(1, "ensayo", "x", None, "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES", "J")], [], [])
+    r = c._unificar_nombres(acta)
+    assert r.local == "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES" and r.visitante == "OTRO"
+    assert r.eventos[0].equipo == "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES"

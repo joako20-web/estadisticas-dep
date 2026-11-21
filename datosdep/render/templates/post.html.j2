@@ -30,7 +30,7 @@ body { background: #111; font-family: var(--f-txt); font-size-adjust: cap-height
 .num, .marcador, .pts, td, .hora, .cpts, .gpt, .dato-num, .final-marcador, .pos, .blq-val { font-variant-numeric: tabular-nums lining-nums; }
 
 /* ---------- Cabecera: quién y cuándo, a la izquierda; escudo a la derecha ---------- */
-.cabecera { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; min-height: 88px; }
+.cabecera { flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; min-height: 88px; }
 .meta { display: flex; flex-direction: column; gap: 4px; }
 .meta-comp { font-weight: 700; font-size: 30px; line-height: 1.1; color: var(--texto); }
 .meta-sub { font-weight: 500; font-size: 26px; line-height: 1.1; color: var(--gris); }
@@ -57,6 +57,7 @@ h1 { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font
 .t-portada .credito b { color: var(--acento-txt); font-weight: 600; }
 .t-portada .mvp { margin-top: auto; position: relative; z-index: 2; display: grid; grid-template-columns: 150px 1fr; gap: 0 36px;
   padding-top: 40px; border-top: var(--filete) solid var(--linea); align-items: start; }
+.t-portada .mvp.sin-escudo { grid-template-columns: 1fr; }
 .t-portada .mvp .crest.m { grid-row: span 5; width: 150px; height: 150px; padding: 16px; margin: 0; }
 .t-portada .mvp-motivo { font-weight: 600; font-size: 28px; color: var(--acento-txt); }
 .t-portada .mvp-pila { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font-weight: 400; font-size: 64px; line-height: .95; margin-top: 18px; color: var(--gris); }

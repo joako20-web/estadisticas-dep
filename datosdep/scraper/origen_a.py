@@ -388,6 +388,27 @@ class OrigenA:
     def previo_en_cache(self, id_partido: int) -> bool:
         return self._leer_disco(self._clave_api("previo", {"id": id_partido})) is not None
 
+    def _conocido(self, nombre: str) -> str:
+        """Si un equipo conocido de la competición tiene las mismas palabras en otro orden, ese nombre."""
+        palabras = sorted(nombre.split())
+        for equipos in self._equipos.values():
+            for conocido, _ in equipos.values():
+                if conocido != nombre and sorted(conocido.split()) == palabras:
+                    return conocido
+        return nombre
+
+    def _unificar_nombres(self, acta: Acta) -> Acta:
+        """El acta y la tabla escriben a veces el nombre de un equipo con las palabras en otro orden
+        ("…CAJA RURAL BURGOS…" / "…BURGOS CAJA RURAL…"): se usa siempre el de la competición."""
+        cambios = {n: self._conocido(n) for n in (acta.local, acta.visitante) if n}
+        cambios = {a: b for a, b in cambios.items() if a != b}
+        if not cambios:
+            return acta
+        acta.local, acta.visitante = cambios.get(acta.local, acta.local), cambios.get(acta.visitante, acta.visitante)
+        for e in acta.eventos:
+            e.equipo = cambios.get(e.equipo, e.equipo)
+        return acta
+
     def acta(self, id_partido: int) -> Acta:
         # Orden: acta guardada a mano > acta ya convertida > acta que bajó antes el proxy JSON (caché) >
         # PDF oficial (dirección en el secreto ORIGEN_A_ACTA_URL). Un acta de partido
@@ -418,7 +439,7 @@ class OrigenA:
                 if not acta.eventos:
                     raise
             self.actas_bloqueadas = False
-            return acta
+            return self._unificar_nombres(acta)
         except (ValueError, KeyError):
             # Respuesta sin datos: no la dejamos cacheada para reintentarla luego.
             clave = hashlib.sha1(f"{BASE}/json/origen_a_proxy.php?{sorted(params.items())}".encode()).hexdigest()

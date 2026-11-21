@@ -106,3 +106,10 @@ def test_designaciones_con_partido_sin_fecha(monkeypatch):
     monkeypatch.setattr(arbitros, "cargar_config", lambda: {"competiciones": {"x": {"grupos": {"unico": 1}}}})
     d = arbitros.designaciones("x", Falso())
     assert [f["local"] for f in d["filas"]] == ["L3", "L2", "L1"]  # por fecha y, al final, el que no la tiene
+
+
+def test_apellido_largo_en_dos_lineas_y_cabecera_con_otra_disposicion():
+    """Acta de M23: el dorsal 21 del visitante tiene el apellido en dos líneas y el marcador visitante va en otra columna."""
+    a = parsers.acta_json(acta_pdf.acta_a_json(_paginas(18101)), 18101)
+    assert a.marcador_por_eventos() == (31, 55)
+    assert "ANTONIO CAMPS MONJARDINO DE AZEVEDO SOARES" in [j.nombre for j in a.alineacion_visitante if j.dorsal == 21]

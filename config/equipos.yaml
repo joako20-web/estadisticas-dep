@@ -65,3 +65,58 @@
 "RCLH/RCS/SHARC": {corto: "L'Hospitalet / RCS / Sharc", abr: "RCL"}
 "RCS/CRT B": {corto: "RCS / CRT B", abr: "RCS"}
 "OLÍMPICO - OSAS": {corto: "Olímpico / Osos del Pardo", abr: "OLO", clubes: ["OLIMPICO DE POZUELO RUGBY", "OSOS DEL PARDO"]}
+
+# Ligas nacionales: el nombre del club, sin patrocinador (revisado en la auditoría de imágenes).
+"A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY": {corto: "Las Rozas", abr: "ROZ"}
+"BARCELONA UNIVERSITARI CLUB": {corto: "Barcelona Univ.", abr: "BUC"}
+"CAJASOL SEVILLA COCOS": {corto: "Sevilla Cocos", abr: "COC"}
+"GETXO RUGBY": {corto: "Getxo", abr: "GET"}
+"OLIMPICO DE POZUELO CR": {corto: "Olímpico Pozuelo", abr: "OLI"}
+"RIALTA CRAT CORUÑA.": {corto: "CRAT Coruña", abr: "CRA"}
+"SILICIUS RUGBY MAJADAHONDA": {corto: "Majadahonda", abr: "MAJ"}
+"TURIA": {corto: "Turia", abr: "TUR"}
+"CLUB DE RUGBY ATLETICO PORTUENSE": {corto: "Atlético Portuense", abr: "POR"}
+"EIBAR RUGBY TALDEA": {corto: "Eibar", abr: "EIB"}
+"GAZTEDI RT": {corto: "Gaztedi", abr: "GAZ"}
+"PRB": {corto: "PRB", abr: "PRB"}
+"UNIVERSITARIO BILBAO RUGBY": {corto: "Universitario Bilbao", abr: "UBR"}
+"AKRA BARBARA": {corto: "Akra Bàrbara", abr: "AKR"}
+"BETSAIDE ELORRIO RT": {corto: "Betsaide Elorrio", abr: "BET"}
+"C.A.R. CACERES": {corto: "CAR Cáceres", abr: "CAC"}
+"CAR SEVILLA": {corto: "CAR Sevilla", abr: "SEV"}
+"CAU RUGBY VALENCIA": {corto: "CAU Valencia", abr: "CAU"}
+"CLUB JAEN RUGBY": {corto: "Jaén", abr: "JAE"}
+"CLUB NATACIO POBLE NOU": {corto: "Poble Nou", abr: "POB"}
+"CLUB RUGBY ALCALA": {corto: "Alcalá", abr: "ALC"}
+"COMPLUTENSE CISNEROS ZETA": {corto: "Cisneros Zeta", abr: "CIZ"}
+"CORMORÁN RUGBY CLUB DE SANTANDER": {corto: "Cormorán", abr: "COR"}
+"DONOSTIA RUGBY BALEZALEAK": {corto: "Donostia", abr: "DON"}
+"HERMO SOTO DEL REAL": {corto: "Soto del Real", abr: "SOT"}
+"KALEIDO UNIVERSIDADE DE VIGO": {corto: "Univ. de Vigo", abr: "VIG"}
+"LA UNICA RUGBY TALDEA": {corto: "La Única", abr: "UNI"}
+"OS INGLESES RUGBY CLUB": {corto: "Os Ingleses", abr: "ING"}
+"PASEK BELENOS": {corto: "Belenos", abr: "BEL"}
+"REAL OVIEDO RUGBY": {corto: "Real Oviedo", abr: "OVI"}
+"RUGBY ARANDA FREUND DHB": {corto: "Aranda B", abr: "ARB"}
+"RUGBY CLUB PONENT": {corto: "Ponent", abr: "PON"}
+"RUGBY CLUB SITGES": {corto: "Sitges", abr: "SIT"}
+"RUGBY MAJADAHONDA": {corto: "Majadahonda", abr: "MAJ"}
+"SILICIUS ALCOBENDAS RUGBY B": {corto: "Alcobendas B", abr: "ALB"}
+"UNIVERSIDAD DE MALLORCA EL TORO RC": {corto: "El Toro Mallorca", abr: "TOR"}
+"VPC ANDORRA RUGBY XV": {corto: "VPC Andorra", abr: "AND"}
+"ALON AUTOMOTIVE HERNANI": {corto: "Hernani M23", abr: "HER"}
+"ALZAGA GERNIKA ARRATIKO RT": {corto: "Gernika M23", abr: "GER"}
+"CR LICEO FRANCES M23": {corto: "Liceo Francés M23", abr: "LIC"}
+"EMERGING EL SALVADOR M23": {corto: "El Salvador M23", abr: "SAL"}
+"MOYUA GOIERRI ORDIZIA RUGBY": {corto: "Ordizia M23", abr: "ORD"}
+"RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES M23": {corto: "Aparejadores M23", abr: "BUR"}
+"SILICIUS ALCOBENDAS RUGBY EMERGING": {corto: "Alcobendas M23", abr: "ALC"}
+
+# Ligas regionales de Madrid: el nombre del club, sin patrocinador.
+"AHORRAMAS VALLECAS R.U. ROJO": {corto: "Vallecas Rojo", abr: "VAR"}
+"AHORRAMAS VALLECAS RUGBY UNIÓN": {corto: "Vallecas", abr: "VAL"}
+"CAU MADRID": {corto: "CAU Madrid", abr: "CAU"}
+"CAR RIVAS": {corto: "CAR Rivas", abr: "RIV"}
+"CLUB RUGBY ALCALÁ": {corto: "Alcalá", abr: "ALC"}
+"RUGBY ALCALÁ ROJO": {corto: "Alcalá Rojo", abr: "ALR"}
+"RUGBY UNIÓN NORTE": {corto: "Unión Norte", abr: "UNN"}

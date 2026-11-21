@@ -12,9 +12,9 @@ from zoneinfo import ZoneInfo
 from datosdep.pipeline import RAIZ
 
 MADRID = ZoneInfo("Europe/Madrid")
-# RUGBYIG_ESTADO permite una segunda instancia (laboratorio) con su propio estado,
+# ESTADO_DIR permite una segunda instancia (laboratorio) con su propio estado,
 # sin tocar el de producción. Ruta relativa = respecto a la raíz del repo.
-ESTADO = RAIZ / os.environ.get("RUGBYIG_ESTADO", "estado")
+ESTADO = RAIZ / os.environ.get("ESTADO_DIR", "estado")
 FOTOS = RAIZ / "data" / "fotos"
 
 

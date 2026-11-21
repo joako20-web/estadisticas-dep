@@ -14,7 +14,7 @@ from datosdep.scraper.texto import limpiar
 
 COL = 290  # x que separa la columna del local de la del visitante
 NOMBRE_X = 62  # x donde empieza el nombre del jugador en la columna del local (en la del visitante, +COL)
-TOL_Y = 3  # fragmentos a menos de esta distancia vertical son la misma fila
+TOL_Y = 5  # fragmentos a menos de esta distancia vertical son la misma fila
 Fila = list[tuple[float, str]]  # (x, texto) ordenado por x
 
 
@@ -38,12 +38,21 @@ def fragmentos(raw: bytes) -> list[list[tuple[float, float, str]]]:
 
 
 def _filas(trozos: list[tuple[float, float, str]]) -> list[tuple[float, Fila]]:
-    filas: list[tuple[float, Fila]] = []
+    """Agrupa los trozos de texto en filas. Un nombre largo partido en dos líneas (con el número centrado entre
+    ambas) queda en una sola fila, y los dos trozos de la misma columna se unen en orden de arriba a abajo."""
+    filas: list[list] = []  # [y de la última línea, [(x, texto), ...]]
     for y, x, t in sorted(trozos, key=lambda f: (-f[0], f[1])):
         if filas and abs(filas[-1][0] - y) <= TOL_Y:
-            filas[-1][1].append((x, t))
+            fila = filas[-1][1]
+            filas[-1][0] = y
+            for i, (x0, t0) in enumerate(fila):
+                if abs(x0 - x) <= 3 and not t0.isdigit() and not t.isdigit():  # continuación del mismo texto
+                    fila[i] = (x0, t0 + ("" if t0.endswith("-") else " ") + t)
+                    break
+            else:
+                fila.append((x, t))
         else:
-            filas.append((y, [(x, t)]))
+            filas.append([y, [(x, t)]])
     return [(y, sorted(f)) for y, f in filas]
 
 
@@ -97,9 +106,12 @@ def _alineaciones(paginas) -> tuple[dict[int, str], dict[int, str]]:
 
 
 def _marcador(paginas) -> tuple[int, int]:
+    """Los dos números de la cabecera (uno a cada lado de la mitad de la página), antes de la lista de jugadores."""
     for _, fila in _filas(paginas[0]):
-        izq = [int(t) for x, t in fila if t.isdigit() and 200 <= x < COL and len(t) <= 3]
-        der = [int(t) for x, t in fila if t.isdigit() and x >= 480 and len(t) <= 3]
+        if " ".join(t for _, t in fila).strip() == "JUGADORES":
+            break
+        izq = [int(t) for x, t in fila if t.isdigit() and x < COL and len(t) <= 3]
+        der = [int(t) for x, t in fila if t.isdigit() and x >= COL and len(t) <= 3]
         if izq and der:
             return izq[0], der[0]
     raise ValueError("no encuentro el marcador en el PDF")

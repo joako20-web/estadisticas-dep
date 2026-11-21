@@ -513,6 +513,41 @@ def _servir_recurso(route) -> None:
 # Mínimo: el 62 % del tamaño original y nunca menos de 22 px. Solo si aun así no
 # caben, se queda la elipsis como último recurso.
 _JS_AJUSTA = """() => {
+  // 1) Ajuste vertical, primero: si el contenido principal baja más de lo que deja el margen inferior (muchos equipos o
+  //    partidos), se reduce todo a la vez, en proporción, hasta que quepa (mínimo 60 %). No recorta ni baja la resolución.
+  for (const sec of document.querySelectorAll('section.slide')) {
+    const c = sec.querySelector(':scope > .cuerpo');
+    if (!c) continue;
+    const limite = sec.getBoundingClientRect().bottom - 64;
+    let fondo = 0;
+    for (const e of c.querySelectorAll('*')) {
+      const r = e.getBoundingClientRect();
+      if (r.height > 0 && r.bottom > fondo) fondo = r.bottom;
+    }
+    if (fondo <= limite) continue;
+    const top = c.getBoundingClientRect().top;
+    c.style.zoom = Math.max(0.6, (limite - top) / (fondo - top));
+  }
+  // 2) Fichas de equipo: si sobra mucho alto, el contenido crece (hasta 1,35 veces) para aprovechar la imagen.
+  for (const c of document.querySelectorAll('section.slide .fe')) {
+    const limite = c.closest('section.slide').getBoundingClientRect().bottom - 72;
+    const top = c.getBoundingClientRect().top;
+    let fondo = 0;
+    for (const e of c.querySelectorAll('*')) {
+      const r = e.getBoundingClientRect();
+      if (r.height > 0 && r.bottom > fondo) fondo = r.bottom;
+    }
+    if (!(fondo > top && fondo < limite - 40)) continue;
+    // crece mientras no se corte ningún nombre que antes se leía entero
+    const cortados = () => [...c.querySelectorAll('*')].filter(e => getComputedStyle(e).overflowX !== 'visible'
+      && e.scrollWidth > e.clientWidth + 1 && (e.textContent || '').trim()).length;
+    const base = cortados();
+    let z = Math.min(1.35, (limite - top) / (fondo - top));
+    for (; z > 1.02; z -= 0.04) { c.style.zoom = z; if (cortados() <= base) break; }
+    if (z <= 1.02) c.style.zoom = '';
+  }
+  // 3) Textos de una línea que no caben (nombres de equipos y jugadores largos): reducen su tamaño poco a poco en
+  //    vez de cortarse con "…". Mínimo: el 62 % del tamaño y nunca menos de 22 px (tras el zoom, ya con el tamaño final).
   let n = 0;
   for (const e of document.querySelectorAll('section.slide *')) {
     if (!(e.textContent || '').trim()) continue;
@@ -527,7 +562,7 @@ _JS_AJUSTA = """() => {
     }
     n++;
   }
-  // Nombres de equipo que admiten 2 líneas: si ocupan 3 o más, se reducen hasta caber en 2
+  // 4) Nombres de equipo que admiten 2 líneas: si ocupan 3 o más, se reducen hasta caber en 2
   for (const e of document.querySelectorAll('section.slide .equipo .nom, section.slide .final-eq .nom, section.slide .pj-nom, section.slide .md-nom')) {
     const s = getComputedStyle(e);
     let fs = parseFloat(s.fontSize);
@@ -541,24 +576,45 @@ _JS_AJUSTA = """() => {
   return n;
 }"""
 
-# Detecta textos recortados (elipsis) o que se salen del slide. Con la variable de
-# entorno RUGBYIG_AUDITA=<fichero.jsonl> se registran (para revisar plantillas).
-_JS_AUDITA = """(clave) => {
+# Auditoría de las plantillas: con la variable de entorno AUDITA_IMAGENES=<fichero.jsonl> se registra, por slide,
+# el texto cortado (elipsis o recortado), el que se sale del cuadro, el que queda con poco margen y el que se
+# solapa con otro texto. Se mide el rectángulo real del texto, no el de su caja.
+_JS_AUDITA = """(margen) => {
   const out = [];
-  for (const sec of document.querySelectorAll('section.slide')) {
+  const secs = [...document.querySelectorAll('section.slide')];
+  secs.forEach((sec, i) => {
     const caja = sec.getBoundingClientRect();
+    const hojas = [];
     for (const e of sec.querySelectorAll('*')) {
-      if (!e.childElementCount && !(e.textContent || '').trim()) continue;
+      const propio = [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim());
+      if (!propio) continue;
+      const rg = document.createRange(); rg.selectNodeContents(e);
+      const r0 = rg.getBoundingClientRect(); if (r0.width < 2 || r0.height < 2) continue;
       const s = getComputedStyle(e);
-      const corta = e.scrollWidth > e.clientWidth + 1 && s.overflowX !== 'visible';
-      const r = e.getBoundingClientRect();
-      const fuera = r.width > 0 && (r.right > caja.right + 1 || r.left < caja.left - 1 || r.bottom > caja.bottom + 1);
-      if ((corta || fuera) && (e.textContent || '').trim() && !e.querySelector('*:not(br)'))
-        out.push({tipo: corta ? 'corta' : 'fuera', clase: e.className, texto: e.textContent.trim().slice(0, 60),
-                  fs: s.fontSize});
+      // altura real de las letras (≈ 0,78 del cuerpo) centrada en su caja: los números enormes tienen una caja mucho
+      // mayor que su dibujo y chocaban con las etiquetas sin tocarlas
+      const hl = Math.min(r0.height, parseFloat(s.fontSize) * 0.78), cy = (r0.top + r0.bottom) / 2;
+      const t = {left: r0.left, right: r0.right, top: cy - hl / 2, bottom: cy + hl / 2, width: r0.width, height: hl};
+      if (s.visibility === 'hidden' || s.opacity === '0') continue;
+      const texto = (e.textContent || '').trim().replace(/\\s+/g, ' ').slice(0, 60);
+      const base = {sec: i, clase: String(e.className).slice(0, 40), texto, fs: s.fontSize};
+      if (e.scrollWidth > e.clientWidth + 1 && s.overflowX !== 'visible') out.push({...base, tipo: 'corta'});
+      if (t.right > caja.right + 1 || t.left < caja.left - 1 || t.bottom > caja.bottom + 1) out.push({...base, tipo: 'fuera'});
+      else if (t.left < caja.left + margen || t.right > caja.right - margen || t.bottom > caja.bottom - margen)
+        out.push({...base, tipo: 'margen', izq: Math.round(t.left - caja.left), der: Math.round(caja.right - t.right),
+                  abajo: Math.round(caja.bottom - t.bottom)});
+      hojas.push({e, t, base});
     }
-  }
-  return out;
+    for (let a = 0; a < hojas.length; a++) for (let b = a + 1; b < hojas.length; b++) {
+      const A = hojas[a], B = hojas[b];
+      if (A.e.contains(B.e) || B.e.contains(A.e)) continue;
+      const w = Math.min(A.t.right, B.t.right) - Math.max(A.t.left, B.t.left);
+      const h = Math.min(A.t.bottom, B.t.bottom) - Math.max(A.t.top, B.t.top);
+      if (w > 4 && h > 4 && w * h > 0.25 * Math.min(A.t.width * A.t.height, B.t.width * B.t.height))
+        out.push({...A.base, tipo: 'solapa', con: B.base.texto});
+    }
+  });
+  return out.slice(0, 80);
 }"""
 
 
@@ -579,9 +635,9 @@ def renderizar_slides(
         pagina.set_content(_externalizar(html_post(datos, slides, formato, tema)), wait_until="load")
         pagina.evaluate("document.fonts.ready")
         pagina.evaluate(_JS_AJUSTA)
-        if os.environ.get("RUGBYIG_AUDITA"):
-            problemas = pagina.evaluate(_JS_AUDITA, "")
-            with open(os.environ["RUGBYIG_AUDITA"], "a", encoding="utf-8") as f:
+        if os.environ.get("AUDITA_IMAGENES"):
+            problemas = pagina.evaluate(_JS_AUDITA, 40)
+            with open(os.environ["AUDITA_IMAGENES"], "a", encoding="utf-8") as f:
                 f.write(json.dumps({"tema": tema or tema_actual(), "formato": formato,
                                     "comp": datos.get("competicion"), "claves": [s["clave"] for s in slides],
                                     "destino": str(destino), "problemas": problemas}, ensure_ascii=False) + "\n")

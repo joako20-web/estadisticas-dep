@@ -6,7 +6,7 @@
 </div>
 {% if not s.foto and d %}
 {% set n = d.jugador|jugador %}
-<div class="mvp">
+<div class="mvp{% if not d.equipo|escudo %} sin-escudo{% endif %}">
   {% if d.equipo|escudo %}<img class="crest m" src="{{ d.equipo|escudo }}">{% endif %}
   <div class="mvp-motivo">{{ d.motivo }}</div>
   <div class="mvp-pila">{{ n.nombre }}</div>

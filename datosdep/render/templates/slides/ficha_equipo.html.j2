@@ -88,7 +88,7 @@
       {% for u in s.ultimos %}
       <div class="fe-res">
         {% if u.rival|escudo %}<img class="crest" src="{{ u.rival|escudo }}">{% else %}<span></span>{% endif %}
-        <span class="rv">{{ u.rival|corto }}<small>{{ 'casa' if u.local else 'fuera' }}</small></span>
+        <span class="rv">{{ u.rival|corto }}{% if (u.rival|corto)|length < 17 %}<small>{{ 'casa' if u.local else 'fuera' }}</small>{% endif %}</span>
         <span class="mc fe-num">{{ u.pf }}-{{ u.pc }}</span>
         <span class="ch {{ u.res }}">{{ u.res }}</span>
       </div>
