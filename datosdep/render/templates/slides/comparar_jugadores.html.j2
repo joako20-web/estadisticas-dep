@@ -7,8 +7,10 @@
 .cmp-cab { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 22px; }
 .cmp-j { min-width: 0; }
 .cmp-j.b { text-align: right; }
-.cmp-j .p { font-size: 34px; color: var(--gris); line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.cmp-j .a { font-weight: 700; font-size: 64px; line-height: .9; text-transform: uppercase; margin-top: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cmp-j .p { font-size: 34px; color: var(--gris); line-height: 1; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; }
+.cmp-j .a { font-weight: 700; font-size: 64px; line-height: .9; text-transform: uppercase; margin-top: 6px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; }
+.cmp-j .a.m { font-size: 50px; }
+.cmp-j .a.l { font-size: 40px; }  /* apellidos largos: menos letra y hasta 2 líneas, sin salirse */
 .cmp-j .e { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 27px; font-weight: 600; }
 .cmp-j.b .e { justify-content: flex-end; }
 .cmp-j .e .crest { width: 54px; height: 54px; padding: 5px; flex: none; }
@@ -29,12 +31,12 @@
   <div class="cmp-cab">
     <div class="cmp-j a">
       <div class="p cmp-tit">{{ na.nombre }}</div>
-      <div class="a cmp-tit">{{ na.apellidos }}</div>
+      <div class="a cmp-tit{{ ' l' if na.apellidos|length > 24 else ' m' if na.apellidos|length > 14 }}">{{ na.apellidos }}</div>
       <div class="e">{% if s.a.equipo|escudo %}<img class="crest" src="{{ s.a.equipo|escudo }}">{% endif %}<span>{{ s.a.equipo|corto }}</span></div>
     </div>
     <div class="cmp-j b">
       <div class="p cmp-tit">{{ nb.nombre }}</div>
-      <div class="a cmp-tit">{{ nb.apellidos }}</div>
+      <div class="a cmp-tit{{ ' l' if nb.apellidos|length > 24 else ' m' if nb.apellidos|length > 14 }}">{{ nb.apellidos }}</div>
       <div class="e">{% if s.b.equipo|escudo %}<img class="crest" src="{{ s.b.equipo|escudo }}">{% endif %}<span>{{ s.b.equipo|corto }}</span></div>
     </div>
   </div>

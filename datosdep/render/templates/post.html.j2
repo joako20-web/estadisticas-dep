@@ -183,7 +183,8 @@ h1 { font-family: var(--f-tit); font-size-adjust: cap-height var(--aj-tit); font
 .fila:first-child .pts { font-size: 120px; color: var(--acento-txt); }
 .fila:first-child .pos { color: var(--acento-txt); }
 .pos { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 44px; color: var(--apagado); }
-.jug-nom { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 46px; line-height: .95; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.jug-nom { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 600; font-size: 46px; line-height: .95; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; }  /* un nombre muy largo pasa a 2 líneas */
+.jug-nom.largo, .fila:first-child .jug-nom.largo { font-size: 31px; line-height: 1; }  /* nombres de más de 34 letras: 2 líneas que caben en su fila */
 .jug-eq { font-size: 27px; color: var(--gris); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .pts { font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 700; font-size: 80px; text-align: right; line-height: .85; }
 .pts small { font-family: var(--f-txt); font-size-adjust: cap-height var(--aj-txt); font-size: 26px; font-weight: 600; margin-left: 8px; color: var(--gris); letter-spacing: 0; }

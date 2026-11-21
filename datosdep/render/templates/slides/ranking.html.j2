@@ -9,7 +9,7 @@
     <div class="pos">{{ loop.index }}</div>
     <div>{% if j.equipo|escudo %}<img class="crest a" src="{{ j.equipo|escudo }}">{% endif %}</div>
     <div style="min-width:0">
-      <div class="jug-nom">{{ n.completo }}</div>
+      <div class="jug-nom{{ " largo" if n.completo|length > 34 }}">{{ n.completo }}</div>
       <div class="jug-eq">{{ j.equipo|corto }}{% if j.extra %}, {{ j.extra }}{% endif %}</div>
     </div>
     <div>
