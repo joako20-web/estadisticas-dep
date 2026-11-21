@@ -2,6 +2,7 @@
 # Si un equipo no aparece aquí se acorta automáticamente (ver render/nombres.py).
 "VRAC QUESOS ENTREPINARES": {corto: "VRAC Entrepinares", abr: "VRAC"}
 "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES": {corto: "Aparejadores Burgos", abr: "BUR"}
+"RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES": {corto: "Aparejadores Burgos", abr: "BUR"}  # así llega en la tabla de la web nueva
 "VULCANIZADOS ALVAREZ EL SALVADOR": {corto: "El Salvador", abr: "SAL"}
 "AMPO ORDIZIA": {corto: "Ordizia", abr: "ORD"}
 "SILICIUS ALCOBENDAS RUGBY": {corto: "Alcobendas", abr: "ALC"}
