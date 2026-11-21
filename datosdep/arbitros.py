@@ -102,8 +102,7 @@ def grupos(comp: str, temp: int, cliente: OrigenA | None = None) -> list[int]:
 
 
 def _arbitro(c: OrigenA, id_partido: int, jugado: bool) -> str | None:
-    raw = c._get("previo.php", {"id_partido": id_partido}, cachear=jugado)
-    return parse_previo(raw)["arbitro"]
+    return c.arbitro(id_partido, cachear=jugado)
 
 
 def _tarjetas(c: OrigenA, id_partido: int, local: str, visitante: str) -> dict:

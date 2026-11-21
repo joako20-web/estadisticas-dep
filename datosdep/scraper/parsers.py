@@ -167,7 +167,7 @@ def acta_json(raw: bytes, id_partido: int) -> Acta:
     import json
 
     resp = json.loads(raw)
-    if not resp.get("status"):
+    if not resp.get("status") and "data" not in resp:  # la API nueva no lleva "status", solo "data"
         raise ValueError(f"acta {id_partido}: {resp.get('message', 'respuesta sin datos')}")
     d = resp["data"]
     part = d["partido"]

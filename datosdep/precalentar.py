@@ -62,7 +62,7 @@ def paso() -> int | None:
             return id_partido
         if tipo == "previo" and not cliente.previo_en_cache(id_partido):
             try:
-                cliente._get("previo.php", {"id_partido": id_partido}, cachear=True)
+                cliente.arbitro(id_partido, cachear=True)
             except Exception:
                 pass
             return id_partido

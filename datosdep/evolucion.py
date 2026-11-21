@@ -13,7 +13,6 @@ from pathlib import Path
 
 from datosdep.pipeline import cargar_config
 from datosdep.render.render import renderizar_slides
-from datosdep.scraper import parsers
 from datosdep.scraper.origen_a import OrigenA, cliente_para
 
 # Reglas candidatas de bonus: (nombre, bonus ofensivo, bonus defensivo)
@@ -71,9 +70,7 @@ def posiciones(comp: str, grupo: str = "unico", cliente=None) -> dict:
     if type(cliente) is OrigenA:
         ultima = jornadas[-1] if jornadas else 0
         for j in jornadas:
-            params = {**cliente._params(id_grupo), "jornada": j}
-            raw = cliente._get("clasificacion.php", params, cachear=j < ultima)
-            pos = {f.equipo: f.posicion for f in parsers.clasificacion(raw)}
+            pos = {f.equipo: f.posicion for f in cliente.clasificacion_jornada(id_grupo, j, cachear=j < ultima)}
             for eq in equipos:
                 equipos[eq].append(pos.get(eq))
         regla = "clasificación oficial de cada jornada"
