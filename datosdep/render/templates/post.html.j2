@@ -208,13 +208,13 @@ th { font-weight: 600; font-size: 25px; color: var(--gris); text-align: center; 
 th.izq, td.izq { text-align: left; }
 td { height: 76px; text-align: center; font-family: var(--f-num); font-size-adjust: cap-height var(--aj-num); font-weight: 500; font-size: 42px; }
 tbody tr + tr td { border-top: 1px solid var(--linea); }
-td.eq { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+td.eq { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 26px; }  /* hueco hasta la columna PJ */
 td.pt { color: var(--texto); font-weight: 700; font-size: 48px; }
 td.p, th.p { color: var(--gris); width: 58px; text-align: left; }
 td.n, th.n { width: 56px; }
 td.n { color: var(--gris); }
 td.dif, th.dif { width: 92px; }
-td.pt, th.pt { width: 88px; text-align: right; }
+td.pt, th.pt { width: 108px; text-align: right; padding-right: 22px; }  /* aire junto al borde de la tabla */
 td.p { position: relative; }
 tr[class^="z-"] td.p::before { content: ""; position: absolute; left: -16px; top: 12px; bottom: 12px; width: 6px; background: var(--zc); }
 tr[class^="z-"] td.p { color: var(--texto); }

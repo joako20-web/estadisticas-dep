@@ -119,6 +119,7 @@
 .tema-tele .fila:first-child .jug-eq, .tema-tele .fila:first-child .det, .tema-tele .fila:first-child .pts small { color: rgba(12,22,49,.72); }
 .tema-tele th { background: var(--acento); color: var(--sobre-acento); border: 0; padding: 12px 0 10px; text-transform: uppercase; }
 .tema-tele th.p { padding-left: 12px; }
+.tema-tele th.pt { padding-right: 22px; }  /* la cabecera PTS no se pega al final de la barra */
 .tema-tele tbody tr:nth-child(odd) td { background: rgba(255,255,255,.04); }
 .tema-tele tbody tr + tr td { border-top: 0; }
 .tema-tele .ficha .dorsal { border-radius: 0; background: var(--acento); color: var(--sobre-acento); }

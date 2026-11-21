@@ -542,8 +542,10 @@ _JS_AJUSTA = """() => {
     const cortados = () => [...c.querySelectorAll('*')].filter(e => getComputedStyle(e).overflowX !== 'visible'
       && e.scrollWidth > e.clientWidth + 1 && (e.textContent || '').trim()).length;
     const base = cortados();
+    const fondoDe = () => { let f = 0; for (const e of c.querySelectorAll('*')) { const r = e.getBoundingClientRect(); if (r.height > 0 && r.bottom > f) f = r.bottom; } return f; };
     let z = Math.min(1.35, (limite - top) / (fondo - top));
-    for (; z > 1.02; z -= 0.04) { c.style.zoom = z; if (cortados() <= base) break; }
+    // el contenido puede crecer más que el zoom (los nombres se reparten en más líneas): se vuelve a medir en cada paso
+    for (; z > 1.02; z -= 0.03) { c.style.zoom = z; if (cortados() <= base && fondoDe() <= limite) break; }
     if (z <= 1.02) c.style.zoom = '';
   }
   // 3) Textos de una línea que no caben (nombres de equipos y jugadores largos): reducen su tamaño poco a poco en
@@ -581,6 +583,11 @@ _JS_AJUSTA = """() => {
 # solapa con otro texto. Se mide el rectángulo real del texto, no el de su caja.
 _JS_AUDITA = """(margen) => {
   const out = [];
+  const tieneFondo = el => {
+    const cs = getComputedStyle(el), m = cs.backgroundColor.match(/rgba?\\(([^)]+)\\)/);
+    const alfa = m ? (m[1].split(',').length > 3 ? parseFloat(m[1].split(',')[3]) : 1) : 0;
+    return alfa > 0.1 || cs.backgroundImage !== 'none';
+  };
   const secs = [...document.querySelectorAll('section.slide')];
   secs.forEach((sec, i) => {
     const caja = sec.getBoundingClientRect();
@@ -604,6 +611,16 @@ _JS_AUDITA = """(margen) => {
         out.push({...base, tipo: 'margen', izq: Math.round(t.left - caja.left), der: Math.round(caja.right - t.right),
                   abajo: Math.round(caja.bottom - t.bottom)});
       hojas.push({e, t, base});
+      // texto pegado al borde de su propia caja (barra, tarjeta, celda con fondo): menos de 8 px a un lado
+      let caja2 = e, tope = 0;
+      while (caja2 && caja2 !== sec && tope++ < 9 && !tieneFondo(caja2)) caja2 = caja2.parentElement;
+      if (caja2 && (caja2.tagName === 'TH' || caja2.tagName === 'TD') && caja2.closest('tr')) caja2 = caja2.closest('tr');
+      if (caja2 && caja2 !== sec && s.fontSize && parseFloat(s.fontSize) >= 16) {
+        const ar = caja2.getBoundingClientRect();
+        const dl = t.left - ar.left, dr = ar.right - t.right;
+        if (ar.width > t.width + 24 && (dl < 8 || dr < 8))
+          out.push({...base, tipo: 'pegado', izq: Math.round(dl), der: Math.round(dr)});
+      }
     }
     for (let a = 0; a < hojas.length; a++) for (let b = a + 1; b < hojas.length; b++) {
       const A = hojas[a], B = hojas[b];
@@ -612,6 +629,12 @@ _JS_AUDITA = """(margen) => {
       const h = Math.min(A.t.bottom, B.t.bottom) - Math.max(A.t.top, B.t.top);
       if (w > 4 && h > 4 && w * h > 0.25 * Math.min(A.t.width * A.t.height, B.t.width * B.t.height))
         out.push({...A.base, tipo: 'solapa', con: B.base.texto});
+      // textos de la misma línea (otra caja) con menos de 14 px entre ellos: se leen como pegados
+      else if (getComputedStyle(A.e).display !== 'inline' && getComputedStyle(B.e).display !== 'inline' && h > 0.5 * Math.min(A.t.height, B.t.height)) {
+        const hueco = Math.max(A.t.left, B.t.left) - Math.min(A.t.right, B.t.right);
+        if (hueco >= 0 && hueco < 14 && parseFloat(getComputedStyle(A.e).fontSize) >= 16 && parseFloat(getComputedStyle(B.e).fontSize) >= 16)
+          out.push({...A.base, tipo: 'junto', con: B.base.texto, hueco: Math.round(hueco)});
+      }
     }
   });
   return out.slice(0, 80);
