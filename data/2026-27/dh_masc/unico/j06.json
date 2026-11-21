@@ -3631,9 +3631,9 @@
   },
   "temporada_anotadores": [
     {
-      "id": 1027011,
+      "id": null,
       "nombre": "SANTIAGO IGNACIO MANSILLA",
-      "equipo": "RECOLETAS SALUD BURGOS CAJA RURAL APAREJADORES",
+      "equipo": "RECOLETAS SALUD CAJA RURAL BURGOS APAREJADORES",
       "pj": 6,
       "puntos": 101,
       "ensayos": 1,
@@ -3641,7 +3641,7 @@
       "rojas": 0
     },
     {
-      "id": 1044307,
+      "id": null,
       "nombre": "BEAU FINNIAN PEART",
       "equipo": "AMPO ORDIZIA",
       "pj": 6,
@@ -3651,7 +3651,7 @@
       "rojas": 0
     },
     {
-      "id": 1025601,
+      "id": null,
       "nombre": "BALTAZAR TAIBO",
       "equipo": "VRAC QUESOS ENTREPINARES",
       "pj": 6,
@@ -3661,7 +3661,7 @@
       "rojas": 0
     },
     {
-      "id": 1023937,
+      "id": null,
       "nombre": "SANTIAGO ORTEGA GRANDELA",
       "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
       "pj": 6,
@@ -3671,7 +3671,7 @@
       "rojas": 0
     },
     {
-      "id": 1027770,
+      "id": null,
       "nombre": "ADRIAN ARIAS LASTRA",
       "equipo": "INVERSUS LICEO FRANCES",
       "pj": 6,
@@ -3681,7 +3681,7 @@
       "rojas": 0
     },
     {
-      "id": 1060934,
+      "id": null,
       "nombre": "AGUSTIN ALTAMIRANO DECICCO",
       "equipo": "HUESITOS LA VILA RUGBY CLUB",
       "pj": 5,
@@ -3691,7 +3691,7 @@
       "rojas": 0
     },
     {
-      "id": 1025721,
+      "id": null,
       "nombre": "AGUSTIN CITTADINI",
       "equipo": "SILICIUS ALCOBENDAS RUGBY",
       "pj": 5,
@@ -3701,7 +3701,7 @@
       "rojas": 0
     },
     {
-      "id": 1044000,
+      "id": null,
       "nombre": "HUGO DOUGLAS VENTOSA",
       "equipo": "CRC POZUELO RUGBY",
       "pj": 6,
@@ -3711,7 +3711,7 @@
       "rojas": 0
     },
     {
-      "id": 1026288,
+      "id": null,
       "nombre": "MARCEL SIRVENT SANSO",
       "equipo": "UNIO ESPORTIVA SANTBOIANA",
       "pj": 6,
@@ -3721,39 +3721,19 @@
       "rojas": 0
     },
     {
-      "id": 1023850,
-      "nombre": "LAUTARO PEDRO PONCE INZIRILLO",
-      "equipo": "SILICIUS ALCOBENDAS RUGBY",
+      "id": null,
+      "nombre": "PEDRO CANE SGRO",
+      "equipo": "VRAC QUESOS ENTREPINARES",
       "pj": 6,
       "puntos": 25,
       "ensayos": 5,
-      "amarillas": 0,
+      "amarillas": 1,
       "rojas": 0
     }
   ],
   "temporada_ensayadores": [
     {
-      "id": 1023850,
-      "nombre": "LAUTARO PEDRO PONCE INZIRILLO",
-      "equipo": "SILICIUS ALCOBENDAS RUGBY",
-      "pj": 6,
-      "puntos": 25,
-      "ensayos": 5,
-      "amarillas": 0,
-      "rojas": 0
-    },
-    {
-      "id": 1025590,
-      "nombre": "JUAN BAUTISTA ARRANZ",
-      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
-      "pj": 6,
-      "puntos": 25,
-      "ensayos": 5,
-      "amarillas": 0,
-      "rojas": 0
-    },
-    {
-      "id": 1025975,
+      "id": null,
       "nombre": "PEDRO CANE SGRO",
       "equipo": "VRAC QUESOS ENTREPINARES",
       "pj": 6,
@@ -3763,23 +3743,43 @@
       "rojas": 0
     },
     {
-      "id": 1028928,
-      "nombre": "EGOITZ GARCIA BAÑUELOS",
-      "equipo": "AMPO ORDIZIA",
-      "pj": 4,
+      "id": null,
+      "nombre": "JUAN BAUTISTA ARRANZ",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 6,
       "puntos": 25,
       "ensayos": 5,
       "amarillas": 0,
       "rojas": 0
     },
     {
-      "id": 1056544,
+      "id": null,
+      "nombre": "LAUTARO PEDRO PONCE INZIRILLO",
+      "equipo": "SILICIUS ALCOBENDAS RUGBY",
+      "pj": 6,
+      "puntos": 25,
+      "ensayos": 5,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
       "nombre": "FRANCO MATIAS FERNANDO VELARDE BRANDT",
       "equipo": "AMPO ORDIZIA",
       "pj": 4,
       "puntos": 25,
       "ensayos": 5,
       "amarillas": 1,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "EGOITZ GARCIA BAÑUELOS",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 4,
+      "puntos": 25,
+      "ensayos": 5,
+      "amarillas": 0,
       "rojas": 0
     }
   ],
@@ -3802,7 +3802,7 @@
       {
         "id": 17675,
         "jornada": 7,
-        "fecha": null,
+        "fecha": "2026-12-13T00:00:00",
         "local": "HUESITOS LA VILA RUGBY CLUB",
         "visitante": "INVERSUS LICEO FRANCES",
         "puntos_local": null,
@@ -3815,7 +3815,7 @@
       {
         "id": 17676,
         "jornada": 7,
-        "fecha": null,
+        "fecha": "2026-12-13T00:00:00",
         "local": "VRAC QUESOS ENTREPINARES",
         "visitante": "CRC POZUELO RUGBY",
         "puntos_local": null,
