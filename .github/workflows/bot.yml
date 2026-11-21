@@ -60,10 +60,14 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: |
-            .cache/origen_a
+            .cache/origen_a2
             .cache/videos
           key: origen_a-${{ github.run_id }}
           restore-keys: origen_a-
+
+      - name: Borrar la caché antigua (guardó páginas de una versión de la web que ya no existe)
+        if: steps.token.outputs.ok == 'true'
+        run: rm -rf .cache/origen_a
 
       - name: Navegador (usa el Chrome del runner; si no hay, instala Chromium)
         if: steps.token.outputs.ok == 'true'
@@ -99,7 +103,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: |
-            .cache/origen_a
+            .cache/origen_a2
             .cache/videos
           key: origen_a-${{ github.run_id }}
 

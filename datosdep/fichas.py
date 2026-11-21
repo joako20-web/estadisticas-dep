@@ -37,7 +37,7 @@ from datosdep.render.render import MESES, con_zonas, renderizar_slides
 from datosdep.rutas import RAIZ
 from datosdep.scraper.origen_a import cliente_para
 
-CACHE = RAIZ / ".cache" / "origen_a"  # se conserva entre ejecuciones del bot (actions/cache)
+CACHE = RAIZ / ".cache" / "origen_a2"  # se conserva entre ejecuciones del bot (actions/cache)
 INDICE_EQUIPOS = CACHE / "indice_equipos.json"
 TTL_INDICE_S = 12 * 3600
 ORDEN_CATEGORIA = {"nacional": 0, "regional": 1, "copa": 2}

@@ -111,3 +111,34 @@ def test_importar_acta_manual_json_y_html(tmp_path, monkeypatch):
     assert c.sesion.llamadas == 0 and c.acta_en_cache(17643)
     assert not importar_acta.importar(1, fx / "acta_17643.json", esperado=(0, 0), cliente=c)
     assert not c.acta_en_cache(1)
+
+
+def test_redireccion_de_una_pagina_es_web_cambiada_y_no_se_guarda_nada(tmp_path):
+    """Si la web redirige a una versión nueva no se sigue (llegaría una app de JavaScript) ni se cachea."""
+    c = _cliente(tmp_path, 302)
+    for _ in range(3):  # ni reintentos ni peticiones nuevas durante la espera
+        try:
+            c._get("clasificacion.php", {"id": 1}, cachear=True)
+        except origen_a.AccesoRestringido:  # la 1.ª es FuenteCambiada; las demás, "no se insiste"
+            pass
+    assert c.sesion.llamadas == 1
+    assert c.ultimo_codigo == 302 and "ha cambiado" in c.ultimo_motivo
+    assert not list(tmp_path.iterdir())  # nada en la caché
+    assert c.bloqueado_ahora()
+
+
+def test_web_cambiada_no_bloquea_las_actas_en_pdf(tmp_path, monkeypatch):
+    monkeypatch.setenv("ORIGEN_A_ACTA_URL", "https://ejemplo.invalid/acta")
+    c = _cliente(tmp_path, 302)
+    try:
+        c._get("previo.php", {"id_partido": 1}, cachear=True)
+    except origen_a.FuenteCambiada:
+        pass
+    c._comprobar_bloqueo("https://ejemplo.invalid/acta")  # la zona del PDF sigue libre: no lanza
+    try:
+        c._comprobar_bloqueo("clasificacion.php")
+        assert False, "la zona de las páginas debía seguir bloqueada"
+    except origen_a.FuenteCambiada:
+        pass
+    except origen_a.AccesoRestringido:
+        pass

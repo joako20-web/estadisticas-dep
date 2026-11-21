@@ -19,6 +19,7 @@ PAUSA_S = 0.25
 PAUSA_LENTA_S = 1.5  # peticiones de una en una por partido (previo y acta): muchas seguidas provocan un 429
 TTL_PAGINAS_S = 120  # las páginas que cambian se reutilizan 2 minutos
 RAIZ_DATOS = Path(__file__).resolve().parents[2] / "data"
+ESPERA_CAMBIO_S = 6 * 3600  # si la web redirige a otra versión, no se vuelve a probar hasta pasado un buen rato
 ESPERA_BLOQUEO_S = 3600  # tras un 403/429 no volvemos a pedir durante 1 hora (cada sondeo puede alargar el castigo)
 
 
@@ -31,8 +32,12 @@ class AccesoRestringido(RuntimeError):
     """el origen A rechaza la petición (403 o 429): no se reintenta ni se esquiva."""
 
 
+class FuenteCambiada(AccesoRestringido):
+    """La web de origen ya no sirve las páginas de siempre (redirige a otra versión): se trata como acceso cerrado."""
+
+
 class OrigenA:
-    def __init__(self, cache_dir: Path | str = ".cache/origen_a", usar_cache: bool = True):
+    def __init__(self, cache_dir: Path | str = ".cache/origen_a2", usar_cache: bool = True):
         self.cache_dir = Path(cache_dir)
         self.usar_cache = usar_cache
         self.sesion = requests.Session()
@@ -54,7 +59,7 @@ class OrigenA:
     def _zona(self, path: str) -> str:
         if path == url_acta_pdf():
             return "pdf"
-        return "json" if path.startswith("json/") else "todo"
+        return "json" if path.startswith("json/") else "web"  # ("todo" queda para el 429, que vale para todo el sitio)
 
     def bloqueado_ahora(self) -> bool:
         return time.monotonic() < max(self._bloqueos.values(), default=0)
@@ -63,6 +68,13 @@ class OrigenA:
         ahora = time.monotonic()
         if ahora < self._bloqueos.get("todo", 0) or ahora < self._bloqueos.get(self._zona(path), 0):
             raise AccesoRestringido(f"{path}: el origen A ha rechazado las peticiones; no se insiste hasta pasados unos minutos")
+
+    def _cambiada(self, path: str, r: requests.Response) -> None:
+        """La web redirige a una versión nueva: se avisa, no se guarda nada y se espera un buen rato."""
+        self.ultimo_codigo = r.status_code
+        self.ultimo_motivo = "la web de origen ha cambiado (redirige a una versión nueva)"
+        self._bloqueos[self._zona(path)] = time.monotonic() + ESPERA_CAMBIO_S
+        raise FuenteCambiada(f"{path}: HTTP {r.status_code} (redirige a otra versión de la web)")
 
     def _bloquear(self, path: str, r: requests.Response) -> None:
         self.ultimo_codigo = r.status_code
@@ -97,9 +109,14 @@ class OrigenA:
             time.sleep(espera)
         for intento in range(3):
             try:
-                r = self.sesion.get(url, params=params, timeout=30, allow_redirects=redirecciones)
+                # Las páginas del sitio no deben redirigir: si lo hacen, la web ha cambiado y lo que llegaría al
+                # seguirla (una aplicación de JavaScript) no es la página pedida ni se puede leer.
+                es_pagina = not path.startswith("http")
+                r = self.sesion.get(url, params=params, timeout=30, allow_redirects=redirecciones and not es_pagina)
                 if r.status_code in (403, 429):
                     self._bloquear(path, r)  # sin reintentos: insistir solo empeora el bloqueo
+                if es_pagina and 300 <= r.status_code < 400:
+                    self._cambiada(path, r)
                 r.raise_for_status()
                 break
             except AccesoRestringido:

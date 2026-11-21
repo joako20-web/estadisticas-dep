@@ -1342,7 +1342,13 @@ def _avisar_actas_bloqueadas(tg: Telegram, b: dict, chat_id) -> None:
     b["aviso_actas"] = hoy
     estado.guardar_bot(b)
     try:
-        tg.mensaje(chat_id, f"⚠️ el origen A está rechazando la lectura de actas (código {origen_a.compartido().ultimo_codigo or '403/429'}; "
+        cli = origen_a.compartido()
+        if cli.ultimo_codigo and 300 <= cli.ultimo_codigo < 400:
+            tg.mensaje(chat_id, "⚠️ la web de origen ha cambiado: ahora redirige a una versión nueva y el bot no puede leer "
+                                "resultados, clasificaciones ni calendario. Las actas (PDF) siguen funcionando. Hace falta "
+                                "una forma de acceso nueva.")
+            return
+        tg.mensaje(chat_id, f"⚠️ el origen A está rechazando la lectura de actas (código {cli.ultimo_codigo or '403/429'}; "
                             "429 = demasiadas peticiones, pasajero; 403 = acceso cerrado). Sigo con resultados y "
                             "clasificaciones; anotadores, XV y MVP quedan pendientes hasta que vuelva el acceso.")
     except Exception:
