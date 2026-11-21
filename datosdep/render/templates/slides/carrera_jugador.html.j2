@@ -45,8 +45,8 @@
     <span class="e cj-tit">{{ f.equipo|corto }}<small>{{ f.liga }}</small></span>
     <span class="n cj-num">{{ f.pj }}</span>
     <span class="n p cj-num">{{ f.puntos }}</span>
-    <span class="n cj-num">{{ f.ensayos }}</span>
-    <span class="n cj-num">{{ f.tarjetas }}</span>
+    <span class="n cj-num">{{ f.ensayos if f.ensayos is not none else '–' }}</span>
+    <span class="n cj-num">{{ f.tarjetas if f.tarjetas is not none else '–' }}</span>
   </div>
   {% endfor %}
   {% if s.filas|length > maxf %}<div class="cj-mas">+ {{ s.filas|length - maxf }} anteriores (incluidas en el total)</div>{% endif %}
@@ -56,8 +56,8 @@
     <div class="f">
       <div><b class="cj-num">{{ s.total.pj }}</b><span>Partidos</span></div>
       <div><b class="cj-num">{{ s.total.puntos }}</b><span>Puntos</span></div>
-      <div><b class="cj-num">{{ s.total.ensayos }}</b><span>Ensayos</span></div>
-      <div><b class="cj-num">{{ s.total.tarjetas }}</b><span>Tarjetas</span></div>
+      <div><b class="cj-num">{{ s.total.ensayos if s.total.ensayos is not none else '–' }}</b><span>Ensayos</span></div>
+      <div><b class="cj-num">{{ s.total.tarjetas if s.total.tarjetas is not none else '–' }}</b><span>Tarjetas</span></div>
     </div>
   </div>
 </div>

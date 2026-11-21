@@ -43,9 +43,9 @@
     <div class="cmp-sec">{{ f.seccion }}</div>
     {% else %}
     <div class="cmp-f">
-      <div class="v cmp-num{{ ' gana' if f.gana == 'a' }}">{{ f.a }}</div>
+      <div class="v cmp-num{{ ' gana' if f.gana == 'a' }}">{{ f.a if f.a is not none else '–' }}</div>
       <div class="k">{{ f.k }}</div>
-      <div class="v b cmp-num{{ ' gana' if f.gana == 'b' }}">{{ f.b }}</div>
+      <div class="v b cmp-num{{ ' gana' if f.gana == 'b' }}">{{ f.b if f.b is not none else '–' }}</div>
     </div>
     {% endif %}
   {% endfor %}

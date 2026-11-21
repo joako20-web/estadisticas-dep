@@ -11,7 +11,7 @@ from pathlib import Path
 
 import requests
 
-from datosdep.models import Acta, Competicion, FilaClasificacion
+from datosdep.models import Acta, Competicion, FilaClasificacion, JugadorTemporada
 from datosdep.scraper import acta_pdf, parsers
 from datosdep.scraper import api as modelos_api
 from datosdep.scraper.enlaces import resolver
@@ -23,6 +23,14 @@ TTL_PAGINAS_S = 120  # las páginas que cambian se reutilizan 2 minutos
 RAIZ_DATOS = Path(__file__).resolve().parents[2] / "data"
 ESPERA_CAMBIO_S = 6 * 3600  # si la web redirige a otra versión, no se vuelve a probar hasta pasado un buen rato
 ESPERA_BLOQUEO_S = 3600  # tras un 403/429 no volvemos a pedir durante 1 hora (cada sondeo puede alargar el castigo)
+
+
+def temporada_actual_id() -> int:
+    """Id de la temporada en curso ("2026/27" -> 2627), de config/competiciones.yaml."""
+    from datosdep.rutas import CONFIG, leer_yaml
+
+    a, b = str((leer_yaml(CONFIG / "competiciones.yaml") or {}).get("temporada", "0000/00")).split("/")
+    return int(a[-2:] + b[-2:])
 
 
 def url_acta_pdf() -> str:
@@ -236,10 +244,13 @@ class OrigenA:
             self._memoria[clave] = (time.monotonic(), contenido)
         return json.loads(contenido)
 
-    def _torneo(self, id_grupo: int) -> dict:
-        t = self._api("torneo", id=id_grupo)
+    def torneo(self, id_grupo: int, cachear: bool = False) -> dict:
+        """Respuesta cruda de `torneo` (todos los partidos del grupo). cachear=True para temporadas pasadas."""
+        t = self._api("torneo", cachear=cachear, id=id_grupo)
         self._equipos[id_grupo] = modelos_api.equipos_de_torneo(t)
         return t
+
+    _torneo = torneo
 
     # Lo que cambia durante la temporada no se cachea en disco (solo 2 minutos en memoria).
     def competicion(self, id_grupo: int) -> Competicion:
@@ -260,29 +271,51 @@ class OrigenA:
         """Árbitro del partido (del previo). cachear=True para partidos ya jugados: no cambia."""
         return modelos_api.arbitro_de_previo(self._api("previo", cachear=cachear, id=id_partido))
 
-    def _opciones(self, params: dict, select: str) -> list[tuple[int, str]]:
-        import re
+    def _selectores(self, id_temp: int, id_comp: int | None = None, id_terr: int = 9999) -> dict:
+        """Competiciones de una temporada y, si se da `id_comp`, los grupos (con su fase) de esa competición.
+        Lo pasado no cambia (cachear); la temporada en curso sí (puede publicarse una competición nueva)."""
+        return self._api("selectores", cachear=id_temp < temporada_actual_id(), id="", t=id_terr, am=0, s=1, se=0,
+                         temp=id_temp, cat="", comp=id_comp or "")
 
-        raw = self._get("competicion.php", params, cachear=False).decode("utf-8", "replace")
-        m = re.search(rf"<select id='{select}'.*?</select>", raw, re.S)
-        if not m:
-            return []
-        return [(int(v), " ".join(n.split())) for v, n in re.findall(r"<option[^>]*value='(\d+)'[^>]*>([^<]*)", m.group(0))]
+    def competiciones_de(self, id_temp: int, id_terr: int = 9999) -> list[tuple[int, str]]:
+        return [(int(c["id"]), " ".join(str(c["nombre"]).split()))
+                for c in self._selectores(id_temp, None, id_terr).get("competiciones") or []]
+
+    def torneos_de(self, id_temp: int, id_comp: int, id_terr: int = 9999) -> list[dict]:
+        """Grupos de una competición: [{id, nombre (del grupo), fase}]."""
+        return [{"id": int(t["id"]), "nombre": " ".join(str(t.get("nombre_grupo") or t.get("nombre") or "").split()),
+                 "fase": " ".join(str(t.get("nombre_fase") or "").split())}
+                for t in self._selectores(id_temp, id_comp, id_terr).get("torneos") or []]
 
     def descubrir(self, id_temp: int) -> list[dict]:
-        """regiones, competiciones y grupos publicados en el origen A para una temporada."""
-        base = {"seleccion": 0, "id_ambito": 0, "id_temp": id_temp}
+        """Federaciones, competiciones y grupos publicados en el origen A para una temporada."""
         out = []
-        for id_terr, terr in self._opciones(base, "territorial"):
-            p = {**base, "id_territorial": id_terr}
-            for id_comp, comp in self._opciones(p, "competiciones"):
-                pc = {**p, "id_competicion": id_comp}
-                for id_fase, fase in self._opciones(pc, "fase") or [(0, "")]:
-                    pf = {**pc, "id_fase": id_fase} if id_fase else pc
-                    for id_grupo, grupo in self._opciones(pf, "grupo"):
-                        out.append({"territorial": terr, "competicion": comp, "fase": fase,
-                                    "grupo": grupo, "id_grupo": id_grupo})
+        for terr in self._selectores(id_temp).get("territoriales") or []:
+            for id_comp, comp in self.competiciones_de(id_temp, int(terr["id"])):
+                for g in self.torneos_de(id_temp, id_comp, int(terr["id"])):
+                    out.append({"territorial": terr["nombre"], "competicion": comp, "fase": g["fase"],
+                                "grupo": g["nombre"], "id_grupo": g["id"]})
         return out
+
+    def candidatos(self, id_comp: int, cachear: bool = False) -> dict:
+        """Jugadores que figuran en las actas de una competición: {jugadores: [{id, n, eq, pj}], equipos: {id: nombre}}."""
+        return self._api("comparar_candidatos", cachear=cachear, comp=id_comp, s=1)
+
+    def goleadores(self, id_grupo: int, id_comp: int, cachear: bool = False) -> list[dict]:
+        """Máximos anotadores de la competición: [{n, eq, g (tantos), pj}]."""
+        return self._api("goleadores", cachear=cachear, id=id_grupo, comp=id_comp)
+
+    def jugadores_con_id(self, id_grupo: int) -> list[JugadorTemporada]:
+        """Jugadores de la competición del grupo con su id (estable entre temporadas). Sin puntos ni ensayos:
+        esos se calculan con las actas."""
+        t = self.torneo(id_grupo)
+        id_comp = next((int(p["comp"]) for p in t.get("partidos", []) if p.get("comp")), None)
+        if not id_comp:
+            return []
+        c = self.candidatos(id_comp)
+        equipos = {int(k): " ".join(str(v).split()) for k, v in (c.get("equipos") or {}).items()}
+        return [JugadorTemporada(int(j["id"]), " ".join(str(j["n"]).split()), equipos.get(int(j.get("eq") or 0), ""),
+                                 int(j.get("pj") or 0), 0, 0, 0, 0) for j in c.get("jugadores") or []]
 
     def imagen(self, url: str) -> bytes:
         return self._get(resolver(url), {}, cachear=True)

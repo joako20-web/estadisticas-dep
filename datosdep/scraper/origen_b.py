@@ -200,6 +200,9 @@ class OrigenB(OrigenA):
         self.base = base.rstrip("/")  # p. ej. $ORIGEN_B_URL/es
         self._partidos: dict[int, tuple[str, str]] = {}
 
+    def jugadores_con_id(self, id_grupo):  # esta plataforma no publica ids de jugador
+        return []
+
     def _pagina(self, id_grupo: str) -> bytes:
         return self._get(f"{self.base}/public/calendar/{id_grupo}/combined/", {}, cachear=False)
 

@@ -87,15 +87,10 @@ def grupos(comp: str, temp: int, cliente: OrigenA | None = None) -> list[int]:
     if ruta.exists():
         return json.loads(ruta.read_text())
     c = cliente or compartido()
-    base = {"seleccion": 0, "id_ambito": 0, "id_temp": temp, "id_territorial": 9999}
     out: list[int] = []
-    for id_comp, nombre in c._opciones(base, "competiciones"):
-        if not _es_comp(comp, nombre):
-            continue
-        pc = {**base, "id_competicion": id_comp}
-        for id_fase, _ in c._opciones(pc, "fase") or [(0, "")]:
-            pf = {**pc, "id_fase": id_fase} if id_fase else pc
-            out += [g for g, _ in c._opciones(pf, "grupo")]
+    for id_comp, nombre in c.competiciones_de(temp):
+        if _es_comp(comp, nombre):
+            out += [g["id"] for g in c.torneos_de(temp, id_comp)]
     ruta.parent.mkdir(parents=True, exist_ok=True)
     ruta.write_text(json.dumps(sorted(set(out))))
     return sorted(set(out))

@@ -24,7 +24,8 @@ from datosdep.pipeline import cargar_config
 from datosdep.rutas import DATA
 from datosdep.render.render import MESES, renderizar_slides
 from datosdep.scraper.origen_a import compartido
-from datosdep.scraper import parsers
+from datosdep.scraper import api as modelos_api
+from datosdep.scraper.texto import limpiar
 
 # Temporadas con competiciones senior publicadas (2022/23 solo tiene escuelas)
 TEMPORADAS = [(2526, "2025/26"), (2425, "2024/25"), (2324, "2023/24")]
@@ -61,60 +62,58 @@ def _cliente():
     return compartido()
 
 
-def _opciones(params: dict, select: str) -> list[tuple[int, str]]:
-    return _cliente()._opciones(params, select)
+def _jugadores_temporada(cli, id_comp: int, id_grupo: int | None) -> dict[str, list[list]]:
+    """{id de jugador: [[nombre, equipo, partidos, puntos, None, None, None]]} de esa competición y temporada.
+
+    Partidos e identificador salen de los candidatos de la competición y los puntos de los máximos anotadores.
+    Los ensayos y las tarjetas de temporadas pasadas no se publican por jugador: quedan en None (se muestran "–").
+    """
+    cand = cli.candidatos(id_comp, cachear=True)
+    equipos = {int(k): limpiar(v) for k, v in (cand.get("equipos") or {}).items()}
+    puntos: dict[tuple[str, int], int] = {}
+    if id_grupo:
+        for g in cli.goleadores(id_grupo, id_comp, cachear=True):
+            puntos[(norm(g["n"]), int(g["eq"]))] = int(g["g"])
+    out: dict[str, list[list]] = {}
+    for c in cand.get("jugadores") or []:
+        if not c.get("pj"):
+            continue
+        nombre = limpiar(c["n"])
+        out[str(c["id"])] = [[nombre, equipos.get(int(c.get("eq") or 0), ""), int(c["pj"]),
+                              puntos.get((norm(nombre), int(c.get("eq") or 0)), 0), None, None, None]]
+    return out
 
 
 def datos_temporada(id_temp: int, tipo: str) -> dict | None:
-    """Partidos, clubes y escudos de una competición en una temporada pasada (cacheado)."""
+    """Partidos, clubes, escudos y jugadores de una competición en una temporada pasada (cacheado en data/)."""
     ruta = HISTORICO / f"{id_temp}_{tipo}.json"
     if ruta.exists():
         datos = json.loads(ruta.read_text(encoding="utf-8"))
         if not datos or "jugadores" in datos:
             return datos or None  # (los guardados antes de tener jugadores se rehacen una vez)
-    base = {"seleccion": 0, "id_ambito": 0, "id_temp": id_temp, "id_territorial": 9999}
-    comp = next(((i, n) for i, n in _opciones(base, "competiciones") if tipo_competicion(n) == tipo), None)
+    cli = _cliente()
+    comp = next(((i, n) for i, n in cli.competiciones_de(id_temp) if tipo_competicion(n) == tipo), None)
     datos: dict = {}
     if comp:
-        pc = {**base, "id_competicion": comp[0]}
-        grupos = []
-        for id_fase, fase in _opciones(pc, "fase") or [(0, "")]:
-            pf = {**pc, "id_fase": id_fase} if id_fase else pc
-            grupos += [{"id": g, "nombre": n, "fase": fase} for g, n in _opciones(pf, "grupo")]
-        cli = _cliente()
+        grupos = cli.torneos_de(id_temp, comp[0])
         partidos: dict[int, dict] = {}
         clubes: dict[str, int] = {}
         escudos: dict[str, str] = {}
-        con_partidos: set = set()
-        jugadores: dict[str, list[list]] = {}  # id -> una fila por equipo con el que jugó esa temporada
         for g in grupos:
-            if g["id"] not in con_partidos:
-                raw = cli._get("mostrar_estadisticas.php", cli._params(g["id"]), cachear=True)
-                est = parsers.estadisticas(raw)
-                for j in est.jugadores:  # id de jugador estable entre temporadas (aunque cambie el patrocinador del equipo)
-                    filas_j = jugadores.setdefault(str(j.id), [])
-                    if all(f[1] != j.equipo for f in filas_j):  # la misma fila aparece en las páginas de varios grupos
-                        filas_j.append([j.nombre, j.equipo, j.pj, j.puntos, j.ensayos, j.amarillas, j.rojas])
-                for p in est.partidos:
-                    partidos[p.id] = {
-                        "id": p.id, "jornada": p.jornada, "ronda": p.ronda, "grupo": p.grupo or g["id"],
-                        "fecha": p.fecha.isoformat() if p.fecha else None, "local": p.local,
-                        "visitante": p.visitante, "pl": p.puntos_local, "pv": p.puntos_visitante,
-                    }
-                    con_partidos.add(p.grupo or g["id"])
-            if "FINAL" in (g["fase"] or "").upper():
-                continue  # las eliminatorias no tienen tabla
-            try:
-                raw = cli._get("clasificacion.php", cli._params(g["id"]), cachear=True)
-                for f in parsers.clasificacion(raw):
-                    if _club(f.escudo):
-                        clubes[f.equipo] = _club(f.escudo)
-                        escudos[f.equipo] = f.escudo
-            except Exception:
-                pass
+            t = cli.torneo(g["id"], cachear=True)
+            for p in modelos_api.partidos_de_torneo(t):
+                partidos[p.id] = {"id": p.id, "jornada": p.jornada, "ronda": p.ronda, "grupo": g["id"],
+                                  "fecha": p.fecha.isoformat() if p.fecha else None, "local": p.local,
+                                  "visitante": p.visitante, "pl": p.puntos_local, "pv": p.puntos_visitante}
+            for tid, (nombre, escudo) in modelos_api.equipos_de_torneo(t).items():
+                club = _club(escudo)
+                if club:
+                    clubes[nombre] = club
+                    escudos[nombre] = escudo
         datos = {"id_temp": id_temp, "temporada": dict(TEMPORADAS)[id_temp], "tipo": tipo,
-                 "competicion": comp[1], "grupos": grupos, "partidos": list(partidos.values()),
-                 "clubes": clubes, "escudos": escudos, "jugadores": jugadores}
+                 "competicion": comp[1], "grupos": [{"id": g["id"], "nombre": g["nombre"], "fase": g["fase"]} for g in grupos],
+                 "partidos": list(partidos.values()), "clubes": clubes, "escudos": escudos,
+                 "jugadores": _jugadores_temporada(cli, comp[0], grupos[0]["id"] if grupos else None)}
     HISTORICO.mkdir(parents=True, exist_ok=True)
     ruta.write_text(json.dumps(datos, ensure_ascii=False), encoding="utf-8")
     return datos or None
@@ -343,7 +342,7 @@ def carrera(id_jugador: int | None) -> list[dict]:
             liga = cargar_config()["competiciones"].get(d["tipo"], {}).get("nombre", d["tipo"])
             filas.append({"id_temp": d["id_temp"], "temporada": d["temporada"], "tipo": d["tipo"], "liga": liga,
                           "equipo": j[1], "club": (d.get("clubes") or {}).get(j[1]), "pj": j[2], "puntos": j[3],
-                          "ensayos": j[4], "tarjetas": j[5] + j[6]})
+                          "ensayos": j[4], "tarjetas": None if j[5] is None else j[5] + (j[6] or 0)})
     filas.sort(key=lambda f: (-f["id_temp"], f["tipo"]))
     return filas
 

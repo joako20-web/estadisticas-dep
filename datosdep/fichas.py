@@ -25,6 +25,7 @@ from datetime import datetime
 from pathlib import Path
 
 from datosdep.core.estadisticas import POSICIONES
+from datosdep.models import JugadorTemporada
 from datosdep.pipeline import (
     actualizar_resumen,
     DATA,
@@ -321,6 +322,20 @@ def jugador_por_id(id_: str) -> dict | None:
     return None
 
 
+def _actuales_con_id(tabla: list, con_id: list) -> list:
+    """Tabla de temporada calculada con las actas (sin ids) + los ids que publica la competición, unidos por nombre."""
+    por_nombre: dict[str, list] = {}
+    for j in con_id:
+        por_nombre.setdefault(norm(j.nombre), []).append(j)
+    out = []
+    for t in tabla:
+        cs = por_nombre.get(norm(t.nombre), [])
+        c = next((x for x in cs if x.equipo == t.equipo), cs[0] if len(cs) == 1 else None)
+        if c:
+            out.append(JugadorTemporada(c.id, t.nombre, t.equipo, t.pj, t.puntos, t.ensayos, t.amarillas, t.rojas))
+    return out
+
+
 def _id_fuente(jugadores, nombre: str, equipo: str) -> int | None:
     """Id del jugador en la tabla de temporada (por nombre; si hay varios, el de su equipo)."""
     n = norm(nombre)
@@ -352,7 +367,9 @@ def carrera_jugador(d: dict) -> tuple[list[dict], dict]:
               "pj": d["partidos"], "puntos": d["puntos"], "ensayos": d["ensayos"],
               "tarjetas": d["amarillas"] + d["rojas"]}
     filas = [actual, *pasadas]
-    total = {k: sum(f[k] for f in filas) for k in ("pj", "puntos", "ensayos", "tarjetas")}
+    total = {k: sum(f[k] for f in filas) for k in ("pj", "puntos")}
+    for k in ("ensayos", "tarjetas"):  # si alguna temporada no los publica, el total tampoco se da
+        total[k] = None if any(f[k] is None for f in filas) else sum(f[k] for f in filas)
     total["temporadas"] = len({f["temporada"] for f in filas})
     return filas, total
 
@@ -382,6 +399,7 @@ def _ranking_historico(comp: str, actuales: list, id_fuente: int | None) -> dict
     except Exception:
         pass
     acum: dict[int, list[int]] = {}
+    ens_ok = True  # si alguna temporada no publica ensayos por jugador, no se da puesto por ensayos
     temporadas = set()
     for ruta in historico.HISTORICO.glob(f"*_{comp}.json"):
         try:
@@ -395,8 +413,9 @@ def _ranking_historico(comp: str, actuales: list, id_fuente: int | None) -> dict
             a = acum.setdefault(int(pid), [0, 0, 0])
             for r in filas:
                 a[0] += r[3]
-                a[1] += r[4]
+                a[1] += r[4] or 0
                 a[2] += r[2]
+                ens_ok = ens_ok and r[4] is not None
     if not temporadas:
         return None
     for j in actuales:
@@ -409,7 +428,7 @@ def _ranking_historico(comp: str, actuales: list, id_fuente: int | None) -> dict
         return None
     return {"puntos": yo[0], "ensayos": yo[1], "pj": yo[2], "de": len(acum), "temporadas": len(temporadas) + 1,
             "puesto_puntos": 1 + sum(1 for a in acum.values() if a[0] > yo[0]),
-            "puesto_ensayos": (1 + sum(1 for a in acum.values() if a[1] > yo[1])) if yo[1] else None,
+            "puesto_ensayos": (1 + sum(1 for a in acum.values() if a[1] > yo[1])) if yo[1] and ens_ok else None,
             "puesto_pj": 1 + sum(1 for a in acum.values() if a[2] > yo[2])}
 
 
@@ -487,8 +506,10 @@ def datos_jugador(cand: dict) -> dict:
             comp_fuente = cliente.competicion(id_grupo)
             partidos = {p.id: p for p in comp_fuente.partidos}
             p = partidos.get(int(pid))
-            id_fuente = _id_fuente(comp_fuente.jugadores, cand["nombre"], cand["equipo"])
-            rend_hist = _ranking_historico(cand["comp"], comp_fuente.jugadores, id_fuente)
+            con_id = cliente.jugadores_con_id(id_grupo)  # ids de los jugadores que figuran en las actas de la liga
+            id_fuente = _id_fuente(con_id, cand["nombre"], cand["equipo"])
+            rend_hist = _ranking_historico(cand["comp"], _actuales_con_id(jugadores_desde_resumen(resumen, todos=True), con_id),
+                                           id_fuente)
         except Exception:
             p = None
             rend_hist = None
@@ -523,7 +544,7 @@ def _resumen_comparable(cand: dict) -> dict:
 def _filas_comparacion(a: dict, b: dict) -> list[dict]:
     """Filas (etiqueta, valor a, valor b, quién gana) de las dos secciones de la comparación."""
     def fila(k, va, vb, menos_es_mejor=False):
-        gana = None if va == vb else ("a" if (va < vb) == menos_es_mejor else "b")
+        gana = None if va is None or vb is None or va == vb else ("a" if (va < vb) == menos_es_mejor else "b")
         return {"k": k, "a": va, "b": vb, "gana": gana}
 
     e1, e2, c1, c2 = a["esta"], b["esta"], a["carrera"], b["carrera"]
