@@ -113,3 +113,16 @@ def test_apellido_largo_en_dos_lineas_y_cabecera_con_otra_disposicion():
     a = parsers.acta_json(acta_pdf.acta_a_json(_paginas(18101)), 18101)
     assert a.marcador_por_eventos() == (31, 55)
     assert "ANTONIO CAMPS MONJARDINO DE AZEVEDO SOARES" in [j.nombre for j in a.alineacion_visitante if j.dorsal == 21]
+
+
+def test_dos_dorsales_o_minutos_pegados_son_filas_distintas():
+    """Filas de jugadores o de eventos a menos de 5 pt: no se funden (se perdía un ensayo o un suplente)."""
+    from datosdep.scraper.acta_pdf import _filas
+
+    trozos = [(100.0, 10.0, "19"), (100.0, 60.0, "RODRIGUEZ LAMAS, NICOLAS"),
+              (97.0, 60.0, "GARCIMARTIN BAILON ,"), (96.0, 10.0, "20"), (93.0, 60.0, "GONZALO")]
+    filas = _filas(trozos)
+    assert [[t for _, t in f] for _, f in filas] == [["19", "RODRIGUEZ LAMAS, NICOLAS"], ["GARCIMARTIN BAILON ,", "20", "GONZALO"]] \
+        or [[t for _, t in f] for _, f in filas] == [["19", "RODRIGUEZ LAMAS, NICOLAS"], ["20", "GARCIMARTIN BAILON , GONZALO"]]
+    horas = [(100.0, 10.0, "27:00"), (100.0, 40.0, "Ensayo"), (97.0, 10.0, "27:30"), (97.0, 40.0, "Conversion de ensayo")]
+    assert len(_filas(horas)) == 2

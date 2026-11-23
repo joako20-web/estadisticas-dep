@@ -37,12 +37,20 @@ def fragmentos(raw: bytes) -> list[list[tuple[float, float, str]]]:
     return paginas
 
 
+_CLAVE = re.compile(r"\d+(?::\d+)?")
+
+
 def _filas(trozos: list[tuple[float, float, str]]) -> list[tuple[float, Fila]]:
     """Agrupa los trozos de texto en filas. Un nombre largo partido en dos líneas (con el número centrado entre
     ambas) queda en una sola fila, y los dos trozos de la misma columna se unen en orden de arriba a abajo."""
     filas: list[list] = []  # [y de la última línea, [(x, texto), ...]]
     for y, x, t in sorted(trozos, key=lambda f: (-f[0], f[1])):
-        if filas and abs(filas[-1][0] - y) <= TOL_Y:
+        # un número u hora en una columna que ya tiene otro (dos dorsales, dos minutos) es una fila nueva, aunque esté pegada
+        repetido = bool(filas) and _CLAVE.fullmatch(t) is not None and any(
+            abs(x0 - x) <= 3 and _CLAVE.fullmatch(t0) for x0, t0 in filas[-1][1])
+        # dos "APELLIDOS, NOMBRE" completos en la misma columna son dos personas, no un nombre partido
+        otra_persona = bool(filas) and "," in t and any(abs(x0 - x) <= 3 and "," in t0 for x0, t0 in filas[-1][1])
+        if filas and abs(filas[-1][0] - y) <= TOL_Y and not repetido and not otra_persona:
             fila = filas[-1][1]
             filas[-1][0] = y
             for i, (x0, t0) in enumerate(fila):

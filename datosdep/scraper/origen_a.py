@@ -58,6 +58,7 @@ class OrigenA:
         self.actas_bloqueadas = False
         self.ultimo_codigo: int | None = None  # último 403/429 recibido, para el aviso al dueño
         self.ultimo_motivo = ""
+        self.actas_ilegibles: dict[int, str] = {}  # id de partido -> por qué no se pudo leer su acta (esta pasada)
         self.lento = False  # ritmo de 1,5 s entre peticiones (rellenar histórico de golpe)
         self._token_valor: str | None = None  # clave temporal (12 h) que trae la página nueva
         self._token_caduca = 0.0
@@ -423,7 +424,14 @@ class OrigenA:
             elif self.usar_cache and (viejo := self._leer_disco(clave_json)) is not None:
                 raw = viejo
             else:
-                raw = self._acta_desde_pdf(id_partido)
+                try:
+                    raw = self._acta_desde_pdf(id_partido)
+                except (ValueError, requests.RequestException) as e:
+                    # PDF incompleto o que no cuadra, o un corte de red: ese partido queda como "acta pendiente"
+                    # (el marcador vale, sus estadísticas no) y se reintenta en la siguiente pasada. No se guarda
+                    # nada y no se rompe el resto de la competición.
+                    self.actas_ilegibles[id_partido] = str(e)[:160]
+                    return Acta(id_partido, "", "", [], [], [])
         except AccesoRestringido:
             # el origen A no deja leer las actas: acta vacía (el partido cuenta como "acta pendiente") y el
             # bot sigue con resultados y clasificaciones; flujo.py avisa al dueño una vez al día.
