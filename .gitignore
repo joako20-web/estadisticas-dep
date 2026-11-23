@@ -22,3 +22,7 @@ data/fotos/
 NOTAS_PRIVADAS.md
 .paquete_clave
 video/.agents/
+
+# Temporales y copias de la escritura segura
+*.tmp
+*.bak

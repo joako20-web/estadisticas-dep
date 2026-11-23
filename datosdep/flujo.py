@@ -17,13 +17,13 @@ import time
 import traceback
 from pathlib import Path
 
+from datosdep import fallos
 from datosdep import agenda, arbitros, caption, preferencias, precalentar, destacado, directo, especiales, estado, evolucion, fichas, historico, torneo
 from datosdep.core.editar import cambiar_xv
 from datosdep.pedidos import interpretar
 from datosdep.pipeline import RAIZ, cargar_config, es_descanso, jornadas_jugadas, preparar_jornada
 from datosdep.render import nombres
 from datosdep.render.render import CLAVES, TEMAS, hoja_muestras, renderizar_jornada, tema_actual
-from datosdep.scraper.origen_a import AccesoRestringido
 from datosdep.telegram import Telegram
 
 # Claves de slide abreviadas para caber en los 64 bytes de un botón.
@@ -162,8 +162,8 @@ def _novedad_competicion(comp: str) -> str | None:
 def _semana_competicion(tg: Telegram, chat_id, comp: str, claves: list[str], nota: str) -> str | None:
     try:
         clave = _novedad_competicion(comp)
-    except Exception:
-        tg.mensaje(chat_id, f"❗ Error preparando {comp}:\n<code>{html.escape(traceback.format_exc()[-700:])}</code>")
+    except Exception as e:
+        fallos.manejar(tg, chat_id, e, que=f"el resumen de {comp}", contexto=f"preparar {comp}")
         return None
     posts = estado.posts()
     if not clave or clave in posts:
@@ -195,8 +195,8 @@ def semana(tg: Telegram, chat_id, reintento: bool = False, ligas: set[str] | lis
                 pid, post = preparar(comp, grupo)
             except RuntimeError:
                 continue  # liga sin jornadas jugadas todavía
-            except Exception:
-                tg.mensaje(chat_id, f"❗ Error preparando {comp}/{grupo}:\n<code>{html.escape(traceback.format_exc()[-700:])}</code>")
+            except Exception as e:
+                fallos.manejar(tg, chat_id, e, que=f"la jornada de {cfg.get('nombre', comp)}", contexto=f"preparar {comp}/{grupo}")
                 continue
             if post.get("enviado"):
                 # Ya mandada: solo se reenvía en el reintento si se completaron actas.
@@ -1089,11 +1089,8 @@ def procesar(tg: Telegram, actualizaciones: list[dict]) -> None:
                 _boton(tg, ctx, posts, u["callback_query"])
             else:
                 _mensaje(tg, ctx, posts, u["message"])
-        except AccesoRestringido:
-            tg.mensaje(chat_id, "⏳ el origen A está limitando las peticiones y esto no está guardado todavía. "
-                                "Lo estoy bajando poco a poco; prueba en unos minutos.")
-        except Exception:
-            tg.mensaje(chat_id, f"❗ Algo ha fallado:\n<code>{html.escape(traceback.format_exc()[-700:])}</code>")
+        except Exception as e:
+            fallos.manejar(tg, chat_id, e, que="lo que has pedido", contexto=f"petición de {chat_id}")
         b = estado.bot()  # puede haber cambiado (estilo, semana...)
         b.setdefault("esperas", {})[str(chat_id)] = ctx.get("esperando")
         estado.guardar_bot(b)
@@ -1385,41 +1382,54 @@ def _cada_cuanto_directo() -> int:
     return 30 * 60
 
 
+def _tarea(tg, nombre: str, funcion, *args, **kw) -> None:
+    """Ejecuta una tarea del bucle sin que un fallo pare el bot; el dueño recibe el aviso (una vez al día)."""
+    try:
+        funcion(*args, **kw)
+    except Exception as e:
+        fallos.avisar(tg, e, nombre)
+
+
+def _al_descartar_slide(tg):
+    def avisar(e, clave):
+        fallos.avisar(tg, e, f"la imagen «{clave}» (se ha quitado del carrusel; el resto ha salido)")
+    return avisar
+
+
 def bucle(tg: Telegram, minutos: float) -> None:
+    from datosdep.render import render
+
     fin = time.monotonic() + minutos * 60
     ultimo_directo = 0.0
+    render.AL_DESCARTAR = _al_descartar_slide(tg)
     try:
         tg.comandos(COMANDOS)  # por si se han añadido comandos nuevos
     except Exception:
         pass
     while (restante := fin - time.monotonic()) > 5:
-        b = estado.bot()
-        chat_id = b.get("chat_id")
-        tg_todos = Difusion(tg, b)  # lo automático llega al dueño y a los invitados
-        if chat_id:
-            if _toca(b, "semana_lunes", 0, 10):
-                semana(tg_todos, chat_id, ligas=preferencias.ligas_de_todos(b, "semana"))
-            elif _toca(b, "semana_martes", 1, 10):
-                semana(tg_todos, chat_id, reintento=True, ligas=preferencias.ligas_de_todos(b, "semana"))
-            elif _toca(b, "agenda_jueves", 3, 10):
-                try:
-                    enviar_agenda(tg_todos.para("agenda"), chat_id, "n")
-                    for comp in ARBITROS:
-                        enviar_arbitros(tg_todos.para("arbitros", comp), chat_id, comp, "d")
-                except Exception:
-                    traceback.print_exc()
-            if time.monotonic() - ultimo_directo > _cada_cuanto_directo():
-                ultimo_directo = time.monotonic()
-                try:
-                    directo.comprobar(tg_todos, b)
-                except Exception:
-                    traceback.print_exc()
-                estado.guardar_bot(b)
-            _avisar_actas_bloqueadas(tg, b, chat_id)
-            _avisar_actas_ilegibles(tg, b, chat_id)
-            try:
-                precalentar.paso()  # un acta cada ~minuto como mucho, nunca en ráfaga
-            except Exception:
-                traceback.print_exc()
-        espera = int(min(50, max(1, restante - 5)))
-        procesar(tg, tg.actualizaciones(b.get("offset", 0), espera))
+        try:
+            b = estado.bot()
+            chat_id = b.get("chat_id")
+            tg_todos = Difusion(tg, b)  # lo automático llega al dueño y a los invitados
+            if chat_id:
+                if _toca(b, "semana_lunes", 0, 10):
+                    _tarea(tg, "el envío del lunes", semana, tg_todos, chat_id, ligas=preferencias.ligas_de_todos(b, "semana"))
+                elif _toca(b, "semana_martes", 1, 10):
+                    _tarea(tg, "el reenvío del martes", semana, tg_todos, chat_id, reintento=True,
+                           ligas=preferencias.ligas_de_todos(b, "semana"))
+                elif _toca(b, "agenda_jueves", 3, 10):
+                    _tarea(tg, "la agenda del jueves", enviar_agenda, tg_todos.para("agenda"), chat_id, "n")
+                    for comp in ARBITROS:  # cada liga por separado: si falla una, las demás salen
+                        _tarea(tg, f"las designaciones de {comp}", enviar_arbitros, tg_todos.para("arbitros", comp), chat_id, comp, "d")
+                if time.monotonic() - ultimo_directo > _cada_cuanto_directo():
+                    ultimo_directo = time.monotonic()
+                    _tarea(tg, "los resultados en directo", directo.comprobar, tg_todos, b)
+                    estado.guardar_bot(b)
+                _tarea(tg, "el aviso de actas bloqueadas", _avisar_actas_bloqueadas, tg, b, chat_id)
+                _tarea(tg, "el aviso de actas ilegibles", _avisar_actas_ilegibles, tg, b, chat_id)
+                _tarea(tg, "la descarga nocturna de actas", precalentar.paso)  # un acta cada ~minuto como mucho
+            espera = int(min(50, max(1, restante - 5)))
+            procesar(tg, tg.actualizaciones(b.get("offset", 0), espera))
+        except Exception as e:  # nada de lo anterior debe parar el bot: aviso y sigue
+            fallos.avisar(tg, e, "el bucle principal")
+            time.sleep(5)

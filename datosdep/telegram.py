@@ -1,11 +1,45 @@
 """Cliente mínimo de la API de bots de Telegram (sondeo con getUpdates)."""
 from __future__ import annotations
 
+import html
 import json
+import re
+import time
 from contextlib import ExitStack
 from pathlib import Path
 
 import requests
+
+
+LIMITE_MENSAJE = 4000  # Telegram admite 4096 caracteres por mensaje
+LIMITE_PIE = 1000  # y 1024 en el pie de una foto o vídeo
+
+
+def _recortar(texto: str, limite: int) -> str:
+    if len(texto or "") <= limite:
+        return texto
+    corte = texto[:limite - 1]
+    corte = corte[:corte.rfind("\n")] if "\n" in corte[limite // 2:] else corte
+    return re.sub(r"<[^>]*$", "", corte) + "…"  # sin dejar una etiqueta HTML a medias
+
+
+def _trocear(texto: str, limite: int) -> list[str]:
+    """Parte un texto largo por saltos de línea (o donde se pueda) sin pasar del límite."""
+    trozos, actual = [], ""
+    for linea in (texto or "").split("\n"):
+        while len(linea) > limite:  # una sola línea más larga que el límite
+            if actual:
+                trozos.append(actual)
+                actual = ""
+            trozos.append(linea[:limite])
+            linea = linea[limite:]
+        if actual and len(actual) + 1 + len(linea) > limite:
+            trozos.append(actual)
+            actual = linea
+        else:
+            actual = f"{actual}\n{linea}" if actual else linea
+    trozos.append(actual)
+    return [t for t in trozos if t] or [""]
 
 
 class Telegram:
@@ -14,12 +48,44 @@ class Telegram:
         self.base_ficheros = f"https://api.telegram.org/file/bot{token}"
 
     def _post(self, metodo: str, files=None, **datos):
+        """Llamada a Telegram, a prueba de cortes: reintenta si la red falla, si Telegram está caído (5xx) o si
+        pide esperar (429, respetando su `retry_after`). Si el texto no se puede leer como HTML, lo manda sin formato."""
         datos = {k: json.dumps(v) if isinstance(v, (dict, list)) else v for k, v in datos.items() if v is not None}
-        r = requests.post(f"{self.base}/{metodo}", data=datos, files=files, timeout=120)
-        cuerpo = r.json()
-        if not cuerpo.get("ok"):
-            raise RuntimeError(f"Telegram {metodo}: {cuerpo.get('description')}")
-        return cuerpo["result"]
+        ultimo: Exception | None = None
+        for intento in range(4):
+            for f in (files or {}).values():
+                f.seek(0)  # al reintentar, el fichero se vuelve a mandar desde el principio
+            try:
+                r = requests.post(f"{self.base}/{metodo}", data=datos, files=files, timeout=120)
+            except requests.ConnectionError as e:  # no llegó a Telegram: es seguro repetir
+                ultimo = e
+                time.sleep(3 * (intento + 1))
+                continue
+            try:
+                cuerpo = r.json()
+            except ValueError:
+                cuerpo = {"ok": False, "error_code": r.status_code, "description": f"respuesta no válida ({r.status_code})"}
+            if cuerpo.get("ok"):
+                return cuerpo["result"]
+            codigo, desc = cuerpo.get("error_code") or r.status_code, str(cuerpo.get("description") or "")
+            if codigo == 429:
+                espera = int((cuerpo.get("parameters") or {}).get("retry_after") or 5)
+                ultimo = RuntimeError(f"Telegram {metodo}: {desc}")
+                time.sleep(min(espera, 60) + 1)
+                continue
+            if codigo >= 500:
+                ultimo = RuntimeError(f"Telegram {metodo}: {desc}")
+                time.sleep(3 * (intento + 1))
+                continue
+            if "can't parse entities" in desc and datos.get("parse_mode"):
+                # un carácter que rompe el formato: el mismo texto, sin etiquetas
+                datos.pop("parse_mode")
+                for campo in ("text", "caption"):
+                    if campo in datos:
+                        datos[campo] = html.unescape(re.sub(r"<[^>]+>", "", str(datos[campo])))
+                continue
+            raise RuntimeError(f"Telegram {metodo}: {desc}")
+        raise RuntimeError(f"Telegram {metodo}: sin respuesta tras varios intentos ({ultimo})")
 
     def actualizaciones(self, offset: int, espera: int = 0) -> list[dict]:
         """getUpdates con sondeo largo: espera hasta `espera` segundos a que llegue algo."""
@@ -43,8 +109,11 @@ class Telegram:
         if teclado_fijo:
             teclado = {"keyboard": [[{"text": t} for t in fila] for fila in teclado_fijo],
                        "resize_keyboard": True, "is_persistent": True}
+        trozos = _trocear(texto, LIMITE_MENSAJE)
+        for t in trozos[:-1]:  # un texto largo va en varios mensajes; los botones, en el último
+            self._post("sendMessage", chat_id=chat_id, text=t, parse_mode="HTML", disable_web_page_preview=True)
         return self._post(
-            "sendMessage", chat_id=chat_id, text=texto, parse_mode="HTML",
+            "sendMessage", chat_id=chat_id, text=trozos[-1], parse_mode="HTML",
             reply_markup=teclado, disable_web_page_preview=True,
         )
 
@@ -75,11 +144,11 @@ class Telegram:
 
     def foto(self, chat_id, imagen: Path, texto: str = "") -> None:
         with open(imagen, "rb") as f:
-            self._post("sendPhoto", files={"photo": f}, chat_id=chat_id, caption=texto)
+            self._post("sendPhoto", files={"photo": f}, chat_id=chat_id, caption=_recortar(texto, LIMITE_PIE))
 
     def video(self, chat_id, ruta: Path, texto: str = "", botones=None) -> None:
         with open(ruta, "rb") as f:
-            self._post("sendVideo", files={"video": f}, chat_id=chat_id, caption=texto, parse_mode="HTML",
+            self._post("sendVideo", files={"video": f}, chat_id=chat_id, caption=_recortar(texto, LIMITE_PIE), parse_mode="HTML",
                        width=1080, height=1920, supports_streaming=True,
                        reply_markup=self._teclado(botones) if botones else None)
 

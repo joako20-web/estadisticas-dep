@@ -7,6 +7,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 
+from datosdep import archivos
 from datosdep.core import datos as D
 from datosdep.models import JugadorTemporada
 from datosdep.core import rankings as R
@@ -139,7 +140,7 @@ def resumen_temporada(comp: str, grupo: str, competicion, cliente: OrigenA) -> d
             _fila_resumen(ln) for ln in E.lineas_partido(p, acta)  # todos los convocados
         ]
     ruta.parent.mkdir(parents=True, exist_ok=True)
-    ruta.write_text(json.dumps(resumen, ensure_ascii=False), encoding="utf-8")
+    archivos.escribir(ruta, json.dumps(resumen, ensure_ascii=False))
     return resumen
 
 
@@ -256,5 +257,5 @@ def preparar_jornada(
         # No pisar los cambios manuales del XV al regenerar.
         datos["xv_ideal"] = previo["xv_ideal"]
         datos["xv_editado"] = True
-    ruta.write_text(json.dumps(datos, ensure_ascii=False, indent=2), encoding="utf-8")
+    archivos.escribir(ruta, json.dumps(datos, ensure_ascii=False, indent=2))
     return ruta

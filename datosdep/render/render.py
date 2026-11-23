@@ -20,12 +20,14 @@ import hashlib
 import io
 import os
 import json
+import traceback
 import re
 from functools import lru_cache
 from datetime import datetime
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
+from playwright.sync_api import Error as ErrorNavegador
 from playwright.sync_api import sync_playwright
 
 from datosdep.core.estadisticas import POSICIONES
@@ -476,10 +478,13 @@ class _Navegador:
         return pagina
 
     def cerrar(self):
-        if self.nav:
-            self.nav.close()
-            self.pw.stop()
-            self.nav = self.pw = None
+        """Cierra el navegador aunque esté medio roto (para poder arrancar uno nuevo)."""
+        for paso in (lambda: self.nav and self.nav.close(), lambda: self.pw and self.pw.stop()):
+            try:
+                paso()
+            except Exception:
+                pass
+        self.nav = self.pw = None
 
 
 _NAV = _Navegador()
@@ -641,15 +646,57 @@ _JS_AUDITA = """(margen) => {
 }"""
 
 
+AL_DESCARTAR = None  # función(error, clave del slide) que avisa al dueño; la pone el bot al arrancar
+
+
+def _slides_que_se_pueden_pintar(datos: dict, slides: list[dict], formato: str, tema: str | None) -> list[dict]:
+    """Si la plantilla de un slide falla (datos raros), se quita ese slide y el resto del carrusel sigue."""
+    try:
+        html_post(datos, slides, formato, tema)
+        return slides
+    except Exception:
+        buenos = []
+        for s in slides:
+            try:
+                html_post(datos, [s], formato, tema)
+                buenos.append(s)
+            except Exception as e:
+                traceback.print_exc()
+                if AL_DESCARTAR:
+                    try:
+                        AL_DESCARTAR(e, s.get("clave", "?"))
+                    except Exception:
+                        traceback.print_exc()
+        if not buenos:
+            raise
+        return buenos
+
+
 def renderizar_slides(
     datos: dict, slides: list[dict], destino: Path, formato: str = "post", tema: str | None = None
 ) -> list[Path]:
-    """Pinta los slides dados como JPEG (1080x1350 o 1080x1920)."""
+    """Pinta los slides dados como JPEG (1080x1350 o 1080x1920). Si el navegador se cae, se arranca otro y se
+    repite una vez; un slide que no se puede pintar se quita y salen los demás."""
     destino.mkdir(parents=True, exist_ok=True)
     for viejo in destino.glob("*.jpg"):
         viejo.unlink()
     if not slides:
         return []
+    slides = _slides_que_se_pueden_pintar(datos, slides, formato, tema)
+    for intento in range(2):
+        try:
+            return _pintar(datos, slides, destino, formato, tema)
+        except ErrorNavegador:
+            if intento:
+                raise
+            traceback.print_exc()
+            _NAV.cerrar()  # navegador caído o colgado: uno nuevo
+            for viejo in destino.glob("*.jpg"):
+                viejo.unlink()
+    return []
+
+
+def _pintar(datos: dict, slides: list[dict], destino: Path, formato: str, tema: str | None) -> list[Path]:
     ancho, alto = TAMANOS[formato]
     generados: list[Path] = []
     pagina = _NAV.pagina(ancho, alto)

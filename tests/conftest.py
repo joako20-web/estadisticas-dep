@@ -18,3 +18,22 @@ DATOS_TEST = RAIZ / "tests" / "fixtures" / "data"
 @pytest.fixture(autouse=True)
 def datos_congelados(monkeypatch):
     monkeypatch.setattr(pipeline, "DATA", DATOS_TEST)
+
+
+@pytest.fixture(autouse=True)
+def sin_red(monkeypatch):
+    """Ninguna prueba sale a internet: cualquier petición real falla al momento como un corte de red,
+    y las esperas entre reintentos no esperan de verdad."""
+    import requests
+
+    from datosdep import telegram
+    from datosdep.scraper import origen_a
+
+    def corte(*a, **k):
+        raise requests.ConnectionError("sin red en las pruebas")
+
+    monkeypatch.setattr(requests.Session, "request", corte)
+    monkeypatch.setattr(requests, "post", corte)
+    monkeypatch.setattr(requests, "get", corte)
+    monkeypatch.setattr(origen_a.time, "sleep", lambda s: None)
+    monkeypatch.setattr(telegram.time, "sleep", lambda s: None)

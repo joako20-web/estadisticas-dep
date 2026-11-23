@@ -9,6 +9,7 @@ import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+from datosdep import archivos
 from datosdep.pipeline import RAIZ
 
 MADRID = ZoneInfo("Europe/Madrid")
@@ -19,13 +20,21 @@ FOTOS = RAIZ / "data" / "fotos"
 
 
 def _leer(nombre: str, defecto):
+    """Si el fichero está roto (corte a medias, conflicto de git...), se usa la copia anterior; si tampoco
+    vale, el valor por defecto. El bot no se cae por un estado ilegible."""
     ruta = ESTADO / nombre
-    return json.loads(ruta.read_text(encoding="utf-8")) if ruta.exists() else defecto
+    for candidata in (ruta, ruta.with_name(nombre + ".bak")):
+        if not candidata.exists():
+            continue
+        try:
+            return json.loads(candidata.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            print(f"⚠️ estado ilegible: {candidata}; pruebo con la copia anterior")
+    return defecto
 
 
 def _escribir(nombre: str, datos) -> None:
-    ESTADO.mkdir(parents=True, exist_ok=True)
-    (ESTADO / nombre).write_text(json.dumps(datos, ensure_ascii=False, indent=2), encoding="utf-8")
+    archivos.escribir(ESTADO / nombre, json.dumps(datos, ensure_ascii=False, indent=2), copia=True)
 
 
 def posts() -> dict[str, dict]:

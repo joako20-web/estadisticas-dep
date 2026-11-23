@@ -210,6 +210,21 @@ class OrigenA:
         return hashlib.sha1(f"api|{tipo}|{sorted(params.items())}".encode()).hexdigest()
 
     def _pedir_api(self, tipo: str, params: dict, lenta: bool) -> bytes:
+        """Con reintentos ante cortes de red o servidor caído (5 s, 10 s); nunca ante 403/429."""
+        for intento in range(3):
+            try:
+                return self._pedir_api_una(tipo, params, lenta)
+            except (requests.ConnectionError, requests.Timeout) as e:
+                error = e
+            except requests.HTTPError as e:
+                if e.response is None or e.response.status_code < 500:
+                    raise
+                error = e
+            if intento < 2:
+                time.sleep(5 * (intento + 1))
+        raise error
+
+    def _pedir_api_una(self, tipo: str, params: dict, lenta: bool) -> bytes:
         ruta = f"api/{tipo}"
         for intento in range(2):  # la segunda vez, con clave nueva si la anterior había caducado
             self._esperar(lenta)

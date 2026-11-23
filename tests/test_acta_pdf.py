@@ -60,6 +60,7 @@ def test_acta_se_pide_una_sola_vez(tmp_path, monkeypatch):
     monkeypatch.setattr(origen_a.OrigenA, "_get", lambda self, *a, **k: pedidos.append(a) or b"%PDF")
     monkeypatch.setattr(acta_pdf, "fragmentos", lambda raw: _paginas(17668))
     c = origen_a.OrigenA(cache_dir=tmp_path / "cache")
+    monkeypatch.setattr(c, "_api", lambda *a, **k: {"data": None})  # sin JSON: se usa el PDF entero
     a1 = c.acta(17668)
     a2 = c.acta(17668)
     assert len(pedidos) == 1 and pedidos[0][0] == "https://ejemplo.invalid/acta"
@@ -72,6 +73,7 @@ def test_sin_direccion_configurada_cuenta_como_sin_acceso(tmp_path, monkeypatch)
     monkeypatch.setattr(origen_a, "RAIZ_DATOS", tmp_path)
     monkeypatch.delenv("ORIGEN_A_ACTA_URL", raising=False)
     c = origen_a.OrigenA(cache_dir=tmp_path / "cache")
+    monkeypatch.setattr(c, "_api", lambda *a, **k: {"data": None})
     a = c.acta(17668)
     assert a.eventos == [] and c.actas_bloqueadas
 
