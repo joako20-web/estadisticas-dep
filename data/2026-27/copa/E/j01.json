@@ -1,0 +1,1187 @@
+{
+  "competicion": "copa",
+  "nombre": "Copa del Rey",
+  "grupo": "E",
+  "temporada": "2026/27",
+  "jornada": 1,
+  "partidos": [
+    {
+      "id": 18878,
+      "jornada": 1,
+      "fecha": "2026-11-22T12:00:00",
+      "local": "C.P. LES ABELLES",
+      "visitante": "AMPO ORDIZIA",
+      "puntos_local": 20,
+      "puntos_visitante": 34,
+      "campo": "Polideportivo Quatre Carreres - Campos de rugby Jorge Diego Pantera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "descansa": [],
+  "partidos_temporada": [
+    {
+      "id": 18878,
+      "jornada": 1,
+      "fecha": "2026-11-22T12:00:00",
+      "local": "C.P. LES ABELLES",
+      "visitante": "AMPO ORDIZIA",
+      "puntos_local": 20,
+      "puntos_visitante": 34,
+      "campo": "Polideportivo Quatre Carreres - Campos de rugby Jorge Diego Pantera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "actas_pendientes": [],
+  "anotadores": [
+    {
+      "nombre": "FRANCO MATIAS FERNANDO VELARDE BRANDT",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 14,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 21.4,
+      "foto": ""
+    },
+    {
+      "nombre": "ROBERTO PONCE SOLTERO",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 15,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": 14.6,
+      "foto": ""
+    },
+    {
+      "nombre": "MATEO MARTINEZ GORGUES",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 10,
+      "puntos": 10,
+      "ensayos": 0,
+      "conversiones": 2,
+      "golpes": 2,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": 8.6,
+      "foto": ""
+    },
+    {
+      "nombre": "ALVARO DOPICO ANEIROS",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 13,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    },
+    {
+      "nombre": "BEÑAT AZURMENDI SENAR",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 7,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    },
+    {
+      "nombre": "DOMINIC GAGAEOLO",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 5,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    },
+    {
+      "nombre": "PAU BERNALDO SANCHEZ",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 2,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    },
+    {
+      "nombre": "BEAU FINNIAN PEART",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 22,
+      "puntos": 2,
+      "ensayos": 0,
+      "conversiones": 1,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 7.4,
+      "foto": ""
+    },
+    {
+      "nombre": "LANDER MUGICA PEREZ",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 10,
+      "puntos": 2,
+      "ensayos": 0,
+      "conversiones": 1,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 7.4,
+      "foto": ""
+    }
+  ],
+  "ensayadores": [
+    {
+      "nombre": "FRANCO MATIAS FERNANDO VELARDE BRANDT",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 14,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 21.4,
+      "foto": ""
+    },
+    {
+      "nombre": "ROBERTO PONCE SOLTERO",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 15,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": 14.6,
+      "foto": ""
+    },
+    {
+      "nombre": "ALVARO DOPICO ANEIROS",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 13,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    },
+    {
+      "nombre": "BEÑAT AZURMENDI SENAR",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 7,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    },
+    {
+      "nombre": "DOMINIC GAGAEOLO",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 5,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    }
+  ],
+  "xv_ideal": null,
+  "foto_portada": null,
+  "candidatos_xv": [
+    {
+      "nombre": "EKAITZ AIA VALVERDE",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 5.4,
+      "foto": ""
+    },
+    {
+      "nombre": "KEVIN VAZQUEZ MARTINEZ",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "PAU BERNALDO SANCHEZ",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 2,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    },
+    {
+      "nombre": "MIGUEL BERMEJO ARCOS",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 2,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "AITOR LASA SANCHEZ",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 3,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 5.4,
+      "foto": ""
+    },
+    {
+      "nombre": "SAMUEL JESUS ROJAS MORA",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 3,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "MIKEL GOROSTIDI JAIMERENA",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 4,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 5.4,
+      "foto": ""
+    },
+    {
+      "nombre": "BRUNO HORTELANO RICO",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 4,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "DOMINIC GAGAEOLO",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 5,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    },
+    {
+      "nombre": "JULIAN PRIETO RANDEZ",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 5,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "AITOR ANGIOZAR BOTO",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 6,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 5.4,
+      "foto": ""
+    },
+    {
+      "nombre": "ANGEL ENMANUEL ROJAS MORA",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 6,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "BEÑAT AZURMENDI SENAR",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 7,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    },
+    {
+      "nombre": "NICOLAS IGNACIO TOPA",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 7,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "IKER OSCOZ EZCURRA",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 8,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 5.4,
+      "foto": ""
+    },
+    {
+      "nombre": "JEROME GABRIEL MARIE JOSEPH VERMERSCH",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 8,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "IORITZ MUJIKA MARTINEZ DE ZUAZO",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 9,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 5.4,
+      "foto": ""
+    },
+    {
+      "nombre": "TRISTAN MIHAYLOV OLALLA",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 9,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "MATEO MARTINEZ GORGUES",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 10,
+      "puntos": 10,
+      "ensayos": 0,
+      "conversiones": 2,
+      "golpes": 2,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": 8.6,
+      "foto": ""
+    },
+    {
+      "nombre": "LANDER MUGICA PEREZ",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 10,
+      "puntos": 2,
+      "ensayos": 0,
+      "conversiones": 1,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 7.4,
+      "foto": ""
+    },
+    {
+      "nombre": "EGOITZ GARCIA BAÑUELOS",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 11,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 5.4,
+      "foto": ""
+    },
+    {
+      "nombre": "LUCAS GIL GOMEZ",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 11,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "AITOR OLASAGASTI MUJIKA",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 12,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 5.4,
+      "foto": ""
+    },
+    {
+      "nombre": "JOSE ANTONIO ORTUÑO JIMENEZ",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 12,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "ALVARO DOPICO ANEIROS",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 13,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 13.4,
+      "foto": ""
+    },
+    {
+      "nombre": "HECTOR PORTA SANCHEZ",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 13,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "FRANCO MATIAS FERNANDO VELARDE BRANDT",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 14,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 21.4,
+      "foto": ""
+    },
+    {
+      "nombre": "MARC GENOVES MARTI",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 14,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": -1.4,
+      "foto": ""
+    },
+    {
+      "nombre": "ROBERTO PONCE SOLTERO",
+      "equipo": "C.P. LES ABELLES",
+      "dorsal": 15,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -14,
+      "rival": "AMPO ORDIZIA",
+      "nota": 14.6,
+      "foto": ""
+    },
+    {
+      "nombre": "PELLO IRIONDO BARRENETXEA",
+      "equipo": "AMPO ORDIZIA",
+      "dorsal": 15,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 14,
+      "rival": "C.P. LES ABELLES",
+      "nota": 5.4,
+      "foto": ""
+    }
+  ],
+  "clasificacion": [
+    {
+      "posicion": 1,
+      "equipo": "AMPO ORDIZIA",
+      "racha": [
+        "G"
+      ],
+      "pt": 5,
+      "pj": 1,
+      "pg": 1,
+      "pe": 0,
+      "pp": 0,
+      "tf": 34,
+      "tc": 20,
+      "dt": 14,
+      "ef": 6,
+      "ec": 2,
+      "de": 4,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/96/square_796431373766786b3674.jpg"
+    },
+    {
+      "posicion": 2,
+      "equipo": "C.P. LES ABELLES",
+      "racha": [
+        "P"
+      ],
+      "pt": 0,
+      "pj": 1,
+      "pg": 0,
+      "pe": 0,
+      "pp": 1,
+      "tf": 20,
+      "tc": 34,
+      "dt": -14,
+      "ef": 2,
+      "ec": 6,
+      "de": -4,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/36/square_6f75337230696d327239.jpg"
+    },
+    {
+      "posicion": 3,
+      "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
+      "racha": [],
+      "pt": 0,
+      "pj": 0,
+      "pg": 0,
+      "pe": 0,
+      "pp": 0,
+      "tf": 0,
+      "tc": 0,
+      "dt": 0,
+      "ef": 0,
+      "ec": 0,
+      "de": 0,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/25/square_62763231767836756f32.jpg"
+    }
+  ],
+  "escudos": {
+    "AMPO ORDIZIA": "@f/images/afiliacion_clubs/96/square_796431373766786b3674.jpg",
+    "C.P. LES ABELLES": "@f/images/afiliacion_clubs/36/square_6f75337230696d327239.jpg",
+    "CAJASOL REAL CIENCIAS SEVILLA": "@f/images/afiliacion_clubs/25/square_62763231767836756f32.jpg"
+  },
+  "temporada_anotadores": [
+    {
+      "id": null,
+      "nombre": "ROBERTO PONCE SOLTERO",
+      "equipo": "C.P. LES ABELLES",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "FRANCO MATIAS FERNANDO VELARDE BRANDT",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "MATEO MARTINEZ GORGUES",
+      "equipo": "C.P. LES ABELLES",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "PAU BERNALDO SANCHEZ",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "DOMINIC GAGAEOLO",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "BEÑAT AZURMENDI SENAR",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "ALVARO DOPICO ANEIROS",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "LANDER MUGICA PEREZ",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 2,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "BEAU FINNIAN PEART",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 2,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "temporada_ensayadores": [
+    {
+      "id": null,
+      "nombre": "ROBERTO PONCE SOLTERO",
+      "equipo": "C.P. LES ABELLES",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "FRANCO MATIAS FERNANDO VELARDE BRANDT",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "PAU BERNALDO SANCHEZ",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "DOMINIC GAGAEOLO",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "BEÑAT AZURMENDI SENAR",
+      "equipo": "AMPO ORDIZIA",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "proxima_jornada": {
+    "numero": 2,
+    "partidos": [
+      {
+        "id": 18879,
+        "jornada": 2,
+        "fecha": "2026-11-29T12:00:00",
+        "local": "AMPO ORDIZIA",
+        "visitante": "CAJASOL REAL CIENCIAS SEVILLA",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "ALTAMIRA ESTADIOA",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      }
+    ],
+    "descansa": []
+  },
+  "rankings": {
+    "ensayadores": [
+      {
+        "nombre": "FRANCO MATIAS FERNANDO VELARDE BRANDT",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 2,
+        "detalle": "10 puntos",
+        "rival": "C.P. LES ABELLES"
+      },
+      {
+        "nombre": "ROBERTO PONCE SOLTERO",
+        "equipo": "C.P. LES ABELLES",
+        "valor": 2,
+        "detalle": "10 puntos",
+        "rival": "AMPO ORDIZIA"
+      },
+      {
+        "nombre": "ALVARO DOPICO ANEIROS",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "C.P. LES ABELLES"
+      },
+      {
+        "nombre": "BEÑAT AZURMENDI SENAR",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "C.P. LES ABELLES"
+      },
+      {
+        "nombre": "DOMINIC GAGAEOLO",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "C.P. LES ABELLES"
+      },
+      {
+        "nombre": "PAU BERNALDO SANCHEZ",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "C.P. LES ABELLES"
+      }
+    ],
+    "pateadores": [
+      {
+        "nombre": "MATEO MARTINEZ GORGUES",
+        "equipo": "C.P. LES ABELLES",
+        "valor": 10,
+        "detalle": "2 transf. · 2 golpes",
+        "rival": "AMPO ORDIZIA"
+      },
+      {
+        "nombre": "BEAU FINNIAN PEART",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 2,
+        "detalle": "1 transf.",
+        "rival": "C.P. LES ABELLES"
+      },
+      {
+        "nombre": "LANDER MUGICA PEREZ",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 2,
+        "detalle": "1 transf.",
+        "rival": "C.P. LES ABELLES"
+      }
+    ],
+    "ensayadores_t": [
+      {
+        "nombre": "FRANCO MATIAS FERNANDO VELARDE BRANDT",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 2,
+        "detalle": "10 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "ROBERTO PONCE SOLTERO",
+        "equipo": "C.P. LES ABELLES",
+        "valor": 2,
+        "detalle": "10 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "ALVARO DOPICO ANEIROS",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "BEÑAT AZURMENDI SENAR",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "DOMINIC GAGAEOLO",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "PAU BERNALDO SANCHEZ",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      }
+    ],
+    "pateadores_t": [
+      {
+        "nombre": "MATEO MARTINEZ GORGUES",
+        "equipo": "C.P. LES ABELLES",
+        "valor": 10,
+        "detalle": "2 transf. · 2 golpes",
+        "rival": ""
+      },
+      {
+        "nombre": "BEAU FINNIAN PEART",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 2,
+        "detalle": "1 transf.",
+        "rival": ""
+      },
+      {
+        "nombre": "LANDER MUGICA PEREZ",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 2,
+        "detalle": "1 transf.",
+        "rival": ""
+      }
+    ],
+    "disciplina": [],
+    "banquillo": [
+      {
+        "nombre": "BEAU FINNIAN PEART",
+        "equipo": "AMPO ORDIZIA",
+        "valor": 2,
+        "detalle": "",
+        "rival": ""
+      }
+    ],
+    "equipos": [
+      {
+        "titulo": "Mejor ataque",
+        "unidad": "pts a favor",
+        "filas": [
+          {
+            "equipo": "AMPO ORDIZIA",
+            "valor": 34
+          },
+          {
+            "equipo": "C.P. LES ABELLES",
+            "valor": 20
+          }
+        ]
+      },
+      {
+        "titulo": "Mejor defensa",
+        "unidad": "pts en contra",
+        "filas": [
+          {
+            "equipo": "AMPO ORDIZIA",
+            "valor": 20
+          },
+          {
+            "equipo": "C.P. LES ABELLES",
+            "valor": 34
+          }
+        ]
+      },
+      {
+        "titulo": "Más ensayos",
+        "unidad": "ensayos",
+        "filas": [
+          {
+            "equipo": "AMPO ORDIZIA",
+            "valor": 6
+          },
+          {
+            "equipo": "C.P. LES ABELLES",
+            "valor": 2
+          }
+        ]
+      },
+      {
+        "titulo": "Más bonus",
+        "unidad": "bonus",
+        "filas": [
+          {
+            "equipo": "AMPO ORDIZIA",
+            "valor": 1
+          },
+          {
+            "equipo": "C.P. LES ABELLES",
+            "valor": 0
+          }
+        ]
+      }
+    ]
+  },
+  "datos_jornada": []
+}

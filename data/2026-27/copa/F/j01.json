@@ -1,0 +1,1202 @@
+{
+  "competicion": "copa",
+  "nombre": "Copa del Rey",
+  "grupo": "F",
+  "temporada": "2026/27",
+  "jornada": 1,
+  "partidos": [
+    {
+      "id": 18881,
+      "jornada": 1,
+      "fecha": "2026-11-22T12:00:00",
+      "local": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "visitante": "UNIO ESPORTIVA SANTBOIANA",
+      "puntos_local": 47,
+      "puntos_visitante": 17,
+      "campo": "CAMPO DE RUGBY DE PEPE ROJO 1",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "descansa": [],
+  "partidos_temporada": [
+    {
+      "id": 18881,
+      "jornada": 1,
+      "fecha": "2026-11-22T12:00:00",
+      "local": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "visitante": "UNIO ESPORTIVA SANTBOIANA",
+      "puntos_local": 47,
+      "puntos_visitante": 17,
+      "campo": "CAMPO DE RUGBY DE PEPE ROJO 1",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "actas_pendientes": [],
+  "anotadores": [
+    {
+      "nombre": "SANTIAGO ORTEGA GRANDELA",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 10,
+      "puntos": 12,
+      "ensayos": 0,
+      "conversiones": 6,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 19.0,
+      "foto": ""
+    },
+    {
+      "nombre": "DANIEL CHICO AYO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 6,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 23.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JAVIER ANGEL CORONEL",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 18,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 23.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ALBERT POZO MUÑOZ",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 22,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": 5.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JACOBO RUIZ MARCOS",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 3,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JAIME POWYS ROJO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 23,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "LUCAS DAMIAN SANTA CRUZ",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 7,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [
+        "amarilla"
+      ],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 11.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MARCEL SIRVENT SANSO",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 15,
+      "puntos": 5,
+      "ensayos": 0,
+      "conversiones": 1,
+      "golpes": 1,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": 2.0,
+      "foto": ""
+    }
+  ],
+  "ensayadores": [
+    {
+      "nombre": "DANIEL CHICO AYO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 6,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 23.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JAVIER ANGEL CORONEL",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 18,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 23.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ALBERT POZO MUÑOZ",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 22,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": 5.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JACOBO RUIZ MARCOS",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 3,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JAIME POWYS ROJO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 23,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 15.0,
+      "foto": ""
+    }
+  ],
+  "xv_ideal": null,
+  "foto_portada": null,
+  "candidatos_xv": [
+    {
+      "nombre": "RODRIGO PELAZ ALDAMA",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "TOMAS LEONORI SEARA",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "FERNANDO JOSE ROMANOS FERNANDEZ",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 2,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [
+        "amarilla"
+      ],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "PAU MASSONI SALADO",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 2,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JACOBO RUIZ MARCOS",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 3,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ANIOL FRANCH AGUSTI",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 3,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ROCKLYN JOHN KENNEALLY",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 4,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "IGNASI CARBONELL COLOME",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 4,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "CRISTIAN EMANUEL ABARCA",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 5,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "GIORGI CHOKHONELIDZE",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 5,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "DANIEL CHICO AYO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 6,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 23.0,
+      "foto": ""
+    },
+    {
+      "nombre": "PAU VILA URGELL",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 6,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "LUCAS DAMIAN SANTA CRUZ",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 7,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [
+        "amarilla"
+      ],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 11.0,
+      "foto": ""
+    },
+    {
+      "nombre": "NIELS CORNELUS GERARDUS VAN DE VEN",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 7,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ALVARO SANCHEZ CABREJAS",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 8,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MARÃ‡AL CARRERAS CUESTA",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 8,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "FACUNDO GABRIEL MUNILLA LO DUCA",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 9,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ALBERT MILLAN DIAZ",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 9,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "SANTIAGO ORTEGA GRANDELA",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 10,
+      "puntos": 12,
+      "ensayos": 0,
+      "conversiones": 6,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 19.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MATIAS DANIEL JABASE LESCANO",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 10,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "DIEGO BLASCO PRIETO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 11,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "DYLAN DIAZ PALOMO",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 11,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ALVARO MICHAEL SWORDS CUARTERO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 12,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "WOODY FERRER DALTON",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 12,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "UNAX ZURIARRAIN URCELAYETA",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 13,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JACK DANIELS MARTINEZ",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 13,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [
+        "amarilla"
+      ],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "LUCAS ALVAREZ PEQUEÑO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 14,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "RICARD PEREZ GARCIA",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 14,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ALFONSO ENCISO TEJERINA",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "dorsal": 15,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 30,
+      "rival": "UNIO ESPORTIVA SANTBOIANA",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MARCEL SIRVENT SANSO",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "dorsal": 15,
+      "puntos": 5,
+      "ensayos": 0,
+      "conversiones": 1,
+      "golpes": 1,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -30,
+      "rival": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "nota": 2.0,
+      "foto": ""
+    }
+  ],
+  "clasificacion": [
+    {
+      "posicion": 1,
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "racha": [
+        "G"
+      ],
+      "pt": 5,
+      "pj": 1,
+      "pg": 1,
+      "pe": 0,
+      "pp": 0,
+      "tf": 47,
+      "tc": 17,
+      "dt": 30,
+      "ef": 7,
+      "ec": 2,
+      "de": 5,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/21/square_726b7461656e75357439.jpg"
+    },
+    {
+      "posicion": 2,
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "racha": [
+        "P"
+      ],
+      "pt": 0,
+      "pj": 1,
+      "pg": 0,
+      "pe": 0,
+      "pp": 1,
+      "tf": 17,
+      "tc": 47,
+      "dt": -30,
+      "ef": 2,
+      "ec": 7,
+      "de": -5,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/39/square_62397833623562636372.jpg"
+    },
+    {
+      "posicion": 3,
+      "equipo": "STEELPHALT GETXO RUGBY",
+      "racha": [],
+      "pt": 0,
+      "pj": 0,
+      "pg": 0,
+      "pe": 0,
+      "pp": 0,
+      "tf": 0,
+      "tc": 0,
+      "dt": 0,
+      "ef": 0,
+      "ec": 0,
+      "de": 0,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/63/square_396e3565726975667168.jpg"
+    }
+  ],
+  "escudos": {
+    "VULCANIZADOS ALVAREZ EL SALVADOR": "@f/images/afiliacion_clubs/21/square_726b7461656e75357439.jpg",
+    "UNIO ESPORTIVA SANTBOIANA": "@f/images/afiliacion_clubs/39/square_62397833623562636372.jpg",
+    "STEELPHALT GETXO RUGBY": "@f/images/afiliacion_clubs/63/square_396e3565726975667168.jpg"
+  },
+  "temporada_anotadores": [
+    {
+      "id": null,
+      "nombre": "SANTIAGO ORTEGA GRANDELA",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 12,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "DANIEL CHICO AYO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "JAVIER ANGEL CORONEL",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "JACOBO RUIZ MARCOS",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "LUCAS DAMIAN SANTA CRUZ",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 1,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "JAIME POWYS ROJO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "ALBERT POZO MUÑOZ",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "MARCEL SIRVENT SANSO",
+      "equipo": "UNIO ESPORTIVA SANTBOIANA",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "temporada_ensayadores": [
+    {
+      "id": null,
+      "nombre": "DANIEL CHICO AYO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "JAVIER ANGEL CORONEL",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "JACOBO RUIZ MARCOS",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "LUCAS DAMIAN SANTA CRUZ",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 1,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "JAIME POWYS ROJO",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "proxima_jornada": {
+    "numero": 2,
+    "partidos": [
+      {
+        "id": 18882,
+        "jornada": 2,
+        "fecha": "2026-11-29T12:00:00",
+        "local": "UNIO ESPORTIVA SANTBOIANA",
+        "visitante": "STEELPHALT GETXO RUGBY",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "ESTADI BALDIRI ALEU",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      }
+    ],
+    "descansa": []
+  },
+  "rankings": {
+    "ensayadores": [
+      {
+        "nombre": "DANIEL CHICO AYO",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 2,
+        "detalle": "10 puntos",
+        "rival": "UNIO ESPORTIVA SANTBOIANA"
+      },
+      {
+        "nombre": "JAVIER ANGEL CORONEL",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 2,
+        "detalle": "10 puntos",
+        "rival": "UNIO ESPORTIVA SANTBOIANA"
+      },
+      {
+        "nombre": "ALBERT POZO MUÑOZ",
+        "equipo": "UNIO ESPORTIVA SANTBOIANA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "VULCANIZADOS ALVAREZ EL SALVADOR"
+      },
+      {
+        "nombre": "JACOBO RUIZ MARCOS",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "UNIO ESPORTIVA SANTBOIANA"
+      },
+      {
+        "nombre": "JAIME POWYS ROJO",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "UNIO ESPORTIVA SANTBOIANA"
+      },
+      {
+        "nombre": "LUCAS DAMIAN SANTA CRUZ",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "UNIO ESPORTIVA SANTBOIANA"
+      }
+    ],
+    "pateadores": [
+      {
+        "nombre": "SANTIAGO ORTEGA GRANDELA",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 12,
+        "detalle": "6 transf.",
+        "rival": "UNIO ESPORTIVA SANTBOIANA"
+      },
+      {
+        "nombre": "MARCEL SIRVENT SANSO",
+        "equipo": "UNIO ESPORTIVA SANTBOIANA",
+        "valor": 5,
+        "detalle": "1 transf. · 1 golpe",
+        "rival": "VULCANIZADOS ALVAREZ EL SALVADOR"
+      }
+    ],
+    "ensayadores_t": [
+      {
+        "nombre": "DANIEL CHICO AYO",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 2,
+        "detalle": "10 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "JAVIER ANGEL CORONEL",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 2,
+        "detalle": "10 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "ALBERT POZO MUÑOZ",
+        "equipo": "UNIO ESPORTIVA SANTBOIANA",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "JACOBO RUIZ MARCOS",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "JAIME POWYS ROJO",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "LUCAS DAMIAN SANTA CRUZ",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      }
+    ],
+    "pateadores_t": [
+      {
+        "nombre": "SANTIAGO ORTEGA GRANDELA",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 12,
+        "detalle": "6 transf.",
+        "rival": ""
+      },
+      {
+        "nombre": "MARCEL SIRVENT SANSO",
+        "equipo": "UNIO ESPORTIVA SANTBOIANA",
+        "valor": 5,
+        "detalle": "1 transf. · 1 golpe",
+        "rival": ""
+      }
+    ],
+    "disciplina": [
+      {
+        "nombre": "FERNANDO JOSE ROMANOS FERNANDEZ",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 1,
+        "detalle": "1 amarilla",
+        "rival": ""
+      },
+      {
+        "nombre": "JACK DANIELS MARTINEZ",
+        "equipo": "UNIO ESPORTIVA SANTBOIANA",
+        "valor": 1,
+        "detalle": "1 amarilla",
+        "rival": ""
+      },
+      {
+        "nombre": "LUCAS DAMIAN SANTA CRUZ",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 1,
+        "detalle": "1 amarilla",
+        "rival": ""
+      }
+    ],
+    "banquillo": [
+      {
+        "nombre": "JAVIER ANGEL CORONEL",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 10,
+        "detalle": "2 ensayos",
+        "rival": ""
+      },
+      {
+        "nombre": "ALBERT POZO MUÑOZ",
+        "equipo": "UNIO ESPORTIVA SANTBOIANA",
+        "valor": 5,
+        "detalle": "1 ensayo",
+        "rival": ""
+      },
+      {
+        "nombre": "JAIME POWYS ROJO",
+        "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+        "valor": 5,
+        "detalle": "1 ensayo",
+        "rival": ""
+      }
+    ],
+    "equipos": [
+      {
+        "titulo": "Mejor ataque",
+        "unidad": "pts a favor",
+        "filas": [
+          {
+            "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+            "valor": 47
+          },
+          {
+            "equipo": "UNIO ESPORTIVA SANTBOIANA",
+            "valor": 17
+          }
+        ]
+      },
+      {
+        "titulo": "Mejor defensa",
+        "unidad": "pts en contra",
+        "filas": [
+          {
+            "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+            "valor": 17
+          },
+          {
+            "equipo": "UNIO ESPORTIVA SANTBOIANA",
+            "valor": 47
+          }
+        ]
+      },
+      {
+        "titulo": "Más ensayos",
+        "unidad": "ensayos",
+        "filas": [
+          {
+            "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+            "valor": 7
+          },
+          {
+            "equipo": "UNIO ESPORTIVA SANTBOIANA",
+            "valor": 2
+          }
+        ]
+      },
+      {
+        "titulo": "Más tarjetas",
+        "unidad": "tarjetas",
+        "filas": [
+          {
+            "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR",
+            "valor": 2
+          },
+          {
+            "equipo": "UNIO ESPORTIVA SANTBOIANA",
+            "valor": 1
+          }
+        ]
+      }
+    ]
+  },
+  "datos_jornada": [
+    {
+      "clave": "datos",
+      "tipo": "dato",
+      "peso": 55,
+      "numero": "30",
+      "unidad": "puntos de diferencia",
+      "titular": "Exhibición de El Salvador",
+      "contexto": "El Salvador 47-17 Santboiana. Paliza ante Santboiana.",
+      "equipo": "VULCANIZADOS ALVAREZ EL SALVADOR"
+    }
+  ]
+}

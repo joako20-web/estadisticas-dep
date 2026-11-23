@@ -1,0 +1,1213 @@
+{
+  "competicion": "copa",
+  "nombre": "Copa del Rey",
+  "grupo": "C",
+  "temporada": "2026/27",
+  "jornada": 1,
+  "partidos": [
+    {
+      "id": 18872,
+      "jornada": 1,
+      "fecha": "2026-11-21T13:00:00",
+      "local": "COMPLUTENSE CISNEROS",
+      "visitante": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "puntos_local": 59,
+      "puntos_visitante": 7,
+      "campo": "ESTADIO NACIONAL COMPLUTENSE - CAMPO 1",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "descansa": [],
+  "partidos_temporada": [
+    {
+      "id": 18872,
+      "jornada": 1,
+      "fecha": "2026-11-21T13:00:00",
+      "local": "COMPLUTENSE CISNEROS",
+      "visitante": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "puntos_local": 59,
+      "puntos_visitante": 7,
+      "campo": "ESTADIO NACIONAL COMPLUTENSE - CAMPO 1",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "actas_pendientes": [],
+  "anotadores": [
+    {
+      "nombre": "MANUEL SAINZ-TRAPAGA",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 14,
+      "puntos": 15,
+      "ensayos": 3,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 31.0,
+      "foto": ""
+    },
+    {
+      "nombre": "GUZMAN VINUESA GARCIA",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 15,
+      "puntos": 14,
+      "ensayos": 0,
+      "conversiones": 7,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 21.0,
+      "foto": ""
+    },
+    {
+      "nombre": "FRANCISCO SORIANO NICOLAS",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 11,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 23.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ANXO SEIJAS MOYER",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 22,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "GONZALO GONZALEZ CRITICOS",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 2,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "IGNACIO MEDINA GONZALEZ-IRUN",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 15,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": 5.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MANEX PUJANA LENDINEZ",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 8,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "SANTIAGO NICANOR CACHORRO SCHMIDT",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 10,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "IÑIGO RAPALLO DE LIS",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 10,
+      "puntos": 2,
+      "ensayos": 0,
+      "conversiones": 1,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -1.0,
+      "foto": ""
+    }
+  ],
+  "ensayadores": [
+    {
+      "nombre": "MANUEL SAINZ-TRAPAGA",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 14,
+      "puntos": 15,
+      "ensayos": 3,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 31.0,
+      "foto": ""
+    },
+    {
+      "nombre": "FRANCISCO SORIANO NICOLAS",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 11,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 23.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ANXO SEIJAS MOYER",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 22,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "GONZALO GONZALEZ CRITICOS",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 2,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "IGNACIO MEDINA GONZALEZ-IRUN",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 15,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": 5.0,
+      "foto": ""
+    }
+  ],
+  "xv_ideal": null,
+  "foto_portada": null,
+  "candidatos_xv": [
+    {
+      "nombre": "DIEGO BERGASA ARMENDARIZ",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JUAN GUILLERMO MARTINEZ",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "GONZALO GONZALEZ CRITICOS",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 2,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "GONZALO SANZ GUERRERO",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 2,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "FACUNDO NICOLAS AVILA RECIO",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 3,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ALEJANDRO IGLESIAS MENENDEZ",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 3,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [
+        "amarilla"
+      ],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JORGE GOMEZ RODRIGUEZ",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 4,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JAVIER DE LA GUARDIA BUTLER",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 4,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "TOMAS FERNANDO ANTOZZI",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 5,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "CRISTIAN SEBASTIAN ESQUIVEL",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 5,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "NICHOLAS GOLDSPINK BOREL",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 6,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "THEO DORIAN SANCHEZ",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 6,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "JUAN OZONAS COLOMAR",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 7,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "CLOVIS MICHEL ALAIN PELLEGRIN",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 7,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MANEX PUJANA LENDINEZ",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 8,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MARCELO IGNACIO HUERTA MORAGA",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 8,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "IKE IRUSTA SALLES",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 9,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "IÑIGO FUICA ZARDOYA",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 9,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "SANTIAGO NICANOR CACHORRO SCHMIDT",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 10,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 15.0,
+      "foto": ""
+    },
+    {
+      "nombre": "IÑIGO RAPALLO DE LIS",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 10,
+      "puntos": 2,
+      "ensayos": 0,
+      "conversiones": 1,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -1.0,
+      "foto": ""
+    },
+    {
+      "nombre": "FRANCISCO SORIANO NICOLAS",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 11,
+      "puntos": 10,
+      "ensayos": 2,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 23.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ANDER ENEKO CALVET LASECA",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 11,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "NICOLAS PETROS MENDOZA",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 12,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MARIO ANDRINO RAMON",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 12,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [
+        "amarilla"
+      ],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ALEJANDRO GARCIA MECANDEZ",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 13,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 7.0,
+      "foto": ""
+    },
+    {
+      "nombre": "IGNACIO PELL RICHARDS",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 13,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MANUEL SAINZ-TRAPAGA",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 14,
+      "puntos": 15,
+      "ensayos": 3,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 31.0,
+      "foto": ""
+    },
+    {
+      "nombre": "ROMEO BALTUS",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 14,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "GUZMAN VINUESA GARCIA",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "dorsal": 15,
+      "puntos": 14,
+      "ensayos": 0,
+      "conversiones": 7,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 52,
+      "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "nota": 21.0,
+      "foto": ""
+    },
+    {
+      "nombre": "IGNACIO MEDINA GONZALEZ-IRUN",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "dorsal": 15,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -52,
+      "rival": "COMPLUTENSE CISNEROS",
+      "nota": 5.0,
+      "foto": ""
+    }
+  ],
+  "clasificacion": [
+    {
+      "posicion": 1,
+      "equipo": "COMPLUTENSE CISNEROS",
+      "racha": [
+        "G"
+      ],
+      "pt": 5,
+      "pj": 1,
+      "pg": 1,
+      "pe": 0,
+      "pp": 0,
+      "tf": 59,
+      "tc": 7,
+      "dt": 52,
+      "ef": 9,
+      "ec": 1,
+      "de": 8,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/9/square_6d6662357173746c7130.jpg"
+    },
+    {
+      "posicion": 2,
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "racha": [
+        "P"
+      ],
+      "pt": 0,
+      "pj": 1,
+      "pg": 0,
+      "pe": 0,
+      "pp": 1,
+      "tf": 7,
+      "tc": 59,
+      "dt": -52,
+      "ef": 1,
+      "ec": 9,
+      "de": -8,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/8/square_783274646b71726a3131.jpg"
+    },
+    {
+      "posicion": 3,
+      "equipo": "CRC POZUELO RUGBY",
+      "racha": [],
+      "pt": 0,
+      "pj": 0,
+      "pg": 0,
+      "pe": 0,
+      "pp": 0,
+      "tf": 0,
+      "tc": 0,
+      "dt": 0,
+      "ef": 0,
+      "ec": 0,
+      "de": 0,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/54/square_6e7677343030676c6b30.jpg"
+    }
+  ],
+  "escudos": {
+    "COMPLUTENSE CISNEROS": "@f/images/afiliacion_clubs/9/square_6d6662357173746c7130.jpg",
+    "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY": "@f/images/afiliacion_clubs/8/square_783274646b71726a3131.jpg",
+    "CRC POZUELO RUGBY": "@f/images/afiliacion_clubs/54/square_6e7677343030676c6b30.jpg"
+  },
+  "temporada_anotadores": [
+    {
+      "id": null,
+      "nombre": "MANUEL SAINZ-TRAPAGA",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 15,
+      "ensayos": 3,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "GUZMAN VINUESA GARCIA",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 14,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "FRANCISCO SORIANO NICOLAS",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "GONZALO GONZALEZ CRITICOS",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "MANEX PUJANA LENDINEZ",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "SANTIAGO NICANOR CACHORRO SCHMIDT",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "ANXO SEIJAS MOYER",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "IGNACIO MEDINA GONZALEZ-IRUN",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "IÑIGO RAPALLO DE LIS",
+      "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+      "pj": 1,
+      "puntos": 2,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "temporada_ensayadores": [
+    {
+      "id": null,
+      "nombre": "MANUEL SAINZ-TRAPAGA",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 15,
+      "ensayos": 3,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "FRANCISCO SORIANO NICOLAS",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 10,
+      "ensayos": 2,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "GONZALO GONZALEZ CRITICOS",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "MANEX PUJANA LENDINEZ",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "SANTIAGO NICANOR CACHORRO SCHMIDT",
+      "equipo": "COMPLUTENSE CISNEROS",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "proxima_jornada": {
+    "numero": 2,
+    "partidos": [
+      {
+        "id": 18873,
+        "jornada": 2,
+        "fecha": "2026-11-28T16:00:00",
+        "local": "CRC POZUELO RUGBY",
+        "visitante": "COMPLUTENSE CISNEROS",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "ECOPILAS VALLE DE LAS CAÑAS",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      }
+    ],
+    "descansa": []
+  },
+  "rankings": {
+    "ensayadores": [
+      {
+        "nombre": "MANUEL SAINZ-TRAPAGA",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 3,
+        "detalle": "15 puntos",
+        "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY"
+      },
+      {
+        "nombre": "FRANCISCO SORIANO NICOLAS",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 2,
+        "detalle": "10 puntos",
+        "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY"
+      },
+      {
+        "nombre": "ANXO SEIJAS MOYER",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY"
+      },
+      {
+        "nombre": "GONZALO GONZALEZ CRITICOS",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY"
+      },
+      {
+        "nombre": "IGNACIO MEDINA GONZALEZ-IRUN",
+        "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "COMPLUTENSE CISNEROS"
+      },
+      {
+        "nombre": "MANEX PUJANA LENDINEZ",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY"
+      },
+      {
+        "nombre": "SANTIAGO NICANOR CACHORRO SCHMIDT",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY"
+      }
+    ],
+    "pateadores": [
+      {
+        "nombre": "GUZMAN VINUESA GARCIA",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 14,
+        "detalle": "7 transf.",
+        "rival": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY"
+      },
+      {
+        "nombre": "IÑIGO RAPALLO DE LIS",
+        "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+        "valor": 2,
+        "detalle": "1 transf.",
+        "rival": "COMPLUTENSE CISNEROS"
+      }
+    ],
+    "ensayadores_t": [
+      {
+        "nombre": "MANUEL SAINZ-TRAPAGA",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 3,
+        "detalle": "15 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "FRANCISCO SORIANO NICOLAS",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 2,
+        "detalle": "10 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "ANXO SEIJAS MOYER",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "GONZALO GONZALEZ CRITICOS",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "IGNACIO MEDINA GONZALEZ-IRUN",
+        "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "MANEX PUJANA LENDINEZ",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "SANTIAGO NICANOR CACHORRO SCHMIDT",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      }
+    ],
+    "pateadores_t": [
+      {
+        "nombre": "GUZMAN VINUESA GARCIA",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 14,
+        "detalle": "7 transf.",
+        "rival": ""
+      },
+      {
+        "nombre": "IÑIGO RAPALLO DE LIS",
+        "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+        "valor": 2,
+        "detalle": "1 transf.",
+        "rival": ""
+      }
+    ],
+    "disciplina": [
+      {
+        "nombre": "ALEJANDRO IGLESIAS MENENDEZ",
+        "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+        "valor": 1,
+        "detalle": "1 amarilla",
+        "rival": ""
+      },
+      {
+        "nombre": "MARIO ANDRINO RAMON",
+        "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+        "valor": 1,
+        "detalle": "1 amarilla",
+        "rival": ""
+      }
+    ],
+    "banquillo": [
+      {
+        "nombre": "ANXO SEIJAS MOYER",
+        "equipo": "COMPLUTENSE CISNEROS",
+        "valor": 5,
+        "detalle": "1 ensayo",
+        "rival": ""
+      }
+    ],
+    "equipos": [
+      {
+        "titulo": "Mejor ataque",
+        "unidad": "pts a favor",
+        "filas": [
+          {
+            "equipo": "COMPLUTENSE CISNEROS",
+            "valor": 59
+          },
+          {
+            "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+            "valor": 7
+          }
+        ]
+      },
+      {
+        "titulo": "Mejor defensa",
+        "unidad": "pts en contra",
+        "filas": [
+          {
+            "equipo": "COMPLUTENSE CISNEROS",
+            "valor": 7
+          },
+          {
+            "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+            "valor": 59
+          }
+        ]
+      },
+      {
+        "titulo": "Más ensayos",
+        "unidad": "ensayos",
+        "filas": [
+          {
+            "equipo": "COMPLUTENSE CISNEROS",
+            "valor": 9
+          },
+          {
+            "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+            "valor": 1
+          }
+        ]
+      },
+      {
+        "titulo": "Más tarjetas",
+        "unidad": "tarjetas",
+        "filas": [
+          {
+            "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
+            "valor": 2
+          }
+        ]
+      }
+    ]
+  },
+  "datos_jornada": [
+    {
+      "clave": "datos",
+      "tipo": "dato",
+      "peso": 79,
+      "numero": "3",
+      "unidad": "ensayos en un partido",
+      "titular": "Hat-trick de Manuel Sainz-Trapaga",
+      "contexto": "Firmó 3 ensayos ante Las Rozas.",
+      "equipo": "COMPLUTENSE CISNEROS"
+    }
+  ]
+}

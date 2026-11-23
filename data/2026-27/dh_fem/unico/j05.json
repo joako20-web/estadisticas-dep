@@ -439,16 +439,16 @@
       "nombre": "INES BUESO-INCHAUSTI GARCIA",
       "equipo": "CLUB DE RUGBY SANT CUGAT",
       "dorsal": 10,
-      "puntos": 7,
+      "puntos": 9,
       "ensayos": 1,
-      "conversiones": 1,
+      "conversiones": 2,
       "golpes": 0,
       "drops": 0,
       "tarjetas": [],
       "resultado": "P",
       "margen": -34,
       "rival": "CAJASOL SEVILLA COCOS",
-      "nota": 7.0,
+      "nota": 9.0,
       "foto": ""
     },
     {
@@ -2001,6 +2001,22 @@
       "foto": ""
     },
     {
+      "nombre": "INES BUESO-INCHAUSTI GARCIA",
+      "equipo": "CLUB DE RUGBY SANT CUGAT",
+      "dorsal": 10,
+      "puntos": 9,
+      "ensayos": 1,
+      "conversiones": 2,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -34,
+      "rival": "CAJASOL SEVILLA COCOS",
+      "nota": 9.0,
+      "foto": ""
+    },
+    {
       "nombre": "ALESSIA MISSO RUIZ",
       "equipo": "CAJASOL SEVILLA COCOS",
       "dorsal": 10,
@@ -2013,22 +2029,6 @@
       "resultado": "G",
       "margen": 34,
       "rival": "CLUB DE RUGBY SANT CUGAT",
-      "nota": 7.0,
-      "foto": ""
-    },
-    {
-      "nombre": "INES BUESO-INCHAUSTI GARCIA",
-      "equipo": "CLUB DE RUGBY SANT CUGAT",
-      "dorsal": 10,
-      "puntos": 7,
-      "ensayos": 1,
-      "conversiones": 1,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -34,
-      "rival": "CAJASOL SEVILLA COCOS",
       "nota": 7.0,
       "foto": ""
     },
@@ -2696,16 +2696,16 @@
       "nombre": "LARA COOK BALLESTER",
       "equipo": "CLUB DE RUGBY SANT CUGAT",
       "dorsal": 15,
-      "puntos": 2,
+      "puntos": 0,
       "ensayos": 0,
-      "conversiones": 1,
+      "conversiones": 0,
       "golpes": 0,
       "drops": 0,
       "tarjetas": [],
       "resultado": "P",
       "margen": -34,
       "rival": "CAJASOL SEVILLA COCOS",
-      "nota": -1.0,
+      "nota": -3.0,
       "foto": ""
     },
     {
@@ -3227,7 +3227,7 @@
         "nombre": "INES BUESO-INCHAUSTI GARCIA",
         "equipo": "CLUB DE RUGBY SANT CUGAT",
         "valor": 1,
-        "detalle": "7 puntos",
+        "detalle": "9 puntos",
         "rival": "CAJASOL SEVILLA COCOS"
       },
       {
@@ -3268,6 +3268,13 @@
         "rival": "GETXO RUGBY"
       },
       {
+        "nombre": "INES BUESO-INCHAUSTI GARCIA",
+        "equipo": "CLUB DE RUGBY SANT CUGAT",
+        "valor": 4,
+        "detalle": "2 transf.",
+        "rival": "CAJASOL SEVILLA COCOS"
+      },
+      {
         "nombre": "ANA MARIA LUQUE FOLCH",
         "equipo": "BARCELONA UNIVERSITARI CLUB",
         "valor": 3,
@@ -3280,13 +3287,6 @@
         "valor": 3,
         "detalle": "1 golpe",
         "rival": "TURIA"
-      },
-      {
-        "nombre": "ALBA ALPIN BARDAJI",
-        "equipo": "TURIA",
-        "valor": 2,
-        "detalle": "1 transf.",
-        "rival": "BARCELONA UNIVERSITARI CLUB"
       }
     ],
     "ensayadores_t": [

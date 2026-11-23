@@ -1,0 +1,1213 @@
+{
+  "competicion": "copa",
+  "nombre": "Copa del Rey",
+  "grupo": "D",
+  "temporada": "2026/27",
+  "jornada": 1,
+  "partidos": [
+    {
+      "id": 18875,
+      "jornada": 1,
+      "fecha": "2026-11-22T12:00:00",
+      "local": "BARÇA RUGBI",
+      "visitante": "HUESITOS LA VILA RUGBY CLUB",
+      "puntos_local": 17,
+      "puntos_visitante": 36,
+      "campo": "Camp de Rugbi La Teixonera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "descansa": [],
+  "partidos_temporada": [
+    {
+      "id": 18875,
+      "jornada": 1,
+      "fecha": "2026-11-22T12:00:00",
+      "local": "BARÇA RUGBI",
+      "visitante": "HUESITOS LA VILA RUGBY CLUB",
+      "puntos_local": 17,
+      "puntos_visitante": 36,
+      "campo": "Camp de Rugbi La Teixonera",
+      "estado": "jugado",
+      "grupo": null,
+      "ronda": ""
+    }
+  ],
+  "actas_pendientes": [],
+  "anotadores": [
+    {
+      "nombre": "IGNACIO CAINI VAZQUEZ",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 2,
+      "puntos": 15,
+      "ensayos": 3,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 29.9,
+      "foto": ""
+    },
+    {
+      "nombre": "AGUSTIN ALTAMIRANO DECICCO",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 10,
+      "puntos": 6,
+      "ensayos": 0,
+      "conversiones": 3,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 11.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ASIER REDONDO MARTINEZ",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 11,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 13.9,
+      "foto": ""
+    },
+    {
+      "nombre": "BALTAZAR MONTOYA QUIROGA",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 15,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 13.9,
+      "foto": ""
+    },
+    {
+      "nombre": "JUAN ANTONIO SERPICO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 18,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [
+        "amarilla"
+      ],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": 2.1,
+      "foto": ""
+    },
+    {
+      "nombre": "MARCEL PEÑA HIDALGO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 11,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": 6.1,
+      "foto": ""
+    },
+    {
+      "nombre": "NICOLAS COLLARINI",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 16,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": 6.1,
+      "foto": ""
+    },
+    {
+      "nombre": "ROMAN CAO-RIQUELME",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 13.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ARTHUR MICHEL CARPENTIER",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 15,
+      "puntos": 2,
+      "ensayos": 0,
+      "conversiones": 1,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": 0.1,
+      "foto": ""
+    }
+  ],
+  "ensayadores": [
+    {
+      "nombre": "IGNACIO CAINI VAZQUEZ",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 2,
+      "puntos": 15,
+      "ensayos": 3,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 29.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ASIER REDONDO MARTINEZ",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 11,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 13.9,
+      "foto": ""
+    },
+    {
+      "nombre": "BALTAZAR MONTOYA QUIROGA",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 15,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 13.9,
+      "foto": ""
+    },
+    {
+      "nombre": "JUAN ANTONIO SERPICO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 18,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [
+        "amarilla"
+      ],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": 2.1,
+      "foto": ""
+    },
+    {
+      "nombre": "MARCEL PEÑA HIDALGO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 11,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": 6.1,
+      "foto": ""
+    }
+  ],
+  "xv_ideal": null,
+  "foto_portada": null,
+  "candidatos_xv": [
+    {
+      "nombre": "ROMAN CAO-RIQUELME",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 13.9,
+      "foto": ""
+    },
+    {
+      "nombre": "CARLOS LARA MARTIN",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 1,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "IGNACIO CAINI VAZQUEZ",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 2,
+      "puntos": 15,
+      "ensayos": 3,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 29.9,
+      "foto": ""
+    },
+    {
+      "nombre": "MARTI HOMAR SAMPIETRO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 2,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ALEJO TOMAS GARCIA PONCE",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 3,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 5.9,
+      "foto": ""
+    },
+    {
+      "nombre": "PERE CLARA PUENTE",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 3,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "JUAN ANTONIO ROMAN CANO",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 4,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 5.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ANDREU CARBONELL COLOME",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 4,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "HECTOR MATAMOROS ABAD",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 5,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 5.9,
+      "foto": ""
+    },
+    {
+      "nombre": "GERSON ORTIZ CAÑAS",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 5,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ERIC FARACE FABRA",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 6,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 5.9,
+      "foto": ""
+    },
+    {
+      "nombre": "MIQUEL CINTAS NAVARRO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 6,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "JOAN LUIS TUDELA PERRET",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 7,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 5.9,
+      "foto": ""
+    },
+    {
+      "nombre": "MILO RIBO PELLEGRINI",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 7,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "LUCAS MAXIMILIANO MELIAN",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 8,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 5.9,
+      "foto": ""
+    },
+    {
+      "nombre": "RAMIRO IVAN ROBLEDO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 8,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ALVARO VILCHEZ PEINADO",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 9,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 5.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ADRIA BONELL NAVARRO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 9,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "AGUSTIN ALTAMIRANO DECICCO",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 10,
+      "puntos": 6,
+      "ensayos": 0,
+      "conversiones": 3,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 11.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ARTHUR WILLIAM LENNON",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 10,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ASIER REDONDO MARTINEZ",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 11,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 13.9,
+      "foto": ""
+    },
+    {
+      "nombre": "MARCEL PEÑA HIDALGO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 11,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": 6.1,
+      "foto": ""
+    },
+    {
+      "nombre": "JERONIMO PANDELO MENDEZ",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 12,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 5.9,
+      "foto": ""
+    },
+    {
+      "nombre": "DYLAN VLADIMIR TORRES ROMERO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 12,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "VALENTINO DI PRIMA CIGNO",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 13,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 5.9,
+      "foto": ""
+    },
+    {
+      "nombre": "DANIEL BARRANCO HEYES",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 13,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "SANTINO DI PRIMA",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 14,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 5.9,
+      "foto": ""
+    },
+    {
+      "nombre": "FACUNDO PAOLO ROMANO MONICO",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 14,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": -1.9,
+      "foto": ""
+    },
+    {
+      "nombre": "BALTAZAR MONTOYA QUIROGA",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "dorsal": 15,
+      "puntos": 5,
+      "ensayos": 1,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "G",
+      "margen": 19,
+      "rival": "BARÇA RUGBI",
+      "nota": 13.9,
+      "foto": ""
+    },
+    {
+      "nombre": "ARTHUR MICHEL CARPENTIER",
+      "equipo": "BARÇA RUGBI",
+      "dorsal": 15,
+      "puntos": 2,
+      "ensayos": 0,
+      "conversiones": 1,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [],
+      "resultado": "P",
+      "margen": -19,
+      "rival": "HUESITOS LA VILA RUGBY CLUB",
+      "nota": 0.1,
+      "foto": ""
+    }
+  ],
+  "clasificacion": [
+    {
+      "posicion": 1,
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "racha": [
+        "G"
+      ],
+      "pt": 5,
+      "pj": 1,
+      "pg": 1,
+      "pe": 0,
+      "pp": 0,
+      "tf": 36,
+      "tc": 17,
+      "dt": 19,
+      "ef": 6,
+      "ec": 3,
+      "de": 3,
+      "bo": 1,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/80/square_366b6c7131766c643763.jpg"
+    },
+    {
+      "posicion": 2,
+      "equipo": "BARÇA RUGBI",
+      "racha": [
+        "P"
+      ],
+      "pt": 0,
+      "pj": 1,
+      "pg": 0,
+      "pe": 0,
+      "pp": 1,
+      "tf": 17,
+      "tc": 36,
+      "dt": -19,
+      "ef": 3,
+      "ec": 6,
+      "de": -3,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/37/square_34393938793774647062.jpg"
+    },
+    {
+      "posicion": 3,
+      "equipo": "HERNANI CRE",
+      "racha": [],
+      "pt": 0,
+      "pj": 0,
+      "pg": 0,
+      "pe": 0,
+      "pp": 0,
+      "tf": 0,
+      "tc": 0,
+      "dt": 0,
+      "ef": 0,
+      "ec": 0,
+      "de": 0,
+      "bo": 0,
+      "bd": 0,
+      "escudo": "@f/images/afiliacion_clubs/92/square_3730336270766b786e71.jpg"
+    }
+  ],
+  "escudos": {
+    "HUESITOS LA VILA RUGBY CLUB": "@f/images/afiliacion_clubs/80/square_366b6c7131766c643763.jpg",
+    "BARÇA RUGBI": "@f/images/afiliacion_clubs/37/square_34393938793774647062.jpg",
+    "HERNANI CRE": "@f/images/afiliacion_clubs/92/square_3730336270766b786e71.jpg"
+  },
+  "temporada_anotadores": [
+    {
+      "id": null,
+      "nombre": "IGNACIO CAINI VAZQUEZ",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "pj": 1,
+      "puntos": 15,
+      "ensayos": 3,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "AGUSTIN ALTAMIRANO DECICCO",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "pj": 1,
+      "puntos": 6,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "MARCEL PEÑA HIDALGO",
+      "equipo": "BARÇA RUGBI",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "NICOLAS COLLARINI",
+      "equipo": "BARÇA RUGBI",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "JUAN ANTONIO SERPICO",
+      "equipo": "BARÇA RUGBI",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 1,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "ROMAN CAO-RIQUELME",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "ASIER REDONDO MARTINEZ",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "BALTAZAR MONTOYA QUIROGA",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "ARTHUR MICHEL CARPENTIER",
+      "equipo": "BARÇA RUGBI",
+      "pj": 1,
+      "puntos": 2,
+      "ensayos": 0,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "temporada_ensayadores": [
+    {
+      "id": null,
+      "nombre": "IGNACIO CAINI VAZQUEZ",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "pj": 1,
+      "puntos": 15,
+      "ensayos": 3,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "MARCEL PEÑA HIDALGO",
+      "equipo": "BARÇA RUGBI",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "NICOLAS COLLARINI",
+      "equipo": "BARÇA RUGBI",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "JUAN ANTONIO SERPICO",
+      "equipo": "BARÇA RUGBI",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 1,
+      "rojas": 0
+    },
+    {
+      "id": null,
+      "nombre": "ROMAN CAO-RIQUELME",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB",
+      "pj": 1,
+      "puntos": 5,
+      "ensayos": 1,
+      "amarillas": 0,
+      "rojas": 0
+    }
+  ],
+  "proxima_jornada": {
+    "numero": 2,
+    "partidos": [
+      {
+        "id": 18876,
+        "jornada": 2,
+        "fecha": "2026-11-29T12:00:00",
+        "local": "HUESITOS LA VILA RUGBY CLUB",
+        "visitante": "HERNANI CRE",
+        "puntos_local": null,
+        "puntos_visitante": null,
+        "campo": "Estadio de Rugby de Villajoyosa",
+        "estado": "pendiente",
+        "grupo": null,
+        "ronda": ""
+      }
+    ],
+    "descansa": []
+  },
+  "rankings": {
+    "ensayadores": [
+      {
+        "nombre": "IGNACIO CAINI VAZQUEZ",
+        "equipo": "HUESITOS LA VILA RUGBY CLUB",
+        "valor": 3,
+        "detalle": "15 puntos",
+        "rival": "BARÇA RUGBI"
+      },
+      {
+        "nombre": "ASIER REDONDO MARTINEZ",
+        "equipo": "HUESITOS LA VILA RUGBY CLUB",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "BARÇA RUGBI"
+      },
+      {
+        "nombre": "BALTAZAR MONTOYA QUIROGA",
+        "equipo": "HUESITOS LA VILA RUGBY CLUB",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "BARÇA RUGBI"
+      },
+      {
+        "nombre": "JUAN ANTONIO SERPICO",
+        "equipo": "BARÇA RUGBI",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "HUESITOS LA VILA RUGBY CLUB"
+      },
+      {
+        "nombre": "MARCEL PEÑA HIDALGO",
+        "equipo": "BARÇA RUGBI",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "HUESITOS LA VILA RUGBY CLUB"
+      },
+      {
+        "nombre": "NICOLAS COLLARINI",
+        "equipo": "BARÇA RUGBI",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "HUESITOS LA VILA RUGBY CLUB"
+      },
+      {
+        "nombre": "ROMAN CAO-RIQUELME",
+        "equipo": "HUESITOS LA VILA RUGBY CLUB",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": "BARÇA RUGBI"
+      }
+    ],
+    "pateadores": [
+      {
+        "nombre": "AGUSTIN ALTAMIRANO DECICCO",
+        "equipo": "HUESITOS LA VILA RUGBY CLUB",
+        "valor": 6,
+        "detalle": "3 transf.",
+        "rival": "BARÇA RUGBI"
+      },
+      {
+        "nombre": "ARTHUR MICHEL CARPENTIER",
+        "equipo": "BARÇA RUGBI",
+        "valor": 2,
+        "detalle": "1 transf.",
+        "rival": "HUESITOS LA VILA RUGBY CLUB"
+      }
+    ],
+    "ensayadores_t": [
+      {
+        "nombre": "IGNACIO CAINI VAZQUEZ",
+        "equipo": "HUESITOS LA VILA RUGBY CLUB",
+        "valor": 3,
+        "detalle": "15 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "ASIER REDONDO MARTINEZ",
+        "equipo": "HUESITOS LA VILA RUGBY CLUB",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "BALTAZAR MONTOYA QUIROGA",
+        "equipo": "HUESITOS LA VILA RUGBY CLUB",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "JUAN ANTONIO SERPICO",
+        "equipo": "BARÇA RUGBI",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "MARCEL PEÑA HIDALGO",
+        "equipo": "BARÇA RUGBI",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "NICOLAS COLLARINI",
+        "equipo": "BARÇA RUGBI",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      },
+      {
+        "nombre": "ROMAN CAO-RIQUELME",
+        "equipo": "HUESITOS LA VILA RUGBY CLUB",
+        "valor": 1,
+        "detalle": "5 puntos",
+        "rival": ""
+      }
+    ],
+    "pateadores_t": [
+      {
+        "nombre": "AGUSTIN ALTAMIRANO DECICCO",
+        "equipo": "HUESITOS LA VILA RUGBY CLUB",
+        "valor": 6,
+        "detalle": "3 transf.",
+        "rival": ""
+      },
+      {
+        "nombre": "ARTHUR MICHEL CARPENTIER",
+        "equipo": "BARÇA RUGBI",
+        "valor": 2,
+        "detalle": "1 transf.",
+        "rival": ""
+      }
+    ],
+    "disciplina": [
+      {
+        "nombre": "JUAN ANTONIO SERPICO",
+        "equipo": "BARÇA RUGBI",
+        "valor": 1,
+        "detalle": "1 amarilla",
+        "rival": ""
+      }
+    ],
+    "banquillo": [
+      {
+        "nombre": "JUAN ANTONIO SERPICO",
+        "equipo": "BARÇA RUGBI",
+        "valor": 5,
+        "detalle": "1 ensayo",
+        "rival": ""
+      },
+      {
+        "nombre": "NICOLAS COLLARINI",
+        "equipo": "BARÇA RUGBI",
+        "valor": 5,
+        "detalle": "1 ensayo",
+        "rival": ""
+      }
+    ],
+    "equipos": [
+      {
+        "titulo": "Mejor ataque",
+        "unidad": "pts a favor",
+        "filas": [
+          {
+            "equipo": "HUESITOS LA VILA RUGBY CLUB",
+            "valor": 36
+          },
+          {
+            "equipo": "BARÇA RUGBI",
+            "valor": 17
+          }
+        ]
+      },
+      {
+        "titulo": "Mejor defensa",
+        "unidad": "pts en contra",
+        "filas": [
+          {
+            "equipo": "HUESITOS LA VILA RUGBY CLUB",
+            "valor": 17
+          },
+          {
+            "equipo": "BARÇA RUGBI",
+            "valor": 36
+          }
+        ]
+      },
+      {
+        "titulo": "Más ensayos",
+        "unidad": "ensayos",
+        "filas": [
+          {
+            "equipo": "HUESITOS LA VILA RUGBY CLUB",
+            "valor": 6
+          },
+          {
+            "equipo": "BARÇA RUGBI",
+            "valor": 3
+          }
+        ]
+      },
+      {
+        "titulo": "Más tarjetas",
+        "unidad": "tarjetas",
+        "filas": [
+          {
+            "equipo": "BARÇA RUGBI",
+            "valor": 1
+          }
+        ]
+      }
+    ]
+  },
+  "datos_jornada": [
+    {
+      "clave": "datos",
+      "tipo": "dato",
+      "peso": 79,
+      "numero": "3",
+      "unidad": "ensayos en un partido",
+      "titular": "Hat-trick de Ignacio Caini Vazquez",
+      "contexto": "Firmó 3 ensayos ante Barça.",
+      "equipo": "HUESITOS LA VILA RUGBY CLUB"
+    }
+  ]
+}
