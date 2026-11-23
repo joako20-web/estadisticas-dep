@@ -7,7 +7,13 @@ vuelta a entrar.
 """
 from __future__ import annotations
 
+import re
+
 AMARILLA_S, ROJA20_S = 600, 1200
+
+
+def _palabras(nombre: str) -> list[str]:
+    return sorted(re.sub(r"[^\w\s]", " ", nombre.upper()).split())
 
 
 def _solape(a: tuple[int, int], b: tuple[int, int]) -> int:
@@ -16,9 +22,12 @@ def _solape(a: tuple[int, int], b: tuple[int, int]) -> int:
 
 def minutos_jugador(extra: dict | None, equipo: str, dorsal: int) -> int | None:
     """Minutos en el campo, o None si no hay datos de cambios para ese acta."""
-    if not extra or not dorsal or equipo not in extra.get("equipos", []):
+    if not extra or not dorsal:
         return None
-    lado = extra["equipos"].index(equipo)
+    lados = [i for i, n in enumerate(extra.get("equipos", [])) if _palabras(n) == _palabras(equipo)]
+    if len(lados) != 1:  # ninguno o ambiguo (dos equipos con las mismas palabras): sin datos antes que equivocados
+        return None
+    lado = lados[0]
     fin = extra["fin"]
     dentro: int | None = 0 if 1 <= dorsal <= 15 else None
     tramos: list[tuple[int, int]] = []

@@ -63,6 +63,14 @@ class Acta:
     eventos: list[Evento]
     alineacion_local: list[Jugador]
     alineacion_visitante: list[Jugador]
+    marcador_oficial: tuple[int, int] | None = None  # el que da el acta (árbitro); manda sobre la suma de eventos
+
+    def cuadra_con(self, esperado: tuple[int, int]) -> bool:
+        """¿El acta sirve para el partido con ese resultado? Con marcador oficial manda el oficial (la suma de
+        eventos puede descuadrar por un fallo de la federación); sin él, se compara con la suma de eventos."""
+        if self.marcador_oficial is None:
+            return self.marcador_por_eventos() == esperado
+        return tuple(self.marcador_oficial) == tuple(esperado) and (bool(self.eventos) or tuple(esperado) == (0, 0))
 
     def marcador_por_eventos(self) -> tuple[int, int]:
         loc = sum(e.puntos for e in self.eventos if e.equipo == self.local)

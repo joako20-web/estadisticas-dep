@@ -46,7 +46,7 @@ def lineas_temporada(comp: str, grupo: str = "unico", cliente=None) -> dict[int,
         if not p.jugado or not p.jornada:
             continue
         acta = cliente.acta(p.id)
-        if acta.marcador_por_eventos() != (p.puntos_local, p.puntos_visitante):
+        if not acta.cuadra_con((p.puntos_local, p.puntos_visitante)):
             continue  # acta incompleta: sus estadísticas no cuentan
         por_jornada.setdefault(p.jornada, []).extend(E.lineas_partido(p, acta))
     return dict(sorted(por_jornada.items()))

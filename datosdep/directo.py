@@ -37,7 +37,7 @@ def historia_final(comp: str, grupo: str, id_partido: int, destino: Path,
 
     anot = {p.local: [], p.visitante: []}
     acta = cliente.acta(p.id)
-    completa = acta.marcador_por_eventos() == (p.puntos_local, p.puntos_visitante)
+    completa = acta.cuadra_con((p.puntos_local, p.puntos_visitante))
     if not completa and not forzar:
         return None
     if completa:

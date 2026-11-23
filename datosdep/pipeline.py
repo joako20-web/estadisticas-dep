@@ -133,7 +133,7 @@ def resumen_temporada(comp: str, grupo: str, competicion, cliente: OrigenA) -> d
         if not p.jugado or str(p.id) in resumen:
             continue
         acta = cliente.acta(p.id)
-        if acta.marcador_por_eventos() != (p.puntos_local, p.puntos_visitante):
+        if not acta.cuadra_con((p.puntos_local, p.puntos_visitante)):
             continue  # acta incompleta: se reintenta la próxima vez
         resumen[str(p.id)] = [
             _fila_resumen(ln) for ln in E.lineas_partido(p, acta)  # todos los convocados
@@ -169,7 +169,7 @@ def preparar_jornada(
         if not p.jugado:
             continue  # aplazado o sin resultado: sale como "Sin resultado", no es un acta pendiente
         acta = cliente.acta(p.id)
-        if acta.marcador_por_eventos() != (p.puntos_local, p.puntos_visitante):
+        if not acta.cuadra_con((p.puntos_local, p.puntos_visitante)):
             # Acta incompleta: el marcador vale, pero no sus estadísticas.
             pendientes.append(p.id)
             continue

@@ -1355,6 +1355,28 @@ def _avisar_actas_bloqueadas(tg: Telegram, b: dict, chat_id) -> None:
         traceback.print_exc()
 
 
+def _avisar_actas_ilegibles(tg: Telegram, b: dict, chat_id) -> None:
+    """Avisa de las actas que no se han podido leer (solo las nuevas, y como mucho una vez al día)."""
+    from datosdep.scraper import origen_a
+
+    ilegibles = origen_a.compartido().actas_ilegibles
+    avisadas = set(b.get("actas_ilegibles_avisadas") or [])
+    nuevas = sorted(i for i in ilegibles if i not in avisadas)
+    hoy = estado.ahora().strftime("%Y-%m-%d")
+    if not nuevas or b.get("aviso_ilegibles") == hoy:
+        return
+    b["aviso_ilegibles"] = hoy
+    b["actas_ilegibles_avisadas"] = sorted(avisadas | set(nuevas))[-200:]
+    estado.guardar_bot(b)
+    try:
+        lista = ", ".join(str(i) for i in nuevas[:8]) + (f" y {len(nuevas) - 8} más" if len(nuevas) > 8 else "")
+        tg.mensaje(chat_id, f"⚠️ no he podido leer bien el acta de {len(nuevas)} partido(s): {lista}. Esos partidos salen "
+                            "como «acta pendiente» (con marcador, sin estadísticas de jugador) y lo reintento solo. "
+                            "Suele ser un acta que la federación aún no ha completado.")
+    except Exception:
+        traceback.print_exc()
+
+
 def _cada_cuanto_directo() -> int:
     """Segundos entre comprobaciones de resultados: a menudo el finde, poco entre semana."""
     ahora = estado.ahora()
@@ -1394,6 +1416,7 @@ def bucle(tg: Telegram, minutos: float) -> None:
                     traceback.print_exc()
                 estado.guardar_bot(b)
             _avisar_actas_bloqueadas(tg, b, chat_id)
+            _avisar_actas_ilegibles(tg, b, chat_id)
             try:
                 precalentar.paso()  # un acta cada ~minuto como mucho, nunca en ráfaga
             except Exception:

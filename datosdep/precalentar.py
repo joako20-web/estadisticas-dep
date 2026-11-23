@@ -47,7 +47,7 @@ def paso() -> int | None:
             if p.jugado:
                 if not cliente.acta_en_cache(p.id):
                     _cola.append(("acta", p.id))
-                elif not cliente.tiene_extra(p.id):
+                elif not cliente.tiene_extra(p.id) and cliente.puede_extra(p.id):
                     _cola.append(("extra", p.id))  # acta guardada sin cambios: se completa para los minutos
                 if not cliente.previo_en_cache(p.id):
                     _cola.append(("previo", p.id))  # árbitro del partido
@@ -57,7 +57,7 @@ def paso() -> int | None:
         if tipo == "acta" and not cliente.acta_en_cache(id_partido):
             cliente.acta(id_partido)
             return id_partido
-        if tipo == "extra" and not cliente.tiene_extra(id_partido):
+        if tipo == "extra" and not cliente.tiene_extra(id_partido) and cliente.puede_extra(id_partido):
             cliente.refrescar_extra(id_partido)
             return id_partido
         if tipo == "previo" and not cliente.previo_en_cache(id_partido):

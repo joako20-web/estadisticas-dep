@@ -27,6 +27,8 @@ class _Sesion:
         self.llamadas += 1
         return _Resp(self.status)
 
+    post = get  # la API de actas va por POST: mismo comportamiento
+
 
 def _cliente(tmp_path, status):
     c = origen_a.OrigenA()
@@ -42,9 +44,9 @@ def test_acta_403_devuelve_vacia_y_no_reintenta(tmp_path, monkeypatch):
     a = c.acta(123)
     assert a.id_partido == 123
     assert c.actas_bloqueadas
-    assert c.sesion.llamadas == 1
-    c.acta(124)  # circuito abierto: ni una petición más
-    assert c.sesion.llamadas == 1
+    assert c.sesion.llamadas == 2  # la API (403) y, como respaldo, el PDF (403): una vez cada uno
+    c.acta(124)  # circuitos abiertos: ni una petición más
+    assert c.sesion.llamadas == 2
     assert not list(tmp_path.iterdir())  # los fallos no se cachean ni se guardan
 
 

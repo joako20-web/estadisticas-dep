@@ -12,9 +12,10 @@ from pathlib import Path
 import requests
 
 from datosdep.models import Acta, Competicion, FilaClasificacion, JugadorTemporada
-from datosdep.scraper import acta_pdf, parsers
+from datosdep.scraper import acta_api, acta_pdf, parsers
 from datosdep.scraper import api as modelos_api
 from datosdep.scraper.enlaces import resolver
+from datosdep.scraper.texto import limpiar
 
 BASE = os.environ.get("ORIGEN_A_URL", "").rstrip("/")  # secreto: no se escribe en el código
 PAUSA_S = 0.25
@@ -38,6 +39,10 @@ def url_acta_pdf() -> str:
     return os.environ.get("ORIGEN_A_ACTA_URL", "").strip()
 
 
+REINTENTO_ILEGIBLE_S = 6 * 3600  # un acta que no se pudo leer se vuelve a pedir a las 6 h, no en cada pasada
+MAX_INTENTOS_EXTRA = 3  # veces que se intenta completar un acta con sus cambios antes de dejarla sin minutos
+
+
 class AccesoRestringido(RuntimeError):
     """el origen A rechaza la petición (403 o 429): no se reintenta ni se esquiva."""
 
@@ -58,6 +63,8 @@ class OrigenA:
         self.actas_bloqueadas = False
         self.ultimo_codigo: int | None = None  # último 403/429 recibido, para el aviso al dueño
         self.ultimo_motivo = ""
+        self.extras_fallidos: dict[int, str] = {}  # id de partido -> por qué no se pudieron leer sus cambios (minutos)
+        self._ilegible_hasta: dict[int, float] = {}
         self.actas_ilegibles: dict[int, str] = {}  # id de partido -> por qué no se pudo leer su acta (esta pasada)
         self.lento = False  # ritmo de 1,5 s entre peticiones (rellenar histórico de golpe)
         self._token_valor: str | None = None  # clave temporal (12 h) que trae la página nueva
@@ -349,26 +356,124 @@ class OrigenA:
         return self._manual(id_partido).exists() or self._guardada(id_partido).exists() or self.en_cache(
             "json/origen_a_proxy.php", {"recurso": "acta", "id_partido": id_partido})
 
-    def extra_acta(self, id_partido: int) -> dict | None:
-        """Cambios y tarjetas del acta (para los minutos), si se guardó desde el PDF con ese formato."""
+    def _leer_guardada(self, id_partido: int) -> dict | None:
+        """El acta guardada como diccionario, o None si no existe o está corrupta (en ese caso se borra y se vuelve a pedir)."""
         ruta = self._guardada(id_partido)
         if not ruta.exists():
             return None
         try:
-            return json.loads(gzip.decompress(ruta.read_bytes())).get("data", {}).get("extra")
-        except (OSError, ValueError):
+            d = json.loads(gzip.decompress(ruta.read_bytes()))
+            if not isinstance(d, dict) or not isinstance(d.get("data"), dict):
+                raise ValueError("formato desconocido")
+            return d
+        except (OSError, EOFError, ValueError):
+            ruta.unlink(missing_ok=True)
             return None
+
+    def _escribir_guardada(self, id_partido: int, contenido: bytes) -> None:
+        """Escritura atómica: si el proceso se corta a medias, no queda un fichero roto."""
+        ruta = self._guardada(id_partido)
+        ruta.parent.mkdir(parents=True, exist_ok=True)
+        tmp = ruta.with_suffix(".tmp")
+        tmp.write_bytes(gzip.compress(contenido, 9))
+        os.replace(tmp, ruta)
+
+    def extra_acta(self, id_partido: int) -> dict | None:
+        """Cambios y tarjetas del acta (para los minutos), si se guardaron."""
+        d = self._leer_guardada(id_partido)
+        return (d or {}).get("data", {}).get("extra")
 
     def tiene_extra(self, id_partido: int) -> bool:
         return self.extra_acta(id_partido) is not None
 
-    def refrescar_extra(self, id_partido: int) -> bool:
-        """Vuelve a pedir el PDF de un acta guardada antes sin cambios, para añadírselos (una sola vez)."""
+    def puede_extra(self, id_partido: int) -> bool:
+        """False si al acta le faltan los cambios pero ya se ha intentado completarla demasiadas veces."""
+        d = self._leer_guardada(id_partido)
+        return d is None or d.get("fuente") != "api" or int(d.get("extra_intentos") or 0) < MAX_INTENTOS_EXTRA
+
+    def _dorsales(self, d: dict) -> list[set[int]]:
+        p = d["data"]["partido"]
+        ids = [int(p["local"]["id_equipo"]), int(p["visitante"]["id_equipo"])]
+        out: list[set[int]] = [set(), set()]
+        for j in d["data"].get("alineaciones") or []:
+            if int(j.get("id_equipo", -1)) in ids and int(j.get("dorsal") or 0) > 0:
+                out[ids.index(int(j["id_equipo"]))].add(int(j["dorsal"]))
+        return out
+
+    def _extra_pdf(self, id_partido: int, d: dict) -> dict | None:
+        """Cambios y tarjetas desde el PDF, comprobados contra el acta. None (sin romper nada) si no se puede."""
+        url = url_acta_pdf()
+        if not url:
+            return None
         try:
-            self._acta_desde_pdf(id_partido)  # sobrescribe data/actas_pdf; un acta manual sigue mandando en acta()
+            p = d["data"]["partido"]
+            pdf = self._get(url, {"id_partido": id_partido}, cachear=False, guardar=False, redirecciones=False)
+            return acta_pdf.extra_de_pdf(
+                pdf, [limpiar(p["local"]["nombre"]), limpiar(p["visitante"]["nombre"])],
+                (int(p["local"]["resultado"]), int(p["visitante"]["resultado"])), self._dorsales(d))
+        except (ValueError, KeyError, TypeError, AccesoRestringido, requests.RequestException) as e:
+            self.extras_fallidos[id_partido] = str(e)[:160]
+            return None
+
+    def refrescar_extra(self, id_partido: int) -> bool:
+        """Intenta completar con los cambios un acta guardada sin ellos (como mucho MAX_INTENTOS_EXTRA veces)."""
+        d = self._leer_guardada(id_partido)
+        if d is not None and d.get("fuente") == "api":
+            if int(d.get("extra_intentos") or 0) >= MAX_INTENTOS_EXTRA:
+                return False
+            extra = self._extra_pdf(id_partido, d)
+            d["extra_intentos"] = int(d.get("extra_intentos") or 0) + 1
+            if extra:
+                d["data"]["extra"] = extra
+            self._escribir_guardada(id_partido, json.dumps(d, ensure_ascii=False).encode("utf-8"))
+            return extra is not None
+        try:
+            self._acta_desde_pdf(id_partido)  # acta antigua guardada solo desde el PDF
             return True
-        except (ValueError, AccesoRestringido):
+        except (ValueError, AccesoRestringido, requests.RequestException):
             return False
+
+    def _acta_desde_api(self, id_partido: int) -> bytes:
+        """Acta del JSON de la API (validada) más los cambios del PDF si se pueden leer. Se guarda una sola vez."""
+        resp = self._api("acta", id=id_partido)
+        _, descuadre = acta_api.validar(resp, id_partido)  # ValueError si no es coherente: no se guarda nada
+        d = acta_api.limpia(resp, descuadre)
+        d["guardado"] = int(time.time())
+        extra = self._extra_pdf(id_partido, d)
+        if extra:
+            d["data"]["extra"] = extra
+        d["extra_intentos"] = 1
+        raw = json.dumps(d, ensure_ascii=False).encode("utf-8")
+        self._escribir_guardada(id_partido, raw)
+        return raw
+
+    def _revisar_descuadre(self, id_partido: int, guardada: dict) -> dict:
+        """Un acta cuyas jugadas no suman el marcador del árbitro se vuelve a mirar una vez al día, por si la
+        federación la corrige. Si no se puede (o sigue igual), se queda como estaba."""
+        if not guardada.get("descuadre") or time.time() - float(guardada.get("guardado") or 0) < 24 * 3600:
+            return guardada
+        try:
+            return json.loads(self._acta_desde_api(id_partido))
+        except (AccesoRestringido, ValueError, KeyError, TypeError, requests.RequestException):
+            guardada["guardado"] = int(time.time())
+            self._escribir_guardada(id_partido, json.dumps(guardada, ensure_ascii=False).encode("utf-8"))
+            return guardada
+
+    def _acta_nueva(self, id_partido: int) -> bytes:
+        """API primero; si falla (bloqueo, red o datos que no cuadran), el PDF entero; si tampoco, ValueError."""
+        motivo = ""
+        try:
+            return self._acta_desde_api(id_partido)
+        except AccesoRestringido as e:
+            motivo = f"API bloqueada ({e})"
+        except (ValueError, KeyError, TypeError, requests.RequestException) as e:
+            motivo = str(e)[:100]
+        try:
+            return self._acta_desde_pdf(id_partido)
+        except ValueError as e:
+            raise ValueError(f"{motivo} | PDF: {e}") from e
+        except requests.RequestException as e:
+            raise ValueError(f"{motivo} | PDF: {e!r}"[:200]) from e
 
     def _acta_desde_pdf(self, id_partido: int) -> bytes:
         """Pide el PDF del acta (una sola vez), lo convierte y deja el resultado en data/actas_pdf."""
@@ -381,9 +486,7 @@ class OrigenA:
             raw = acta_pdf.pdf_a_json(pdf)  # ValueError si el PDF no cuadra: no se guarda nada
         except ValueError as e:
             raise ValueError(f"acta {id_partido}: {e}") from e
-        ruta = self._guardada(id_partido)
-        ruta.parent.mkdir(parents=True, exist_ok=True)
-        ruta.write_bytes(gzip.compress(raw, 9))
+        self._escribir_guardada(id_partido, raw)
         return raw
 
     def previo_en_cache(self, id_partido: int) -> bool:
@@ -419,14 +522,18 @@ class OrigenA:
         try:
             if self._manual(id_partido).exists():
                 raw = gzip.decompress(self._manual(id_partido).read_bytes())
-            elif self._guardada(id_partido).exists():
-                raw = gzip.decompress(self._guardada(id_partido).read_bytes())
+            elif (guardada := self._leer_guardada(id_partido)) is not None:
+                guardada = self._revisar_descuadre(id_partido, guardada)
+                raw = json.dumps(guardada, ensure_ascii=False).encode("utf-8")
             elif self.usar_cache and (viejo := self._leer_disco(clave_json)) is not None:
                 raw = viejo
+            elif time.time() < self._ilegible_hasta.get(id_partido, 0):
+                return Acta(id_partido, "", "", [], [], [])  # falló hace poco: no se insiste hasta dentro de unas horas
             else:
                 try:
-                    raw = self._acta_desde_pdf(id_partido)
+                    raw = self._acta_nueva(id_partido)
                 except (ValueError, requests.RequestException) as e:
+                    self._ilegible_hasta[id_partido] = time.time() + REINTENTO_ILEGIBLE_S
                     # PDF incompleto o que no cuadra, o un corte de red: ese partido queda como "acta pendiente"
                     # (el marcador vale, sus estadísticas no) y se reintenta en la siguiente pasada. No se guarda
                     # nada y no se rompe el resto de la competición.

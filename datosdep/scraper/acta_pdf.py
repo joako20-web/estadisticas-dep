@@ -220,5 +220,39 @@ def acta_a_json(paginas) -> bytes:
     return json.dumps(datos, ensure_ascii=False).encode("utf-8")
 
 
+def extra_de_pdf(raw_pdf: bytes, equipos: list[str], marcador: tuple[int, int], dorsales: list[set[int]]) -> dict:
+    """Solo los cambios y tarjetas (para los minutos) de un PDF, comprobados contra el acta de la API.
+
+    ValueError si el PDF no es de ese partido o algo no cuadra: unos minutos equivocados son peor que ninguno."""
+    return extra_de_fragmentos(fragmentos(raw_pdf), equipos, marcador, dorsales)
+
+
+def extra_de_fragmentos(paginas, equipos: list[str], marcador: tuple[int, int], dorsales: list[set[int]]) -> dict:
+    from datosdep.scraper.parsers import tipo_evento
+
+    _, _, crudos = _linea_temporal(paginas)
+    if _marcador(paginas) != tuple(marcador):
+        raise ValueError("el PDF trae otro marcador que el acta")
+    cambios: list[list] = []
+    tarjetas: list[list] = []
+    for lado, seg, texto, dorsal, entra in sorted(crudos, key=lambda e: (e[1], e[0])):
+        if texto.lower().startswith("reemplazo"):
+            if dorsal and entra:
+                cambios.append([lado, seg, dorsal, entra, texto])
+            continue
+        if tipo_evento(texto) in ("amarilla", "roja20", "roja") and dorsal:
+            tarjetas.append([lado, seg, dorsal, tipo_evento(texto)])
+    for lado, seg, sale, entra, _ in cambios:
+        if sale not in dorsales[lado] or entra not in dorsales[lado]:
+            raise ValueError(f"cambio con un dorsal que no está en la alineación ({sale}/{entra})")
+        if not 0 <= seg <= 130 * 60:
+            raise ValueError(f"cambio en un minuto imposible ({seg // 60})")
+    for lado, seg, dorsal, _ in tarjetas:
+        if dorsal not in dorsales[lado]:
+            raise ValueError(f"tarjeta a un dorsal que no está en la alineación ({dorsal})")
+    return {"equipos": list(equipos), "fin": max([80 * 60] + [c[1] for c in cambios] + [t[1] for t in tarjetas]),
+            "cambios": cambios, "tarjetas": tarjetas}
+
+
 def pdf_a_json(raw_pdf: bytes) -> bytes:
     return acta_a_json(fragmentos(raw_pdf))

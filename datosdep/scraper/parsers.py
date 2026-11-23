@@ -203,7 +203,12 @@ def acta_json(raw: bytes, id_partido: int) -> Acta:
         if equipo in al and j.get("dorsal") is not None and int(j["dorsal"]) > 0:  # dorsal 0 = fuera de la convocatoria
             al[equipo].append(Jugador(limpiar(j["nombre_jugador"] or ""), int(j["dorsal"]), _int(str(j.get("goles", 0))), foto(j.get("url_foto") or "")))
     eventos.reverse()  # como la página antigua: el más reciente primero
-    return Acta(id_partido, local, visitante, eventos, al[local], al[visitante])
+    oficial = None
+    try:
+        oficial = (int(part["local"]["resultado"]), int(part["visitante"]["resultado"]))
+    except (KeyError, TypeError, ValueError):
+        pass
+    return Acta(id_partido, local, visitante, eventos, al[local], al[visitante], marcador_oficial=oficial)
 
 
 def clasificacion(raw: bytes) -> list[FilaClasificacion]:
