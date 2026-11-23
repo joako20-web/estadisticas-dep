@@ -3613,7 +3613,7 @@
   },
   "temporada_anotadores": [
     {
-      "id": 1025753,
+      "id": null,
       "nombre": "BEÑAT ARICETA MAESTRO",
       "equipo": "HERNANI CRE",
       "pj": 6,
@@ -3623,7 +3623,7 @@
       "rojas": 0
     },
     {
-      "id": 1061151,
+      "id": null,
       "nombre": "LUCAS FERRER SPAGO",
       "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
       "pj": 6,
@@ -3633,7 +3633,7 @@
       "rojas": 0
     },
     {
-      "id": 1032916,
+      "id": null,
       "nombre": "IÑIGO RAPALLO DE LIS",
       "equipo": "A.D. INGENIEROS INDUSTRIALES LAS ROZAS RUGBY",
       "pj": 6,
@@ -3643,7 +3643,7 @@
       "rojas": 0
     },
     {
-      "id": 1044667,
+      "id": null,
       "nombre": "GABRIEL ENRIQUE TOBIO",
       "equipo": "STEELPHALT GETXO RUGBY",
       "pj": 6,
@@ -3653,7 +3653,7 @@
       "rojas": 0
     },
     {
-      "id": 1034164,
+      "id": null,
       "nombre": "MANUEL VAZQUEZ FERNANDEZ",
       "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
       "pj": 6,
@@ -3663,7 +3663,7 @@
       "rojas": 0
     },
     {
-      "id": 1043377,
+      "id": null,
       "nombre": "JUAN CARLOS SANCHEZ CARRANCIA",
       "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
       "pj": 4,
@@ -3673,7 +3673,7 @@
       "rojas": 0
     },
     {
-      "id": 1026847,
+      "id": null,
       "nombre": "JOSE ANTONIO ORTUÑO JIMENEZ",
       "equipo": "C.P. LES ABELLES",
       "pj": 6,
@@ -3683,7 +3683,7 @@
       "rojas": 0
     },
     {
-      "id": 1025367,
+      "id": null,
       "nombre": "DANIEL RAAM ESCOLA PHIMSEN",
       "equipo": "RECOLETAS SALUD FENIX",
       "pj": 4,
@@ -3693,7 +3693,7 @@
       "rojas": 0
     },
     {
-      "id": 1023785,
+      "id": null,
       "nombre": "BRAIS REY GRANDE",
       "equipo": "RECOLETAS SALUD FENIX",
       "pj": 6,
@@ -3703,10 +3703,10 @@
       "rojas": 0
     },
     {
-      "id": 1024223,
+      "id": null,
       "nombre": "FERRAN GIMENO SANTESMASES",
       "equipo": "CLUB DE RUGBY SANT CUGAT",
-      "pj": 6,
+      "pj": 5,
       "puntos": 35,
       "ensayos": 0,
       "amarillas": 0,
@@ -3715,7 +3715,7 @@
   ],
   "temporada_ensayadores": [
     {
-      "id": 1043377,
+      "id": null,
       "nombre": "JUAN CARLOS SANCHEZ CARRANCIA",
       "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
       "pj": 4,
@@ -3725,17 +3725,7 @@
       "rojas": 0
     },
     {
-      "id": 1024311,
-      "nombre": "ANDER ARISTI CAMARA",
-      "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
-      "pj": 6,
-      "puntos": 30,
-      "ensayos": 6,
-      "amarillas": 1,
-      "rojas": 1
-    },
-    {
-      "id": 1043213,
+      "id": null,
       "nombre": "JAUNDRE NEL",
       "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
       "pj": 6,
@@ -3745,7 +3735,17 @@
       "rojas": 0
     },
     {
-      "id": 1024811,
+      "id": null,
+      "nombre": "ANDER ARISTI CAMARA",
+      "equipo": "TORREALDAY GERNIKA RUGBY TALDEA",
+      "pj": 6,
+      "puntos": 30,
+      "ensayos": 6,
+      "amarillas": 1,
+      "rojas": 0
+    },
+    {
+      "id": null,
       "nombre": "IBON GONZALEZ PLA",
       "equipo": "HERNANI CRE",
       "pj": 6,
@@ -3755,7 +3755,7 @@
       "rojas": 0
     },
     {
-      "id": 1032961,
+      "id": null,
       "nombre": "IGNACIO MORENO GUZMAN",
       "equipo": "CAJASOL REAL CIENCIAS SEVILLA",
       "pj": 6,
