@@ -31,6 +31,24 @@ PAISES = {
 }
 ESPANA = "España"
 
+# Bandera de cada selección (nombre en castellano -> fichero de assets/banderas)
+BANDERA = {
+    "España": "es", "Francia": "fr", "Nueva Zelanda": "nz", "Fiyi": "fj", "Australia": "au", "Argentina": "ar",
+    "Sudáfrica": "za", "EEUU": "us", "Gran Bretaña": "gb", "Inglaterra": "gb-eng", "Escocia": "gb-sct",
+    "Gales": "gb-wls", "Irlanda": "ie", "Italia": "it", "Portugal": "pt", "Alemania": "de", "Bélgica": "be",
+    "Países Bajos": "nl", "Suiza": "ch", "Georgia": "ge", "Rumanía": "ro", "Polonia": "pl", "Chequia": "cz",
+    "Ucrania": "ua", "Suecia": "se", "Canadá": "ca", "Uruguay": "uy", "Chile": "cl", "Brasil": "br",
+    "Colombia": "co", "Paraguay": "py", "México": "mx", "Samoa": "ws", "Tonga": "to", "Japón": "jp", "China": "cn",
+    "Hong Kong": "hk", "Kenia": "ke", "Uganda": "ug", "Zimbabue": "zw", "Madagascar": "mg", "Túnez": "tn",
+    "Papúa Nueva Guinea": "pg", "Filipinas": "ph", "Corea del Sur": "kr", "Kazajistán": "kz", "Tailandia": "th",
+    "Namibia": "na", "Marruecos": "ma",
+}
+
+
+def banderas(nombres) -> dict[str, str]:
+    """{nombre: 'bandera:código'} para el filtro de escudos de las plantillas."""
+    return {n: f"bandera:{BANDERA[n]}" for n in nombres if n in BANDERA}
+
 ORDINAL = {"1st": "1.º", "2nd": "2.º", "3rd": "3.º", "4th": "4.º", "5th": "5.º", "6th": "6.º", "7th": "7.º", "8th": "8.º"}
 
 ESTADOS_JUGADO = {"C"}  # terminado
@@ -240,7 +258,7 @@ def imagenes(vista: str, formato: str = "historia", destino: Path | None = None,
     destino = destino or Path(tempfile.mkdtemp(prefix="sevens_"))
     cfg = cargar_config()
     base = {"competicion": next(iter(cfg["competiciones"])), "grupo": "unico", "jornada": None,
-            "temporada": cfg["temporada"], "escudos": {},
+            "temporada": cfg["temporada"], "escudos": banderas(BANDERA),
             "cabecera": {"nombre": f"Sevens · {t['ciudad']}", "sub": rango_fechas(t["desde"], t["hasta"]), "grupo": None}}
     return renderizar_slides(base, lista, destino, formato, tema), t
 

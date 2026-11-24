@@ -140,3 +140,13 @@ def test_cliente_sin_configurar(monkeypatch):
     monkeypatch.setattr(origen_c, "BASE", "")
     with pytest.raises(origen_c.SinAcceso):
         origen_c.OrigenC().partidos_de(["x"])
+
+
+def test_cada_pais_tiene_su_bandera_guardada():
+    from datosdep.render import render
+
+    faltan = [n for n, c in s.BANDERA.items() if not (render.BANDERAS / f"{c}.png").exists()]
+    assert not faltan
+    assert set(s.BANDERA) >= set(s.PAISES.values())  # todo país traducido lleva bandera
+    assert render.escudo_equipo("España", s.banderas(["España"])).startswith("data:image/jpeg")
+    assert render.escudo_equipo("Atlantis", s.banderas(["Atlantis"])) == ""

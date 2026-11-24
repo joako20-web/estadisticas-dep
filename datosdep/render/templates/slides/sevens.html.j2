@@ -13,6 +13,9 @@
 .sv-fase { font-size: 19px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gris); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sv-eq { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 500; font-size: 36px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-top: 4px; min-width: 0; }
 .sv-eq.loc { text-align: right; }
+.sv-lado { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.sv-lado.loc { justify-content: flex-end; }
+.crest.sv-b { width: 48px; height: 48px; padding: 0; flex: none; }
 .sv-eq.gana { font-weight: 700; }
 .sv-eq.hueco { color: var(--gris); font-size: 30px; }
 .sv-eq.esp { color: var(--acento-txt); }
@@ -32,13 +35,13 @@
   {% for p in b.partidos %}
   <div class="sv-fila">
     <div class="sv-cuando"><span class="sv-hora">{{ p.hora }}</span><span class="sv-fase">{{ p.fase }}</span></div>
-    <div class="sv-eq loc {{ 'gana' if p.gana == 0 }} {{ 'hueco' if p.hueco_local }} {{ 'esp' if p.esp_local }}">{{ p.local }}</div>
+    <div class="sv-lado loc"><span class="sv-eq loc {{ 'gana' if p.gana == 0 }} {{ 'hueco' if p.hueco_local }} {{ 'esp' if p.esp_local }}">{{ p.local }}</span>{% if p.local|escudo %}<img class="crest sv-b" src="{{ p.local|escudo }}">{% endif %}</div>
     {% if p.marcador %}
     <div class="sv-mar">{{ p.marcador }}{% if p.en_juego %}<small>EN JUEGO</small>{% endif %}</div>
     {% else %}
     <div class="sv-mar vs">vs</div>
     {% endif %}
-    <div class="sv-eq {{ 'gana' if p.gana == 1 }} {{ 'hueco' if p.hueco_visitante }} {{ 'esp' if p.esp_visitante }}">{{ p.visitante }}</div>
+    <div class="sv-lado">{% if p.visitante|escudo %}<img class="crest sv-b" src="{{ p.visitante|escudo }}">{% endif %}<span class="sv-eq {{ 'gana' if p.gana == 1 }} {{ 'hueco' if p.hueco_visitante }} {{ 'esp' if p.esp_visitante }}">{{ p.visitante }}</span></div>
   </div>
   {% endfor %}
 {% endfor %}

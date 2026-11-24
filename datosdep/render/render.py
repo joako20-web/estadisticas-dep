@@ -375,7 +375,23 @@ def escudos_de_clubes(clubes: list[str]) -> tuple[str, ...]:
     return tuple(urls)
 
 
+BANDERAS = RAIZ / "assets" / "banderas"
+
+
+@lru_cache(maxsize=128)
+def bandera_uri(codigo: str) -> str:
+    """Bandera cuadrada guardada (assets/banderas): llena el círculo entero, sin márgenes. '' si no está."""
+    from PIL import Image
+
+    ruta = BANDERAS / f"{codigo}.png"
+    if not codigo or not ruta.exists():
+        return ""
+    return _jpeg_uri(Image.open(ruta).convert("RGB"))
+
+
 def escudo_equipo(equipo: str, escudos: dict) -> str:
+    if str(escudos.get(equipo, "")).startswith("bandera:"):
+        return bandera_uri(escudos[equipo].split(":", 1)[1])
     conjunto = nombres.clubes_conjunto(equipo)
     if conjunto:
         urls = escudos_de_clubes(conjunto)
