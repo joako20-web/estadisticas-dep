@@ -1224,22 +1224,6 @@
       "foto": ""
     },
     {
-      "nombre": "MAURO AGUSTIN DI MARCO",
-      "equipo": "RUGBY CLUB PONENT",
-      "dorsal": 3,
-      "puntos": 0,
-      "ensayos": 0,
-      "conversiones": 0,
-      "golpes": 0,
-      "drops": 0,
-      "tarjetas": [],
-      "resultado": "P",
-      "margen": -3,
-      "rival": "AKRA BARBARA",
-      "nota": -0.3,
-      "foto": ""
-    },
-    {
       "nombre": "DANIEL CHINONSO NWATU RODRIGO",
       "equipo": "CAU RUGBY VALENCIA",
       "dorsal": 3,
@@ -1285,6 +1269,24 @@
       "margen": -75,
       "rival": "VPC ANDORRA RUGBY XV",
       "nota": -3.0,
+      "foto": ""
+    },
+    {
+      "nombre": "MAURO AGUSTIN DI MARCO",
+      "equipo": "RUGBY CLUB PONENT",
+      "dorsal": 3,
+      "puntos": 0,
+      "ensayos": 0,
+      "conversiones": 0,
+      "golpes": 0,
+      "drops": 0,
+      "tarjetas": [
+        "amarilla"
+      ],
+      "resultado": "P",
+      "margen": -3,
+      "rival": "AKRA BARBARA",
+      "nota": -4.3,
       "foto": ""
     },
     {
