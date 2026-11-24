@@ -27,7 +27,10 @@ def es_pasajero(e: BaseException) -> bool:
 def explicar(e: BaseException, que: str = "esto") -> str:
     """Mensaje para quien pidió algo, sin código."""
     from datosdep.scraper.origen_a import AccesoRestringido, FuenteCambiada
+    from datosdep.scraper.origen_c import SinAcceso
 
+    if isinstance(e, SinAcceso):
+        return f"⏳ ahora mismo no puedo leer los partidos internacionales y no he podido preparar {que}. Prueba en un rato."
     if isinstance(e, FuenteCambiada):
         return "⚠️ la web de resultados ha cambiado y ahora mismo no puedo leerla. Ya está avisado; vuelve a probar más tarde."
     if isinstance(e, AccesoRestringido):

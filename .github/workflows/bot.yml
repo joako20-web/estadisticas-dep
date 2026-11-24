@@ -92,6 +92,7 @@ jobs:
           ORIGEN_A_URL: ${{ secrets.ORIGEN_A_URL }}
           ORIGEN_A_IMG_URL: ${{ secrets.ORIGEN_A_IMG_URL }}
           ORIGEN_A_ACTA_URL: ${{ secrets.ORIGEN_A_ACTA_URL }}
+          ORIGEN_C_URL: ${{ secrets.ORIGEN_C_URL }}
           ORIGEN_B_URL: ${{ secrets.ORIGEN_B_URL }}
           ORIGEN_B_AND_URL: ${{ secrets.ORIGEN_B_AND_URL }}
           ORIGEN_B_CAT_URL: ${{ secrets.ORIGEN_B_CAT_URL }}

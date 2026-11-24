@@ -18,7 +18,7 @@ import traceback
 from pathlib import Path
 
 from datosdep import fallos
-from datosdep import agenda, arbitros, caption, preferencias, precalentar, destacado, directo, especiales, estado, evolucion, fichas, historico, torneo
+from datosdep import agenda, arbitros, caption, preferencias, precalentar, destacado, directo, especiales, estado, evolucion, fichas, historico, selecciones, torneo
 from datosdep.core.editar import cambiar_xv
 from datosdep.pedidos import interpretar
 from datosdep.pipeline import RAIZ, cargar_config, es_descanso, jornadas_jugadas, preparar_jornada
@@ -52,6 +52,7 @@ AYUDA = (
     "📷 <b>Foto portada</b>: después mándame la foto.\n\n"
     "📋 <b>Pedir</b> (botón de abajo o /pedir): eliges liga, qué quieres y jornada.\n"
     "🎬 <b>Vídeos para vídeos</b> (dentro de cada liga): resultados, clasificación, XV... animados.\n"
+    "🌍 <b>Selecciones</b> (o /sevens): horario en hora española y resultados del Sevens, de España y de todos los países.\n"
     "/semana manda ya los carruseles de la semana.\n"
     "/estilo cambia el estilo visual (5 opciones, con muestras)."
 )
@@ -323,8 +324,17 @@ def _menu_inicio(chat_id=None) -> tuple[str, list]:
         else:
             botones.append((etiqueta, f"mc|{cat}"))
     filas += _filas(botones, 3)
-    filas.append([("📅 Agenda del finde", "ma"), ("🔎 Buscar", "mb")])
+    filas.append([("📅 Agenda del finde", "ma"), ("🌍 Selecciones", "mv")])
+    filas.append([("🔎 Buscar", "mb")])
     return "📋 <b>¿Qué quieres?</b>", filas
+
+
+def _menu_selecciones() -> tuple[str, list]:
+    filas = [[("🇪🇸 España (chicos y chicas)", "sv|es|h|0")],
+             [("Masculino: todo el torneo", "sv|m|h|0"), ("Femenino: todo el torneo", "sv|f|h|0")],
+             [("📊 Grupos", "sv|g|p|0")], [("⬅️ Volver", "m1")]]
+    return ("🌍 <b>Selecciones · Sevens</b>\nHorarios (en hora española) y resultados del próximo torneo del circuito "
+            "o del que se está jugando.", filas)
 
 
 def _menu_agenda() -> tuple[str, list]:
@@ -445,6 +455,8 @@ def _menu(tg: Telegram, chat_id, cq: dict, partes: list[str]) -> None:
         tg.editar(chat_id, mid, *_menu_inicio(chat_id))
     elif paso == "ma":
         tg.editar(chat_id, mid, *_menu_agenda())
+    elif paso == "mv":
+        tg.editar(chat_id, mid, *_menu_selecciones())
     elif paso == "mb":
         tg.editar(chat_id, mid, "🔎 <b>Buscar</b>\nEscribe:\n· <code>/equipo vrac</code>\n· <code>/jugador mansilla</code>\n"
                   "· <code>/cara vrac vs salvador</code> (cara a cara histórico)\n"
@@ -854,6 +866,23 @@ def enviar_agenda(tg: Telegram, chat_id, filtro: str, formato: str = "historia",
         tg.mensaje(chat_id, html.escape(agenda.texto_agenda(datos)))
 
 
+def enviar_sevens(tg: Telegram, chat_id, vista: str, formato: str = "historia", original: bool = False) -> None:
+    if not original:
+        tg.mensaje(chat_id, "⏳ Preparando el Sevens…")
+    with tempfile.TemporaryDirectory() as tmp:
+        imgs, t = selecciones.imagenes(vista, formato, Path(tmp))
+        if not t:
+            tg.mensaje(chat_id, "No hay ningún torneo de Sevens del circuito en los próximos meses.")
+            return
+        if not imgs:
+            tg.mensaje(chat_id, f"Los grupos de {t['ciudad']} aún están a cero: el torneo no ha empezado. "
+                                "Pide el horario mientras tanto." if vista == "g" else "No hay partidos para eso.")
+            return
+        _mandar(tg, chat_id, imgs, f"sv|{vista}", formato, original, f"🏉 <b>Sevens · {html.escape(t['ciudad'])}</b>")
+    if not original and formato == "historia" and vista != "g":
+        tg.mensaje(chat_id, html.escape(selecciones.texto(vista)))
+
+
 def _ficha(tg: Telegram, chat_id, tipo: str, id_: str, formato: str = "post", original: bool = False) -> None:
     funcion = fichas.ficha_equipo if tipo == "fe" else fichas.ficha_jugador
     with tempfile.TemporaryDirectory() as tmp:
@@ -1148,6 +1177,10 @@ def _boton(tg: Telegram, b: dict, posts: dict, cq: dict) -> None:
         formato, original = _formato(partes)
         enviar_agenda(tg, chat_id, partes[1], formato, original)
         return
+    if partes[0] == "sv":
+        formato, original = _formato(partes)
+        enviar_sevens(tg, chat_id, partes[1], formato, original)
+        return
     if partes[0] in ("fe", "fj"):
         formato, original = _formato(partes) if len(partes) >= 4 else ("post", False)
         _ficha(tg, chat_id, partes[0], partes[1], formato, original)
@@ -1254,6 +1287,8 @@ def _mensaje(tg: Telegram, b: dict, posts: dict, m: dict) -> None:
             cands = [c for c in fichas.buscar_equipo(equipo) if c["comp"] in ARBITROS]
             comp = cands[0]["comp"] if cands else "dh_masc"
             enviar_arbitros(tg, chat_id, comp, "e", equipo=equipo)
+    elif texto.startswith("/sevens"):
+        tg.mensaje(chat_id, *_menu_selecciones())
     elif texto.startswith("/agenda"):
         enviar_agenda(tg, chat_id, "n")
     elif texto.startswith("/avisos") or texto == "⚙️ Avisos":

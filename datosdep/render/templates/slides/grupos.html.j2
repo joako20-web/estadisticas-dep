@@ -1,6 +1,7 @@
+<style>.gfila.sin-esc { grid-template-columns: 30px 1fr 34px 46px; } .compacto .gfila.sin-esc { grid-template-columns: 26px 1fr 30px 40px; }</style>
 <div class="titulo">
-  <h1>{{ 'Fase de grupos' if s.exentos else 'Todos los grupos' }}</h1>
-  <div class="bajada">Clasificación de cada grupo</div>
+  <h1>{{ s.titulo or ('Fase de grupos' if s.exentos else 'Todos los grupos') }}</h1>
+  <div class="bajada">{{ s.bajada or 'Clasificación de cada grupo' }}</div>
 </div>
 <div class="cuerpo">
   <div class="grupos {{ 'compacto' if s.compacto }}">
@@ -8,7 +9,7 @@
     <div class="grupo">
       <div class="grupo-tit">{{ g.nombre }}</div>
       {% for f in g.filas %}
-      <div class="gfila {{ 'z-' ~ f.zona if f.zona }}">
+      <div class="gfila {{ 'z-' ~ f.zona if f.zona }} {{ 'sin-esc' if not f.equipo|escudo }}">
         <span class="gpos">{{ f.posicion }}</span>
         {% if f.equipo|escudo %}<img class="crest g" src="{{ f.equipo|escudo }}">{% endif %}
         <span class="geq">{{ f.equipo|corto }}</span>

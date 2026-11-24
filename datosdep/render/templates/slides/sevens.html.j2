@@ -1,0 +1,46 @@
+{# Horario / resultados de un torneo de Sevens (o de los partidos de España): un día (o parte) por imagen.
+   Columna 1: hora española y fase; en medio, el marcador si ya se ha jugado. #}
+<style>
+.sv-tit { position: relative; }
+.sv-pag { position: absolute; right: 0; bottom: 6px; font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-size: 44px; color: var(--gris); }
+.sv-cuerpo { margin-top: 34px; flex: 1; display: flex; flex-direction: column; }
+.sv-bloque { font-weight: 700; font-size: 26px; letter-spacing: 3px; text-transform: uppercase; color: var(--acento-txt);
+  height: 66px; display: flex; align-items: flex-end; padding-bottom: 10px; border-bottom: 2px solid var(--texto); }
+.sv-fila { display: grid; grid-template-columns: 200px 1fr 140px 1fr; align-items: center; height: var(--sv-h, 72px);
+  border-bottom: 1px solid var(--linea); column-gap: 14px; }
+.sv-cuando { display: flex; flex-direction: column; line-height: 1; gap: 6px; }
+.sv-hora { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 600; font-size: 40px; font-variant-numeric: tabular-nums; }
+.sv-fase { font-size: 19px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gris); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sv-eq { font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 500; font-size: 36px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-top: 4px; min-width: 0; }
+.sv-eq.loc { text-align: right; }
+.sv-eq.gana { font-weight: 700; }
+.sv-eq.hueco { color: var(--gris); font-size: 30px; }
+.sv-eq.esp { color: var(--acento-txt); }
+.sv-mar { text-align: center; font-family: var(--f-tit); font-size-adjust: cap-height 0.64; font-weight: 600; font-size: 40px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sv-mar.vs { font-family: inherit; font-size: 24px; font-weight: 400; color: var(--gris); }
+.sv-mar small { display: block; font-family: var(--f-txt, inherit); font-size: 17px; letter-spacing: 1px; color: var(--acento-txt); font-weight: 700; }
+.sv-nota { margin-top: auto; padding-top: 18px; font-size: 24px; color: var(--gris); }
+</style>
+<div class="titulo sv-tit">
+  <h1>{{ s.titulo }}</h1>
+  <div class="bajada">{{ s.subtitulo }}</div>
+  {% if s.pagina %}<span class="sv-pag">{{ s.pagina }}</span>{% endif %}
+</div>
+<div class="sv-cuerpo" style="--sv-h: {{ s.alto_fila }}px">
+{% for b in s.bloques %}
+  {% if b.nombre %}<div class="sv-bloque">{{ b.nombre }}</div>{% endif %}
+  {% for p in b.partidos %}
+  <div class="sv-fila">
+    <div class="sv-cuando"><span class="sv-hora">{{ p.hora }}</span><span class="sv-fase">{{ p.fase }}</span></div>
+    <div class="sv-eq loc {{ 'gana' if p.gana == 0 }} {{ 'hueco' if p.hueco_local }} {{ 'esp' if p.esp_local }}">{{ p.local }}</div>
+    {% if p.marcador %}
+    <div class="sv-mar">{{ p.marcador }}{% if p.en_juego %}<small>EN JUEGO</small>{% endif %}</div>
+    {% else %}
+    <div class="sv-mar vs">vs</div>
+    {% endif %}
+    <div class="sv-eq {{ 'gana' if p.gana == 1 }} {{ 'hueco' if p.hueco_visitante }} {{ 'esp' if p.esp_visitante }}">{{ p.visitante }}</div>
+  </div>
+  {% endfor %}
+{% endfor %}
+{% if s.nota %}<div class="sv-nota">{{ s.nota }}</div>{% endif %}
+</div>
