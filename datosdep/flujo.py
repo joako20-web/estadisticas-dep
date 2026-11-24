@@ -330,11 +330,21 @@ def _menu_inicio(chat_id=None) -> tuple[str, list]:
 
 
 def _menu_selecciones() -> tuple[str, list]:
-    filas = [[("🇪🇸 España (chicos y chicas)", "sv|es|h|0")],
+    filas = [[("🇪🇸 España", "sv|pes|h|0"), ("🇦🇷 Argentina", "sv|par|h|0"), ("🇺🇾 Uruguay", "sv|puy|h|0")],
+             [("🌍 Otro país", "mvp")],
              [("Masculino: todo el torneo", "sv|m|h|0"), ("Femenino: todo el torneo", "sv|f|h|0")],
              [("📊 Grupos", "sv|g|p|0")], [("⬅️ Volver", "m1")]]
-    return ("🌍 <b>Selecciones · Sevens</b>\nHorarios (en hora española) y resultados del próximo torneo del circuito "
-            "o del que se está jugando.", filas)
+    return ("🌍 <b>Selecciones · Sevens</b>\nHorarios (en hora española) y resultados del torneo que se está jugando "
+            "o del próximo. Una imagen por día.\nCada país sale con sus partidos de chicos y chicas, de cualquier división.",
+            filas)
+
+
+def _menu_otro_pais() -> tuple[str, list]:
+    t = selecciones.torneo()
+    if not t:
+        return "No hay ningún torneo de Sevens en los próximos meses.", [[("⬅️ Volver", "mv")]]
+    botones = [(n, f"sv|p{selecciones.BANDERA[n]}|h|0") for n in selecciones.paises(t) if n in selecciones.BANDERA]
+    return f"🌍 <b>¿Qué país?</b>\nLos que juegan en {html.escape(t['ciudad'])} (cualquier división).", _filas(botones, 3) + [[("⬅️ Volver", "mv")]]
 
 
 def _menu_agenda() -> tuple[str, list]:
@@ -457,6 +467,8 @@ def _menu(tg: Telegram, chat_id, cq: dict, partes: list[str]) -> None:
         tg.editar(chat_id, mid, *_menu_agenda())
     elif paso == "mv":
         tg.editar(chat_id, mid, *_menu_selecciones())
+    elif paso == "mvp":
+        tg.editar(chat_id, mid, *_menu_otro_pais())
     elif paso == "mb":
         tg.editar(chat_id, mid, "🔎 <b>Buscar</b>\nEscribe:\n· <code>/equipo vrac</code>\n· <code>/jugador mansilla</code>\n"
                   "· <code>/cara vrac vs salvador</code> (cara a cara histórico)\n"
@@ -875,8 +887,14 @@ def enviar_sevens(tg: Telegram, chat_id, vista: str, formato: str = "historia", 
             tg.mensaje(chat_id, "No hay ningún torneo de Sevens del circuito en los próximos meses.")
             return
         if not imgs:
-            tg.mensaje(chat_id, f"Los grupos de {t['ciudad']} aún están a cero: el torneo no ha empezado. "
-                                "Pide el horario mientras tanto." if vista == "g" else "No hay partidos para eso.")
+            pais = selecciones.pais_de(vista)
+            if vista == "g":
+                aviso = f"Los grupos de {t['ciudad']} aún están a cero: el torneo no ha empezado. Pide el horario mientras tanto."
+            elif pais:
+                aviso = f"{pais} no juega en {t['ciudad']} (en ninguna división)."
+            else:
+                aviso = "No hay partidos para eso."
+            tg.mensaje(chat_id, html.escape(aviso))
             return
         _mandar(tg, chat_id, imgs, f"sv|{vista}", formato, original, f"🏉 <b>Sevens · {html.escape(t['ciudad'])}</b>")
     if not original and formato == "historia" and vista != "g":

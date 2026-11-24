@@ -70,26 +70,40 @@ def test_elige_el_circuito_principal_y_junta_chicos_y_chicas(falso):
     t = s.torneo(date(2026, 11, 26))
     assert t["ciudad"] == "Dubái" and set(t["eventos"]) == {"m", "f"}
     assert t["eventos"]["m"]["id"] == "m1"  # no la división de ascenso
+    assert set(t["finde"]) == {"m1", "m3", "f1"}  # Ciudad del Cabo (la semana siguiente) no
     assert (t["desde"], t["hasta"]) == (date(2026, 11, 28), date(2026, 11, 29))
 
 
 def test_paginas_de_espana_y_hora_espanola(falso):
     t = s.torneo(date(2026, 11, 26))
-    ps = s.partidos(t)
-    sl = s.slides(t, ps, "es", "post")
-    assert len(sl) == 1 and sl[0]["titulo"] == "Sábado 28 nov"
+    ps, destacado = s._de_la_vista(t, "pes")
+    sl = s.slides(t, ps, "pes", "post", destacado)
+    assert len(sl) == 1 and sl[0]["titulo"] == "Sábado 28 nov" and sl[0]["pagina"] == ""
     filas = sl[0]["bloques"][0]["partidos"]
     assert [f["hora"] for f in filas] == ["07:00", "09:14"]  # UTC+1 en noviembre
     assert filas[1]["marcador"] == "19-12" and filas[1]["gana"] == 0 and filas[1]["esp_local"]
+    assert filas[0]["fase"] == "Fem · Grupo A"
     assert "eliminatorias" in sl[0]["nota"]  # el domingo depende del grupo
 
 
-def test_varios_dias_en_una_pagina_si_caben(falso):
+def test_una_imagen_por_dia_sin_numerar(falso):
     t = s.torneo(date(2026, 11, 26))
-    sl = s.slides(t, s.partidos(t), "m", "historia")
-    assert len(sl) == 1 and [b["nombre"] for b in sl[0]["bloques"]] == ["Sábado 28 nov", "Domingo 29 nov"]
-    final = sl[0]["bloques"][1]["partidos"][-1]
+    ps, destacado = s._de_la_vista(t, "m")
+    sl = s.slides(t, ps, "m", "historia", destacado)
+    assert [x["titulo"] for x in sl] == ["Sábado 28 nov", "Domingo 29 nov"]
+    assert all(x["pagina"] == "" for x in sl)
+    final = sl[1]["bloques"][0]["partidos"][-1]
     assert final["local"] == "Ganador P15" and final["hueco_local"] and final["fase"] == "Final"
+
+
+def test_pais_de_otra_division_y_pais_que_no_juega(falso):
+    t = s.torneo(date(2026, 11, 26))
+    ps, destacado = s._de_la_vista(t, "pws")  # Samoa: juega la división 3
+    sl = s.slides(t, ps, "pws", "post", destacado)
+    fila = sl[0]["bloques"][0]["partidos"][0]
+    assert destacado == "Samoa" and fila["esp_local"] and fila["fase"] == "Masc · Div. 3 · Grupo"
+    assert "Samoa" in s.paises(t) and s.paises(t)[0] == "España"
+    assert s._de_la_vista(t, "puy")[0] == []  # Uruguay no juega ese fin de semana
 
 
 def test_grupos_a_cero_no_se_mandan(falso):
@@ -107,7 +121,7 @@ def test_sin_torneo(monkeypatch):
         def eventos(self, dep, desde, hasta):
             return []
     monkeypatch.setattr(s, "cliente", lambda: Vacio())
-    assert s.torneo(date(2026, 11, 26)) is None and s.imagenes("es") == ([], None)
+    assert s.torneo(date(2026, 11, 26)) is None and s.imagenes("pes") == ([], None)
 
 
 # --- cliente ------------------------------------------------------------------------------------------------------

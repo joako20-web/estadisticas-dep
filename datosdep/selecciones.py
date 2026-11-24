@@ -100,37 +100,46 @@ def ciudad(evento: dict) -> str:
 
 # ---- datos ---------------------------------------------------------------------------------------------------------
 
-def _primera(evento: dict) -> bool:
-    """Circuito principal (donde juega España), no las divisiones de ascenso (SVNS 2, SVNS 3)."""
-    return bool(re.search(r"\bSVNS\b(?! [23]\b)", str(evento.get("label", ""))))
+def nivel(evento: dict) -> int:
+    """1 = circuito principal (donde juega España); 2 y 3 = divisiones de ascenso (SVNS 2, SVNS 3)."""
+    m = re.search(r"\bSVNS(?: ([23]))?\b", str(evento.get("label", "")))
+    return 0 if not m else int(m[1] or 1)
 
 
 def _fecha_evento(e: dict, campo: str) -> date:
     return date.fromisoformat(e[campo]["label"])
 
 
+def _sexo(e: dict) -> str:
+    return "f" if e.get("sport") == "wrs" or "Women" in str(e.get("label", "")) else "m"
+
+
 def torneo(hoy: date | None = None) -> dict | None:
-    """El torneo de Sevens en curso o el próximo: {'ciudad', 'desde', 'hasta', 'eventos': {'m': ev, 'f': ev}}."""
+    """El torneo de Sevens en curso o el próximo.
+
+    {'ciudad', 'desde', 'hasta', 'eventos': {'m': ev, 'f': ev} (circuito principal),
+     'finde': {id: ev} (todos los torneos de ese fin de semana, de cualquier división)}."""
     hoy = hoy or datetime.now(MADRID).date()
     c = cliente()
-    eventos = [e for dep in ("mrs", "wrs") for e in c.eventos(dep, hoy - timedelta(days=4), hoy + timedelta(days=120))
-               if _primera(e) and _fecha_evento(e, "end") >= hoy]
-    if not eventos:
+    todos = [e for dep in ("mrs", "wrs") for e in c.eventos(dep, hoy - timedelta(days=4), hoy + timedelta(days=120))
+             if nivel(e) and _fecha_evento(e, "end") >= hoy]
+    principales = sorted((e for e in todos if nivel(e) == 1), key=lambda e: e["start"]["millis"])
+    if not principales:
         return None
-    eventos.sort(key=lambda e: e["start"]["millis"])
-    sede = eventos[0]
-    pareja = [e for e in eventos if e.get("abbr") == sede.get("abbr")
-              and abs((_fecha_evento(e, "start") - _fecha_evento(sede, "start")).days) <= 3]
+    sede = principales[0]
+    inicio = _fecha_evento(sede, "start")
     por_sexo = {}
-    for e in pareja:
-        sexo = "f" if e.get("sport") == "wrs" or "Women" in e["label"] else "m"
-        por_sexo.setdefault(sexo, e)
-    return {"ciudad": ciudad(sede), "eventos": por_sexo,
-            "desde": min(_fecha_evento(e, "start") for e in por_sexo.values()),
-            "hasta": max(_fecha_evento(e, "end") for e in por_sexo.values())}
+    for e in principales:
+        if e.get("abbr") == sede.get("abbr") and abs((_fecha_evento(e, "start") - inicio).days) <= 3:
+            por_sexo.setdefault(_sexo(e), e)
+    desde = min(_fecha_evento(e, "start") for e in por_sexo.values())
+    hasta = max(_fecha_evento(e, "end") for e in por_sexo.values())
+    finde = {e["id"]: e for e in todos
+             if _fecha_evento(e, "start") <= hasta and _fecha_evento(e, "end") >= desde - timedelta(days=2)}
+    return {"ciudad": ciudad(sede), "eventos": por_sexo, "desde": desde, "hasta": hasta, "finde": finde}
 
 
-def _partido(m: dict, sexo: str) -> dict | None:
+def _partido(m: dict, evento: dict) -> dict | None:
     equipos = m.get("teams") or []
     if len(equipos) != 2 or not (m.get("time") or {}).get("millis"):
         return None
@@ -144,24 +153,32 @@ def _partido(m: dict, sexo: str) -> dict | None:
     gana = None
     if jugado and None not in puntos and puntos[0] != puntos[1]:
         gana = 0 if puntos[0] > puntos[1] else 1
-    loc, vis = nombre_equipo(crudos[0]), nombre_equipo(crudos[1])
     return {
-        "cuando": cuando, "sexo": sexo, "fase": fase(m.get("eventPhase")), "local": loc, "visitante": vis,
+        "cuando": cuando, "sexo": _sexo(evento), "nivel": nivel(evento), "evento": evento["id"],
+        "fin_evento": _fecha_evento(evento, "end"), "fase": fase(m.get("eventPhase")),
+        "local": nombre_equipo(crudos[0]), "visitante": nombre_equipo(crudos[1]),
         "hueco_local": es_hueco(crudos[0]), "hueco_visitante": es_hueco(crudos[1]),
-        "esp_local": loc == ESPANA, "esp_visitante": vis == ESPANA,
         "marcador": f"{puntos[0]}-{puntos[1]}" if (jugado or en_juego) and None not in puntos else "",
         "en_juego": en_juego and not jugado, "gana": gana,
     }
 
 
-def partidos(t: dict) -> list[dict]:
-    ids = {e["id"]: sexo for sexo, e in t["eventos"].items()}
+def partidos(t: dict, todo_el_finde: bool = False) -> list[dict]:
+    """Partidos del circuito principal o, con todo_el_finde, de todas las divisiones de ese fin de semana."""
+    eventos = t["finde"] if todo_el_finde else {e["id"]: e for e in t["eventos"].values()}
     out = []
-    for m in cliente().partidos_de(list(ids)):
-        sexo = next((ids[e["id"]] for e in m.get("events") or [] if e.get("id") in ids), None)
-        if sexo and (p := _partido(m, sexo)):
+    for m in cliente().partidos_de(list(eventos)):
+        ev = next((eventos[e["id"]] for e in m.get("events") or [] if e.get("id") in eventos), None)
+        if ev and (p := _partido(m, ev)):
             out.append(p)
     return sorted(out, key=lambda p: p["cuando"])
+
+
+def paises(t: dict) -> list[str]:
+    """Países que juegan ese fin de semana (cualquier división), por orden alfabético."""
+    nombres = {p[lado] for p in partidos(t, True) for lado in ("local", "visitante")
+               if not p[f"hueco_{lado}"]}
+    return sorted(nombres, key=lambda n: (n != ESPANA, n))
 
 
 def grupos(t: dict) -> list[dict]:
@@ -180,60 +197,65 @@ def grupos(t: dict) -> list[dict]:
     return out
 
 
-# ---- imágenes ----------------------------------------------------------------------------------------------------
+# ---- vistas --------------------------------------------------------------------------------------------------------
 
 SEXO = {"m": "Masculino", "f": "Femenino"}
+CODIGO_PAIS = {c: n for n, c in BANDERA.items()}
 
 
-def _fila(p: dict, con_sexo: bool) -> dict:
-    etiqueta = p["fase"] if not con_sexo else f"{'Masc' if p['sexo'] == 'm' else 'Fem'} · {p['fase']}"
-    return {**p, "hora": p["cuando"].strftime("%H:%M"), "fase": etiqueta}
+def pais_de(vista: str) -> str | None:
+    """'pes' -> 'España', 'par' -> 'Argentina'... None si la vista no es de un país."""
+    return CODIGO_PAIS.get(vista[1:]) if vista.startswith("p") else None
+
+
+def _de_la_vista(t: dict, vista: str) -> tuple[list[dict], str | None]:
+    """(partidos de la vista, país destacado)."""
+    if pais := pais_de(vista):
+        return [p for p in partidos(t, True) if pais in (p["local"], p["visitante"])], pais
+    return [p for p in partidos(t) if p["sexo"] == vista], ESPANA
+
+
+def _fila(p: dict, por_pais: bool, destacado: str) -> dict:
+    etiqueta = p["fase"]
+    if por_pais:
+        partes = ["Masc" if p["sexo"] == "m" else "Fem"]
+        if p["nivel"] > 1:
+            partes.append(f"Div. {p['nivel']}")  # división de ascenso
+        etiqueta = " · ".join(partes + [p["fase"]])
+    return {**p, "hora": p["cuando"].strftime("%H:%M"), "fase": etiqueta,
+            "esp_local": p["local"] == destacado, "esp_visitante": p["visitante"] == destacado}
 
 
 def _trocear(filas: list, cabida: int) -> list[list]:
     n = max(1, -(-len(filas) // cabida))
-    tam = -(-len(filas) // n)  # páginas igual de llenas
+    tam = -(-len(filas) // n)  # partes igual de llenas
     return [filas[i:i + tam] for i in range(0, len(filas), tam)]
 
 
-def slides(t: dict, lista: list[dict], vista: str, formato: str = "historia") -> list[dict]:
-    """vista: 'es' (España, chicos y chicas), 'm' o 'f' (torneo entero de un sexo)."""
-    if vista == "es":
-        lista = [p for p in lista if ESPANA in (p["local"], p["visitante"])]
-    else:
-        lista = [p for p in lista if p["sexo"] == vista]
+def slides(t: dict, lista: list[dict], vista: str, formato: str = "historia", destacado: str = ESPANA) -> list[dict]:
+    """Una imagen por día (para subirlas cada día); un día muy largo se parte en varias.
+
+    vista: 'p' + código de país (pes, par, puy...: sus partidos de chicos y chicas, de cualquier división)
+    o 'm' / 'f' (circuito principal entero de un sexo)."""
     if not lista:
         return []
+    pais = pais_de(vista)
     dias = sorted({p["cuando"].date() for p in lista})
-    cabida = FILAS[formato]
-    # Cada página: uno o varios días enteros (si caben, con su cabecera); un día largo se reparte en varias.
-    paginas: list[list[tuple[date, list]]] = []
-    for d in dias:
-        del_dia = [_fila(p, vista == "es") for p in lista if p["cuando"].date() == d]
-        filas_pag = sum(1 + len(f) for _, f in paginas[-1]) if paginas else 0
-        if paginas and filas_pag + 1 + len(del_dia) <= cabida:
-            paginas[-1].append((d, del_dia))
-            continue
-        for trozo in _trocear(del_dia, cabida):
-            paginas.append([(d, trozo)])
     nota = ""
-    if vista == "es" and t["hasta"] not in dias:
-        nota = f"El {etiqueta_dia(t['hasta']).lower()} juega las eliminatorias según su puesto en el grupo."
-    sub = {"es": f"España en {t['ciudad']} · hora española", "m": f"Sevens masculino · {t['ciudad']} · hora española",
-           "f": f"Sevens femenino · {t['ciudad']} · hora española"}[vista]
-    total = len(paginas)
+    if pais:
+        fin = max(p["fin_evento"] for p in lista)  # aún le quedan días de torneo sin rival decidido
+        if fin > dias[-1]:
+            nota = f"El {etiqueta_dia(fin).lower()} juega las eliminatorias según su puesto en el grupo."
+    sub = (f"{pais} en {t['ciudad']}" if pais else f"Sevens {SEXO[vista].lower()} · {t['ciudad']}") + " · hora española"
     out = []
-    for i, pag in enumerate(paginas, 1):
-        if len(pag) == 1:
-            titulo, bloques = etiqueta_dia(pag[0][0]), [{"nombre": "", "partidos": pag[0][1]}]
-        else:
-            titulo = {"es": "España", "m": "Masculino", "f": "Femenino"}[vista]
-            bloques = [{"nombre": etiqueta_dia(d), "partidos": f} for d, f in pag]
-        n_filas = sum(len(b["partidos"]) + (1 if b["nombre"] else 0) for b in bloques)
-        out.append({"tipo": "sevens", "clave": f"sevens_{vista}_{i}", "titulo": titulo, "subtitulo": sub,
-                    "pagina": f"{i}/{total}" if total > 1 else "", "bloques": bloques,
-                    "nota": nota if i == total else "",
-                    "alto_fila": max(ALTO_FILA[formato][0], min(ALTO_FILA[formato][1], ALTO_UTIL[formato] // max(1, n_filas)))})
+    for d in dias:
+        del_dia = [_fila(p, bool(pais), destacado) for p in lista if p["cuando"].date() == d]
+        for i, trozo in enumerate(_trocear(del_dia, FILAS[formato]), 1):
+            out.append({"tipo": "sevens", "clave": f"sevens_{vista}_{d:%m%d}_{i}", "titulo": etiqueta_dia(d),
+                        "subtitulo": sub, "pagina": "", "bloques": [{"nombre": "", "partidos": trozo}], "nota": "",
+                        "alto_fila": max(ALTO_FILA[formato][0], min(ALTO_FILA[formato][1], ALTO_UTIL[formato] // max(1, len(trozo))))})
+    if nota:
+        out[-1]["nota"] = nota
     return out
 
 
@@ -248,18 +270,25 @@ def slides_grupos(t: dict) -> list[dict]:
 
 def imagenes(vista: str, formato: str = "historia", destino: Path | None = None, tema: str | None = None,
              hoy: date | None = None) -> tuple[list[Path], dict | None]:
-    """Imágenes de la vista ('es', 'm', 'f', 'g' = grupos) del torneo de Sevens en curso o el próximo."""
+    """Imágenes de la vista ('pes'/'par'/... = un país, 'm', 'f', 'g' = grupos) del torneo en curso o el próximo."""
     t = torneo(hoy)
     if not t:
         return [], None
-    lista = slides_grupos(t) if vista == "g" else slides(t, partidos(t), vista, formato)
+    desde, hasta = t["desde"], t["hasta"]
+    if vista == "g":
+        lista = slides_grupos(t)
+    else:
+        ps, destacado = _de_la_vista(t, vista)
+        lista = slides(t, ps, vista, formato, destacado)
+        if ps and pais_de(vista):  # un país de otra división puede empezar antes (p. ej. el viernes)
+            desde = min(desde, ps[0]["cuando"].date())
     if not lista:
         return [], t
     destino = destino or Path(tempfile.mkdtemp(prefix="sevens_"))
     cfg = cargar_config()
     base = {"competicion": next(iter(cfg["competiciones"])), "grupo": "unico", "jornada": None,
             "temporada": cfg["temporada"], "escudos": banderas(BANDERA),
-            "cabecera": {"nombre": f"Sevens · {t['ciudad']}", "sub": rango_fechas(t["desde"], t["hasta"]), "grupo": None}}
+            "cabecera": {"nombre": f"Sevens · {t['ciudad']}", "sub": rango_fechas(desde, hasta), "grupo": None}}
     return renderizar_slides(base, lista, destino, formato, tema), t
 
 
@@ -268,17 +297,14 @@ def texto(vista: str, hoy: date | None = None) -> str:
     t = torneo(hoy)
     if not t:
         return ""
-    lista = partidos(t)
-    if vista == "es":
-        lista = [p for p in lista if ESPANA in (p["local"], p["visitante"])]
-    elif vista in SEXO:
-        lista = [p for p in lista if p["sexo"] == vista]
+    lista, _ = _de_la_vista(t, vista)
+    por_pais = bool(pais_de(vista))
     lineas, dia = [], None
     for p in lista:
         if p["cuando"].date() != dia:
             dia = p["cuando"].date()
             lineas.append(f"\n📅 {etiqueta_dia(dia)}")
-        sexo = f"{'♂' if p['sexo'] == 'm' else '♀'} " if vista == "es" else ""
-        medio = p["marcador"] or "vs"
-        lineas.append(f"  {p['cuando']:%H:%M} {sexo}{p['local']} {medio} {p['visitante']}  ({p['fase']})")
+        sexo = f"{'♂' if p['sexo'] == 'm' else '♀'} " if por_pais else ""
+        div = f"Div. {p['nivel']} · " if por_pais and p["nivel"] > 1 else ""
+        lineas.append(f"  {p['cuando']:%H:%M} {sexo}{p['local']} {p['marcador'] or 'vs'} {p['visitante']}  ({div}{p['fase']})")
     return f"🏉 Sevens · {t['ciudad']} (hora española){''.join(chr(10) + x for x in lineas)}".strip()
